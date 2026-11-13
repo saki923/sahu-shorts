@@ -1,4 +1,4 @@
-"""Remote CPU worker: renders queued jobs of an OpenShorts API on another host.
+"""Remote CPU worker: renders queued jobs of an Sahu Shorts API on another host.
 
     WORKER_API_URL=https://api.example.com WORKER_TOKEN=... python worker.py
 

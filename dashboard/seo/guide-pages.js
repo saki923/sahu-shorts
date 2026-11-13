@@ -37,10 +37,10 @@ const monthName = (iso) =>
 
 /* ---------------------------------------------------------------- pricing data */
 
-const OS = PRICE_MODELS.openshorts
+const OS = PRICE_MODELS['sahu-shorts']
 const osPlan = (name) => {
   const p = OS.plans.find((x) => x.name === name)
-  if (!p) throw new Error(`[guide-pages] PRICE_MODELS.openshorts has no "${name}" plan`)
+  if (!p) throw new Error(`[guide-pages] PRICE_MODELS.sahu-shorts has no "${name}" plan`)
   return p
 }
 const FREE = osPlan('Free')
@@ -113,7 +113,7 @@ const selfHosted = () => {
   const podcast = 260 // a weekly 60-minute show, ~4.3 episodes a month
   const opus = priceFor('opus-clip', podcast, 'monthly')
   const vizard = priceFor('vizard', podcast, 'monthly')
-  const cloud = priceFor('openshorts', podcast, 'monthly')
+  const cloud = priceFor('sahu-shorts', podcast, 'monthly')
   const heavy = 1200
   const opusHeavy = priceFor('opus-clip', heavy, 'monthly')
   const quso = priceFor('vidyo-ai', heavy, 'yearly')
@@ -165,7 +165,7 @@ recordings work in 9:16 (two speakers stacked, a screen above the presenter, a
 webcam inset enlarged), the hook overlay, the clip editor, the YouTube Studio for
 titles, thumbnails and descriptions, AI Shorts with your fal.ai key, dubbing with
 your ElevenLabs key, and the REST API and MCP server for agents. The stage-by-stage
-detail is in <a href="/how-openshorts-works">how Sahu Shorts works</a>.</p>
+detail is in <a href="/how-sahu-shorts-works">how Sahu Shorts works</a>.</p>
 
 <h2>What are the requirements?</h2>
 <ul>
@@ -180,8 +180,8 @@ about a minute. If you clip a weekly podcast overnight, CPU is fine. If you clip
 every day and want results while you wait, the GPU is worth it.</p>
 
 <h2>Quick start</h2>
-<pre><code>git clone https://github.com/mutonby/openshorts.git
-cd openshorts
+<pre><code>git clone https://github.com/saki923/sahu-shorts.git
+cd sahu-shorts
 cp .env.example .env        # optional: S3 backup and other settings
 docker compose up --build</code></pre>
 <p>Open <code>http://localhost:5175</code>, go to <strong>Settings</strong> and
@@ -301,7 +301,7 @@ ${money(STARTER.monthly)} to ${money(PRO.monthly)} a month.</p>
 ${faqBlock(SELF_FAQ)}
 
 ${sources([
-  `Requirements, commands and environment variables from the project README at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Requirements, commands and environment variables from the project README at <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
   `Competitor plans in the calculator checked ${esc(PRICE_MODELS['opus-clip'].checked)} on each vendor's public pricing page; the full plan breakdowns are in <a href="/alternatives">the alternatives hub</a>.`,
 ])}
 `,
@@ -748,7 +748,7 @@ clipper does that part: it reads the whole video and returns the strongest
 moments already cut, reframed and captioned.</p>
 <p>With Sahu Shorts:</p>
 <ol>
-<li>Paste the YouTube link (or upload the file) at openshorts.app, or in your own self-hosted copy.</li>
+<li>Paste the YouTube link (or upload the file) at github.com/saki923/sahu-shorts, or in your own self-hosted copy.</li>
 <li>The video is transcribed with a timestamp for every word and scanned for scene cuts.</li>
 <li>Google Gemini scores the transcript and picks the 3 to 15 strongest moments, each 15 to 60 seconds, that make sense on their own.</li>
 <li>Each moment is cut and reframed to 9:16: face tracking for one speaker, both people stacked for a two-person podcast, the screen above the presenter for a tutorial.</li>
@@ -802,7 +802,7 @@ ${faqBlock(HOWTO_FAQ)}
 ${sources([
   'YouTube discontinuing viewer Clips in favour of Share at timestamp, and the Studio Video Clips tool: <a href="https://9to5google.com/2026/04/17/youtube-clips-share-at-time-changes/" rel="noopener">9to5Google, 17 April 2026</a>; <a href="https://www.tubefilter.com/2026/04/17/youtube-clipping-tool-viewer-clips-shorts/" rel="noopener">Tubefilter, 17 April 2026</a>.',
   'ffmpeg options <code>-ss</code>, <code>-to</code> and <code>-c copy</code>: <a href="https://ffmpeg.org/ffmpeg.html" rel="noopener">ffmpeg documentation</a>.',
-  `Sahu Shorts pipeline: <a href="/how-openshorts-works">how Sahu Shorts works</a> and the <a href="${SITE.repo}" rel="noopener">source on GitHub</a>.`,
+  `Sahu Shorts pipeline: <a href="/how-sahu-shorts-works">how Sahu Shorts works</a> and the <a href="${SITE.repo}" rel="noopener">source on GitHub</a>.`,
 ])}
 `,
   faq: HOWTO_FAQ,
@@ -915,7 +915,7 @@ const SRC_YT_3MIN =
   '<a href="https://support.google.com/youtube/answer/15424877" rel="noopener">YouTube Help: Understand three-minute YouTube Shorts</a> (uploads from 15 October 2024; Shorts over one minute with an active Content ID claim are blocked).'
 const SRC_FB_REELS =
   'Facebook treating new videos as Reels with no length or format limits: <a href="https://creators.facebook.com/blog/making-it-easier-to-create-videos-on-facebook" rel="noopener">Meta for Creators, 17 June 2025</a>; <a href="https://techcrunch.com/2025/06/17/facebook-announces-that-all-videos-on-its-platform-will-soon-be-shared-as-reels" rel="noopener">TechCrunch, 17 June 2025</a>.'
-const SRC_CAPTIONS = `Caption placement (about 15% of the frame height above the bottom edge) is <code>SAFE_MARGIN_V</code> in <code>subtitles.py</code> at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`
+const SRC_CAPTIONS = `Caption placement (about 15% of the frame height above the bottom edge) is <code>SAFE_MARGIN_V</code> in <code>subtitles.py</code> at <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`
 
 /* ------------------------------------------- /how-to/instagram-reel-dimensions */
 
@@ -1697,7 +1697,7 @@ ${sources([
   SRC_YT_UPLOAD,
   SRC_YT_3MIN,
   'YouTube app and YouTube Studio steps described as of October 2026; YouTube rolls out interface changes gradually, so labels can differ by account and region.',
-  `Sahu Shorts pipeline: <a href="/how-openshorts-works">how Sahu Shorts works</a> and the <a href="${SITE.repo}" rel="noopener">source on GitHub</a>.`,
+  `Sahu Shorts pipeline: <a href="/how-sahu-shorts-works">how Sahu Shorts works</a> and the <a href="${SITE.repo}" rel="noopener">source on GitHub</a>.`,
 ])}
 `,
     faq: MAKE_SHORTS_FAQ,
@@ -1875,7 +1875,7 @@ ${faqBlock(BEST_TIME_FAQ)}
 ${sources([
   '<a href="https://support.google.com/youtube/answer/9314416" rel="noopener">YouTube Help: Understand your YouTube audience</a> ("When your viewers are on YouTube", last 28 days, all devices).',
   'Commonly cited posting windows are from social-media scheduling blogs that aggregate other channels\' data; YouTube does not publish a best time to post.',
-  `Schedule a week (one clip a day at a chosen time and time zone) is <code>ScheduleWeekModal.jsx</code>; Autopilot's rules are in <code>cloud/autopilot.py</code> at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Schedule a week (one clip a day at a chosen time and time zone) is <code>ScheduleWeekModal.jsx</code>; Autopilot's rules are in <code>cloud/autopilot.py</code> at <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
 ])}
 `,
     faq: BEST_TIME_FAQ,

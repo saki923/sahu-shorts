@@ -24,8 +24,8 @@
 
 ## API keys (`cloud/api_keys.py`)
 
-`osk_...` tokens, sha256-stored, created in the dashboard account page.
-`cloud/auth.get_current_user_optional` accepts them (`Bearer osk_...` or
+`ssk_...` tokens, sha256-stored, created in the dashboard account page.
+`cloud/auth.get_current_user_optional` accepts them (`Bearer ssk_...` or
 `X-API-Key`) and resolves the owner, so metering, entitlement, plan priority and
 job ownership apply to agents with zero endpoint changes. Key management, OAuth
 consent, account erasure and billing (cancel, resume, retention offer, end
@@ -63,7 +63,7 @@ because the session JWT lives in localStorage on the frontend host. `POST
 `POST /api/oauth/deny` for the redirect: the consent page's own URL is whatever
 the link said, so it never navigates to a `redirect_uri` the API did not check
 against the client's registered ones. `POST /oauth/token` redeems
-it by **minting an ordinary `osk_` key** named after the client and returning it
+it by **minting an ordinary `ssk_` key** named after the client and returning it
 as the access token. No new auth path: the key shows up in Account → API keys
 and revoking it disconnects the app. The key never expires, but a refresh token
 (`osr_`, table `oauth_refresh_tokens`, hashed) comes with it for clients that
@@ -74,7 +74,7 @@ revokes the OAuth key behind an access or refresh token; hand-made keys are
 never revocable there. The `/mcp` 401 carries
 `WWW-Authenticate: Bearer resource_metadata=...` so clients find the flow.
 The key carries the granted scope (`api_keys.scope`, `cloud/scopes.py`). The only
-scope is `openshorts`, the default every client asks for (unknown scopes are
+scope is `sahu-shorts`, the default every client asks for (unknown scopes are
 dropped, not refused); it reaches `/mcp`, the endpoints the MCP tools call
 in-process and the download paths, and anything else is a 403 naming the
 scope. OAuth keys minted before the column are recognised by their name
@@ -111,7 +111,7 @@ working until `MEDIA_LEGACY_UNTIL` (links sent before signing existed).
 Self-host is open. The R2 library links are separate: public objects behind an
 unguessable key.
 
-Jobs sent with an `osk_` key (REST, MCP, OAuth clients) do not trigger the
+Jobs sent with an `ssk_` key (REST, MCP, OAuth clients) do not trigger the
 clips-ready email: the caller polls or gets the webhook. The job records
 `via_api_key` and the resume manifest carries it.
 

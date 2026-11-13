@@ -1,6 +1,6 @@
 """Money moves only with a dashboard session, never with an API key.
 
-An ``osk_`` key (and every OAuth token, which is one) is what agents and
+An ``ssk_`` key (and every OAuth token, which is one) is what agents and
 third-party MCP clients hold; the consent screen promises them "no billing".
 Cancelling, resuming, ending a trial (charges the card now), the Stripe
 portal and the invoices refuse it."""
@@ -19,8 +19,8 @@ def _request(headers):
 
 
 @pytest.mark.parametrize("headers", [
-    {"Authorization": "Bearer osk_" + "a" * 40},
-    {"X-API-Key": "osk_" + "a" * 40},
+    {"Authorization": "Bearer ssk_" + "a" * 40},
+    {"X-API-Key": "ssk_" + "a" * 40},
 ])
 def test_api_keys_are_refused(headers):
     with pytest.raises(HTTPException) as e:

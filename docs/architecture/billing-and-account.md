@@ -174,7 +174,7 @@ tracked as `SignupSurveyAnswered` with one `goal_<x>` prop per goal.
 
 `DELETE /api/account` (dashboard: Account → Delete account) is immediate and
 irreversible: after the delete there is nothing left to authenticate a recovery
-request against. It refuses API-key auth (a leaked `osk_` must not destroy its own
+request against. It refuses API-key auth (a leaked `ssk_` must not destroy its own
 account) and requires the caller to retype the account email.
 
 The order of the steps is the design, and each one is a failure mode:

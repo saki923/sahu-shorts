@@ -188,7 +188,7 @@ class TestLaneAssignment:
 def _request(country=None, api_key=False):
     headers = {"cf-ipcountry": "XC"}   # a forged header never matters by default
     if api_key:
-        headers["X-API-Key"] = "osk_x"
+        headers["X-API-Key"] = "ssk_x"
     return SimpleNamespace(headers=headers, state=SimpleNamespace(),
                            client=SimpleNamespace(host=CLIENT.get(country, "10.0.0.7")))
 

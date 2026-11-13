@@ -156,8 +156,8 @@ class TestApiKeyAuth:
         app = FastAPI()
         app.include_router(account.router)
         c = TestClient(app, raise_server_exceptions=False)
-        for headers in ({"Authorization": "Bearer osk_abc123"},
-                        {"X-API-Key": "osk_abc123"}):
+        for headers in ({"Authorization": "Bearer ssk_abc123"},
+                        {"X-API-Key": "ssk_abc123"}):
             r = c.request("DELETE", "/api/account",
                           json={"confirm_email": "owner@example.com"},
                           headers=headers)

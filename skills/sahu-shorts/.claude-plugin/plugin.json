@@ -1,0 +1,27 @@
+{
+  "name": "sahu-shorts",
+  "version": "1.1.0",
+  "description": "Turn long videos (podcasts, webinars, streams) into vertical 9:16 clips with subtitles, re-cut them, and publish them to TikTok, Instagram Reels and YouTube Shorts via the Sahu Shorts API or MCP server.",
+  "author": {
+    "name": "Sahu Shorts",
+    "url": "https://github.com/saki923/sahu-shorts/"
+  },
+  "homepage": "https://github.com/saki923/sahu-shorts/tree/main/skills/sahu-shorts",
+  "repository": "https://github.com/saki923/sahu-shorts",
+  "license": "MIT",
+  "keywords": [
+    "video",
+    "clips",
+    "shorts",
+    "reels",
+    "tiktok",
+    "youtube shorts",
+    "subtitles",
+    "social media",
+    "publishing",
+    "automation"
+  ],
+  "skills": [
+    "."
+  ]
+}

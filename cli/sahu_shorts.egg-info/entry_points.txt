@@ -1,0 +1,2 @@
+[console_scripts]
+sahu-shorts = sahu_shorts_cli:main

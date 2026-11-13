@@ -8,7 +8,7 @@ import { getApiUrl } from '../config';
 // an API key); a self-hosted install has no auth, so every snippet is the
 // local URL and nothing else.
 
-const CLOUD_MCP_URL = 'https://mcp.openshorts.app/mcp';
+const CLOUD_MCP_URL = 'http://localhost:8000/mcp';
 
 // The self-hosted dashboard proxies /api and /videos to the backend but not
 // /mcp (neither the Vite dev proxy nor nginx.conf), so an MCP client must
@@ -21,7 +21,7 @@ function localMcpUrl() {
 }
 
 function buildClients({ cloud, url }) {
-  const key = cloud ? 'osk_YOUR_KEY' : null;
+  const key = cloud ? 'ssk_YOUR_KEY' : null;
   const header = key ? ` \\\n  --header "Authorization: Bearer ${key}"` : '';
   const desktopArgs = key
     ? `["-y", "mcp-remote", "${url}", "--header", "Authorization: Bearer ${key}"]`
@@ -48,17 +48,17 @@ function buildClients({ cloud, url }) {
     },
     {
       id: 'claude-code', label: 'Claude Code', kind: 'code', lang: 'bash',
-      snippet: `claude mcp add --transport http openshorts ${url}${header}`,
-      note: cloud ? 'Create a key below and paste it in place of osk_YOUR_KEY.' : 'No key needed on a self-hosted install.',
+      snippet: `claude mcp add --transport http sahu-shorts ${url}${header}`,
+      note: cloud ? 'Create a key below and paste it in place of ssk_YOUR_KEY.' : 'No key needed on a self-hosted install.',
     },
     {
       id: 'claude-desktop', label: 'Claude Desktop', kind: 'code', lang: 'json',
-      snippet: `{\n  "mcpServers": {\n    "openshorts": {\n      "command": "npx",\n      "args": ${desktopArgs}\n    }\n  }\n}`,
+      snippet: `{\n  "mcpServers": {\n    "sahu-shorts": {\n      "command": "npx",\n      "args": ${desktopArgs}\n    }\n  }\n}`,
       note: 'Settings → Developer → Edit config (claude_desktop_config.json), then restart Claude.',
     },
     {
       id: 'cursor', label: 'Cursor', kind: 'code', lang: 'json',
-      snippet: `{\n  "mcpServers": {\n    "openshorts": {\n      "url": "${url}"${cursorHeaders}\n    }\n  }\n}`,
+      snippet: `{\n  "mcpServers": {\n    "sahu-shorts": {\n      "url": "${url}"${cursorHeaders}\n    }\n  }\n}`,
       note: 'Settings → MCP → Add new global MCP server (.cursor/mcp.json).',
     },
     {

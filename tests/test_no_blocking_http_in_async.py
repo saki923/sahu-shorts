@@ -3,7 +3,7 @@ uvicorn event loop for as long as the request takes.
 
 23-sep-2026 19:47:48 UTC: /api/social/post uploaded a clip to Upload-Post with
 a sync ``httpx.Client`` inline; every request, /health included, stalled for
-42 s and the uptime monitor paged "openshorts-api down". Blocking clients are
+42 s and the uptime monitor paged "sahu-shorts-api down". Blocking clients are
 fine in a plain ``def`` called through ``asyncio.to_thread``; this test only
 rejects them lexically inside a coroutine body (nested sync ``def``s are
 skipped, since those are what gets handed to the thread).

@@ -223,10 +223,10 @@ const StepCard = ({ number, title, description }) => (
   </div>
 );
 
-const ComparisonRow = ({ feature, openshorts, opusclip, kapwing }) => (
+const ComparisonRow = ({ feature, 'sahu-shorts': sahuShorts, opusclip, kapwing }) => (
   <tr className="border-b border-rule">
     <td className="py-3 px-4 text-sm text-ink2">{feature}</td>
-    <td className="py-3 px-4 text-center">{openshorts}</td>
+    <td className="py-3 px-4 text-center">{sahuShorts}</td>
     <td className="py-3 px-4 text-center">{opusclip}</td>
     <td className="py-3 px-4 text-center">{kapwing}</td>
   </tr>
@@ -464,7 +464,7 @@ export default function Landing({ onLaunchApp }) {
     {
       icon: Bot,
       title: "MCP Server, API & CLI for AI Agents",
-      description: "Connect Claude, ChatGPT or n8n to an always-on endpoint, or run pip install openshorts and clip from the terminal. Same pipeline, no dashboard needed."
+      description: "Connect Claude, ChatGPT or n8n to an always-on endpoint, or run pip install sahu-shorts and clip from the terminal. Same pipeline, no dashboard needed."
     },
     {
       icon: Sparkles,
@@ -489,7 +489,7 @@ export default function Landing({ onLaunchApp }) {
   const faqs = [
     {
       question: "Is Sahu Shorts really free?",
-      answer: "Self-hosting is free under the MIT licence, with no watermark and no cap; Sahu Shorts Cloud has a free plan (your first video up to 60 minutes, then 20 minutes a month, watermarked) and paid plans from $12/month. There is no catch, but there are two different things on offer. (1) Self-hosted is 100% free and open source: you run it with Docker on your own machine, bring your own API keys, and there are no watermarks, no usage limits and no subscription. What it costs you is hardware and time. On a typical CPU an 8-minute video takes 5 to 8 minutes to process, and you need your own Google Gemini key (required, free tier is 1,500 requests/day), plus ElevenLabs for dubbing and fal.ai for AI Shorts if you want those. (2) Hosted at openshorts.app is the same software with the running costs covered: our NVIDIA GPU clips that same 8-minute video in about 50 seconds, the Gemini key is included so there is nothing to create or paste, auto-posting to TikTok, Instagram and YouTube is already wired up, and your clips are stored and re-openable from any browser. Its free plan clips your first video whole up to 60 minutes, then 20 minutes a month, with a watermark and no credit card; paid plans start at $12/mo for 100 minutes without watermark. So: free if you are happy to run it yourself, paid if you would rather it just ran fast. For reference, Opus Clip starts at $15/month and bills a credit per minute of source video."
+      answer: "Self-hosting is free under the MIT licence, with no watermark and no cap; Sahu Shorts Cloud has a free plan (your first video up to 60 minutes, then 20 minutes a month, watermarked) and paid plans from $12/month. There is no catch, but there are two different things on offer. (1) Self-hosted is 100% free and open source: you run it with Docker on your own machine, bring your own API keys, and there are no watermarks, no usage limits and no subscription. What it costs you is hardware and time. On a typical CPU an 8-minute video takes 5 to 8 minutes to process, and you need your own Google Gemini key (required, free tier is 1,500 requests/day), plus ElevenLabs for dubbing and fal.ai for AI Shorts if you want those. (2) Hosted at github.com/saki923/sahu-shorts is the same software with the running costs covered: our NVIDIA GPU clips that same 8-minute video in about 50 seconds, the Gemini key is included so there is nothing to create or paste, auto-posting to TikTok, Instagram and YouTube is already wired up, and your clips are stored and re-openable from any browser. Its free plan clips your first video whole up to 60 minutes, then 20 minutes a month, with a watermark and no credit card; paid plans start at $12/mo for 100 minutes without watermark. So: free if you are happy to run it yourself, paid if you would rather it just ran fast. For reference, Opus Clip starts at $15/month and bills a credit per minute of source video."
     },
     {
       question: "Do the clips have a watermark?",
@@ -553,7 +553,7 @@ export default function Landing({ onLaunchApp }) {
     },
     {
       question: "Can I automate Sahu Shorts from Claude, ChatGPT or n8n?",
-      answer: "Yes. Sahu Shorts has a native MCP server at mcp.openshorts.app/mcp plus a REST API with per-user keys and completion webhooks, so an AI agent can run the whole flow: submit a video URL, wait for processing, list the clips and publish them to TikTok, Instagram or YouTube. This is where the hosted service shines: an agent needs an endpoint that is always on, and the hosted one is, with the API key created in your account page in one click. The self-hosted edition serves the same /mcp endpoint, but only while your own machine is running. There is also a zero-dependency CLI (pip install openshorts) and an importable n8n workflow. Full guide at openshorts.app/mcp."
+      answer: "Yes. Sahu Shorts has a native MCP server at localhost:8000/mcp plus a REST API with per-user keys and completion webhooks, so an AI agent can run the whole flow: submit a video URL, wait for processing, list the clips and publish them to TikTok, Instagram or YouTube. This is where the hosted service shines: an agent needs an endpoint that is always on, and the hosted one is, with the API key created in your account page in one click. The self-hosted edition serves the same /mcp endpoint, but only while your own machine is running. There is also a zero-dependency CLI (pip install sahu-shorts) and an importable n8n workflow. Full guide at github.com/saki923/sahu-shorts/mcp."
     },
     {
       question: "What are the system requirements to run Sahu Shorts?",
@@ -626,7 +626,7 @@ export default function Landing({ onLaunchApp }) {
             <p className="text-sm text-muted lowercase">
               <a href="#pricing" className="underline underline-offset-2 hover:text-ink">paid plans from $12/mo</a> without watermark. prefer to run it yourself?{' '}
               <a
-                href="https://github.com/mutonby/openshorts"
+                href="https://github.com/saki923/sahu-shorts"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-ink2 underline hover:text-ink transition-colors"
@@ -647,7 +647,7 @@ export default function Landing({ onLaunchApp }) {
           </div>
 
           {/* Apparatus — instrument bezel holding a real 9:16 clip */}
-          <figure className="apparatus" aria-label="example vertical clip generated by openshorts">
+          <figure className="apparatus" aria-label="example vertical clip generated by sahu-shorts">
             <div className="apparatus-shell">
               <span className="apparatus-glow" aria-hidden="true" />
               <div className="apparatus-chamber">
@@ -854,7 +854,7 @@ export default function Landing({ onLaunchApp }) {
             <div className="card p-8 flex flex-col border-brass">
               <div className="flex flex-wrap items-center gap-3 mb-3">
                 <Sparkles size={18} className="text-brass" />
-                <h3 className="font-display text-2xl lowercase text-ink">cloud · openshorts.app</h3>
+                <h3 className="font-display text-2xl lowercase text-ink">cloud · github.com/saki923/sahu-shorts</h3>
                 <span className="badge-brass">Recommended · Free Plan</span>
               </div>
               <ul className="space-y-1.5 mb-6 flex-1">
@@ -868,7 +868,7 @@ export default function Landing({ onLaunchApp }) {
                 </a>
               ) : (
                 <button onClick={onLaunchApp} className="btn-primary whitespace-nowrap">
-                  launch openshorts <ArrowRight size={16} />
+                  launch sahu-shorts <ArrowRight size={16} />
                 </button>
               )}
             </div>
@@ -883,7 +883,7 @@ export default function Landing({ onLaunchApp }) {
                   <li key={i} className="flex items-center gap-2 text-sm text-muted"><Check size={14} className="text-ok shrink-0" />{f}</li>
                 ))}
               </ul>
-              <a href="https://github.com/mutonby/openshorts" target="_blank" rel="noopener noreferrer"
+              <a href="https://github.com/saki923/sahu-shorts" target="_blank" rel="noopener noreferrer"
                 className="btn-ghost whitespace-nowrap">
                 <Github size={16} /> view on github
               </a>
@@ -924,21 +924,21 @@ export default function Landing({ onLaunchApp }) {
                 </tr>
               </thead>
               <tbody>
-                <ComparisonRow feature="Price" openshorts={<span className="text-ok font-medium">$0 / from $12/mo</span>} opusclip={xIcon} kapwing={xIcon} />
-                <ComparisonRow feature="AI Viral Moment Detection" openshorts={checkIcon} opusclip={checkMuted} kapwing={checkMuted} />
-                <ComparisonRow feature="Smart Vertical Cropping" openshorts={checkIcon} opusclip={checkMuted} kapwing={checkMuted} />
-                <ComparisonRow feature="Auto Subtitles" openshorts={checkIcon} opusclip={checkMuted} kapwing={checkMuted} />
-                <ComparisonRow feature="AI Voice Dubbing (30+ langs, your ElevenLabs key)" openshorts={checkIcon} opusclip={<span className="text-muted text-sm">Limited</span>} kapwing={<span className="text-muted text-sm">No</span>} />
-                <ComparisonRow feature="AI Video Effects" openshorts={checkIcon} opusclip={<span className="text-muted text-sm">No</span>} kapwing={checkMuted} />
-                <ComparisonRow feature="Hook Text Overlays" openshorts={checkIcon} opusclip={checkMuted} kapwing={checkMuted} />
-                <ComparisonRow feature="Self-Hosted / Privacy" openshorts={checkIcon} opusclip={<span className="text-muted text-sm">Cloud only</span>} kapwing={<span className="text-muted text-sm">Cloud only</span>} />
-                <ComparisonRow feature="No Watermark" openshorts={<span className="text-ok text-sm">Self-hosted &amp; paid</span>} opusclip={<span className="text-muted text-sm">Free tier only</span>} kapwing={<span className="text-muted text-sm">Paid</span>} />
-                <ComparisonRow feature="Open Source" openshorts={checkIcon} opusclip={<span className="text-muted text-sm">No</span>} kapwing={<span className="text-muted text-sm">No</span>} />
-                <ComparisonRow feature="AI YouTube Thumbnail Generator" openshorts={checkIcon} opusclip={<span className="text-muted text-sm">No</span>} kapwing={<span className="text-muted text-sm">Paid</span>} />
-                <ComparisonRow feature="AI Title & Description Generator" openshorts={checkIcon} opusclip={<span className="text-muted text-sm">Limited</span>} kapwing={<span className="text-muted text-sm">Paid</span>} />
-                <ComparisonRow feature="AI UGC Video Generator" openshorts={checkIcon} opusclip={<span className="text-muted text-sm">No</span>} kapwing={<span className="text-muted text-sm">No</span>} />
-                <ComparisonRow feature="AI Actors with Lip-Sync" openshorts={checkIcon} opusclip={<span className="text-muted text-sm">No</span>} kapwing={<span className="text-muted text-sm">No</span>} />
-                <ComparisonRow feature="Usage Limits" openshorts={<span className="text-ok text-sm">Unlimited self-hosted</span>} opusclip={<span className="text-muted text-sm">Per plan</span>} kapwing={<span className="text-muted text-sm">Per plan</span>} />
+                <ComparisonRow feature="Price" sahu-shorts={<span className="text-ok font-medium">$0 / from $12/mo</span>} opusclip={xIcon} kapwing={xIcon} />
+                <ComparisonRow feature="AI Viral Moment Detection" sahu-shorts={checkIcon} opusclip={checkMuted} kapwing={checkMuted} />
+                <ComparisonRow feature="Smart Vertical Cropping" sahu-shorts={checkIcon} opusclip={checkMuted} kapwing={checkMuted} />
+                <ComparisonRow feature="Auto Subtitles" sahu-shorts={checkIcon} opusclip={checkMuted} kapwing={checkMuted} />
+                <ComparisonRow feature="AI Voice Dubbing (30+ langs, your ElevenLabs key)" sahu-shorts={checkIcon} opusclip={<span className="text-muted text-sm">Limited</span>} kapwing={<span className="text-muted text-sm">No</span>} />
+                <ComparisonRow feature="AI Video Effects" sahu-shorts={checkIcon} opusclip={<span className="text-muted text-sm">No</span>} kapwing={checkMuted} />
+                <ComparisonRow feature="Hook Text Overlays" sahu-shorts={checkIcon} opusclip={checkMuted} kapwing={checkMuted} />
+                <ComparisonRow feature="Self-Hosted / Privacy" sahu-shorts={checkIcon} opusclip={<span className="text-muted text-sm">Cloud only</span>} kapwing={<span className="text-muted text-sm">Cloud only</span>} />
+                <ComparisonRow feature="No Watermark" sahu-shorts={<span className="text-ok text-sm">Self-hosted &amp; paid</span>} opusclip={<span className="text-muted text-sm">Free tier only</span>} kapwing={<span className="text-muted text-sm">Paid</span>} />
+                <ComparisonRow feature="Open Source" sahu-shorts={checkIcon} opusclip={<span className="text-muted text-sm">No</span>} kapwing={<span className="text-muted text-sm">No</span>} />
+                <ComparisonRow feature="AI YouTube Thumbnail Generator" sahu-shorts={checkIcon} opusclip={<span className="text-muted text-sm">No</span>} kapwing={<span className="text-muted text-sm">Paid</span>} />
+                <ComparisonRow feature="AI Title & Description Generator" sahu-shorts={checkIcon} opusclip={<span className="text-muted text-sm">Limited</span>} kapwing={<span className="text-muted text-sm">Paid</span>} />
+                <ComparisonRow feature="AI UGC Video Generator" sahu-shorts={checkIcon} opusclip={<span className="text-muted text-sm">No</span>} kapwing={<span className="text-muted text-sm">No</span>} />
+                <ComparisonRow feature="AI Actors with Lip-Sync" sahu-shorts={checkIcon} opusclip={<span className="text-muted text-sm">No</span>} kapwing={<span className="text-muted text-sm">No</span>} />
+                <ComparisonRow feature="Usage Limits" sahu-shorts={<span className="text-ok text-sm">Unlimited self-hosted</span>} opusclip={<span className="text-muted text-sm">Per plan</span>} kapwing={<span className="text-muted text-sm">Per plan</span>} />
               </tbody>
             </table>
           </div>
@@ -998,7 +998,7 @@ export default function Landing({ onLaunchApp }) {
       <section className="py-20 px-6 border-t border-rule">
         <div className="max-w-6xl mx-auto">
           <SectionHeader eyebrow="09 · Also Included" title="two more tools, same account">
-            In the same openshorts.app account, with no keys and no setup.
+            In the same github.com/saki923/sahu-shorts account, with no keys and no setup.
           </SectionHeader>
           <div className="grid md:grid-cols-2 gap-5">
             <div className="card p-8">
@@ -1162,12 +1162,12 @@ export default function Landing({ onLaunchApp }) {
               </a>
             ) : (
               <button onClick={onLaunchApp} className="btn-primary whitespace-nowrap">
-                launch openshorts
+                launch sahu-shorts
                 <ArrowRight size={16} />
               </button>
             )}
             <a
-              href="https://github.com/mutonby/openshorts"
+              href="https://github.com/saki923/sahu-shorts"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-ghost whitespace-nowrap"
@@ -1229,7 +1229,7 @@ export default function Landing({ onLaunchApp }) {
             <a href="/self-hosted-ai-clip-maker" className="hover:text-ink transition-colors">self-hosted ai clip maker</a>
             <a href="/podcast-to-shorts" className="hover:text-ink transition-colors">podcast clips</a>
             <a href="/youtube-to-shorts-converter" className="hover:text-ink transition-colors">youtube to shorts</a>
-            <a href="/how-openshorts-works" className="hover:text-ink transition-colors">how it works</a>
+            <a href="/how-sahu-shorts-works" className="hover:text-ink transition-colors">how it works</a>
             <a href="/alternatives" className="hover:text-ink transition-colors">alternatives</a>
             <a href="/free-ai-clipping-tools-compared" className="hover:text-ink transition-colors">free ai clipping tools compared</a>
             <a href="/alternativas" className="hover:text-ink transition-colors">alternativas</a>
@@ -1248,11 +1248,11 @@ export default function Landing({ onLaunchApp }) {
           </nav>
           <div className="border-t border-rule pt-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <img src="/logo-openshorts.png" alt="Sahu Shorts" className="w-6 h-6" />
+              <img src="/logo-sahu-shorts.png" alt="Sahu Shorts" className="w-6 h-6" />
               <span className="text-sm text-muted">Sahu Shorts — Free Open Source Clip Generator & AI UGC Video Creator</span>
             </div>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm lowercase text-muted">
-              <a href="https://github.com/mutonby/openshorts" target="_blank" rel="noopener noreferrer" className="hover:text-ink transition-colors">GitHub</a>
+              <a href="https://github.com/saki923/sahu-shorts" target="_blank" rel="noopener noreferrer" className="hover:text-ink transition-colors">GitHub</a>
               <a href="#features" className="hover:text-ink transition-colors">Features</a>
               <a href="#faq" className="hover:text-ink transition-colors">FAQ</a>
               <a href="/terms" className="hover:text-ink transition-colors whitespace-nowrap">Terms</a>

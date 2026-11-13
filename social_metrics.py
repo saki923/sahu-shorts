@@ -7,7 +7,7 @@ days" card wrong by a wide margin:
 * ``since`` filters by the date the snapshot was TAKEN, not when the post went
   out. One snapshot holds every post the connected accounts have, each with its
   lifetime views, so "last 30 days" meant "everything, ever".
-* It is account-wide, not OpenShorts-wide: the creator's native posts come along
+* It is account-wide, not Sahu Shorts-wide: the creator's native posts come along
   too. Only rows with an ``upload_timestamp`` went out through Upload-Post; the
   rest were never ours, and on an active creator they are most of the views.
 * Snapshots repeat a post. Summing every row would count it once per capture.
@@ -26,7 +26,7 @@ from datetime import datetime, timedelta, timezone
 REFRESH_AFTER = timedelta(hours=20)
 
 # Live reads share one rate budget for the whole managed account (100 per 5
-# minutes across every OpenShorts user), so one refresh reads at most this many
+# minutes across every Sahu Shorts user), so one refresh reads at most this many
 # posts. Newest first: the ones still gaining views.
 MAX_LIVE_READS = 40
 

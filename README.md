@@ -1,8 +1,8 @@
-# OpenShorts.app
+# Sahu Shorts.app
 
 **The open-source OpusClip alternative.** Turn long videos into viral 9:16 Shorts, TikToks and Reels. Self-host free (MIT) or use the hosted cloud.
 
-| | OpenShorts | OpusClip | Vizard | Klap |
+| | Sahu Shorts | OpusClip | Vizard | Klap |
 |---|---|---|---|---|
 | Open source | Yes (MIT) | No | No | No |
 | Self-hostable | Yes (Docker) | No | No | No |
@@ -13,38 +13,38 @@
 [![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://opensource.org/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)](https://docs.docker.com/compose/)
-[![GitHub stars](https://img.shields.io/github/stars/mutonby/openshorts?style=social)](https://github.com/mutonby/openshorts)
-[![Last Commit](https://img.shields.io/github/last-commit/mutonby/openshorts)](https://github.com/mutonby/openshorts/commits/main)
+[![GitHub stars](https://img.shields.io/github/stars/saki923/sahu-shorts?style=social)](https://github.com/saki923/sahu-shorts)
+[![Last Commit](https://img.shields.io/github/last-commit/saki923/sahu-shorts)](https://github.com/saki923/sahu-shorts/commits/main)
 
 **Open source AI video platform** with 3 tools in one: **Clip Generator**, **AI Shorts (UGC videos with AI actors)**, and **YouTube Studio**.
 
-![Your podcast, and the vertical clip OpenShorts makes of it: both speakers stacked, captions on the seam](screenshots/split-before-after.gif)
+![Your podcast, and the vertical clip Sahu Shorts makes of it: both speakers stacked, captions on the seam](screenshots/split-before-after.gif)
 
-<sub>Real OpenShorts output, not a mock-up. Source: [Turn the Tables with Dan and Shoshana Jordan](https://www.youtube.com/watch?v=-KbQj_vboOU), Heritage of Faith, licensed CC BY.</sub>
+<sub>Real Sahu Shorts output, not a mock-up. Source: [Turn the Tables with Dan and Shoshana Jordan](https://www.youtube.com/watch?v=-KbQj_vboOU), Heritage of Faith, licensed CC BY.</sub>
 
-Two people on camera? OpenShorts stacks them instead of shrinking the wide shot, puts the captions on the seam where they cover nobody, and switches back to a face-tracked crop when the cut goes to one person. The AI picks the layout per video; nothing to configure.
+Two people on camera? Sahu Shorts stacks them instead of shrinking the wide shot, puts the captions on the seam where they cover nobody, and switches back to a face-tracked crop when the cut goes to one person. The AI picks the layout per video; nothing to configure.
 
-**Cloud version:** don't want to run it yourself? [OpenShorts Cloud](https://www.openshorts.app/?ref=github) is the same software on a GPU. Free plan with a watermark (20 min/mo, no credit card), paid plans from $12/mo with no watermark.
+**Cloud version:** don't want to run it yourself? [Sahu Shorts Cloud](https://github.com/saki923/sahu-shorts/?ref=github) is the same software on a GPU. Free plan with a watermark (20 min/mo, no credit card), paid plans from $12/mo with no watermark.
 
 **Two ways to run it, same software either way:**
 
-|  | Self-hosted (this repo) | Hosted on [openshorts.app](https://www.openshorts.app/) |
+|  | Self-hosted (this repo) | Hosted on [github.com/saki923/sahu-shorts](https://github.com/saki923/sahu-shorts/) |
 |---|---|---|
 | **Price** | Free forever, MIT | Free plan, paid from $12/mo |
 | **Speed** | 5 to 8 min per 8-min video on CPU | About 50s on our NVIDIA GPU |
 | **API keys** | Bring your own Gemini, ElevenLabs, fal.ai | Gemini included, nothing to set up |
 | **Watermark / limits** | None, ever | Watermark and 20 min/mo on the free plan, neither on paid |
 | **Setup** | Docker, 8GB+ RAM, model downloads | Sign in and paste a link |
-| **MCP / API for agents** | Same `/mcp` endpoint, but only while your machine is on | Always-on endpoint at [mcp.openshorts.app](https://www.openshorts.app/mcp), API keys in one click |
+| **MCP / API for agents** | Same `/mcp` endpoint, but only while your machine is on | Always-on endpoint at [localhost:8000](https://github.com/saki923/sahu-shorts/mcp), API keys in one click |
 | **Your data** | Your server | Ours |
 
 Self-hosting is genuinely free and always will be. It costs you a machine, your own API keys and the time to keep it running. The hosted plans exist to cover that hardware and those keys, not to unlock features.
 
-**Compared to Opus Clip, Klap, Vizard** (public pricing pages, checked October 2026; full breakdown at [openshorts.app/alternatives](https://www.openshorts.app/alternatives)):
+**Compared to Opus Clip, Klap, Vizard** (public pricing pages, checked October 2026; full breakdown at [github.com/saki923/sahu-shorts/alternatives](https://github.com/saki923/sahu-shorts/alternatives)):
 
 | | Free plan | Paid from | Open source |
 |---|---|---|---|
-| **OpenShorts** | Self-hosted: free, no watermark, no cap. Cloud: 20 min/mo with watermark | $12/mo (Cloud, 100 min) | **Yes, MIT** |
+| **Sahu Shorts** | Self-hosted: free, no watermark, no cap. Cloud: 20 min/mo with watermark | $12/mo (Cloud, 100 min) | **Yes, MIT** |
 | **Opus Clip** | 60 min/mo, watermarked, export within 3 days | $15/mo (Starter, 150 min), billed per minute of source | No |
 | **Klap** | 1 video to try, no ongoing free plan | $14/mo billed yearly (100 clips), billed per clip | No |
 | **Vizard** | 60 min/mo, 720p, watermarked | $14.50/mo billed yearly ($29 monthly), billed per minute uploaded | No |
@@ -54,7 +54,7 @@ https://github.com/user-attachments/assets/b45fa983-16b4-48b5-ac5b-a267836b9ad9
 
 
 ### Video Tutorial: How it works
-[![OpenShorts Tutorial](https://img.youtube.com/vi/xlyjD1qCaX0/maxresdefault.jpg)](https://www.youtube.com/watch?v=xlyjD1qCaX0 "Click to watch the video on YouTube")
+[![Sahu Shorts Tutorial](https://img.youtube.com/vi/xlyjD1qCaX0/maxresdefault.jpg)](https://www.youtube.com/watch?v=xlyjD1qCaX0 "Click to watch the video on YouTube")
 
 *Click the image above to watch the full walkthrough.*
 
@@ -130,7 +130,7 @@ All generated videos and avatars are saved to a public gallery with SEO pages fo
 
 ### Social Auto-Publishing
 - **One-click posting** to TikTok, Instagram Reels, and YouTube Shorts simultaneously
-- **Schedule uploads** for any date and time — plan your content calendar and let OpenShorts publish automatically
+- **Schedule uploads** for any date and time — plan your content calendar and let Sahu Shorts publish automatically
 - **Multi-platform distribution** — publish to all your social networks at once from a single interface
 - Upload-Post integration with async uploads
 
@@ -155,20 +155,20 @@ All generated videos and avatars are saved to a public gallery with SEO pages fo
 
 ## AI Shorts Showcase
 
-Videos generated with OpenShorts AI Shorts — no camera, no studio, no actors:
+Videos generated with Sahu Shorts AI Shorts — no camera, no studio, no actors:
 
 | | | |
 |:---:|:---:|:---:|
-| [![Biohacking for Investors](https://test-videos-upload-post.s3.eu-west-3.amazonaws.com/videos/cdceec1b/actor.png)](https://openshorts.app/video/cdceec1b) | [![Secret Weapon for Devs](https://test-videos-upload-post.s3.eu-west-3.amazonaws.com/videos/d3a80b6b/actor.png)](https://openshorts.app/video/d3a80b6b) | [![El Secreto de los Agentes de IA](https://test-videos-upload-post.s3.eu-west-3.amazonaws.com/videos/8ab7de92/actor.png)](https://openshorts.app/video/8ab7de92) |
+| [![Biohacking for Investors](https://test-videos-upload-post.s3.eu-west-3.amazonaws.com/videos/cdceec1b/actor.png)](https://github.com/saki923/sahu-shorts/video/cdceec1b) | [![Secret Weapon for Devs](https://test-videos-upload-post.s3.eu-west-3.amazonaws.com/videos/d3a80b6b/actor.png)](https://github.com/saki923/sahu-shorts/video/d3a80b6b) | [![El Secreto de los Agentes de IA](https://test-videos-upload-post.s3.eu-west-3.amazonaws.com/videos/8ab7de92/actor.png)](https://github.com/saki923/sahu-shorts/video/8ab7de92) |
 | **Biohacking for Investors** · LOW COST | **Secret Weapon for Devs** · LOW COST | **El Secreto de los Agentes de IA** · PREMIUM |
 
-> Browse all videos at [openshorts.app/gallery](https://openshorts.app/gallery)
+> Browse all videos at [github.com/saki923/sahu-shorts/gallery](https://github.com/saki923/sahu-shorts/gallery)
 
 ---
 
-## OpenShorts vs Competitors
+## Sahu Shorts vs Competitors
 
-| Feature | OpenShorts | Opus Clip | CapCut | Vizard | Klap | Descript |
+| Feature | Sahu Shorts | Opus Clip | CapCut | Vizard | Klap | Descript |
 |---------|:---:|:---:|:---:|:---:|:---:|:---:|
 | **Price** | **Free self-hosted**<br>from $12/mo hosted | $15-29/mo | $8/mo | $14.50/mo yearly<br>$29 monthly | from $14/mo yearly | $24-65/mo |
 | **Self-hosted** | **Yes** | No | No | No | No | No |
@@ -192,7 +192,7 @@ Videos generated with OpenShorts AI Shorts — no camera, no studio, no actors:
 
 ## How Much Does It Cost?
 
-Self-hosting OpenShorts is free. You provide the machine and you only pay for the AI APIs you use, and most have generous free tiers:
+Self-hosting Sahu Shorts is free. You provide the machine and you only pay for the AI APIs you use, and most have generous free tiers:
 
 | Service | Free Tier | Paid Cost | Used For |
 |---------|-----------|-----------|----------|
@@ -205,7 +205,7 @@ Self-hosting OpenShorts is free. You provide the machine and you only pay for th
 
 **Bottom line:** You can clip videos for practically free with Gemini, and publish 10 videos/month to all social networks at zero cost with Upload-Post.
 
-**Don't want to run any of that?** [openshorts.app](https://www.openshorts.app/) is the same software on our hardware: our NVIDIA GPU clips an 8-minute video in about 50 seconds instead of the 5 to 8 minutes it takes on a typical CPU, the Gemini key is included, and auto-publishing is already wired up. Free plan is 20 minutes a month with a watermark and no credit card; paid plans start at $12/mo for 100 minutes without watermark.
+**Don't want to run any of that?** [github.com/saki923/sahu-shorts](https://github.com/saki923/sahu-shorts/) is the same software on our hardware: our NVIDIA GPU clips an 8-minute video in about 50 seconds instead of the 5 to 8 minutes it takes on a typical CPU, the Gemini key is included, and auto-publishing is already wired up. Free plan is 20 minutes a month with a watermark and no credit card; paid plans start at $12/mo for 100 minutes without watermark.
 
 ---
 
@@ -223,8 +223,8 @@ Self-hosting OpenShorts is free. You provide the machine and you only pay for th
 
 ### 1. Clone
 ```bash
-git clone https://github.com/mutonby/openshorts.git
-cd openshorts
+git clone https://github.com/saki923/sahu-shorts.git
+cd sahu-shorts
 ```
 
 ### 2. Configure (optional)
@@ -288,8 +288,8 @@ ASR_GPU_CONCURRENCY=1
 **Verify:**
 ```bash
 docker compose up --build -d
-docker exec openshorts-backend nvidia-smi -L
-docker exec openshorts-backend ffmpeg -hide_banner -f lavfi -i testsrc=size=256x256:rate=1 -frames:v 1 -c:v h264_nvenc -f null -
+docker exec sahu-shorts-backend nvidia-smi -L
+docker exec sahu-shorts-backend ffmpeg -hide_banner -f lavfi -i testsrc=size=256x256:rate=1 -frames:v 1 -c:v h264_nvenc -f null -
 ```
 The backend log on the first job reports the chosen encoder and transcription device. A CUDA error in whisper (e.g. VRAM exhausted) retries once on CPU automatically. 8 GB of VRAM is enough for `large-v3-turbo` fp16 plus the detection models.
 
@@ -355,33 +355,33 @@ You don't need the dashboard. The whole pipeline is callable by AI agents and sc
 
 ### MCP server (`/mcp`)
 
-OpenShorts ships a built-in [MCP](https://modelcontextprotocol.io) server, so Claude, ChatGPT, Cursor or any MCP client can clip and publish videos for you:
+Sahu Shorts ships a built-in [MCP](https://modelcontextprotocol.io) server, so Claude, ChatGPT, Cursor or any MCP client can clip and publish videos for you:
 
-**claude.ai and ChatGPT**: paste `https://mcp.openshorts.app/mcp` as a custom connector (Settings → Connectors) and approve the access on openshorts.app. The server does OAuth 2.1 with dynamic client registration, so there is no key to copy; the connection shows up under Account → API keys, where revoking it disconnects the app.
+**claude.ai and ChatGPT**: paste `http://localhost:8000/mcp` as a custom connector (Settings → Connectors) and approve the access on github.com/saki923/sahu-shorts. The server does OAuth 2.1 with dynamic client registration, so there is no key to copy; the connection shows up under Account → API keys, where revoking it disconnects the app.
 
 ```bash
 # Claude Code / Cursor / n8n (hosted): create an API key in your account page
-claude mcp add --transport http openshorts https://mcp.openshorts.app/mcp \
-  --header "Authorization: Bearer osk_..."
+claude mcp add --transport http sahu-shorts http://localhost:8000/mcp \
+  --header "Authorization: Bearer ssk_..."
 
 # Self-hosted (no key needed, BYOK rules apply):
-claude mcp add --transport http openshorts http://localhost:8000/mcp
+claude mcp add --transport http sahu-shorts http://localhost:8000/mcp
 
 # Self-hosted without running the web server: same tools over stdio
-claude mcp add openshorts -- python mcp_stdio.py
+claude mcp add sahu-shorts -- python mcp_stdio.py
 ```
 
 Tools: `process_video` (URL or `upload_id`; `captions: false` when the source already has subtitles, `auto_hook: false` to skip the hook line, burned by default like the dashboard), `create_upload` (hand the agent a local file: PUT the bytes, then process), `get_job_status`, `list_clips`, `get_quota`, `add_subtitles`, `recut_clip`, `publish_clip`. A prompt like *"clip this podcast and schedule the best 3 to TikTok"* is now a one-liner in your agent of choice.
 
 ### REST API + API keys
 
-Hosted accounts can mint `osk_...` API keys (account page). A key authenticates as you everywhere — same plan, same minutes, same job ownership:
+Hosted accounts can mint `ssk_...` API keys (account page). A key authenticates as you everywhere — same plan, same minutes, same job ownership:
 
 ```bash
-curl -X POST https://api.openshorts.app/api/process \
-  -H "Authorization: Bearer osk_..." -H "Content-Type: application/json" \
+curl -X POST http://localhost:8000/api/process \
+  -H "Authorization: Bearer ssk_..." -H "Content-Type: application/json" \
   -d '{"url": "https://youtube.com/watch?v=...", "acknowledged": true,
-       "webhook_url": "https://your-server.com/hooks/openshorts"}'
+       "webhook_url": "https://your-server.com/hooks/sahu-shorts"}'
 ```
 
 Interactive docs at `/docs` (OpenAPI) on any instance.
@@ -402,31 +402,31 @@ With a secret, the body is signed: `X-OpenShorts-Signature: sha256=<hmac-sha256(
 The same API from the terminal, zero dependencies (`cli/`):
 
 ```bash
-pip install openshorts   # or: uvx openshorts
+pip install sahu-shorts   # or: uvx sahu-shorts
 
-export OPENSHORTS_API_KEY=osk_...              # hosted
-# export OPENSHORTS_API_URL=http://localhost:8000   # self-hosted, no key
+export SAHU_SHORTS_API_KEY=ssk_...              # hosted
+# export SAHU_SHORTS_API_URL=http://localhost:8000   # self-hosted, no key
 
-openshorts process "https://youtube.com/watch?v=..." --wait
-openshorts clips <job_id>
-openshorts publish <job_id> 0 --platforms tiktok,youtube
+sahu-shorts process "https://youtube.com/watch?v=..." --wait
+sahu-shorts clips <job_id>
+sahu-shorts publish <job_id> 0 --platforms tiktok,youtube
 ```
 
 ### Agent skill
 
-`skills/openshorts/SKILL.md` follows the open
+`skills/sahu-shorts/SKILL.md` follows the open
 [Agent Skills](https://agentskills.io) standard, so it works in any
 skill-capable agent:
 
 ```bash
 # Claude Code (and most agents): copy the folder into the skills directory
-cp -r skills/openshorts ~/.claude/skills/
+cp -r skills/sahu-shorts ~/.claude/skills/
 
 # Hermes Agent: install straight from this repo
-hermes skills install mutonby/openshorts/skills/openshorts
+hermes skills install saki923/sahu-shorts/skills/sahu-shorts
 
 # OpenClaw: from ClawHub
-openclaw skills install @mutonby/openshorts
+openclaw skills install @saki923/sahu-shorts
 ```
 
 ### n8n
@@ -491,13 +491,13 @@ lives in [`examples/n8n/`](examples/n8n/).
 2. **Create Profile**: Go to [Manage Users](https://app.upload-post.com/manage-users)
 3. **Connect Accounts**: Link TikTok, Instagram, and/or YouTube
 4. **Get API Key**: Navigate to [API Keys](https://app.upload-post.com/api-keys)
-5. **Use in OpenShorts**: Paste the key in Settings
+5. **Use in Sahu Shorts**: Paste the key in Settings
 
 ---
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=mutonby/openshorts&type=Date)](https://star-history.com/#mutonby/openshorts&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=saki923/sahu-shorts&type=Date)](https://star-history.com/#saki923/sahu-shorts&Date)
 
 ## Contributions
 
@@ -505,6 +505,6 @@ Contributions are welcome! Whether it's adding new AI models, improving the lip-
 
 ## License
 
-MIT License for the core application — OpenShorts is yours to use, modify, and scale.
+MIT License for the core application — Sahu Shorts is yours to use, modify, and scale.
 
-**Exception:** the [`cloud/`](cloud/LICENSE) directory (billing, managed keys, and the hosted-service infrastructure behind the optional `BILLING_ENABLED` flag) is source-available under the OpenShorts Commercial License. You can read it, modify it, and self-host it for personal or internal use, but you can't offer it to third parties as a paid/hosted service. Self-hosting the core app never requires this directory.
+**Exception:** the [`cloud/`](cloud/LICENSE) directory (billing, managed keys, and the hosted-service infrastructure behind the optional `BILLING_ENABLED` flag) is source-available under the Commercial License. You can read it, modify it, and self-host it for personal or internal use, but you can't offer it to third parties as a paid/hosted service. Self-hosting the core app never requires this directory.

@@ -1,9 +1,9 @@
 # Plazos de conservación reales
 
-**OpenShorts Cloud (openshorts.app) · TONVI TECH SL, B-19780394 · versión de 4 de septiembre de 2026**
+**Sahu Shorts Cloud (github.com/saki923/sahu-shorts) · TONVI TECH SL, B-19780394 · versión de 4 de septiembre de 2026**
 
 Esta tabla es la versión larga del apartado 5 de la
-[política de privacidad](https://www.openshorts.app/privacidad). Cada fila
+[política de privacidad](https://github.com/saki923/sahu-shorts/privacidad). Cada fila
 nombra **el código que aplica el plazo**, porque un plazo que no está en el
 código no es un plazo: es una intención. Si cambias una constante, cambia esta
 tabla y la política en el mismo commit.

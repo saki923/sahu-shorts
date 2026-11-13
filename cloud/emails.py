@@ -75,17 +75,17 @@ async def send_magic_link_email(email: str, link: str):
         return
     html = f"""
       <div style="font-family:system-ui,sans-serif;max-width:480px;margin:0 auto">
-        <h2>Sign in to OpenShorts</h2>
+        <h2>Sign in to Sahu Shorts</h2>
         <p>Click the button below to sign in. This link expires in 15 minutes.</p>
         <p><a href="{link}" style="display:inline-block;background:#111;color:#fff;
            padding:12px 20px;border-radius:8px;text-decoration:none">Sign in</a></p>
         <p style="color:#666;font-size:13px">If you didn't request this, ignore this email.</p>
       </div>
     """
-    await send_email(email, "Your OpenShorts sign-in link", html)
+    await send_email(email, "Your Sahu Shorts sign-in link", html)
 
 
-GITHUB_REPO_URL = "https://github.com/mutonby/openshorts"
+GITHUB_REPO_URL = "https://github.com/saki923/sahu-shorts"
 
 
 async def send_clips_ready_email(email: str, job_title: str, clip_count: int,
@@ -103,7 +103,7 @@ async def send_clips_ready_email(email: str, job_title: str, clip_count: int,
            of your dashboard: sign in with this email address to see them.</p>
         <p><a href="{dashboard_url}" style="display:inline-block;background:#111;color:#fff;
            padding:12px 20px;border-radius:8px;text-decoration:none">View my clips</a></p>
-        <p style="color:#666;font-size:13px">Enjoying OpenShorts? A
+        <p style="color:#666;font-size:13px">Enjoying Sahu Shorts? A
            <a href="{GITHUB_REPO_URL}" style="color:#666">star on GitHub</a> helps a lot ⭐</p>
       </div>
     """
@@ -146,7 +146,7 @@ async def send_autopilot_clips_email(email: str, video_title: str, clip_count: i
     html = f"""
       <div style="font-family:system-ui,sans-serif;max-width:480px;margin:0 auto">
         <h2>Autopilot clipped your new video 🎬</h2>
-        <p>You published <strong>{title}</strong> and OpenShorts already turned it
+        <p>You published <strong>{title}</strong> and Sahu Shorts already turned it
            into {clip_count} short{plural}.</p>
         {posting}
         <p><a href="{dashboard_url}" style="display:inline-block;background:#111;color:#fff;
@@ -230,7 +230,7 @@ async def send_account_deleted_email(email: str):
     """
     html = """
       <div style="font-family:system-ui,sans-serif;max-width:480px;margin:0 auto">
-        <h2>Your OpenShorts account has been deleted</h2>
+        <h2>Your Sahu Shorts account has been deleted</h2>
         <p>Everything is gone: your account, your projects, your clips and their
            transcripts, your API keys, and the connection to any social accounts
            you had linked. Any active subscription was cancelled.</p>
@@ -246,11 +246,11 @@ async def send_account_deleted_email(email: str):
         <p>You can sign up again any time with the same address; it will be a
            brand-new, empty account.</p>
         <p style="color:#666;font-size:13px">If this wasn't you, reply to this
-           email straight away &mdash; info@openshorts.app.</p>
+           email straight away &mdash; github.com/saki923/sahu-shorts.</p>
       </div>
     """
     print(f"✉️  Account-deleted confirmation → {email}")
-    await send_email(email, "Your OpenShorts account has been deleted", html)
+    await send_email(email, "Your Sahu Shorts account has been deleted", html)
 
 
 # --------------------------------------------------------------------------- #
@@ -275,7 +275,7 @@ async def send_welcome_email(user_id, email: str, first_video_minutes: int) -> b
     app_url = f"{settings.frontend_url}/#app"
     html = f"""
       <div style="font-family:system-ui,sans-serif;max-width:480px;margin:0 auto">
-        <h2>Welcome to OpenShorts 👋</h2>
+        <h2>Welcome to Sahu Shorts 👋</h2>
         <p>Paste a YouTube link (or upload a video) and you get vertical clips
            with captions, ready for TikTok, Reels and Shorts, in a few minutes.</p>
         {_first_video_line(first_video_minutes)}
@@ -312,7 +312,7 @@ async def send_winback_email(user_id, email: str, promo_code: str = "",
         offer = (f"<p>Here's <strong>{promo_label or 'a discount'}</strong>: use code "
                  f"<strong style=\"font-family:monospace;font-size:16px\">{promo_code}</strong> "
                  f"at checkout.</p>")
-        subject = f"{promo_label or 'A discount'} on OpenShorts, for you"
+        subject = f"{promo_label or 'A discount'} on Sahu Shorts, for you"
     else:
         offer = ""
         subject = "Keep your clips, lose the watermark"
@@ -378,7 +378,7 @@ async def send_checkout_recovery_email(user_id, email: str, recovery_url: str,
     """A Stripe Checkout expired unpaid. ``recovery_url`` reopens the same cart
     (valid 30 days, Stripe's ``after_expiration.recovery``). ``cart_label`` is
     ``lifecycle.cart_label``: "the Starter plan ($12.00)", "60 extra minutes"."""
-    what = cart_label or "your OpenShorts plan"
+    what = cart_label or "your Sahu Shorts plan"
     html = f"""
       <div style="font-family:system-ui,sans-serif;max-width:480px;margin:0 auto">
         <h2>You didn't finish checking out</h2>
@@ -390,4 +390,4 @@ async def send_checkout_recovery_email(user_id, email: str, recovery_url: str,
            didn't work.</p>
       </div>
     """
-    return await send_commercial_email(user_id, email, "Your OpenShorts checkout is saved", html)
+    return await send_commercial_email(user_id, email, "Your Sahu Shorts checkout is saved", html)

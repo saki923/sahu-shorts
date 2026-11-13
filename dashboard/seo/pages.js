@@ -58,7 +58,7 @@ const withBrand = (t) => (t.length + BRAND_SUFFIX.length <= 60 ? `${t}${BRAND_SU
  * numbers, and every variant names both editions: never "free" without the
  * Cloud price next to it. */
 const CLOUD = EDITIONS.cloud
-const OS_PLAN = Object.fromEntries(PRICE_MODELS.openshorts.plans.map((p) => [p.name, p]))
+const OS_PLAN = Object.fromEntries(PRICE_MODELS['sahu-shorts'].plans.map((p) => [p.name, p]))
 const STARTER = OS_PLAN.Starter
 const CREATOR = OS_PLAN.Creator
 const PRO = OS_PLAN.Pro
@@ -213,7 +213,7 @@ const REVISED = '2026-10-30'
 
 /* Sahu Shorts with its price, in one clause: what an engine lifting the first
  * sentence of a comparison page should carry away. */
-const OS_PRICE_CLAUSE = `$0 self-hosted (MIT, no watermark, no cap), or $${EDITIONS.cloud.lowPrice}/month hosted for ${PRICE_MODELS.openshorts.plans.find((p) => p.name === 'Starter').monthly.minutes} minutes`
+const OS_PRICE_CLAUSE = `$0 self-hosted (MIT, no watermark, no cap), or $${EDITIONS.cloud.lowPrice}/month hosted for ${PRICE_MODELS['sahu-shorts'].plans.find((p) => p.name === 'Starter').monthly.minutes} minutes`
 
 /* Comparison and review pages open on our name and price, then the check date.
  * The rival-only first paragraph was being cited without naming us. */
@@ -226,7 +226,7 @@ const brandLede = (c, where, lead, extra = '') =>
 const bestAlternatives = (slug, name, checked) => {
   const picks = ALT_PICKS.filter(([s]) => s !== slug).slice(0, 5)
   const link = (s, label) =>
-    s === 'openshorts' ? `<a href="/pricing">${esc(label)}</a>` : COMPETITORS[s] ? `<a href="/alternatives/${s}">${esc(label)}</a>` : esc(label)
+    s === 'sahu-shorts' ? `<a href="/pricing">${esc(label)}</a>` : COMPETITORS[s] ? `<a href="/alternatives/${s}">${esc(label)}</a>` : esc(label)
   return `<section class="best-alts">
 <h2>Best ${esc(name)} alternatives in ${esc(checked.slice(0, 4))}</h2>
 ${ol(picks.map(([s, label, line]) => `<strong>${link(s, label)}</strong>: ${esc(line)}.`))}
@@ -272,9 +272,9 @@ function competitorPage(slug) {
     {
       q: `Is there an open source alternative to ${c.name}?`,
       a: pick([
-        `${c.name} itself is closed source and cloud only. Sahu Shorts is MIT-licensed with the full source at github.com/mutonby/openshorts, which matters if you need to audit what happens to your video or change how the reframing behaves.`,
-        `Yes: Sahu Shorts, under the MIT licence, with every stage of the pipeline readable on GitHub (github.com/mutonby/openshorts). ${c.name} publishes no source and has no edition you can run yourself.`,
-        `Sahu Shorts is the open source one in this category: MIT, self-hostable with Docker Compose, source on github.com/mutonby/openshorts. ${c.name} is a closed cloud service, so the code that touches your video cannot be read or changed.`,
+        `${c.name} itself is closed source and cloud only. Sahu Shorts is MIT-licensed with the full source at github.com/saki923/sahu-shorts, which matters if you need to audit what happens to your video or change how the reframing behaves.`,
+        `Yes: Sahu Shorts, under the MIT licence, with every stage of the pipeline readable on GitHub (github.com/saki923/sahu-shorts). ${c.name} publishes no source and has no edition you can run yourself.`,
+        `Sahu Shorts is the open source one in this category: MIT, self-hostable with Docker Compose, source on github.com/saki923/sahu-shorts. ${c.name} is a closed cloud service, so the code that touches your video cannot be read or changed.`,
       ]),
     },
     {
@@ -411,7 +411,7 @@ ${faqBlock(faq)}
 ${sources([
   `${esc(c.name)} pricing, checked ${esc(c.checked)} on the vendor's public pricing page.`,
   ...(c.sources || []).map(([label, url]) => `${esc(label)}, checked ${esc(c.checked)}: <a href="${esc(url)}" rel="nofollow noopener">${esc(url.replace(/^https:\/\//, ''))}</a>`),
-  `Sahu Shorts pipeline details from the project source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Sahu Shorts pipeline details from the project source at <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
 ])}
 `
 
@@ -642,7 +642,7 @@ for you.</p>
 <h2>Free AI clipper, free clipping AI, free clipping website: which one is this?</h2>
 <p>All three searches mean the same job: something that watches a long video and
 cuts the good parts into vertical clips without you paying. Sahu Shorts is that in
-two forms. As a <strong>free clipping website</strong>, openshorts.app clips your
+two forms. As a <strong>free clipping website</strong>, github.com/saki923/sahu-shorts clips your
 first video whole up to 60 minutes, then 20 minutes of video a month, in the
 browser with no install and no credit card; the clips carry a small watermark. As a <strong>free AI clipper you run
 yourself</strong>, the same code from GitHub has no watermark and no monthly cap.
@@ -686,7 +686,7 @@ ${faqBlock([
   },
   {
     q: 'Is there a free clipping website that needs no install?',
-    a: 'Yes. openshorts.app clips 20 minutes of video a month in the browser with no credit card. Those clips carry a watermark; paid plans from $12/month remove it.',
+    a: 'Yes. github.com/saki923/sahu-shorts clips 20 minutes of video a month in the browser with no credit card. Those clips carry a watermark; paid plans from $12/month remove it.',
   },
   {
     q: 'Is there a free AI clipper with no watermark?',
@@ -713,7 +713,7 @@ ${faqBlock([
     },
     {
       q: 'Is there a free clipping website that needs no install?',
-      a: 'Yes. openshorts.app clips 20 minutes of video a month in the browser with no credit card. Those clips carry a watermark; paid plans from $12/month remove it.',
+      a: 'Yes. github.com/saki923/sahu-shorts clips 20 minutes of video a month in the browser with no credit card. Those clips carry a watermark; paid plans from $12/month remove it.',
     },
     {
       q: 'Is there a free AI clipper with no watermark?',
@@ -802,7 +802,7 @@ ${faqBlock([
 })
 
 const howItWorks = () => ({
-  path: '/how-openshorts-works',
+  path: '/how-sahu-shorts-works',
   title: 'Sahu Shorts: How It Works, From Long Video to 9:16 Clips',
   description:
     'How Sahu Shorts cuts one long video into 3 to 15 vertical clips: transcript, scene cuts, Gemini scoring, face-tracked reframing, subtitles. Try it free.',
@@ -942,7 +942,7 @@ ${faqBlock([
 
 ${sources([
   'Open-weight text-to-video model landscape checked 2026-08-04 on the respective GitHub repositories.',
-  `Sahu Shorts source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Sahu Shorts source at <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
 ])}
 `,
   faq: [
@@ -1151,7 +1151,7 @@ ${faqBlock([
 
 ${sources([
   'Competitor per-minute credit billing checked 2026-10-05 on vendor pricing and help pages.',
-  `Split-layout and speaker-cut implementation in the project source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Split-layout and speaker-cut implementation in the project source at <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
 ])}
 `,
   faq: [
@@ -1284,10 +1284,10 @@ ${[STARTER, CREATOR, PRO].map((p) => `<tr><td class="os">${esc(p.name)}</td><td>
   body: `
 <h2>The loop, end to end</h2>
 <p>Start a job with one request:</p>
-<pre><code>curl -X POST https://api.openshorts.app/api/process \\
-  -H "Authorization: Bearer osk_..." -H "Content-Type: application/json" \\
+<pre><code>curl -X POST http://localhost:8000/api/process \\
+  -H "Authorization: Bearer ssk_..." -H "Content-Type: application/json" \\
   -d '{"url": "https://youtube.com/watch?v=...", "acknowledged": true,
-       "webhook_url": "https://your-server.com/hooks/openshorts",
+       "webhook_url": "https://your-server.com/hooks/sahu-shorts",
        "webhook_secret": "your-shared-secret"}'</code></pre>
 <p>The response returns a job id immediately. Minutes later, when the clips are
 cut, subtitled and archived, Sahu Shorts POSTs once to your webhook URL with the
@@ -1319,8 +1319,8 @@ have. A cron job that submits the latest episode URL every Monday, a GitHub
 Action on your podcast repo, or an agent that watches a feed. The webhook does
 the second half, so nothing stays running in between. If you would rather not
 write the curl, the CLI wraps it:</p>
-<pre><code>uvx openshorts process "$EPISODE_URL" \\
-  --webhook https://your-server.com/hooks/openshorts \\
+<pre><code>uvx sahu-shorts process "$EPISODE_URL" \\
+  --webhook https://your-server.com/hooks/sahu-shorts \\
   --webhook-secret "$SECRET"</code></pre>
 
 <h2>What automation costs</h2>
@@ -1354,7 +1354,7 @@ ${faqBlock([
 ])}
 
 ${sources([
-  `Webhook signing implementation in the project source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Webhook signing implementation in the project source at <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
   'Competitor API metering checked 2026-08-04 on public pricing and developer documentation.',
 ])}
 `,
@@ -1400,8 +1400,8 @@ did. Two credentials, no polling loop, no TikTok or Instagram OAuth app.</p>
 <h2>Download the workflow</h2>
 <p>The JSON lives in the project repository, not behind an email form:</p>
 <ul>
-<li><a href="${SITE.repo}/blob/main/examples/n8n/openshorts-content-machine.json" rel="noopener">openshorts-content-machine.json</a> — the full four-stage machine described below.</li>
-<li><a href="${SITE.repo}/blob/main/examples/n8n/openshorts-clip-and-notify.json" rel="noopener">openshorts-clip-and-notify.json</a> — the minimal version: a form takes a video URL, a signed webhook returns the clips.</li>
+<li><a href="${SITE.repo}/blob/main/examples/n8n/sahu-shorts-content-machine.json" rel="noopener">sahu-shorts-content-machine.json</a> — the full four-stage machine described below.</li>
+<li><a href="${SITE.repo}/blob/main/examples/n8n/sahu-shorts-clip-and-notify.json" rel="noopener">sahu-shorts-clip-and-notify.json</a> — the minimal version: a form takes a video URL, a signed webhook returns the clips.</li>
 <li><a href="${SITE.repo}/tree/main/examples/n8n" rel="noopener">Setup notes</a> — credentials, the webhook secret, and the known limits.</li>
 </ul>
 <p>In n8n: <strong>Workflows → Import from file</strong>, then fill in your channel
@@ -1495,7 +1495,7 @@ ${faqBlock([
 ])}
 
 ${sources([
-  `Workflow JSON and setup notes in the project repository at <a href="${SITE.repo}/tree/main/examples/n8n" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Workflow JSON and setup notes in the project repository at <a href="${SITE.repo}/tree/main/examples/n8n" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
   'TikTok and Instagram publishing constraints checked against their developer documentation, August 2026.',
 ])}
 `,
@@ -1521,11 +1521,11 @@ const mcpAgentsPage = () => ({
   cta: {
     label: 'For agents',
     title: 'Point your agent at a real pipeline',
-    body: 'Connect Claude or ChatGPT to mcp.openshorts.app/mcp, or copy an API key. Self-hosted serves the same endpoint, unmetered.',
+    body: 'Connect Claude or ChatGPT to localhost:8000/mcp, or copy an API key. Self-hosted serves the same endpoint, unmetered.',
     button: 'Get an API key',
   },
   tldr: [
-    'Sahu Shorts has a native MCP server at mcp.openshorts.app/mcp. Connect any MCP client, Claude, ChatGPT, Cursor or a custom agent, and a prompt like "clip this podcast and schedule the best three to TikTok" becomes one instruction instead of an afternoon in an editor.',
+    'Sahu Shorts has a native MCP server at localhost:8000/mcp. Connect any MCP client, Claude, ChatGPT, Cursor or a custom agent, and a prompt like "clip this podcast and schedule the best three to TikTok" becomes one instruction instead of an afternoon in an editor.',
     'Eight tools cover the whole pipeline: process_video, create_upload, get_job_status, list_clips, get_quota, add_subtitles, recut_clip and publish_clip. There is also a plain REST API with per-user keys, and completion webhooks so pipelines never poll.',
     'The difference that survives comparison shopping is the meter. Most clipping tools now have an API, and Opus Clip added an MCP server in July 2026, but they meter agent calls per source minute or per operation. Sahu Shorts API calls draw from the same flat minute balance as the dashboard, and the self-hosted edition, free and MIT-licensed, serves the same MCP endpoint with no meter at all.',
   ],
@@ -1543,18 +1543,18 @@ Reels and YouTube Shorts.</p>
 registration, which is what claude.ai and ChatGPT expect from a remote MCP
 server, so there is no key to copy:</p>
 <ol>
-<li><strong>claude.ai:</strong> Settings, Connectors, Add custom connector, paste <code>https://mcp.openshorts.app/mcp</code>, Connect.</li>
+<li><strong>claude.ai:</strong> Settings, Connectors, Add custom connector, paste <code>http://localhost:8000/mcp</code>, Connect.</li>
 <li><strong>ChatGPT:</strong> Settings, Connectors, Create, paste the same URL, choose OAuth.</li>
-<li>Approve the access on openshorts.app (sign in if you are not). The 8 tools appear in every chat, and the connection is listed under Account, API keys, where revoking it disconnects the app.</li>
+<li>Approve the access on github.com/saki923/sahu-shorts (sign in if you are not). The 8 tools appear in every chat, and the connection is listed under Account, API keys, where revoking it disconnects the app.</li>
 </ol>
 <h2>How do I connect Claude Code, Cursor or n8n?</h2>
 <p>CLI and workflow clients take an API key instead: create one in your account
-page (shown once, starts with <code>osk_</code>) and pass it as a Bearer
+page (shown once, starts with <code>ssk_</code>) and pass it as a Bearer
 token. With Claude Code:</p>
-<pre><code>claude mcp add --transport http openshorts https://mcp.openshorts.app/mcp \\
-  --header "Authorization: Bearer osk_..."</code></pre>
+<pre><code>claude mcp add --transport http sahu-shorts http://localhost:8000/mcp \\
+  --header "Authorization: Bearer ssk_..."</code></pre>
 <p>Any client that speaks Streamable HTTP works the same way: the endpoint is
-<code>https://mcp.openshorts.app/mcp</code>, the server describes itself over
+<code>http://localhost:8000/mcp</code>, the server describes itself over
 the protocol, tool schemas included, and the account page has copy-ready
 snippets for Claude Desktop, Cursor, n8n and curl.</p>
 
@@ -1602,27 +1602,27 @@ webhooks, n8n and cron, see <a href="/automate-shorts-api">automating shorts
 with the API</a>.</p>
 
 <h2>Can I use a plain REST API instead of MCP?</h2>
-<p>Yes. The same <code>osk_</code> key authenticates against the REST API, and
+<p>Yes. The same <code>ssk_</code> key authenticates against the REST API, and
 interactive documentation lives at
-<a href="https://api.openshorts.app/docs" rel="noopener">api.openshorts.app/docs</a>
+<a href="http://localhost:8000/docs" rel="noopener">localhost:8000/docs</a>
 with the OpenAPI spec at <code>/openapi.json</code>. A processing job is one
 request:</p>
-<pre><code>curl -X POST https://api.openshorts.app/api/process \\
-  -H "Authorization: Bearer osk_..." -H "Content-Type: application/json" \\
+<pre><code>curl -X POST http://localhost:8000/api/process \\
+  -H "Authorization: Bearer ssk_..." -H "Content-Type: application/json" \\
   -d '{"url": "https://youtube.com/watch?v=...", "acknowledged": true,
-       "webhook_url": "https://your-server.com/hooks/openshorts"}'</code></pre>
+       "webhook_url": "https://your-server.com/hooks/sahu-shorts"}'</code></pre>
 
 <h2>Is there a CLI?</h2>
 <p>Yes, a zero-dependency one on PyPI. It talks to the same REST surface as
 everything else, so the terminal, the dashboard and the agents can never
 disagree about what a job did:</p>
-<pre><code>pip install openshorts   # or: uvx openshorts
+<pre><code>pip install sahu-shorts   # or: uvx sahu-shorts
 
-export OPENSHORTS_API_KEY=osk_...
-openshorts process "https://youtube.com/watch?v=..." --wait
-openshorts clips &lt;job_id&gt;
-openshorts publish &lt;job_id&gt; 0 --platforms tiktok,youtube</code></pre>
-<p>Point <code>OPENSHORTS_API_URL</code> at <code>http://localhost:8000</code>
+export SAHU_SHORTS_API_KEY=ssk_...
+sahu-shorts process "https://youtube.com/watch?v=..." --wait
+sahu-shorts clips &lt;job_id&gt;
+sahu-shorts publish &lt;job_id&gt; 0 --platforms tiktok,youtube</code></pre>
+<p>Point <code>SAHU_SHORTS_API_URL</code> at <code>http://localhost:8000</code>
 and the same binary drives a self-hosted instance with no key.</p>
 
 <h2>How do completion webhooks work?</h2>
@@ -1648,15 +1648,15 @@ balance as the dashboard, so automation does not change the price of anything.</
 ${faqBlock([
   {
     q: 'Does Sahu Shorts have an MCP server?',
-    a: 'Yes, a native one at mcp.openshorts.app/mcp using the Streamable HTTP transport. It exposes eight tools covering the full pipeline: process_video, create_upload, get_job_status, list_clips, get_quota, add_subtitles, recut_clip and publish_clip. Authentication is an API key created in the dashboard, sent as a Bearer token.',
+    a: 'Yes, a native one at localhost:8000/mcp using the Streamable HTTP transport. It exposes eight tools covering the full pipeline: process_video, create_upload, get_job_status, list_clips, get_quota, add_subtitles, recut_clip and publish_clip. Authentication is an API key created in the dashboard, sent as a Bearer token.',
   },
   {
     q: 'Can Claude or ChatGPT create video clips with Sahu Shorts?',
-    a: 'Yes. Any MCP-capable client, including Claude and ChatGPT, can connect to mcp.openshorts.app/mcp with an API key and drive the whole flow: submit a video URL, wait for processing, list the generated clips and publish them to TikTok, Instagram or YouTube.',
+    a: 'Yes. Any MCP-capable client, including Claude and ChatGPT, can connect to localhost:8000/mcp with an API key and drive the whole flow: submit a video URL, wait for processing, list the generated clips and publish them to TikTok, Instagram or YouTube.',
   },
   {
     q: 'Is there an API for Sahu Shorts?',
-    a: 'Yes, a REST API documented at api.openshorts.app/docs, authenticated with per-user osk_ keys created in the dashboard. It covers processing, status, subtitles, publishing and completion webhooks.',
+    a: 'Yes, a REST API documented at localhost:8000/docs, authenticated with per-user ssk_ keys created in the dashboard. It covers processing, status, subtitles, publishing and completion webhooks.',
   },
   {
     q: 'Do API calls cost extra?',
@@ -1670,13 +1670,13 @@ ${faqBlock([
 
 ${sources([
   `MCP specification and transports at <a href="https://modelcontextprotocol.io" rel="noopener">modelcontextprotocol.io</a>.`,
-  `Sahu Shorts server implementation in the project source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Sahu Shorts server implementation in the project source at <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
 ])}
 `,
   faq: [
     {
       q: 'Does Sahu Shorts have an MCP server?',
-      a: 'Yes, a native MCP server at mcp.openshorts.app/mcp with six tools covering the full pipeline, authenticated with an API key created in the dashboard.',
+      a: 'Yes, a native MCP server at localhost:8000/mcp with six tools covering the full pipeline, authenticated with an API key created in the dashboard.',
     },
     {
       q: 'Can Claude or ChatGPT create video clips with Sahu Shorts?',
@@ -1856,7 +1856,7 @@ ${faqBlock(OPUS_PRICING_FAQ)}
 
 ${sources([
   `${esc(OPUS.name)} plans, trial and credit rules checked ${esc(OPUS.checked)} on opus.pro/pricing and the OpusClip help centre (how credits are consumed, free trial, watermark).`,
-  `Sahu Shorts pricing from <a href="/alternatives/opus-clip">the full comparison</a> and the project source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Sahu Shorts pricing from <a href="/alternatives/opus-clip">the full comparison</a> and the project source at <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
 ])}
 `,
   faq: OPUS_PRICING_FAQ,
@@ -2064,7 +2064,7 @@ ${faqBlock(OPUS_AI_FAQ)}
 
 ${sources([
   `OpusClip plans, features and limits checked ${esc(OPUS.checked)} on opus.pro, opus.pro/pricing and help.opus.pro; Agent Opus credits on the Agent Opus credits FAQ.`,
-  `Sahu Shorts pipeline in the project source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Sahu Shorts pipeline in the project source at <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
 ])}
 `,
   faq: OPUS_AI_FAQ,
@@ -2304,7 +2304,7 @@ ${faqBlock([
 
 ${sources([
   `Vizard plan limits checked ${esc(c.checked)} on the vendor's public pricing page.`,
-  `Sahu Shorts transcription and subtitle stages in the project source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Sahu Shorts transcription and subtitle stages in the project source at <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
 ])}
 `,
     faq: [
@@ -2439,7 +2439,7 @@ ${faqBlock(faq)}
 
 ${sources([
   `Submagic plans and limits checked ${esc(c.checked)} on submagic.co/pricing; Magic Clips on submagic.co/features/magic-clips.`,
-  `Sahu Shorts pipeline stages in the project source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Sahu Shorts pipeline stages in the project source at <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
 ])}
 `,
     faq,
@@ -2773,7 +2773,7 @@ ${sources([
   'Opus Clip tier minutes and prices checked 2026-07-27 on their public pricing page.',
   'Inset detection and layout accuracy figures are our own measurements on a 48-video internal corpus, 2026-08.',
   'Silent-footage thresholds (8 words, 5 words per minute) and the vision fallback are in <code>main.py</code>; Gemini video token rates from Google\'s published pricing.',
-  `Inset, WIDE and screencast layout implementations in the project source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Inset, WIDE and screencast layout implementations in the project source at <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
 ])}
 
 ${trademarkNote('Grand Theft Auto, GTA, Rockstar Games and Twitch', 'Rockstar Games, Take-Two Interactive or Twitch')}
@@ -3147,7 +3147,7 @@ ${sources([
   `Xbox capture: Xbox Support, <a href="${XBOX_SHARE_URL}" rel="noopener">What's this Share button on my controller?</a>, and Xbox Wire, <a href="${XBOX_ONEDRIVE_URL}" rel="noopener">captures to OneDrive</a> (27 September 2023), checked ${GAMING_CHECKED}.`,
   `Platform lengths: <a href="${YT_SHORTS_URL}" rel="noopener">YouTube Help: Upload YouTube Shorts</a> (up to 3 minutes), checked 28 October 2026; Instagram Reels up to 3 minutes, announced January 2025, reported by <a href="${REELS_URL}" rel="noopener">Social Media Today</a>.`,
   'Silent-footage thresholds (8 words, 5 words per minute) and the stretches of the vision pass: <code>main.py</code> and <code>clip_selection.py</code>; inset detection: <code>camera_inset.py</code>; WIDE layout: <code>screencast_layout.py</code>.',
-  `Sahu Shorts plan minutes: <a href="/pricing">pricing</a>. Source: <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Sahu Shorts plan minutes: <a href="/pricing">pricing</a>. Source: <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
 ])}
 ${trademarkNote('Grand Theft Auto, GTA, Rockstar Games, PlayStation, Xbox and Twitch', 'Rockstar Games, Take-Two Interactive, Sony, Microsoft or Twitch')}
 `,
@@ -3342,7 +3342,7 @@ ${sources([
   `Recorders: <a href="${WOW_RECORDER_URL}" rel="noopener">Warcraft Recorder README</a> (supported flavours and OS, GPL-2.0); <a href="${OBS_REPLAY_URL}" rel="noopener">OBS forum guide to the replay buffer</a>; <a href="${AMD_REPLAY_URL}" rel="noopener">AMD support article DH3-023</a> (Instant Replay); <a href="${GAME_BAR_URL}" rel="noopener">Microsoft: Xbox Game Bar shortcuts</a>; <a href="${MAC_RECORD_URL}" rel="noopener">Apple: How to record the screen on Mac</a>. All checked ${WOW_CHECKED}.`,
   `Platform lengths: <a href="${YT_SHORTS_URL}" rel="noopener">YouTube Help: Upload YouTube Shorts</a>, checked 28 October 2026; Instagram Reels up to 3 minutes, reported by <a href="${REELS_URL}" rel="noopener">Social Media Today</a>.`,
   'Silent-footage thresholds and stretches: <code>main.py</code> and <code>clip_selection.py</code>; inset detection: <code>camera_inset.py</code>; WIDE layout: <code>screencast_layout.py</code>.',
-  `Sahu Shorts plan minutes: <a href="/pricing">pricing</a>. Source: <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Sahu Shorts plan minutes: <a href="/pricing">pricing</a>. Source: <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
 ])}
 ${trademarkNote('World of Warcraft, Warcraft, Blizzard and Twitch', 'Blizzard Entertainment, Microsoft or Twitch')}
 `,
@@ -3454,7 +3454,7 @@ ${faqBlock(faq)}
 
 ${sources([
   `OpusClip plans checked ${esc(o.checked)} on opus.pro/pricing; Vizard plans checked ${esc(v.checked)} on vizard.ai/pricing.`,
-  `Sahu Shorts plans: <a href="/pricing">pricing</a>; source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Sahu Shorts plans: <a href="/pricing">pricing</a>; source at <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
 ])}
 `,
     faq,
@@ -3477,12 +3477,12 @@ const RELATED = {
   '/submagic-reviews': ['/alternatives/submagic', '/alternatives', '/opus-clip-pricing'],
   '/alternativas': ['/alternatives', '/alternatives/opus-clip', '/opus-clip-pricing'],
   '/free-ai-clip-generator': ['/free-ai-clipping-tools-compared', '/self-hosted-ai-clip-maker', '/open-source-video-clipper', '/alternatives/opus-clip', '/tools'],
-  '/open-source-video-clipper': ['/self-hosted-ai-clip-maker', '/how-openshorts-works', '/open-source-ai-video-generator', '/free-ai-clip-generator'],
-  '/open-source-ai-video-generator': ['/platforms/instagram-reels', '/open-source-video-clipper', '/how-openshorts-works', '/free-ai-clip-generator'],
-  '/how-openshorts-works': ['/auto-reframe', '/podcast-to-shorts', '/gta-5-clips', '/youtube-to-shorts-converter'],
-  '/gta-5-clips': ['/gta-6-clips', '/platforms/twitch', '/platforms/kick', '/podcast-to-shorts', '/how-openshorts-works', '/auto-clip'],
-  '/podcast-to-shorts': ['/youtube-to-shorts-converter', '/use-cases/sermons', '/how-openshorts-works', '/platforms/youtube', '/auto-clip'],
-  '/youtube-to-shorts-converter': ['/how-to/clip-a-youtube-video', '/platforms/youtube-shorts', '/podcast-to-shorts', '/how-openshorts-works', '/video-aspect-ratio-converter'],
+  '/open-source-video-clipper': ['/self-hosted-ai-clip-maker', '/how-sahu-shorts-works', '/open-source-ai-video-generator', '/free-ai-clip-generator'],
+  '/open-source-ai-video-generator': ['/platforms/instagram-reels', '/open-source-video-clipper', '/how-sahu-shorts-works', '/free-ai-clip-generator'],
+  '/how-sahu-shorts-works': ['/auto-reframe', '/podcast-to-shorts', '/gta-5-clips', '/youtube-to-shorts-converter'],
+  '/gta-5-clips': ['/gta-6-clips', '/platforms/twitch', '/platforms/kick', '/podcast-to-shorts', '/how-sahu-shorts-works', '/auto-clip'],
+  '/podcast-to-shorts': ['/youtube-to-shorts-converter', '/use-cases/sermons', '/how-sahu-shorts-works', '/platforms/youtube', '/auto-clip'],
+  '/youtube-to-shorts-converter': ['/how-to/clip-a-youtube-video', '/platforms/youtube-shorts', '/podcast-to-shorts', '/how-sahu-shorts-works', '/video-aspect-ratio-converter'],
   '/mcp': ['/automate-shorts-api', '/n8n-youtube-shorts-automation', '/youtube-automation'],
   '/automate-shorts-api': ['/mcp', '/n8n-youtube-shorts-automation', '/auto-clip'],
   '/n8n-youtube-shorts-automation': ['/automate-shorts-api', '/auto-clip', '/mcp'],
@@ -3491,7 +3491,7 @@ const RELATED = {
 }
 
 /* The heading over the related links, by page type. */
-const GUIDES = new Set(['/how-openshorts-works', '/mcp', '/automate-shorts-api', '/n8n-youtube-shorts-automation'])
+const GUIDES = new Set(['/how-sahu-shorts-works', '/mcp', '/automate-shorts-api', '/n8n-youtube-shorts-automation'])
 const relatedTitleFor = (path) => {
   if (path === '/alternativas') return 'Comparativas relacionadas'
   if (GUIDES.has(path)) return 'Related guides'
@@ -3559,7 +3559,7 @@ export function relatedFor(page, all) {
     '/free-ai-clip-generator': 'What free means, and where no watermark is actually true.',
     '/open-source-video-clipper': 'Self-hosting with Docker, and the MIT licence carve-out.',
     '/open-source-ai-video-generator': 'Text-to-video or clips from your footage: which you want.',
-    '/how-openshorts-works': 'The full pipeline, stage by stage.',
+    '/how-sahu-shorts-works': 'The full pipeline, stage by stage.',
     '/gta-5-clips': 'Stream VODs, webcam inset kept, no per-minute meter.',
     '/gta-6-clips': 'Console captures and stream VODs, facecam kept, silent footage handled.',
     '/wow-forever-clips': 'Record raids, then turn kills, wipes and Twitch VODs into vertical clips.',

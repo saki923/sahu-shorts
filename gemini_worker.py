@@ -342,7 +342,7 @@ HOOK PLAYBOOK — pick the strongest fitting pattern for `viral_hook_text` (max 
 
 COPY RULES — ALL text fields (descriptions, title, hook) MUST be written in TRANSCRIPT_LANGUAGE ({language}):
 - Descriptions (TikTok + Instagram): 1-2 punchy sentences that tease the payoff
-  without spoiling it, then 3-5 topically relevant hashtags. No generic hashtag spam.
+  without spoiling it, then 3-5 topically relevant hashtags. Always include the hashtag #SahuShorts in every description, and do not include any other product or brand hashtag. No generic hashtag spam.
 - `video_title_for_youtube_short`: max 100 chars, curiosity-driven, no fake claims.
 - `predicted_score`: honest 0-100 estimate of viral potential.
 - `why`: one sentence, max 20 words, naming what makes THIS moment worth a

@@ -1,11 +1,11 @@
-"""User API keys (``osk_...``) for programmatic access: MCP clients, scripts, CI.
+"""User API keys (``ssk_...``) for programmatic access: MCP clients, scripts, CI.
 
 Two halves:
   - Management endpoints (create / list / revoke). These require a SESSION JWT,
     never an API key — a leaked key must not be able to mint replacement keys
     for the same account.
   - ``user_id_for_key``: the resolver cloud/auth.py calls so a Bearer
-    ``osk_...`` (or ``X-API-Key``) authenticates like a session everywhere else.
+    ``ssk_...`` (or ``X-API-Key``) authenticates like a session everywhere else.
     Quota, entitlement and job ownership then apply unchanged.
 """
 import hashlib
@@ -22,7 +22,7 @@ from .models import ApiKey
 
 router = APIRouter()
 
-KEY_PREFIX = "osk_"
+KEY_PREFIX = "ssk_"
 MAX_ACTIVE_KEYS = 10
 # last_used_at is informational; refreshing it on every /api/status poll would
 # write the row hundreds of times per job for no extra signal.
@@ -48,13 +48,13 @@ def looks_like_key(token: str) -> bool:
 
 
 async def user_id_for_key(raw: str) -> Optional[object]:
-    """Resolve a raw ``osk_`` token to its owner's user id, or None."""
+    """Resolve a raw ``ssk_`` token to its owner's user id, or None."""
     principal = await key_principal(raw)
     return principal[0] if principal else None
 
 
 async def key_principal(raw: str) -> Optional[tuple]:
-    """``(user_id, scope)`` for a live ``osk_`` token, or None. ``scope`` is
+    """``(user_id, scope)`` for a live ``ssk_`` token, or None. ``scope`` is
     what the key may reach (cloud/scopes.py); None is the whole API.
 
     Refreshes ``last_used_at`` at most every LAST_USED_REFRESH so status polls

@@ -48,7 +48,7 @@ const FEATURES = [
   ['Self-hosted and private', 'Run it with Docker on your own machine and the source video never leaves your infrastructure.'],
   ['Free AI YouTube studio', 'AI thumbnail generator, 10 viral title suggestions and auto-written descriptions with chapter timestamps.'],
   ['Direct social publishing', 'Post to TikTok, Instagram Reels and YouTube Shorts from the dashboard.'],
-  ['MCP server, API and CLI for AI agents', 'Connect Claude, ChatGPT or n8n to an always-on endpoint (mcp.openshorts.app/mcp) and automate clipping end to end, with a REST API, per-user keys, completion webhooks and a zero-dependency CLI (pip install openshorts). Guide at /mcp.'],
+  ['MCP server, API and CLI for AI agents', 'Connect Claude, ChatGPT or n8n to an always-on endpoint (localhost:8000/mcp) and automate clipping end to end, with a REST API, per-user keys, completion webhooks and a zero-dependency CLI (pip install sahu-shorts). Guide at /mcp.'],
   ['AI UGC video generator', 'The AI writes a script and generates a lip-synced avatar video for any product or business, from $0.65 per video.'],
   ['AI actors with lip-sync', 'Pick an AI actor or upload a photo to get a talking-head video with matched lip movement.'],
 ]
@@ -105,7 +105,7 @@ const FAQ = [
   ],
   [
     'Can I automate Sahu Shorts from Claude, ChatGPT or n8n?',
-    'Yes. Sahu Shorts has a native MCP server at mcp.openshorts.app/mcp plus a REST API with per-user keys and completion webhooks, so an agent can submit a video URL, wait for processing, list the clips and publish them. The hosted endpoint is always on, with the API key created in your account page; the self-hosted edition serves the same /mcp endpoint while your machine is running. A zero-dependency CLI is on PyPI as openshorts. Full guide at /mcp.',
+    'Yes. Sahu Shorts has a native MCP server at localhost:8000/mcp plus a REST API with per-user keys and completion webhooks, so an agent can submit a video URL, wait for processing, list the clips and publish them. The hosted endpoint is always on, with the API key created in your account page; the self-hosted edition serves the same /mcp endpoint while your machine is running. A zero-dependency CLI is on PyPI as sahu-shorts. Full guide at /mcp.',
   ],
   [
     'What are the system requirements to self-host?',
@@ -126,7 +126,7 @@ const HERO_FORM = `<form id="seo-hero-form" action="/#app" method="get" style="d
     <input id="seo-hero-url" type="url" name="url" placeholder="Paste a YouTube link" autocomplete="off" style="flex:1 1 18rem;min-width:0;padding:.8rem 1rem;border-radius:10px;border:1px solid oklch(96% 0.006 262 / .16);background:oklch(16.5% 0.015 265);color:oklch(96% 0.006 262);font:inherit;font-size:1rem">
     <button type="submit" style="padding:.8rem 1.3rem;border-radius:10px;border:0;background:oklch(76% 0.17 50);color:oklch(13% 0.014 265);font:inherit;font-weight:600;cursor:pointer">Get free clips &rarr;</button>
   </form>
-  <script>(function(){var f=document.getElementById('seo-hero-form');if(!f)return;f.addEventListener('submit',function(e){e.preventDefault();var u=(f.elements.url.value||'').trim();try{if(u)localStorage.setItem('os_pending_url',u);localStorage.setItem('openshorts_skip_landing','1')}catch(_){}location.hash='#app'})})()</script>`
+  <script>(function(){var f=document.getElementById('seo-hero-form');if(!f)return;f.addEventListener('submit',function(e){e.preventDefault();var u=(f.elements.url.value||'').trim();try{if(u)localStorage.setItem('os_pending_url',u);localStorage.setItem('sahu-shorts_skip_landing','1')}catch(_){}location.hash='#app'})})()</script>`
 
 /* Per-platform links, the same ones and in the same order as WORKS_WITH,
  * PLATFORMS and SWITCHING in Landing.jsx. */
@@ -177,7 +177,7 @@ ${NAV_SCRIPT}
   <p style="${S.p};max-width:44rem;font-size:1.05rem">Paste a YouTube link or upload a podcast, stream or interview. The AI picks the 3 to 15 moments worth posting, reframes them to 9:16 around the people talking, and burns in the captions, ready for TikTok, Reels and Shorts in minutes. Prefer to run it yourself? It is <a href="/free-ai-clip-generator" style="${S.a}">free and open source</a>. Claude, ChatGPT and n8n can drive it too, over <a href="/mcp" style="${S.a}">MCP</a>.</p>
   ${HERO_FORM}
   <p style="${S.muted};max-width:44rem">45,000+ accounts created &middot; 32,900+ videos clipped &middot; 8,300+ hours of video processed &middot; 7.5k GitHub stars.</p>
-  <p style="${S.muted};max-width:44rem"><strong style="color:oklch(75% 0.11 150)">No credit card required.</strong> Your first video is free up to 60 minutes, then 20 free minutes every month. Paid plans from $12/month without a watermark. Prefer to run it yourself? <a style="${S.a}" href="https://github.com/mutonby/openshorts" rel="noopener">Self-host free on GitHub</a>.</p>
+  <p style="${S.muted};max-width:44rem"><strong style="color:oklch(75% 0.11 150)">No credit card required.</strong> Your first video is free up to 60 minutes, then 20 free minutes every month. Paid plans from $12/month without a watermark. Prefer to run it yourself? <a style="${S.a}" href="https://github.com/saki923/sahu-shorts" rel="noopener">Self-host free on GitHub</a>.</p>
   <p style="${S.muted};max-width:44rem">Works with links from ${WORKS_WITH.map(link).join(' &middot; ')}.</p>
 </div></section>
 
@@ -189,7 +189,7 @@ ${NAV_SCRIPT}
 </div></section>
 
 <section style="${S.section}"><div style="${S.wrap}">
-  <h2 style="${S.h2}">what openshorts is</h2>
+  <h2 style="${S.h2}">what sahu-shorts is</h2>
   <p style="${S.p};max-width:48rem">${CANONICAL_ANSWERS.whatIsIt}</p>
   <p style="${S.p};max-width:48rem">${CANONICAL_ANSWERS.howItWorks}</p>
 </div></section>
@@ -249,7 +249,7 @@ ${NAV_SCRIPT}
     <a style="${S.a}" href="/open-source-ai-video-generator">Open source AI video generator</a> &middot;
     <a style="${S.a}" href="/podcast-to-shorts">Podcast clips</a> &middot;
     <a style="${S.a}" href="/youtube-to-shorts-converter">YouTube to Shorts converter</a> &middot;
-    <a style="${S.a}" href="/how-openshorts-works">How it works</a> &middot;
+    <a style="${S.a}" href="/how-sahu-shorts-works">How it works</a> &middot;
     <a style="${S.a}" href="/alternatives">All alternatives compared</a> &middot;
     <a style="${S.a}" href="/free-ai-clipping-tools-compared">Free AI clipping tools compared</a> &middot;
     <a style="${S.a}" href="/alternativas">Alternativas (ES)</a> &middot;
@@ -276,7 +276,7 @@ ${NAV_SCRIPT}
 
 <section style="${S.section};border-bottom:none"><div style="${S.wrap}">
   <h2 style="${S.h2}">Open source: run the same pipeline on your own hardware</h2>
-  <p style="${S.p};max-width:48rem">${EDITIONS.selfHosted.summary} It needs Docker and realistically 8GB of RAM; an NVIDIA GPU is optional and cuts processing time by roughly an order of magnitude. <a style="${S.a}" href="https://github.com/mutonby/openshorts" rel="noopener">Source and setup on GitHub</a>.</p>
+  <p style="${S.p};max-width:48rem">${EDITIONS.selfHosted.summary} It needs Docker and realistically 8GB of RAM; an NVIDIA GPU is optional and cuts processing time by roughly an order of magnitude. <a style="${S.a}" href="https://github.com/saki923/sahu-shorts" rel="noopener">Source and setup on GitHub</a>.</p>
 </div></section>
 
 </div>`

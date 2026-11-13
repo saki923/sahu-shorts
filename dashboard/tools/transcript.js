@@ -88,13 +88,13 @@ function showNoCaptions(message) {
     el('p', {}, el('strong', { text: 'No captions to read. ' }), message || ''),
     el('p', {
       text: tt
-        ? 'OpenShorts runs its own speech recognition on the audio, word by word. Upload the video file in the app to get it transcribed and subtitled. 20 free minutes a month, no credit card.'
-        : 'OpenShorts runs its own speech recognition on the audio, word by word, so it can transcribe this video and cut it into vertical clips with subtitles. 20 free minutes a month, no credit card.',
+        ? 'Sahu Shorts runs its own speech recognition on the audio, word by word. Upload the video file in the app to get it transcribed and subtitled. 20 free minutes a month, no credit card.'
+        : 'Sahu Shorts runs its own speech recognition on the audio, word by word, so it can transcribe this video and cut it into vertical clips with subtitles. 20 free minutes a month, no credit card.',
     }),
     el('button', {
       type: 'button', class: 'btn-primary',
       onclick: () => openInApp(tt ? '' : currentUrl, TOOL),
-      text: tt ? 'Transcribe it with OpenShorts' : 'Transcribe and clip it with OpenShorts',
+      text: tt ? 'Transcribe it with Sahu Shorts' : 'Transcribe and clip it with Sahu Shorts',
     }),
   )
   status.dataset.kind = 'warn'

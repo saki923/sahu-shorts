@@ -54,7 +54,7 @@ def test_non_youtube_urls_are_recognised():
     assert metering.is_youtube_url("https://youtu.be/x")
     assert metering.is_youtube_url("https://m.youtube.com/shorts/x")
     for u in ("https://www.twitch.tv/videos/1", "https://kick.com/x", "https://rumble.com/v",
-              "https://drive.google.com/file/d/x", "https://www.openshorts.app/videos/x.mp4"):
+              "https://drive.google.com/file/d/x", "https://github.com/saki923/sahu-shorts/videos/x.mp4"):
         assert not metering.is_youtube_url(u), u
 
 

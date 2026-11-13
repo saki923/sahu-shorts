@@ -32,7 +32,7 @@ if (!CLOUD.summary.includes(`up to ${FIRST_VIDEO_MINUTES} minutes`)) {
   throw new Error('[clip-tools] EDITIONS.cloud.summary no longer says the first video is free up to ' +
     `${FIRST_VIDEO_MINUTES} minutes; update FIRST_VIDEO_MINUTES in seo/clip-tools.js`)
 }
-const STARTER = PRICE_MODELS.openshorts.plans.find((p) => p.name === 'Starter')
+const STARTER = PRICE_MODELS['sahu-shorts'].plans.find((p) => p.name === 'Starter')
 
 const PRICE_LINE =
   `your first video clipped whole up to ${FIRST_VIDEO_MINUTES} minutes, then ${CLOUD.freeMinutes} minutes a month, ` +
@@ -331,7 +331,7 @@ ${faqBlock(ytClipFaq)}
 ${sources([
   '<a href="https://support.google.com/youtube/answer/10332730" rel="noopener">YouTube Help: Create and share clips</a> (clips are 5 to 60 seconds and play from the original video), checked 28 October 2026.',
   `Competitor free plans and entry prices: our comparison data, checked ${longDate(COMPETITORS['opus-clip'].checked)}. See <a href="/alternatives">the full comparison</a>.`,
-  `Clip counts, window size and the clip-count floor are in <code>clip_selection.py</code>; the length and count limits are the ones the API enforces. Source: <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Clip counts, window size and the clip-count floor are in <code>clip_selection.py</code>; the length and count limits are the ones the API enforces. Source: <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
 ])}
 `,
   faq: ytClipFaq,
@@ -504,7 +504,7 @@ ${faqBlock(shortsFaq)}
 ${sources([
   '<a href="https://support.google.com/youtube/answer/12779649" rel="noopener">YouTube Help: Upload YouTube Shorts</a> (up to 3 minutes, square or vertical), checked 28 October 2026.',
   `Competitor plans: our comparison data, checked ${longDate(COMPETITORS.submagic.checked)}. See <a href="/alternatives">all alternatives</a>.`,
-  `Hook placement, caption margin and Autopilot rules are in <code>hook_placement.py</code>, <code>subtitles.py</code> and <code>cloud/autopilot.py</code> at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Hook placement, caption margin and Autopilot rules are in <code>hook_placement.py</code>, <code>subtitles.py</code> and <code>cloud/autopilot.py</code> at <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
 ])}
 `,
   faq: shortsFaq,
@@ -645,7 +645,7 @@ ${faqBlock(tiktokFaq)}
 ${sources([
   'TikTok draft behaviour: TikTok for Developers, Content Posting API (videos uploaded to the inbox arrive as drafts to be posted from the app), checked 28 October 2026.',
   `Competitor plans: our comparison data, checked ${longDate(COMPETITORS.klap.checked)}. See <a href="/alternatives/klap">Sahu Shorts vs Klap</a>.`,
-  `Caption margin and hook placement: <code>subtitles.py</code> and <code>hook_placement.py</code> at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Caption margin and hook placement: <code>subtitles.py</code> and <code>hook_placement.py</code> at <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
 ])}
 `,
   faq: tiktokFaq,
@@ -802,7 +802,7 @@ ${faqBlock(reelFaq)}
 ${sources([
   'Instagram Reels up to 3 minutes: announced by Instagram in January 2025, reported by <a href="https://www.socialmediatoday.com/news/instagram-officially-expands-reels-length-3-minutes/737766/" rel="noopener">Social Media Today</a>, checked 28 October 2026.',
   `Competitor plans: our comparison data, checked ${longDate(COMPETITORS['vidyo-ai'].checked)}. See <a href="/alternatives/vidyo-ai">Vidyo.ai (Quso)</a>.`,
-  `Instagram posting as Reels, caption margin and dubbing: <code>app.py</code>, <code>subtitles.py</code> and <code>translate.py</code> at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Instagram posting as Reels, caption margin and dubbing: <code>app.py</code>, <code>subtitles.py</code> and <code>translate.py</code> at <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
 ])}
 `,
   faq: reelFaq,
@@ -818,7 +818,7 @@ ${sources([
 /* /platforms/twitch                                                        */
 /* ------------------------------------------------------------------------ */
 
-const PLAN_MIN = (name) => PRICE_MODELS.openshorts.plans.find((p) => p.name === name)
+const PLAN_MIN = (name) => PRICE_MODELS['sahu-shorts'].plans.find((p) => p.name === name)
 
 const twitchSteps = [
   ['Paste the VOD link', 'Open the past broadcast on Twitch and copy its address (twitch.tv/videos/...), or the link of a Twitch clip of 45 seconds or more. A channel page is the live channel, not a recording, so the box asks for the VOD instead.'],
@@ -983,8 +983,8 @@ ${faqBlock(twitchFaq)}
 
 ${sources([
   `Competitor plans: our comparison data, checked ${longDate(COMPETITORS.klap.checked)}. See <a href="/alternatives/klap">Sahu Shorts vs Klap</a> and <a href="/alternatives/opus-clip">Sahu Shorts vs Opus Clip</a>.`,
-  `Silent-footage thresholds (8 words, 5 words per minute), the vision fallback and its stretches: <code>main.py</code>, <code>clip_selection.vision_segments</code>; inset detection: <code>camera_inset.py</code>; burned-subtitle trimming: <code>burned_subtitles.py</code>. Source: <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
-  `Sahu Shorts Cloud plan minutes: <a href="/pricing">pricing</a>, checked ${longDate(PRICE_MODELS.openshorts.checked)}.`,
+  `Silent-footage thresholds (8 words, 5 words per minute), the vision fallback and its stretches: <code>main.py</code>, <code>clip_selection.vision_segments</code>; inset detection: <code>camera_inset.py</code>; burned-subtitle trimming: <code>burned_subtitles.py</code>. Source: <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
+  `Sahu Shorts Cloud plan minutes: <a href="/pricing">pricing</a>, checked ${longDate(PRICE_MODELS['sahu-shorts'].checked)}.`,
 ])}
 ${trademarkNote('Twitch', 'Twitch Interactive')}
 `,
@@ -1132,7 +1132,7 @@ ${faqBlock(kickFaq)}
 
 ${sources([
   `Competitor plans: our comparison data, checked ${longDate(COMPETITORS['opus-clip'].checked)}. See <a href="/alternatives">all alternatives</a>.`,
-  `Processing speeds and the pipeline: <a href="/how-openshorts-works">how Sahu Shorts works</a>. Layout code (tracking, inset, stacked speakers): <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Processing speeds and the pipeline: <a href="/how-sahu-shorts-works">how Sahu Shorts works</a>. Layout code (tracking, inset, stacked speakers): <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
 ])}
 `,
   faq: kickFaq,
@@ -1301,7 +1301,7 @@ beyond a single crop: Klap lists split-screen, screencast and gaming layouts,
 ${faqBlock(reframeFaq)}
 
 ${sources([
-  `Layout picker accuracy (12 stills at 1024 px, 92 to 96% on a hand-labelled 48-clip set), split and screencast rules, and the vertical pass-through: <code>layout_picker.py</code>, <code>split_layout.py</code>, <code>screencast_layout.py</code>, <code>reframe_v2.py</code> at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Layout picker accuracy (12 stills at 1024 px, 92 to 96% on a hand-labelled 48-clip set), split and screencast rules, and the vertical pass-through: <code>layout_picker.py</code>, <code>split_layout.py</code>, <code>screencast_layout.py</code>, <code>reframe_v2.py</code> at <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
   `Competitor plans: our comparison data, checked ${longDate(COMPETITORS['2short'].checked)}. See <a href="/alternatives/2short">2short AI</a>.`,
 ])}
 `,
@@ -1481,7 +1481,7 @@ ${faqBlock(sermonFaq)}
 
 ${sources([
   `Competitor plans: our comparison data, checked ${longDate(COMPETITORS.vizard.checked)}. See <a href="/alternatives/vizard">Sahu Shorts vs Vizard</a>.`,
-  `Autopilot window (first 10 to 90 minutes, 30 by default) and scheduling: <code>cloud/autopilot.py</code>; split layout and caption seam: <code>split_layout.py</code>, <code>subtitles.py</code> at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Autopilot window (first 10 to 90 minutes, 30 by default) and scheduling: <code>cloud/autopilot.py</code>; split layout and caption seam: <code>split_layout.py</code>, <code>subtitles.py</code> at <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
 ])}
 `,
   faq: sermonFaq,

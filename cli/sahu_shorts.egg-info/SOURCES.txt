@@ -1,0 +1,8 @@
+README.md
+sahu_shorts_cli.py
+pyproject.toml
+sahu_shorts.egg-info/PKG-INFO
+sahu_shorts.egg-info/SOURCES.txt
+sahu_shorts.egg-info/dependency_links.txt
+sahu_shorts.egg-info/entry_points.txt
+sahu_shorts.egg-info/top_level.txt

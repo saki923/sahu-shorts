@@ -23,7 +23,7 @@ const PUBLISHED = '2026-10-29'
 const CHECKED = '29 October 2026'
 
 const CLOUD = EDITIONS.cloud
-const PLANS = PRICE_MODELS.openshorts.plans
+const PLANS = PRICE_MODELS['sahu-shorts'].plans
 const plan = (name) => {
   const p = PLANS.find((x) => x.name === name)
   if (!p) throw new Error(`[product-pages] no Sahu Shorts plan "${name}" in data.js PRICE_MODELS`)
@@ -34,7 +34,7 @@ const STARTER = plan('Starter')
 const CREATOR = plan('Creator')
 const PRO = plan('Pro')
 if (STARTER.monthly.price !== CLOUD.lowPrice || PRO.monthly.price !== CLOUD.highPrice) {
-  throw new Error('[product-pages] PRICE_MODELS.openshorts and EDITIONS.cloud disagree on the plan prices')
+  throw new Error('[product-pages] PRICE_MODELS.sahu-shorts and EDITIONS.cloud disagree on the plan prices')
 }
 
 // app.FIRST_VIDEO_MAX_MINUTES, stated inside EDITIONS.cloud.summary.
@@ -414,8 +414,8 @@ ${faqBlock(thumbFaq)}
 
 ${sources([
   `<a href="https://support.google.com/youtube/answer/72431" rel="noopener">YouTube Help: Add video thumbnails</a> (1280x720, minimum width 640, 16:9, JPG/GIF/PNG, under 2 MB; custom thumbnails need a verified account), checked ${esc(CHECKED)}.`,
-  `Studio behaviour and limits: <code>thumbnail.py</code>, the <code>/api/thumbnail/*</code> routes in <code>app.py</code>, <code>cloud/config.py</code> and <code>dashboard/src/components/ThumbnailStudio.jsx</code>. Source: <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
-  `Plan prices and minutes: the <a href="${PRICING}">pricing table</a>, checked ${esc(longDate(PRICE_MODELS.openshorts.checked))}.`,
+  `Studio behaviour and limits: <code>thumbnail.py</code>, the <code>/api/thumbnail/*</code> routes in <code>app.py</code>, <code>cloud/config.py</code> and <code>dashboard/src/components/ThumbnailStudio.jsx</code>. Source: <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
+  `Plan prices and minutes: the <a href="${PRICING}">pricing table</a>, checked ${esc(longDate(PRICE_MODELS['sahu-shorts'].checked))}.`,
 ])}
 `,
   faq: thumbFaq,
@@ -656,7 +656,7 @@ Weighing it against Arcads specifically? See <a href="/alternatives/arcads">the 
 ${faqBlock(ugcFaq)}
 
 ${sources([
-  `Pipeline, models and per-step estimates: <code>saasshorts.py</code> and <code>dashboard/src/components/SaaShortsTab.jsx</code>; limits in <code>cloud/config.py</code>. Source: <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Pipeline, models and per-step estimates: <code>saasshorts.py</code> and <code>dashboard/src/components/SaaShortsTab.jsx</code>; limits in <code>cloud/config.py</code>. Source: <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
   `Provider prices are the estimates the app shows, ${esc(CHECKED)}; fal.ai and ElevenLabs set the final price on their own pricing pages.`,
   `SendShort plans: our comparison data, checked ${esc(longDate(SENDSHORT.checked))}. See <a href="/alternatives/sendshort">SendShort compared</a>.`,
   `Sahu Shorts plan prices and minutes: the <a href="${PRICING}">pricing table</a>.`,
@@ -763,7 +763,7 @@ ${faqBlock(arcadsFaq)}
 
 ${sources([
   `Arcads plans and free trial: help.arcads.ai ("How to buy more credits", "How the free trial works"), checked ${esc(longDate(ARCADS.checked))}. arcads.ai showed no public price list on that date.`,
-  `Sahu Shorts AI Shorts estimates: <code>dashboard/src/components/SaaShortsTab.jsx</code>, ${esc(CHECKED)}. Source: <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Sahu Shorts AI Shorts estimates: <code>dashboard/src/components/SaaShortsTab.jsx</code>, ${esc(CHECKED)}. Source: <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
 ])}
 `,
   faq: arcadsFaq,

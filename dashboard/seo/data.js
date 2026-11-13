@@ -13,11 +13,11 @@
 
 export const SITE = {
   // www is what the apex already redirects to, so it is the canonical host.
-  url: 'https://www.openshorts.app',
+  url: 'https://github.com/saki923/sahu-shorts',
   name: 'Sahu Shorts',
-  repo: 'https://github.com/mutonby/openshorts',
-  logo: 'https://www.openshorts.app/logo-openshorts.png',
-  ogImage: 'https://www.openshorts.app/og-image.png',
+  repo: 'https://github.com/saki923/sahu-shorts',
+  logo: 'https://raw.githubusercontent.com/saki923/sahu-shorts/main/dashboard/public/logo-sahu-shorts.png',
+  ogImage: 'https://raw.githubusercontent.com/saki923/sahu-shorts/main/dashboard/public/og-image.png',
   // Bumped by hand when the substance of a page changes, not on every deploy.
   updated: '2026-10-05',
   published: '2024-06-01',
@@ -28,11 +28,11 @@ export const SITE = {
  * what disambiguates it. Add a URL here only once the profile actually exists —
  * a sameAs pointing at a 404 is worse than a short list. */
 export const SAME_AS = [
-  'https://github.com/mutonby/openshorts',
+  'https://github.com/saki923/sahu-shorts',
   // The CLI and the MCP server listing: both published by the project itself.
-  'https://pypi.org/project/openshorts/',
-  'https://glama.ai/mcp/servers/@mutonby/openshorts',
-  'https://creatorstoolbox.com/tools/openshorts',
+  'https://pypi.org/project/sahu-shorts/',
+  'https://glama.ai/mcp/servers/@saki923/sahu-shorts',
+  'https://creatorstoolbox.com/tools/sahu-shorts',
 ]
 
 /* What we sell, stated the way we want it quoted back. */
@@ -931,7 +931,7 @@ export const COMPARISON_ROWS = [
  * changes there, change the line here. Order is the order the list keeps once
  * the page's own tool is taken out. */
 export const ALT_PICKS = [
-  ['openshorts', 'Sahu Shorts', 'best free and open source option: $0 self-hosted (MIT, no watermark, no cap), or $12/month hosted for 100 minutes'],
+  ['sahu-shorts', 'Sahu Shorts', 'best free and open source option: $0 self-hosted (MIT, no watermark, no cap), or $12/month hosted for 100 minutes'],
   ['vizard', 'Vizard', 'best value at volume: 600 minutes for $29/month ($14.50 billed yearly)'],
   ['klap', 'Klap', 'fastest link-to-clips: from $14/month billed yearly for 100 clips'],
   ['opus-clip', 'Opus Clip', 'most complete cloud clipper: from $15/month for 150 minutes, 60 watermarked minutes a month free'],
@@ -964,12 +964,12 @@ export const PRICE_MODELS = {
   // The edition the hosted plans are a convenience over: same pipeline, your
   // machine, no meter. Shown as its own bar so the calculator never implies the
   // hosted price is the only Sahu Shorts price.
-  'openshorts-self': {
+  'sahu-shorts-self': {
     name: 'Sahu Shorts self-hosted',
     unit: 'your machine, MIT',
     plans: [{ name: 'Docker, no watermark, no cap', monthly: { minutes: 1e9, price: 0 } }],
   },
-  openshorts: {
+  'sahu-shorts': {
     name: 'Sahu Shorts Cloud',
     unit: 'per source minute, trims and hooks free',
     checked: '2026-10-05',

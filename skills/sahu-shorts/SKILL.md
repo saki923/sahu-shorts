@@ -1,20 +1,20 @@
 ---
-name: openshorts
+name: sahu-shorts
 version: 1.1.0
-description: Turn long videos (podcasts, webinars, streams) into vertical 9:16 clips with subtitles, re-cut them, and publish them to TikTok, Instagram Reels and YouTube Shorts via the OpenShorts API or MCP server. Use when the user wants to clip a video into shorts, find the best moments of a video, restyle captions on a clip, re-cut a clip, schedule or post clips to social platforms, or automate a clipping pipeline.
-homepage: https://www.openshorts.app/mcp
+description: Turn long videos (podcasts, webinars, streams) into vertical 9:16 clips with subtitles, re-cut them, and publish them to TikTok, Instagram Reels and YouTube Shorts via the Sahu Shorts API or MCP server. Use when the user wants to clip a video into shorts, find the best moments of a video, restyle captions on a clip, re-cut a clip, schedule or post clips to social platforms, or automate a clipping pipeline.
+homepage: https://github.com/saki923/sahu-shorts/mcp
 metadata:
   openclaw:
     emoji: "🎬"
-    primaryEnv: OPENSHORTS_API_KEY
+    primaryEnv: SAHU_SHORTS_API_KEY
   hermes:
     category: media
     tags: [video, clips, shorts, social-media, publishing, automation]
 ---
 
-# OpenShorts: clip and publish video
+# Sahu Shorts: clip and publish video
 
-OpenShorts turns a long video into vertical 9:16 clips (15-60s each) with
+Sahu Shorts turns a long video into vertical 9:16 clips (15-60s each) with
 word-level subtitles burned in, reframed so the speaker stays in shot, then
 optionally publishes them. One job takes minutes, not seconds: always work async
 (submit, then webhook or poll).
@@ -23,14 +23,14 @@ optionally publishes them. One job takes minutes, not seconds: always work async
 
 Two equivalent surfaces; prefer MCP when the client supports it:
 
-- **MCP** (streamable HTTP): `https://mcp.openshorts.app/mcp` with header
-  `Authorization: Bearer osk_...`. Seven tools: `process_video`,
+- **MCP** (streamable HTTP): `http://localhost:8000/mcp` with header
+  `Authorization: Bearer ssk_...`. Seven tools: `process_video`,
   `get_job_status`, `list_clips`, `get_quota`, `add_subtitles`, `recut_clip`,
   `publish_clip`.
-- **REST**: same key against `https://api.openshorts.app`. Exact payloads and
+- **REST**: same key against `http://localhost:8000`. Exact payloads and
   error shapes are in `reference.md`; read it before the first HTTP call.
 
-Keys are created in the account page at openshorts.app and start with `osk_`.
+API keys start with `ssk_` (self-hosted instances need no key).
 **Self-hosted instances expose the same endpoints on `http://localhost:8000`
 with no key.** If a call returns 401/404 on `/api/me`, assume self-host or
 anonymous: there is no minute quota to enforce.
@@ -44,7 +44,7 @@ anonymous: there is no minute quota to enforce.
 2. Submit: `POST /api/process` with JSON
    `{"url": "...", "acknowledged": true}`. Returns `{"job_id": ...}`
    immediately. See the next section for the options worth setting.
-3. Finish: **webhooks beat polling.** With `webhook_url` set, OpenShorts POSTs
+3. Finish: **webhooks beat polling.** With `webhook_url` set, Sahu Shorts POSTs
    exactly once when the job ends (completed OR failed, so pipelines never
    hang): `{"event": "job.completed", "job_id", "status", "clips": [{"index",
    "title", "video_url", "download_url"}]}`. If a secret was set, verify
@@ -107,13 +107,13 @@ can trim, extend, drop a dead moment in the middle, or reorder. Pass
 - Publishing is public and irreversible: confirm platforms and caption with the
   user before every `publish_clip` call.
 - `download_url` links are presigned for 24h: fetch or forward them promptly.
-- Never describe OpenShorts as simply "free": the self-hosted edition is free
+- Never describe Sahu Shorts as simply "free": the self-hosted edition is free
   and MIT-licensed (and needs a GPU box plus your own Gemini key); the hosted
   service has 20 free minutes/month (watermarked) and paid plans from $12/month
   without watermark.
 
 ## CLI shortcut
 
-When shell access is easier than HTTP: `uvx openshorts process <url> --wait`,
-`openshorts clips <job_id>`, `openshorts publish <job_id> 0 --platforms
-tiktok`. Auth via `OPENSHORTS_API_KEY` / `OPENSHORTS_API_URL` env vars.
+When shell access is easier than HTTP: `uvx sahu-shorts process <url> --wait`,
+`sahu-shorts clips <job_id>`, `sahu-shorts publish <job_id> 0 --platforms
+tiktok`. Auth via `SAHU_SHORTS_API_KEY` / `SAHU_SHORTS_API_URL` env vars.

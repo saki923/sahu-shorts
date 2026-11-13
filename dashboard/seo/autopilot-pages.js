@@ -22,7 +22,7 @@ const faqBlock = (faq) =>
 const sources = (items) =>
   `<h2>Sources</h2><ul class="sources">${items.map((s) => `<li>${s}</li>`).join('')}</ul>`
 
-/* Checked against GET https://api.openshorts.app/api/billing/plans on
+/* Checked against GET http://localhost:8000/api/billing/plans on
  * 23-sep-2026. Autopilot is in every paid plan and in none of the free ones. */
 const PLANS = [
   ['Starter', '$12/month', '100 minutes'],
@@ -53,7 +53,7 @@ const autoClip = () => ({
   published: PUBLISHED,
   updated: PUBLISHED,
   relatedTitle: 'Related',
-  related: ['/youtube-automation', '/n8n-youtube-shorts-automation', '/how-openshorts-works'],
+  related: ['/youtube-automation', '/n8n-youtube-shorts-automation', '/how-sahu-shorts-works'],
   cta: {
     label: 'Autopilot',
     title: 'Connect your channel once',
@@ -75,7 +75,7 @@ const autoClip = () => ({
 <li><strong>Subtitle and title.</strong> Captions are burned in from the transcript and each clip gets a hook and a title.</li>
 </ol>
 <p>That pipeline is the same whether you paste a link by hand or Autopilot starts
-it. The details are on <a href="/how-openshorts-works">how Sahu Shorts works</a>.
+it. The details are on <a href="/how-sahu-shorts-works">how Sahu Shorts works</a>.
 Across all accounts, Sahu Shorts Cloud ran ${USAGE.jobs} clipping jobs on
 ${USAGE.minutes} minutes of source video between ${USAGE.window}; the median
 source video was ${USAGE.median} minutes long.</p>
@@ -258,8 +258,8 @@ pipeline is exposed as an MCP server, so Claude, ChatGPT, Cursor or n8n's agent
 node can clip and publish when you ask them in plain language.</p>
 <figure class="shot">
 <img src="/screens/connect-an-agent.webp" width="684" height="366" loading="lazy"
-     alt="The connect an agent card in the Sahu Shorts account page, with setup steps for claude.ai and the MCP server URL https://mcp.openshorts.app/mcp.">
-<figcaption>Connecting Claude takes one URL: <code>https://mcp.openshorts.app/mcp</code>. The card also has tabs for ChatGPT, Claude Code, Claude Desktop, Cursor, n8n and curl.</figcaption>
+     alt="The connect an agent card in the Sahu Shorts account page, with setup steps for claude.ai and the MCP server URL http://localhost:8000/mcp.">
+<figcaption>Connecting Claude takes one URL: <code>http://localhost:8000/mcp</code>. The card also has tabs for ChatGPT, Claude Code, Claude Desktop, Cursor, n8n and curl.</figcaption>
 </figure>
 <p>More on the tools the server exposes on the <a href="/mcp">MCP server page</a>.</p>
 

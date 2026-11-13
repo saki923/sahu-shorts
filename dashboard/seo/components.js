@@ -180,7 +180,7 @@ const barsHtml = (tools, minutes, billing) => {
       const label = r
         ? `${money(r.price)}/mo · ${r.plan}${r.watermark ? ' · watermark' : ''}`
         : 'No published plan, custom pricing'
-      return `<li class="${t.startsWith('openshorts') ? 'us' : ''}" data-tool="${esc(t)}"><span class="bt">${esc(m.name)}<small>${esc(m.unit)}</small></span><span class="track"><span class="fill" style="width:${w}%"></span><span class="val${w < 45 ? ' ext' : ''}"${w < 45 ? ` style="left:calc(${w}% + .6rem)"` : ''}>${esc(label)}</span></span></li>`
+      return `<li class="${t.startsWith('sahu-shorts') ? 'us' : ''}" data-tool="${esc(t)}"><span class="bt">${esc(m.name)}<small>${esc(m.unit)}</small></span><span class="track"><span class="fill" style="width:${w}%"></span><span class="val${w < 45 ? ' ext' : ''}"${w < 45 ? ` style="left:calc(${w}% + .6rem)"` : ''}>${esc(label)}</span></span></li>`
     })
     .join('')
 }
@@ -188,7 +188,7 @@ const barsHtml = (tools, minutes, billing) => {
 let calcCount = 0
 export function costCalculator(tools, { minutes = 300, note } = {}) {
   const id = `calc${++calcCount}`
-  const list = ['openshorts-self', 'openshorts', ...tools.filter((t) => !t.startsWith('openshorts') && PRICE_MODELS[t])]
+  const list = ['sahu-shorts-self', 'sahu-shorts', ...tools.filter((t) => !t.startsWith('sahu-shorts') && PRICE_MODELS[t])]
   const models = Object.fromEntries(list.map((t) => [t, PRICE_MODELS[t]]))
   const checked = list.map((t) => PRICE_MODELS[t].checked).filter(Boolean).sort()[0]
   return `

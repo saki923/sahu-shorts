@@ -5,7 +5,7 @@
 import { apiFetch } from './api';
 import { setMediaToken } from '../config';
 
-const STORAGE_KEY = 'openshorts_media_token';
+const STORAGE_KEY = 'sahu-shorts_media_token';
 // Renew this long before it expires, so a URL built now outlives the page.
 const RENEW_MARGIN_MS = 2 * 60 * 60 * 1000;
 let renewTimer = null;

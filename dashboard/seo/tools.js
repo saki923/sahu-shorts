@@ -871,7 +871,7 @@ ${faqBlock([
 
 ${sources([
   '<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebCodecs_API" rel="noopener">MDN: WebCodecs API</a>, the browser encoder this tool uses.',
-  `<a href="https://github.com/Vanilagy/mediabunny" rel="noopener">Mediabunny</a>, the open source library that reads and writes the video files. Face tracking in the clip generator: the project source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `<a href="https://github.com/Vanilagy/mediabunny" rel="noopener">Mediabunny</a>, the open source library that reads and writes the video files. Face tracking in the clip generator: the project source at <a href="${SITE.repo}" rel="noopener">github.com/saki923/sahu-shorts</a>.`,
 ])}
 `,
   faq: [

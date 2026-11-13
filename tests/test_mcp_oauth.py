@@ -34,19 +34,19 @@ class TestHelpers:
         assert out == "https://c.ai/cb?a=1&code=xyz"
 
     def test_consent_url_targets_the_hash_router(self):
-        url = mcp_oauth.consent_url("https://www.openshorts.app/", {"client_id": "abc", "state": "s"})
-        assert url.startswith("https://www.openshorts.app/#/oauth/authorize?")
+        url = mcp_oauth.consent_url("https://github.com/saki923/sahu-shorts/", {"client_id": "abc", "state": "s"})
+        assert url.startswith("https://github.com/saki923/sahu-shorts/#/oauth/authorize?")
         assert "client_id=abc" in url and "state=s" in url
 
     def test_metadata_points_at_the_same_host(self):
-        m = mcp_oauth.server_metadata("https://mcp.openshorts.app")
-        assert m["issuer"] == "https://mcp.openshorts.app"
-        assert m["token_endpoint"] == "https://mcp.openshorts.app/oauth/token"
+        m = mcp_oauth.server_metadata("http://localhost:8000")
+        assert m["issuer"] == "http://localhost:8000"
+        assert m["token_endpoint"] == "http://localhost:8000/oauth/token"
         assert m["code_challenge_methods_supported"] == ["S256"]
         assert m["token_endpoint_auth_methods_supported"] == ["none"]
-        r = mcp_oauth.resource_metadata("https://mcp.openshorts.app")
-        assert r["resource"] == "https://mcp.openshorts.app/mcp"
-        assert r["authorization_servers"] == ["https://mcp.openshorts.app"]
+        r = mcp_oauth.resource_metadata("http://localhost:8000")
+        assert r["resource"] == "http://localhost:8000/mcp"
+        assert r["authorization_servers"] == ["http://localhost:8000"]
 
 
 class TestDiscoveryEndpoints:
@@ -132,7 +132,7 @@ class TestConsentDecisions:
     def test_an_api_key_cannot_consent(self, monkeypatch):
         c = self._client(monkeypatch)
         r = c.post("/api/oauth/authorize",
-                   headers={"Authorization": "Bearer osk_" + "a" * 40},
+                   headers={"Authorization": "Bearer ssk_" + "a" * 40},
                    json={"client_id": "c1", "redirect_uri": "https://claude.ai/api/mcp/auth_callback",
                          "code_challenge": "x" * 43})
         assert r.status_code == 403
@@ -175,15 +175,15 @@ class TestRefreshAndRevoke:
 
     def _key(self, **kw):
         from types import SimpleNamespace
-        base = dict(id="k1", key_hash="old", prefix="osk_old", revoked_at=None,
-                    scope="openshorts", name="Gemini · connected via OAuth")
+        base = dict(id="k1", key_hash="old", prefix="ssk_old", revoked_at=None,
+                    scope="sahu-shorts", name="Gemini · connected via OAuth")
         base.update(kw)
         return SimpleNamespace(**base)
 
     def test_metadata_advertises_refresh_and_revocation(self):
-        m = mcp_oauth.server_metadata("https://mcp.openshorts.app")
+        m = mcp_oauth.server_metadata("http://localhost:8000")
         assert m["grant_types_supported"] == ["authorization_code", "refresh_token"]
-        assert m["revocation_endpoint"] == "https://mcp.openshorts.app/oauth/revoke"
+        assert m["revocation_endpoint"] == "http://localhost:8000/oauth/revoke"
         assert "code" in m["response_types_supported"]
         assert m["registration_endpoint"].endswith("/oauth/register")
 
@@ -225,20 +225,20 @@ class TestRefreshAndRevoke:
         assert r.status_code == 200, r.text
         body = r.json()
         assert body["refresh_token"] == "osr_keep"
-        assert body["access_token"].startswith("osk_")
+        assert body["access_token"].startswith("ssk_")
         assert key.key_hash == api_keys.hash_key(body["access_token"]) != "old"
-        assert body["scope"] == "openshorts" and sess.committed
+        assert body["scope"] == "sahu-shorts" and sess.committed
         assert r.headers["cache-control"] == "no-store"
 
     def test_revoke_is_always_200(self, monkeypatch):
         c, _ = self._client(monkeypatch, [None])
         assert c.post("/oauth/revoke", data={}).status_code == 200
-        assert c.post("/oauth/revoke", data={"token": "osk_" + "z" * 40}).status_code == 200
+        assert c.post("/oauth/revoke", data={"token": "ssk_" + "z" * 40}).status_code == 200
 
     def test_revoke_disconnects_an_oauth_key(self, monkeypatch):
         key = self._key()
         c, sess = self._client(monkeypatch, [key])
-        assert c.post("/oauth/revoke", data={"token": "osk_" + "z" * 40}).status_code == 200
+        assert c.post("/oauth/revoke", data={"token": "ssk_" + "z" * 40}).status_code == 200
         assert key.revoked_at is not None and sess.committed
 
     def test_revoke_by_refresh_token(self, monkeypatch):
@@ -252,5 +252,5 @@ class TestRefreshAndRevoke:
     def test_revoke_never_touches_a_hand_made_key(self, monkeypatch):
         key = self._key(scope=None, name="my laptop")
         c, _ = self._client(monkeypatch, [key])
-        assert c.post("/oauth/revoke", data={"token": "osk_" + "z" * 40}).status_code == 200
+        assert c.post("/oauth/revoke", data={"token": "ssk_" + "z" * 40}).status_code == 200
         assert key.revoked_at is None

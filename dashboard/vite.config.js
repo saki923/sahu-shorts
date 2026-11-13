@@ -31,8 +31,8 @@ export default defineConfig({
   },
   server: {
     allowedHosts: [
-      'openshorts.app',
-      'www.openshorts.app'
+      'github.com/saki923/sahu-shorts',
+      'github.com/saki923/sahu-shorts'
     ],
     proxy: {
       '/api': { target: backend, changeOrigin: true },

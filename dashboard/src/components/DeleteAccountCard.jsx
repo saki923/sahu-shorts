@@ -62,7 +62,7 @@ export default function DeleteAccountCard() {
       window.location.hash = '#/deleted';
       window.location.reload();
     } catch (e) {
-      setError(e?.detail || 'Could not delete your account. Please try again or email info@openshorts.app.');
+      setError(e?.detail || 'Could not delete your account. Please try again or open an issue on github.com/saki923/sahu-shorts.');
       sending.current = false;
       setBusy(false);
     }

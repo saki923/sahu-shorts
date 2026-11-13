@@ -255,11 +255,11 @@ def upgrade_url(src: str = "api", plan: str = "starter") -> str:
 
 
 def request_uses_api_key(request: Request) -> bool:
-    """True when the caller authenticated with an osk_ key (REST, MCP, OAuth
+    """True when the caller authenticated with an ssk_ key (REST, MCP, OAuth
     clients) rather than a dashboard session."""
     auth = request.headers.get("Authorization", "")
     token = auth[7:].strip() if auth.lower().startswith("bearer ") else ""
-    return token.startswith("osk_") or request.headers.get("X-API-Key", "").startswith("osk_")
+    return token.startswith("ssk_") or request.headers.get("X-API-Key", "").startswith("ssk_")
 
 
 def payment_required(error: str, message: str, **extra) -> HTTPException:
@@ -3729,7 +3729,7 @@ async def _webhook_clip_entries(job_id, job):
 
 
 async def _deliver_webhook(url, body: bytes, secret):
-    headers = {"Content-Type": "application/json", "User-Agent": "OpenShorts-Webhook/1.0"}
+    headers = {"Content-Type": "application/json", "User-Agent": "Sahu Shorts-Webhook/1.0"}
     if secret:
         headers["X-OpenShorts-Signature"] = _sign_webhook(body, secret)
     from security_utils import assert_public_url, UnsafeURLError
@@ -4072,7 +4072,7 @@ if BILLING_ENABLED:
     cloud.setup_sync(app)
 
 # MCP server (/mcp): the pipeline as agent-callable tools. Works in both modes —
-# cloud requires an osk_ API key, self-host keeps BYOK (see mcp_server.py).
+# cloud requires an ssk_ API key, self-host keeps BYOK (see mcp_server.py).
 import mcp_server as _mcp_server
 app.include_router(_mcp_server.router)
 
@@ -6123,7 +6123,7 @@ async def download_all_clips(job_id: str, request: Request):
     return FileResponse(
         zip_path,
         media_type="application/zip",
-        filename=f"openshorts_clips_{job_id[:8]}.zip",
+        filename=f"sahu_shorts_clips_{job_id[:8]}.zip",
         background=BackgroundTask(remove_zip),
     )
 
@@ -8213,7 +8213,7 @@ async def post_to_socials(req: SocialPostRequest, request: Request):
         # The upload is a blocking multipart POST of the whole clip (tens of
         # seconds for TikTok+YouTube). Run inline, it froze the event loop:
         # 23-sep-2026 19:47:48 UTC one post stalled every request, /health
-        # included, for 42 s and the uptime monitor paged "openshorts-api
+        # included, for 42 s and the uptime monitor paged "sahu-shorts-api
         # down". It runs in a worker thread so the API keeps answering.
         print(f"📡 Sending to Upload-Post for platforms: {req.platforms}")
         response = await asyncio.to_thread(
@@ -8602,7 +8602,7 @@ async def _scheduled_posts_for(api_key: str, profile: str) -> list:
 
     Upload-Post's GET /uploadposts/schedule takes no profile filter and returns
     everything the *account* has pending — with the managed key that is every
-    OpenShorts user's queue, so the filter below is what keeps one tenant from
+    Sahu Shorts user's queue, so the filter below is what keeps one tenant from
     seeing (or cancelling) another's. Same class of bug as the impressions
     endpoint; do not "simplify" it away.
     """
@@ -9740,11 +9740,11 @@ async def saasshorts_post_to_socials(req: SaaSPostRequest, request: Request):
 # The gallery and the per-video pages are rendered by this API service, but the
 # app they advertise lives on www. A relative href on `api.` host resolves
 # against `api.`, where `/` is not the app (it is a 404), so every link that
-# crosses hosts is written absolute. `www.openshorts.app/gallery` and
+# crosses hosts is written absolute. `github.com/saki923/sahu-shorts/gallery` and
 # `/video/...` 301 to the api host (dashboard/nginx.conf), so the api host is
 # the final domain for those two and the app host is final for everything else.
-APP_HOST = "https://www.openshorts.app"
-GALLERY_HOST = "https://api.openshorts.app"
+APP_HOST = "https://github.com/saki923/sahu-shorts"
+GALLERY_HOST = "http://localhost:8000"
 
 
 def _json_ld(payload: dict) -> str:

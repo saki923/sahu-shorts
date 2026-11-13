@@ -413,7 +413,7 @@ const FOOTER_COLUMNS = [
     ['/how-to/instagram-reel-dimensions', 'Instagram Reel dimensions'],
     ['/how-to/make-a-reel-on-facebook', 'How to make a Reel on Facebook'],
     ['/how-to/best-time-to-post-youtube-shorts', 'Best time to post YouTube Shorts'],
-    ['/how-openshorts-works', 'How it works'],
+    ['/how-sahu-shorts-works', 'How it works'],
     ['/self-hosted-ai-clip-maker', 'Self-hosted AI clip maker'],
     ['/open-source-video-clipper', 'Open source video clipper'],
     ['/mcp', 'MCP server and API'],
@@ -493,7 +493,7 @@ const ANALYTICS = `
       var clientId = "%VITE_OPENPANEL_CLIENT_ID%";
       var unset = function (v) { return !v || v.charAt(0) === "%"; };
       if (unset(apiUrl) || unset(clientId)) return false;
-      var ANALYTICS_HOSTS = /^(www\\.)?openshorts\\.app$/;
+      var ANALYTICS_HOSTS = /^(www\\.)?sahu-shorts\\.app$/;
       if (!ANALYTICS_HOSTS.test(location.hostname)) return false;
       started = true;
       window.op("init", {
@@ -631,7 +631,7 @@ export function renderPage(page, related = [], { cta = true, toolScript = '', bu
 ${page.noindex ? '' : `<link rel="canonical" href="${canonical}">\n`}<meta name="robots" content="${
     page.noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large,max-snippet:-1'
   }">
-${hreflangLinks(page)}<link rel="icon" type="image/png" href="/logo-openshorts.png">
+${hreflangLinks(page)}<link rel="icon" type="image/png" href="/logo-sahu-shorts.png">
 <link rel="stylesheet" href="/fonts.css">
 ${ANALYTICS}
 ${page.noindex ? '' : ATTRIBUTION}

@@ -1,7 +1,7 @@
 """OAuth 2.1 authorization server for the MCP endpoint (cloud mode).
 
 claude.ai and ChatGPT connect to a remote MCP server by URL alone: the user
-pastes ``https://mcp.openshorts.app/mcp`` and the client discovers how to log
+pastes ``http://localhost:8000/mcp`` and the client discovers how to log
 in from the server's metadata. That takes the pieces those clients actually
 use, and nothing else:
 
@@ -14,13 +14,13 @@ use, and nothing else:
   are public clients, PKCE is what binds the code to whoever started the flow.
 
 The consent screen lives in the dashboard (``#/oauth/authorize``), not here:
-the session is a bearer JWT in localStorage on www.openshorts.app, which a
+the session is a bearer JWT in localStorage on github.com/saki923/sahu-shorts, which a
 plain browser GET to the API cannot see. So ``GET /oauth/authorize`` validates
 the request and bounces to the dashboard, the dashboard signs the user in if
 needed and asks "connect Claude to your account?", and ``POST /api/oauth/authorize``
 (session-authenticated) mints the code and hands back the redirect.
 
-Redeeming the code mints an ordinary ``osk_`` API key named after the client
+Redeeming the code mints an ordinary ``ssk_`` API key named after the client
 and returns it as the access token. That is deliberate: every existing auth,
 quota and ownership rule already understands those keys, the connection shows
 up in the account page next to hand-made keys, and revoking it there is how
@@ -63,7 +63,7 @@ def _now():
 # --------------------------------------------------------------------------- #
 def base_url(request: Request) -> str:
     """The origin the client is talking to, so the metadata names the host the
-    client actually used (mcp.openshorts.app or api.openshorts.app both route
+    client actually used (localhost:8000 or localhost:8000 both route
     here). uvicorn runs with --proxy-headers, so the scheme is the public one."""
     u = request.base_url
     return f"{u.scheme}://{u.netloc}"
@@ -75,8 +75,8 @@ def resource_metadata(base: str) -> dict:
         "authorization_servers": [base],
         "bearer_methods_supported": ["header"],
         "scopes_supported": [SCOPE],
-        "resource_name": "OpenShorts",
-        "resource_documentation": "https://www.openshorts.app/mcp",
+        "resource_name": "Sahu Shorts",
+        "resource_documentation": "https://github.com/saki923/sahu-shorts/mcp",
     }
 
 
@@ -94,7 +94,7 @@ def server_metadata(base: str) -> dict:
         "token_endpoint_auth_methods_supported": ["none"],
         "scopes_supported": [SCOPE],
         "revocation_endpoint_auth_methods_supported": ["none"],
-        "service_documentation": "https://www.openshorts.app/mcp",
+        "service_documentation": "https://github.com/saki923/sahu-shorts/mcp",
     }
 
 
@@ -415,7 +415,7 @@ async def token(request: Request):
 
 
 def new_refresh_token() -> str:
-    # Never "osk_": a refresh token must not work as a bearer token.
+    # Never "ssk_": a refresh token must not work as a bearer token.
     return "osr_" + secrets.token_urlsafe(32)
 
 

@@ -13,7 +13,7 @@ combination decides most of this, so check it before adding work:
 
 | Duty | Applies? |
 |---|---|
-| Arts. 11-12, single point of contact (users, authorities) | Yes. `info@openshorts.app`, published |
+| Arts. 11-12, single point of contact (users, authorities) | Yes. `github.com/saki923/sahu-shorts`, published |
 | Art. 14, terms with the restrictions we impose | Yes. Terms §8 and §9 |
 | Art. 16, notice and action | **Yes. This document** |
 | Art. 17, statement of reasons | **Yes. Template below** |
@@ -67,7 +67,7 @@ so keep every line even when one is short)
 >   being true.>
 > - Territorial scope: <worldwide / EU only>.
 > - How to challenge it: reply to this message, or write to
->   info@openshorts.app. A person reviews it. You may also go to an Article 21
+>   github.com/saki923/sahu-shorts. A person reviews it. You may also go to an Article 21
 >   dispute settlement body or to the courts.
 
 ## Repeat infringers

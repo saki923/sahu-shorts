@@ -418,7 +418,7 @@ def _route_name(proxy, proxies) -> str:
 def _ffprobe_url_seconds(url: str, timeout: int = 30) -> float:
     out = subprocess.check_output(
         ["ffprobe", "-v", "error", "-rw_timeout", str(timeout * 1_000_000),
-         "-user_agent", "Mozilla/5.0 (OpenShorts probe)",
+         "-user_agent", "Mozilla/5.0 (Sahu Shorts probe)",
          "-show_entries", "format=duration",
          "-of", "default=noprint_wrappers=1:nokey=1", url],
         stderr=subprocess.STDOUT, timeout=timeout + 5,
@@ -603,7 +603,7 @@ def ip_fingerprint(ip) -> str:
     import hmac
     if not ip or ip == "unknown":
         return ""
-    key = (config.settings.jwt_secret or "openshorts").encode()
+    key = (config.settings.jwt_secret or "sahu-shorts").encode()
     return hmac.new(key, f"ip:{ip}".encode(), hashlib.sha256).hexdigest()
 
 

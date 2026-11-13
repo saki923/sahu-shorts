@@ -94,7 +94,7 @@ export default function CancelPlanModal({ plan, periodEnd, onClose, onCanceled }
       track('RetentionOfferAccepted', { props: { plan, reason } });
       setSaved(out);
     } catch (e) {
-      setError(e?.detail || 'Could not apply the discount. Please try again or email info@openshorts.app.');
+      setError(e?.detail || 'Could not apply the discount. Please try again or open an issue on github.com/saki923/sahu-shorts.');
     }
     sending.current = false;
     setBusy(false);
@@ -114,7 +114,7 @@ export default function CancelPlanModal({ plan, periodEnd, onClose, onCanceled }
       track('PauseOfferAccepted', { props: { plan, reason } });
       setPaused(out);
     } catch (e) {
-      setError(e?.detail || 'Could not pause your plan. Please try again or email info@openshorts.app.');
+      setError(e?.detail || 'Could not pause your plan. Please try again or open an issue on github.com/saki923/sahu-shorts.');
     }
     sending.current = false;
     setBusy(false);
@@ -139,7 +139,7 @@ export default function CancelPlanModal({ plan, periodEnd, onClose, onCanceled }
       track('SubscriptionCanceled', { props: { plan, reason, rating: rating || undefined, offered: !!offer } });
       onCanceled();
     } catch (e) {
-      setError(e?.detail || 'Could not cancel. Please try again or email info@openshorts.app.');
+      setError(e?.detail || 'Could not cancel. Please try again or open an issue on github.com/saki923/sahu-shorts.');
       sending.current = false;
       setBusy(false);
     }

@@ -37,7 +37,7 @@ class TestResourceSurface:
         content = resp["result"]["contents"][0]
         assert content["mimeType"] == mcp_ui.MIME_TYPE
         # Template mode: no baked data, the bridge provides it.
-        assert "__OPENSHORTS_DATA__" not in content["text"]
+        assert "__SAHU_SHORTS_DATA__" not in content["text"]
         assert "var inline = null;" in content["text"]
 
     def test_template_declares_the_video_host_as_media_domain(self, monkeypatch):

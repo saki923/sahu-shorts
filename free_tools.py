@@ -1,4 +1,4 @@
-"""Free public tools behind the static SEO pages (/tools on openshorts.app).
+"""Free public tools behind the static SEO pages (/tools on github.com/saki923/sahu-shorts).
 
 Three endpoints, all anonymous, all deliberately cheap:
 

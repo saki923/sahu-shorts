@@ -166,7 +166,7 @@ class SignupAttribution(Base):
 
 
 class ApiKey(Base):
-    """A user-issued ``osk_...`` token for programmatic access (MCP, scripts, CI).
+    """A user-issued ``ssk_...`` token for programmatic access (MCP, scripts, CI).
 
     Only the sha256 of the raw token is stored — the raw value is shown once at
     creation and never again. ``prefix`` keeps the first characters so the UI
@@ -181,8 +181,8 @@ class ApiKey(Base):
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"),
                      nullable=False, index=True)
     name = Column(Text, nullable=False)
-    key_hash = Column(Text, unique=True, nullable=False)  # sha256 of the raw osk_ token
-    prefix = Column(Text, nullable=False)                 # e.g. "osk_a1b2c3" (display only)
+    key_hash = Column(Text, unique=True, nullable=False)  # sha256 of the raw ssk_ token
+    prefix = Column(Text, nullable=False)                 # e.g. "ssk_a1b2c3" (display only)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     last_used_at = Column(DateTime(timezone=True), nullable=True)
     revoked_at = Column(DateTime(timezone=True), nullable=True)
@@ -318,7 +318,7 @@ class OAuthClient(Base):
 class OAuthCode(Base):
     """A short-lived authorization code (10 min, single use). Only its sha256
     is stored; the code itself travels once, in the redirect back to the
-    client. Redeeming it mints an ``osk_`` API key for the user, which is what
+    client. Redeeming it mints an ``ssk_`` API key for the user, which is what
     the client keeps as its access token: the key shows up in the account
     page like any other, and revoking it there disconnects the client."""
     __tablename__ = "oauth_codes"
@@ -335,7 +335,7 @@ class OAuthCode(Base):
 
 class OAuthRefreshToken(Base):
     """The refresh token handed out with an OAuth access token. Access tokens
-    are ``osk_`` keys that never expire, so a refresh only happens when a
+    are ``ssk_`` keys that never expire, so a refresh only happens when a
     client insists on one: it swaps the key's secret in place (same row, same
     entry in the account page) and returns the *same* refresh token, which is
     what "persistent linking" clients (Gemini) expect. Revoking the key in the

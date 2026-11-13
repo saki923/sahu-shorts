@@ -1,6 +1,6 @@
 """The clips-ready email goes to dashboard jobs only (``app._notify_clips_ready``).
 
-A job sent with an osk_ key (REST, MCP, OAuth clients) is followed by polling
+A job sent with an ssk_ key (REST, MCP, OAuth clients) is followed by polling
 or the webhook, so mailing its owner on every run is noise."""
 import asyncio
 import os
@@ -17,8 +17,8 @@ def _req(headers):
 
 
 def test_api_key_detection():
-    assert app.request_uses_api_key(_req({"Authorization": "Bearer osk_abc"}))
-    assert app.request_uses_api_key(_req({"X-API-Key": "osk_abc"}))
+    assert app.request_uses_api_key(_req({"Authorization": "Bearer ssk_abc"}))
+    assert app.request_uses_api_key(_req({"X-API-Key": "ssk_abc"}))
     assert not app.request_uses_api_key(_req({"Authorization": "Bearer eyJhbGciOi"}))
     assert not app.request_uses_api_key(_req({}))
 

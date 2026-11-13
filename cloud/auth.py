@@ -107,7 +107,7 @@ async def get_current_user_optional(request: Request) -> Optional[CurrentUser]:
     """Return the authenticated user, or None for anonymous / BYOK requests.
 
     Accepts either a session JWT (``Bearer <jwt>``) or a user API key
-    (``Bearer osk_...`` / ``X-API-Key``). A key authenticates as its owner, so
+    (``Bearer ssk_...`` / ``X-API-Key``). A key authenticates as its owner, so
     quota, entitlement and job ownership apply to agents exactly as to the
     dashboard — no parallel auth path to keep in sync.
     """
@@ -156,7 +156,7 @@ async def get_current_user_required(request: Request) -> CurrentUser:
 
 async def get_session_user_required(request: Request,
                                     detail: str = "Sign in to the dashboard to do this.") -> CurrentUser:
-    """The signed-in user, refusing API-key auth (``osk_``, OAuth tokens too).
+    """The signed-in user, refusing API-key auth (``ssk_``, OAuth tokens too).
 
     For what an agent credential must never reach: money (cancel, resume,
     end a trial, the Stripe portal, invoices) on top of keys and erasure,

@@ -291,7 +291,7 @@ class Settings:
 
     @property
     def frontend_url(self) -> str:
-        return os.environ.get("FRONTEND_URL", "https://openshorts.app").rstrip("/")
+        return os.environ.get("FRONTEND_URL", "https://github.com/saki923/sahu-shorts").rstrip("/")
 
     @property
     def public_api_url(self) -> str:
@@ -333,7 +333,7 @@ class Settings:
     @property
     def email_from(self) -> str:
         # Namecheap requires the From to be the authenticated mailbox.
-        return os.environ.get("EMAIL_FROM") or (f"OpenShorts <{self.smtp_user}>" if self.smtp_user else "OpenShorts")
+        return os.environ.get("EMAIL_FROM") or (f"Sahu Shorts <{self.smtp_user}>" if self.smtp_user else "Sahu Shorts")
 
     @property
     def admin_email(self) -> str:
@@ -403,7 +403,7 @@ class Settings:
 
     @property
     def agentledger_treasury_id(self) -> str:
-        # The Stripe Connect treasury in AgentLedger that holds OpenShorts' customers.
+        # The Stripe Connect treasury in AgentLedger that holds Sahu Shorts' customers.
         return os.environ.get("AGENTLEDGER_TREASURY_ID", "720d3b70-3806-4c59-8729-2495b489a771")
 
     # Managed provider keys (server-owned, only handed to entitled users)
@@ -416,8 +416,8 @@ class Settings:
         return os.environ.get("MANAGED_UPLOAD_POST_API_KEY", "")
 
     @property
-    def openshorts_logo_url(self) -> str:
-        return os.environ.get("OPENSHORTS_LOGO_URL", "https://openshorts.app/logo.png")
+    def sahu_shorts_logo_url(self) -> str:
+        return os.environ.get("SAHU_SHORTS_LOGO_URL", "https://raw.githubusercontent.com/saki923/sahu-shorts/main/dashboard/public/logo-sahu-shorts.png")
 
     # Cloudflare R2 (S3-compatible) — durable video library storage
     @property
@@ -439,7 +439,7 @@ class Settings:
     @property
     def r2_public_base(self) -> str:
         """Base URL of a custom domain bound to the R2 bucket, e.g.
-        https://cdn.openshorts.app — unset means keep signing S3 URLs.
+        https://raw.githubusercontent.com/saki923/sahu-shorts — unset means keep signing S3 URLs.
 
         The S3 endpoint (*.r2.cloudflarestorage.com) is not a browser-facing
         endpoint: measured 22-ago-2026, a presigned GET from Chrome on a Spanish

@@ -3,13 +3,13 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "openshorts"
+name = "sahu-shorts"
 version = "0.1.0"
-description = "CLI for OpenShorts: clip long videos into vertical shorts and publish them, from the terminal"
+description = "CLI for Sahu Shorts: clip long videos into vertical shorts and publish them, from the terminal"
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
-authors = [{ name = "OpenShorts" }]
+authors = [{ name = "Sahu Shorts" }]
 keywords = ["video", "clips", "shorts", "ai", "tiktok", "youtube-shorts", "cli"]
 classifiers = [
   "Environment :: Console",
@@ -19,12 +19,12 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://www.openshorts.app"
-Source = "https://github.com/mutonby/openshorts"
-Documentation = "https://www.openshorts.app/mcp"
+Homepage = "https://github.com/saki923/sahu-shorts"
+Source = "https://github.com/saki923/sahu-shorts"
+Documentation = "https://github.com/saki923/sahu-shorts/mcp"
 
 [project.scripts]
-openshorts = "openshorts_cli:main"
+sahu-shorts = "sahu_shorts_cli:main"
 
 [tool.setuptools]
-py-modules = ["openshorts_cli"]
+py-modules = ["sahu_shorts_cli"]

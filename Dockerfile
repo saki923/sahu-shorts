@@ -137,9 +137,9 @@ ENV PATH="/app/bin:$PATH" FFMPEG_THREADS=2
 
 # Register the bundled fonts (Anton for Impact) and the UI-name -> real-font
 # aliases with fontconfig so libass resolves what the subtitle modal offers.
-RUN mkdir -p /usr/local/share/fonts/openshorts \
-    && cp fonts/*.ttf /usr/local/share/fonts/openshorts/ \
-    && cp fonts/openshorts-fontmap.conf /etc/fonts/conf.d/60-openshorts.conf \
+RUN mkdir -p /usr/local/share/fonts/sahu-shorts \
+    && cp fonts/*.ttf /usr/local/share/fonts/sahu-shorts/ \
+    && cp fonts/sahu-shorts-fontmap.conf /etc/fonts/conf.d/60-sahu-shorts.conf \
     && fc-cache -f
 
 # Create a non-root user (Moved up)

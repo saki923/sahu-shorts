@@ -1,4 +1,4 @@
-# Loader.to fallback patch for OpenShorts — DOCUMENT ONLY, do not apply yet
+# Loader.to fallback patch for Sahu Shorts — DOCUMENT ONLY, do not apply yet
 
 ## What this is
 

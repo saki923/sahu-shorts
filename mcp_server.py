@@ -9,15 +9,15 @@ a dependency for them.
 Tools don't reimplement anything: each one is an in-process HTTP call back into
 this same app (httpx ASGITransport) with the caller's auth headers forwarded.
 Cloud mode therefore meters, gates and scopes agent calls exactly like
-dashboard calls — an ``osk_`` API key IS the user (see cloud/api_keys.py).
+dashboard calls — an ``ssk_`` API key IS the user (see cloud/api_keys.py).
 Self-host keeps its BYOK semantics: no key required, ``X-Gemini-Key`` /
 env fallbacks apply unchanged.
 
 Connect with any MCP client, e.g.:
-    claude mcp add --transport http openshorts https://mcp.openshorts.app/mcp \
-        --header "Authorization: Bearer osk_..."
+    claude mcp add --transport http sahu-shorts http://localhost:8000/mcp \
+        --header "Authorization: Bearer ssk_..."
 
-(mcp.openshorts.app is a domain alias of the API app; api.openshorts.app/mcp
+(localhost:8000 is a domain alias of the API app; localhost:8000/mcp
 serves the identical endpoint.)
 """
 import json
@@ -35,7 +35,7 @@ from subtitles import CAPTION_PRESETS, line_budget
 router = APIRouter()
 
 PROTOCOL_VERSIONS = ("2025-06-18", "2025-03-26", "2024-11-05")
-SERVER_INFO = {"name": "openshorts", "title": "Sahu Shorts", "version": "1.0.0"}
+SERVER_INFO = {"name": "sahu-shorts", "title": "Sahu Shorts", "version": "1.0.0"}
 # Kept descriptive: app-directory review flags instructions that read as
 # commands to the model (capitals, "do not use other tools", upsell steps).
 INSTRUCTIONS = (
@@ -340,7 +340,7 @@ TOOLS = [
 
 # Behaviour hints hosts use to decide what needs the user's confirmation; the
 # ChatGPT app review requires all three on every tool. openWorld = reaches past
-# the user's OpenShorts account (fetches an outside URL, posts publicly).
+# the user's Sahu Shorts account (fetches an outside URL, posts publicly).
 _READ = {"readOnlyHint": True, "destructiveHint": False, "openWorldHint": False, "idempotentHint": True}
 _ANNOTATIONS = {
     "process_video": {"readOnlyHint": False, "destructiveHint": False, "openWorldHint": True},
@@ -364,7 +364,7 @@ def _client(request: Request) -> httpx.AsyncClient:
     headers = {k: v for k, v in request.headers.items() if k.lower() in _FORWARD_HEADERS}
     return httpx.AsyncClient(
         transport=httpx.ASGITransport(app=request.app, raise_app_exceptions=False),
-        base_url="http://openshorts.internal",
+        base_url="http://sahu-shorts.internal",
         headers=headers,
         timeout=300.0,
     )
@@ -673,7 +673,7 @@ async def handle_message(msg, tool_caller) -> Optional[dict]:
         return _rpc_result(msg_id, {"resourceTemplates": []})
     if method == "resources/read":
         uri = (msg.get("params") or {}).get("uri") or ""
-        # Per-call URIs (ui://openshorts/clip-picker/<job>) resolve to the same
+        # Per-call URIs (ui://sahu-shorts/clip-picker/<job>) resolve to the same
         # template; the data those carried was baked into the tool result.
         if uri.startswith(mcp_ui.CLIP_PICKER_BASE):  # any version, incl. per-call /<job>
             return _rpc_result(msg_id, {"contents": [{
@@ -735,7 +735,7 @@ async def mcp_endpoint(request: Request):
         u = request.base_url
         return JSONResponse(
             {"error": "Authentication required. Connect with OAuth (claude.ai, ChatGPT) "
-                      "or pass a Sahu Shorts API key: Authorization: Bearer osk_... "
+                      "or pass a Sahu Shorts API key: Authorization: Bearer ssk_... "
                       "(create one in the dashboard)."},
             status_code=401,
             headers={"WWW-Authenticate": mcp_oauth.www_authenticate(f"{u.scheme}://{u.netloc}")},

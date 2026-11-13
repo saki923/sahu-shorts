@@ -1,6 +1,6 @@
 """API-key token semantics (cloud/api_keys.py).
 
-The raw ``osk_`` value is shown once and only its sha256 is stored, so the
+The raw ``ssk_`` value is shown once and only its sha256 is stored, so the
 format and hashing rules are load-bearing: a drifting prefix would break
 ``looks_like_key`` routing in cloud/auth.py, and a non-deterministic hash would
 lock every issued key out of the resolver.

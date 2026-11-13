@@ -1,6 +1,6 @@
 # ops/
 
-Operational scripts for OpenShorts Cloud. Nothing here runs automatically:
+Operational scripts for Sahu Shorts Cloud. Nothing here runs automatically:
 each file is installed and scheduled on the host that needs it.
 
 ## `pg_backup.sh` — encrypted PostgreSQL backups, 30-day retention
@@ -27,23 +27,23 @@ every copy within 30 days — this script is what makes both sentences true.
 ```bash
 # On the database host (el servidor de la base de datos), as root:
 apt-get install -y postgresql-client age awscli        # or gnupg instead of age
-install -m 0750 ops/pg_backup.sh /opt/openshorts/ops/pg_backup.sh
+install -m 0750 ops/pg_backup.sh /opt/sahu-shorts/ops/pg_backup.sh
 ```
 
 Generate a key pair **on your laptop, not on the server** — the server only
 ever needs the public half, which is the whole point:
 
 ```bash
-age-keygen -o openshorts-backup.key      # keep this file in a password manager
-grep 'public key' openshorts-backup.key  # -> age1... goes on the server
+age-keygen -o sahu-shorts-backup.key      # keep this file in a password manager
+grep 'public key' sahu-shorts-backup.key  # -> age1... goes on the server
 ```
 
-Then create `/etc/openshorts-backup.env` (mode `0600`):
+Then create `/etc/sahu-shorts-backup.env` (mode `0600`):
 
 ```sh
-DATABASE_URL="postgres://user:pass@127.0.0.1:5432/openshorts"
+DATABASE_URL="postgres://user:pass@127.0.0.1:5432/sahu-shorts"
 BACKUP_AGE_RECIPIENT="age1................................................"
-BACKUP_DEST="s3://openshorts-backups/pg"
+BACKUP_DEST="s3://sahu-shorts-backups/pg"
 BACKUP_S3_ENDPOINT="https://<accountid>.r2.cloudflarestorage.com"
 AWS_ACCESS_KEY_ID="..."          # an R2 token scoped to THIS bucket only
 AWS_SECRET_ACCESS_KEY="..."
@@ -53,24 +53,24 @@ RETENTION_DAYS=30
 Dry run first — it dumps and encrypts locally but uploads nothing:
 
 ```bash
-set -a; . /etc/openshorts-backup.env; set +a
-DRY_RUN=1 /opt/openshorts/ops/pg_backup.sh
+set -a; . /etc/sahu-shorts-backup.env; set +a
+DRY_RUN=1 /opt/sahu-shorts/ops/pg_backup.sh
 ```
 
 Schedule it:
 
 ```cron
-15 3 * * * set -a; . /etc/openshorts-backup.env; set +a; /opt/openshorts/ops/pg_backup.sh >> /var/log/openshorts-backup.log 2>&1
+15 3 * * * set -a; . /etc/sahu-shorts-backup.env; set +a; /opt/sahu-shorts/ops/pg_backup.sh >> /var/log/sahu-shorts-backup.log 2>&1
 ```
 
 ### Restore (do this once, before you need it)
 
 ```bash
 aws s3 cp --endpoint-url "$BACKUP_S3_ENDPOINT" \
-  s3://openshorts-backups/pg/openshorts-pg-20260904T031500Z.sql.gz.age .
-age -d -i openshorts-backup.key openshorts-pg-*.sql.gz.age | gunzip \
-  | psql "postgres://…/openshorts_restore_test"
-psql "postgres://…/openshorts_restore_test" -c 'select count(*) from users;'
+  s3://sahu-shorts-backups/pg/sahu-shorts-pg-20260904T031500Z.sql.gz.age .
+age -d -i sahu-shorts-backup.key sahu-shorts-pg-*.sql.gz.age | gunzip \
+  | psql "postgres://…/sahu-shorts_restore_test"
+psql "postgres://…/sahu-shorts_restore_test" -c 'select count(*) from users;'
 ```
 
 A backup nobody has restored is a hypothesis. Write down the date of the last

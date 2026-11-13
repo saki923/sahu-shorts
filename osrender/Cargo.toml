@@ -2,7 +2,7 @@
 name = "osrender"
 version = "0.1.0"
 edition = "2021"
-description = "Single-pass GPU renderer for OpenShorts vertical clips (NVDEC -> CUDA compositor -> NVENC)"
+description = "Single-pass GPU renderer for Sahu Shorts vertical clips (NVDEC -> CUDA compositor -> NVENC)"
 license = "MIT"
 publish = false
 

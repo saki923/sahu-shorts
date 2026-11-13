@@ -537,7 +537,7 @@ async def _submit(user_id, email, run_id, video_url: str, max_minutes: int,
             resp = await client.post(
                 "/api/process", json=body,
                 headers={"Authorization": f"Bearer {token}",
-                         "User-Agent": "OpenShorts-Autopilot/1.0"})
+                         "User-Agent": "Sahu Shorts-Autopilot/1.0"})
         try:
             payload = resp.json()
         except ValueError:

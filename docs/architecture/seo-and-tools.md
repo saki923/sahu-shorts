@@ -21,7 +21,7 @@ build time:
 
 `seo/data.js` is the single source of truth for pricing, pipeline and competitor
 facts used by every generated page. When editing pricing anywhere, edit
-`seo/data.js` too. Nothing on the site should say "OpenShorts is free" without
+`seo/data.js` too. Nothing on the site should say "Sahu Shorts is free" without
 naming the Cloud price in the same breath: both are true of different editions,
 and quoting only the first makes AI answers describe the paid product as free.
 
@@ -52,7 +52,7 @@ Topic clusters: `seo/hub-pages.js` builds the hubs `/platforms`, `/use-cases`
 and `/how-to`. Pages created inside a cluster live under its path
 (`/platforms/youtube`, `/use-cases/sermons`, `/how-to/clip-a-youtube-video`);
 pages that already ranked on a flat URL (`/podcast-to-shorts`, `/gta-5-clips`,
-`/auto-clip`, `/how-openshorts-works`, ...) keep it and only point their
+`/auto-clip`, `/how-sahu-shorts-works`, ...) keep it and only point their
 breadcrumb at the hub. Never move an established URL; a moved page gets a 301
 in `nginx.conf` for the clean path, `.html` and the trailing slash. Hub cards,
 footer entries marked `optional` and llms.txt key pages render only when the
@@ -66,7 +66,7 @@ at `/#/pricing?<query>`, so the deep links in emails, API/MCP errors and the
 page's own plan buttons keep opening checkout. `/pricing/` and `/pricing.html`
 301 to `/pricing`.
 
-Comparison pages open on OpenShorts' name and price (`brandLede` in
+Comparison pages open on Sahu Shorts' name and price (`brandLede` in
 `seo/pages.js`), every `/alternatives/*` page carries a ranked "Best X
 alternatives" list (`ALT_PICKS` in `data.js`, edit it with the competitor
 prices), and the pages engines cite most carry the paste-a-link form in place of

@@ -6,7 +6,7 @@
  * are one. The homepage table stays; this page states the same plans in plain
  * HTML for readers and engines that never run the app.
  *
- * Every number is read from data.js (PRICE_MODELS.openshorts, EDITIONS), which
+ * Every number is read from data.js (PRICE_MODELS['sahu-shorts'], EDITIONS), which
  * mirrors cloud/config.py PLAN_MINUTES and the Stripe catalog. The plan buttons
  * are the existing app deep links /pricing?plan=<plan>[&interval=year]: nginx
  * sends a /pricing request that carries `plan` or `src` to the plan picker at
@@ -18,7 +18,7 @@ import { esc } from './render.js'
 
 const PUBLISHED = '2026-10-30'
 const CLOUD = EDITIONS.cloud
-const PLANS = PRICE_MODELS.openshorts.plans
+const PLANS = PRICE_MODELS['sahu-shorts'].plans
 const plan = (name) => {
   const p = PLANS.find((x) => x.name === name)
   if (!p) throw new Error(`[pricing-page] no Sahu Shorts plan "${name}" in data.js PRICE_MODELS`)
@@ -27,7 +27,7 @@ const plan = (name) => {
 const FREE = plan('Free')
 const PAID = ['Starter', 'Creator', 'Pro'].map(plan)
 if (PAID[0].monthly.price !== CLOUD.lowPrice || PAID[2].monthly.price !== CLOUD.highPrice) {
-  throw new Error('[pricing-page] PRICE_MODELS.openshorts and EDITIONS.cloud disagree on the plan prices')
+  throw new Error('[pricing-page] PRICE_MODELS.sahu-shorts and EDITIONS.cloud disagree on the plan prices')
 }
 // app.FIRST_VIDEO_MAX_MINUTES, stated inside EDITIONS.cloud.summary.
 const FIRST_VIDEO_MINUTES = 60

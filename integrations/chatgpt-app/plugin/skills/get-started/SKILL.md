@@ -1,11 +1,11 @@
 ---
 name: get-started
-description: Use OpenShorts to turn a long video (YouTube link or video file) into vertical 9:16 clips with captions and titles, restyle or re-cut those clips, and publish them to TikTok, Instagram Reels and YouTube Shorts. Use when the user wants shorts, reels or clips from a video, the best moments of a podcast or interview, or to post a clip.
+description: Use Sahu Shorts to turn a long video (YouTube link or video file) into vertical 9:16 clips with captions and titles, restyle or re-cut those clips, and publish them to TikTok, Instagram Reels and YouTube Shorts. Use when the user wants shorts, reels or clips from a video, the best moments of a podcast or interview, or to post a clip.
 ---
 
-# OpenShorts: long video to vertical clips
+# Sahu Shorts: long video to vertical clips
 
-OpenShorts downloads, transcribes and analyses the video on its own servers,
+Sahu Shorts downloads, transcribes and analyses the video on its own servers,
 picks the strongest moments and renders 15-60 s vertical clips with
 word-by-word captions and an AI-written title. A job takes minutes.
 
@@ -41,11 +41,11 @@ word-by-word captions and an AI-written title. A job takes minutes.
 
 ## Minutes and limits
 
-Processing uses minutes from the user's OpenShorts account. Call `get_quota`
+Processing uses minutes from the user's Sahu Shorts account. Call `get_quota`
 before long videos. If a tool returns `quota_exceeded` or `no_plan`, tell the
 user and give them the `upgrade_url` it returns; never retry in a loop.
 
-## What OpenShorts does not do
+## What Sahu Shorts does not do
 
 It does not edit projects in desktop editors, does not download videos for
-reuse outside OpenShorts, and does not post anything the user did not ask for.
+reuse outside Sahu Shorts, and does not post anything the user did not ask for.

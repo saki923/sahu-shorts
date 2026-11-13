@@ -1,15 +1,15 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "openshorts",
+  "name": "sahu-shorts",
   "version": "1.0.0",
   "description": "Turn long videos (podcasts, interviews, webinars, streams) into vertical 9:16 clips with captions, re-cut them, and publish them to TikTok, Instagram Reels and YouTube Shorts.",
   "author": {
     "name": "Tonvi Tech SL",
-    "email": "info@openshorts.app",
-    "url": "https://www.openshorts.app"
+    "email": "github.com/saki923/sahu-shorts",
+    "url": "https://github.com/saki923/sahu-shorts"
   },
-  "homepage": "https://www.openshorts.app/mcp",
-  "repository": "https://github.com/mutonby/openshorts",
+  "homepage": "https://github.com/saki923/sahu-shorts/mcp",
+  "repository": "https://github.com/saki923/sahu-shorts",
   "license": "MIT",
   "keywords": [
     "video",
@@ -28,9 +28,9 @@
   "extensions": {
     "com.openai": {
       "interface": {
-        "displayName": "OpenShorts",
+        "displayName": "Sahu Shorts",
         "shortDescription": "Long videos into short clips",
-        "longDescription": "OpenShorts turns a long video into short vertical clips for TikTok, Instagram Reels and YouTube Shorts. Paste a YouTube link (or share a video file) and OpenShorts finds the strongest moments, cuts them into 15 to 60 second clips, reframes them to 9:16 so the speaker stays in shot, burns word-by-word captions and writes a title for each one.\n\nWhat you can do:\n• Clip a video: podcasts, interviews, webinars, talks, livestreams and tutorials. Choose how many clips and how long, or let the AI decide.\n• Pick the best: browse the clips with their titles and descriptions, preview them and download the ones you want.\n• Restyle captions: switch to a karaoke, one-word or highlighted style, change font, size and colours.\n• Re-cut a clip: trim it, extend it, drop a dead moment in the middle or join two moments into one clip.\n• Publish: post a clip to your connected TikTok, Instagram and YouTube accounts now or schedule it for later.\n\nTry asking: “Make shorts from this podcast: <YouTube link>”, “Give me 5 clips of 30 seconds from this interview”, “Make the captions of clip 2 karaoke style” or “Post clip 1 to TikTok and YouTube tomorrow at 9am”.\n\nProcessing takes a few minutes per video and uses minutes from your OpenShorts account. You must own the video or have the rights to use it. Publishing only happens when you ask for it, to the accounts you connected at openshorts.app.",
+        "longDescription": "Sahu Shorts turns a long video into short vertical clips for TikTok, Instagram Reels and YouTube Shorts. Paste a YouTube link (or share a video file) and Sahu Shorts finds the strongest moments, cuts them into 15 to 60 second clips, reframes them to 9:16 so the speaker stays in shot, burns word-by-word captions and writes a title for each one.\n\nWhat you can do:\n• Clip a video: podcasts, interviews, webinars, talks, livestreams and tutorials. Choose how many clips and how long, or let the AI decide.\n• Pick the best: browse the clips with their titles and descriptions, preview them and download the ones you want.\n• Restyle captions: switch to a karaoke, one-word or highlighted style, change font, size and colours.\n• Re-cut a clip: trim it, extend it, drop a dead moment in the middle or join two moments into one clip.\n• Publish: post a clip to your connected TikTok, Instagram and YouTube accounts now or schedule it for later.\n\nTry asking: “Make shorts from this podcast: <YouTube link>”, “Give me 5 clips of 30 seconds from this interview”, “Make the captions of clip 2 karaoke style” or “Post clip 1 to TikTok and YouTube tomorrow at 9am”.\n\nProcessing takes a few minutes per video and uses minutes from your Sahu Shorts account. You must own the video or have the rights to use it. Publishing only happens when you ask for it, to the accounts you connected at github.com/saki923/sahu-shorts.",
         "developerName": "Tonvi Tech SL",
         "category": "Productivity",
         "capabilities": [
@@ -40,10 +40,10 @@
           "Re-cut a clip: trim, extend or join moments",
           "Publish or schedule clips to TikTok, Instagram Reels and YouTube Shorts"
         ],
-        "websiteURL": "https://www.openshorts.app",
-        "supportURL": "https://www.openshorts.app/mcp",
-        "privacyPolicyURL": "https://www.openshorts.app/privacy",
-        "termsOfServiceURL": "https://www.openshorts.app/terms",
+        "websiteURL": "https://github.com/saki923/sahu-shorts",
+        "supportURL": "https://github.com/saki923/sahu-shorts/mcp",
+        "privacyPolicyURL": "https://github.com/saki923/sahu-shorts/privacy",
+        "termsOfServiceURL": "https://github.com/saki923/sahu-shorts/terms",
         "defaultPrompt": [
           "Make vertical shorts from this YouTube video",
           "Give me 5 clips of about 30 seconds from this podcast",
@@ -72,7 +72,7 @@
             },
             {
               "description": "Check remaining minutes",
-              "prompt": "How many processing minutes do I have left on OpenShorts?",
+              "prompt": "How many processing minutes do I have left on Sahu Shorts?",
               "tools_triggered": "get_quota",
               "expected_behavior": "Returns the plan and the remaining processing minutes of the connected account."
             },
@@ -105,15 +105,15 @@
           ]
         },
         "commerce": false,
-        "commerce_description": "OpenShorts does not sell anything inside ChatGPT. Processing uses minutes from the user's own OpenShorts account; when it runs out, the tool returns a link to openshorts.app and the user decides there.",
-        "demo_recording_url": "https://www.openshorts.app/demo/chatgpt-app-walkthrough.mp4"
+        "commerce_description": "Sahu Shorts does not sell anything inside ChatGPT. Processing uses minutes from the user's own Sahu Shorts account; when it runs out, the tool returns a link to github.com/saki923/sahu-shorts and the user decides there.",
+        "demo_recording_url": "https://github.com/saki923/sahu-shorts/demo/chatgpt-app-walkthrough.mp4"
       },
       "publication": {
         "release_notes": "First release: clip long videos into vertical shorts with captions and titles, restyle captions, re-cut clips and publish to TikTok, Instagram Reels and YouTube Shorts.",
         "translations": {
           "es-ES": {
             "subtitle": "Vídeos largos a clips cortos",
-            "description": "OpenShorts convierte un vídeo largo en clips verticales cortos para TikTok, Instagram Reels y YouTube Shorts. Pega un enlace de YouTube (o comparte un archivo de vídeo) y OpenShorts encuentra los mejores momentos, los corta en clips de 15 a 60 segundos, los reencuadra a 9:16 para que quien habla siga en plano, añade subtítulos palabra a palabra y escribe un título para cada uno.\n\nQué puedes hacer:\n• Sacar clips de un vídeo: pódcasts, entrevistas, webinars, charlas, directos y tutoriales. Elige cuántos clips y de qué duración, o deja que lo decida la IA.\n• Quedarte con los mejores: repasa los clips con su título y descripción, previsualízalos y descarga los que quieras.\n• Cambiar los subtítulos: estilo karaoke, palabra a palabra o resaltado; cambia fuente, tamaño y colores.\n• Recortar un clip: acórtalo, alárgalo, quita un momento muerto o une dos momentos en un mismo clip.\n• Publicar: sube un clip a tus cuentas conectadas de TikTok, Instagram y YouTube ahora o prográmalo.\n\nPrueba a pedir: «Saca shorts de este pódcast: <enlace de YouTube>», «Dame 5 clips de 30 segundos de esta entrevista», «Pon los subtítulos del clip 2 en estilo karaoke» o «Publica el clip 1 en TikTok y YouTube mañana a las 9».\n\nCada vídeo tarda unos minutos y consume minutos de tu cuenta de OpenShorts. Tienes que ser dueño del vídeo o tener derechos para usarlo. Solo se publica cuando tú lo pides y en las cuentas que conectaste en openshorts.app."
+            "description": "Sahu Shorts convierte un vídeo largo en clips verticales cortos para TikTok, Instagram Reels y YouTube Shorts. Pega un enlace de YouTube (o comparte un archivo de vídeo) y Sahu Shorts encuentra los mejores momentos, los corta en clips de 15 a 60 segundos, los reencuadra a 9:16 para que quien habla siga en plano, añade subtítulos palabra a palabra y escribe un título para cada uno.\n\nQué puedes hacer:\n• Sacar clips de un vídeo: pódcasts, entrevistas, webinars, charlas, directos y tutoriales. Elige cuántos clips y de qué duración, o deja que lo decida la IA.\n• Quedarte con los mejores: repasa los clips con su título y descripción, previsualízalos y descarga los que quieras.\n• Cambiar los subtítulos: estilo karaoke, palabra a palabra o resaltado; cambia fuente, tamaño y colores.\n• Recortar un clip: acórtalo, alárgalo, quita un momento muerto o une dos momentos en un mismo clip.\n• Publicar: sube un clip a tus cuentas conectadas de TikTok, Instagram y YouTube ahora o prográmalo.\n\nPrueba a pedir: «Saca shorts de este pódcast: <enlace de YouTube>», «Dame 5 clips de 30 segundos de esta entrevista», «Pon los subtítulos del clip 2 en estilo karaoke» o «Publica el clip 1 en TikTok y YouTube mañana a las 9».\n\nCada vídeo tarda unos minutos y consume minutos de tu cuenta de Sahu Shorts. Tienes que ser dueño del vídeo o tener derechos para usarlo. Solo se publica cuando tú lo pides y en las cuentas que conectaste en github.com/saki923/sahu-shorts."
           }
         }
       }

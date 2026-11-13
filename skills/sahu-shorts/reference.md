@@ -1,11 +1,11 @@
-# OpenShorts HTTP reference
+# Sahu Shorts HTTP reference
 
-Base URL: `https://api.openshorts.app` (self-hosted: `http://localhost:8000`).
-Every call carries `Authorization: Bearer osk_...` or `X-API-Key: osk_...`.
+Base URL: `http://localhost:8000` (self-hosted: `http://localhost:8000`).
+Every call carries `Authorization: Bearer ssk_...` or `X-API-Key: ssk_...`.
 Self-hosted instances need no key, but do need a Gemini key, either in the
 server's environment or as an `X-Gemini-Key` header.
 
-The MCP server at `https://mcp.openshorts.app/mcp` wraps exactly these
+The MCP server at `http://localhost:8000/mcp` wraps exactly these
 endpoints, forwarding your auth headers, so the two paths cannot drift.
 
 ## Quota
@@ -40,7 +40,7 @@ a `file` part to upload a local video instead):
   "target_clips": 4,
   "clip_min_seconds": 15,
   "clip_max_seconds": 60,
-  "webhook_url": "https://example.com/hooks/openshorts",
+  "webhook_url": "https://example.com/hooks/sahu-shorts",
   "webhook_secret": "change-me",
   "force_low_quality": false
 }
@@ -164,4 +164,4 @@ Analytics of what was published: `GET /api/social/analytics` (profile totals),
 `GET /api/social/analytics/posts` (per post), and
 `GET /api/social/analytics/impressions` (windowed, e.g. `?period=last_week`).
 
-Full generated API docs: <https://api.openshorts.app/docs>.
+Full generated API docs: <http://localhost:8000/docs>.

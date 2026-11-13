@@ -78,9 +78,9 @@ def _cooldown_ok(kind: str) -> bool:
     return True
 
 
-# Prefix on every OpenShorts Telegram message. The chat is shared with other
+# Prefix on every Sahu Shorts Telegram message. The chat is shared with other
 # products (Upload-Post, …), so this tags which one each alert is from.
-TELEGRAM_PREFIX = "OPENSHORTS ✂️ - "
+TELEGRAM_PREFIX = "SAHU_SHORTS ✂️ - "
 
 
 def user_ref(user_id) -> str:
@@ -159,7 +159,7 @@ async def send_admin_alert(subject: str, body: str):
     # The body quotes job logs and error text: text, never markup.
     html = ("<pre style='font:13px/1.5 monospace;white-space:pre-wrap'>"
             f"{_html.escape(str(body))}</pre>")
-    await send_email(to, f"[OpenShorts] {subject}", html)
+    await send_email(to, f"[Sahu Shorts] {subject}", html)
 
 
 async def record_job_outcome(ok: bool, error_text: str = ""):

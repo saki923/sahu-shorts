@@ -1,4 +1,4 @@
-"""Loader.to fallback downloader for OpenShorts (stdlib only).
+"""Loader.to fallback downloader for Sahu Shorts (stdlib only).
 
 Mirrors the public web flow Loader.to's own frontend uses, so it works
 where anonymous yt-dlp is bot-walled (e.g. a GitHub Codespace IP):

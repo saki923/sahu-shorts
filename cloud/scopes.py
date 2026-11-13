@@ -1,11 +1,11 @@
 """What an OAuth-issued token may reach.
 
-OAuth tokens are ordinary ``osk_`` API keys (cloud/mcp_oauth.py). The consent
+OAuth tokens are ordinary ``ssk_`` API keys (cloud/mcp_oauth.py). The consent
 screen asks for one thing, the MCP connection, so the key it mints carries
 exactly that and not the rest of the REST API (projects, Autopilot, social
 accounts...).
 
-``openshorts`` is the only scope, and the one every MCP client asks for (it is
+``sahu-shorts`` is the only scope, and the one every MCP client asks for (it is
 the single entry of ``scopes_supported``). It covers what the MCP tools do,
 which call back into this API in-process with the caller's own header, plus
 downloading the results. Keys a user creates by hand have no scope and keep
@@ -14,7 +14,7 @@ the whole API, as before.
 import re
 from typing import Optional
 
-MCP_SCOPE = "openshorts"
+MCP_SCOPE = "sahu-shorts"
 SUPPORTED_SCOPES = (MCP_SCOPE,)
 
 # Keys minted by the OAuth flow before the scope column existed. Their name is

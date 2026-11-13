@@ -1,4 +1,4 @@
-"""Render the OpenShorts watermark lockup (white mark + wordmark) to a PNG.
+"""Render the Sahu Shorts watermark lockup (white mark + wordmark) to a PNG.
 
 Pre-rendered at 4x so it downscales cleanly onto any clip size, with a soft
 dark shadow so it stays legible over bright footage.
@@ -9,8 +9,8 @@ S = 4                      # supersampling
 H = 64 * S                 # lockup height
 PAD = 6 * S
 
-font = ImageFont.truetype("/System/Library/Fonts/HelveticaNeue.ttc", int(38 * S), index=1)  # Bold
-text = "OpenShorts"
+font = ImageFont.truetype("../fonts/Montserrat-ExtraBold.ttf", int(38 * S))  # Bold
+text = "Sahu Shorts"
 
 tmp = Image.new("RGBA", (10, 10))
 tb = ImageDraw.Draw(tmp).textbbox((0, 0), text, font=font)
