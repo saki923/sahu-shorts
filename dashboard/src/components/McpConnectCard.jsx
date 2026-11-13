@@ -3,7 +3,7 @@ import { Plug, Copy, Check } from 'lucide-react';
 import { getApiUrl } from '../config';
 
 // "Connect an agent": the one place that tells a person how to drive
-// OpenShorts from Claude, ChatGPT, Cursor or n8n. Cloud accounts connect by
+// Sahu Shorts from Claude, ChatGPT, Cursor or n8n. Cloud accounts connect by
 // URL (claude.ai and ChatGPT run the OAuth flow themselves; CLI clients take
 // an API key); a self-hosted install has no auth, so every snippet is the
 // local URL and nothing else.
@@ -33,7 +33,7 @@ function buildClients({ cloud, url }) {
       steps: [
         'Open claude.ai → Settings → Connectors → Add custom connector.',
         `Paste this URL and save: ${url}`,
-        'Click Connect: you will land on OpenShorts to approve the access, then the 8 tools appear in every chat.',
+        'Click Connect: you will land on Sahu Shorts to approve the access, then the 8 tools appear in every chat.',
       ],
       snippet: url,
     },
@@ -41,8 +41,8 @@ function buildClients({ cloud, url }) {
       id: 'chatgpt', label: 'ChatGPT', kind: 'steps',
       steps: [
         'Open ChatGPT → Settings → Connectors → Create (developer mode).',
-        `Name it OpenShorts, paste this MCP server URL, choose OAuth: ${url}`,
-        'Approve the access on OpenShorts when asked. Done: ask ChatGPT to clip a video.',
+        `Name it Sahu Shorts, paste this MCP server URL, choose OAuth: ${url}`,
+        'Approve the access on Sahu Shorts when asked. Done: ask ChatGPT to clip a video.',
       ],
       snippet: url,
     },

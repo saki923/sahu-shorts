@@ -26,7 +26,7 @@ const CLOUD = EDITIONS.cloud
 const PLANS = PRICE_MODELS.openshorts.plans
 const plan = (name) => {
   const p = PLANS.find((x) => x.name === name)
-  if (!p) throw new Error(`[product-pages] no OpenShorts plan "${name}" in data.js PRICE_MODELS`)
+  if (!p) throw new Error(`[product-pages] no Sahu Shorts plan "${name}" in data.js PRICE_MODELS`)
   return p
 }
 const FREE = plan('Free')
@@ -115,13 +115,13 @@ const howToNode = (path, name, description, steps) => ({
   '@id': `${SITE.url}${path}#howto`,
   name,
   description,
-  tool: [{ '@type': 'HowToTool', name: 'OpenShorts (OpenShorts Cloud in the browser, or self-hosted with Docker)' }],
+  tool: [{ '@type': 'HowToTool', name: 'Sahu Shorts (Sahu Shorts Cloud in the browser, or self-hosted with Docker)' }],
   step: steps.map(([n, text], i) => ({ '@type': 'HowToStep', position: i + 1, name: n, text })),
 })
 
 const monthly = (p, description) => ({
   '@type': 'Offer',
-  name: `OpenShorts Cloud ${p.name}`,
+  name: `Sahu Shorts Cloud ${p.name}`,
   price: String(p.monthly.price),
   priceCurrency: CLOUD.currency,
   description,
@@ -141,14 +141,14 @@ const appNode = (path, name, description, offers) => ({
   description,
   url: `${SITE.url}${path}`,
   applicationCategory: 'MultimediaApplication',
-  operatingSystem: 'Web browser (OpenShorts Cloud); Docker (self-hosted)',
+  operatingSystem: 'Web browser (Sahu Shorts Cloud); Docker (self-hosted)',
   publisher: { '@id': `${SITE.url}/#organization` },
   offers,
 })
 
 const selfHostedOffer = (description) => ({
   '@type': 'Offer',
-  name: 'OpenShorts self-hosted (MIT)',
+  name: 'Sahu Shorts self-hosted (MIT)',
   price: '0',
   priceCurrency: CLOUD.currency,
   description,
@@ -179,7 +179,7 @@ const thumbSteps = [
 ]
 
 const thumbFaq = [
-  { q: 'Is this AI thumbnail maker free?', a: `Not on the hosted free plan. On OpenShorts Cloud, generating thumbnail images is reserved for paid plans, from $${STARTER.monthly.price}/month for ${STARTER.monthly.minutes} minutes, and each batch uses ${THUMB.batchMinutes} of those minutes. The free plan (your first video up to ${FIRST_VIDEO_MINUTES} minutes, then ${FREE.monthly.minutes} minutes a month, watermarked clips, no card) can analyse a video and get titles, but not images. The self-hosted edition is free under MIT and includes the studio; you bring your own Google Gemini key and Google bills the image calls.` },
+  { q: 'Is this AI thumbnail maker free?', a: `Not on the hosted free plan. On Sahu Shorts Cloud, generating thumbnail images is reserved for paid plans, from $${STARTER.monthly.price}/month for ${STARTER.monthly.minutes} minutes, and each batch uses ${THUMB.batchMinutes} of those minutes. The free plan (your first video up to ${FIRST_VIDEO_MINUTES} minutes, then ${FREE.monthly.minutes} minutes a month, watermarked clips, no card) can analyse a video and get titles, but not images. The self-hosted edition is free under MIT and includes the studio; you bring your own Google Gemini key and Google bills the image calls.` },
   { q: 'What size are the thumbnails?', a: 'Exactly 1280x720 pixels, 16:9, saved as JPEG. The file is re-compressed in steps until it is under 2 MB, which is the limit YouTube puts on a custom thumbnail.' },
   { q: 'Can it put my face on the thumbnail?', a: `Yes. After a video is analysed the studio scans sampled frames for a large, sharp face and offers up to ${THUMB.frames} of them, spread across the runtime. Pick one and it is used as the person reference. You can also upload a photo, which takes priority over the frame.` },
   { q: 'Is the text on the thumbnail spelled correctly?', a: 'With the default Crisp setting, yes: the image model leaves one side empty and the text is set afterwards in the Anton typeface with a black stroke, from the exact words you chose. With AI painted, the image model draws the text itself, which can look more integrated but can also misspell it.' },
@@ -190,14 +190,14 @@ const thumbFaq = [
   { q: 'Does it change the thumbnail of a video already on my channel?', a: 'No. Publishing from the studio uploads the video you analysed as a new public YouTube video, with the title, description and thumbnail you chose, through your connected YouTube account. To change an existing video, download the JPEG and upload it in YouTube Studio.' },
   { q: 'Does it make Shorts thumbnails?', a: 'It makes 16:9 thumbnails for regular YouTube videos. Shorts are vertical and YouTube handles their cover differently, so for Shorts the clip generator is the relevant tool, not the thumbnail studio.' },
   { q: 'What languages does it work in?', a: 'Titles, thumbnail text and descriptions are written in the language of the video\'s transcript, never translated unless you ask. In the title chat you can ask for another language and the new titles and thumbnail texts come back in it.' },
-  { q: 'Are the thumbnails marked as AI-generated?', a: 'Yes, in the file metadata. Every generated JPEG carries the IPTC "trainedAlgorithmicMedia" source type in XMP and an EXIF Software tag naming OpenShorts. Nothing is drawn on the image itself.' },
+  { q: 'Are the thumbnails marked as AI-generated?', a: 'Yes, in the file metadata. Every generated JPEG carries the IPTC "trainedAlgorithmicMedia" source type in XMP and an EXIF Software tag naming Sahu Shorts. Nothing is drawn on the image itself.' },
 ]
 
 const thumbnailMaker = () => ({
   path: THUMB_PATH,
   published: PUBLISHED,
   updated: PUBLISHED,
-  title: 'AI YouTube Thumbnail Maker & Title Generator | OpenShorts',
+  title: 'AI YouTube Thumbnail Maker & Title Generator | Sahu Shorts',
   description: `Make YouTube thumbnails with AI from your video: 1280x720, under 2 MB, your face, crisp text, plus ${THUMB.titles} titles and chapters. Paid plans from $${STARTER.monthly.price}/month.`,
   h1: 'AI YouTube thumbnail maker: thumbnails and titles from your own video',
   breadcrumb: [{ name: 'Free tools', path: '/tools' }, { name: 'AI thumbnail maker' }],
@@ -214,8 +214,8 @@ const thumbnailMaker = () => ({
     href: `${SITE.url}/#app?tab=thumbnails`,
   },
   tldr: [
-    `OpenShorts makes YouTube thumbnails from the video they are for. It reads the transcript and a spread of frames, proposes ${THUMB.titles} titles each paired with a short thumbnail text, finds frames where your face is large and sharp, and generates ${THUMB.uiCounts} different thumbnail concepts at once, each 1280x720 and under YouTube's 2 MB limit.`,
-    `It is not a free web toy: it lives in the OpenShorts app (the YouTube Studio tab). On the hosted Cloud, thumbnail images are a paid-plan feature from $${STARTER.monthly.price}/month, ${THUMB.batchMinutes} minutes of the plan per batch. Titles and descriptions work on the free plan too, and the self-hosted edition includes everything under MIT with your own Gemini key.`,
+    `Sahu Shorts makes YouTube thumbnails from the video they are for. It reads the transcript and a spread of frames, proposes ${THUMB.titles} titles each paired with a short thumbnail text, finds frames where your face is large and sharp, and generates ${THUMB.uiCounts} different thumbnail concepts at once, each 1280x720 and under YouTube's 2 MB limit.`,
+    `It is not a free web toy: it lives in the Sahu Shorts app (the YouTube Studio tab). On the hosted Cloud, thumbnail images are a paid-plan feature from $${STARTER.monthly.price}/month, ${THUMB.batchMinutes} minutes of the plan per batch. Titles and descriptions work on the free plan too, and the self-hosted edition includes everything under MIT with your own Gemini key.`,
   ],
   body: `
 <h2>What this AI thumbnail maker does</h2>
@@ -345,7 +345,7 @@ apply whatever tool you use.</p>
 <h2>Which plan includes it, and what it costs</h2>
 <p>The studio is the same code in both editions; what differs is who pays for
 the Google calls behind it.</p>
-<p><strong>OpenShorts Cloud.</strong> Thumbnail image generation is a paid-plan
+<p><strong>Sahu Shorts Cloud.</strong> Thumbnail image generation is a paid-plan
 feature: a free account that presses Generate is asked to upgrade. Every
 action is metered from the same minute balance your clips use, and the meter is
 deliberately light:</p>
@@ -407,7 +407,7 @@ stop there.</p>
 title options and a description from a short brief, with no sign-up and no
 video needed. And once the long video is out, the same footage can feed your
 Shorts: <a href="/platforms/youtube-shorts">turn it into YouTube Shorts</a> with
-the clip generator, or see <a href="/platforms/youtube">everything OpenShorts does
+the clip generator, or see <a href="/platforms/youtube">everything Sahu Shorts does
 with a YouTube video</a>.</p>
 
 ${faqBlock(thumbFaq)}
@@ -421,8 +421,8 @@ ${sources([
   faq: thumbFaq,
   extraNodes: [
     howToNode(THUMB_PATH, 'How to make a YouTube thumbnail with AI',
-      'Generate 1280x720 YouTube thumbnails, titles and a description from your own video with the OpenShorts thumbnail studio.', thumbSteps),
-    appNode(THUMB_PATH, 'OpenShorts AI YouTube thumbnail maker',
+      'Generate 1280x720 YouTube thumbnails, titles and a description from your own video with the Sahu Shorts thumbnail studio.', thumbSteps),
+    appNode(THUMB_PATH, 'Sahu Shorts AI YouTube thumbnail maker',
       'AI YouTube thumbnails (1280x720, under 2 MB) with matching titles and a chaptered description, made from your own video.',
       [
         monthly(STARTER, `${STARTER.monthly.minutes} minutes a month; thumbnail image generation included at ${THUMB.batchMinutes} minutes per batch.`),
@@ -446,8 +446,8 @@ const ugcSteps = [
 ]
 
 const ugcFaq = [
-  { q: 'How much does an AI UGC video cost?', a: `About ${UGC.lowCost} a video in Low Cost mode and about ${UGC.premium} in Premium (the in-app estimate shows up to ${UGC.premiumUi} for Premium), paid to fal.ai and ElevenLabs on your own keys. On OpenShorts Cloud the script and orchestration come out of your plan's minutes (the free plan included); plans run from $0 to $${CLOUD.highPrice}/month. Self-hosted, OpenShorts itself is free under MIT and you also bring a Gemini key.` },
-  { q: 'Is there a free AI UGC video generator?', a: `Not in the sense of free videos. On OpenShorts Cloud the research and the scripts run on the free plan, from its minutes, so you can get UGC scripts for nothing; the video itself (actor, lip-sync, voice, b-roll) is always billed by fal.ai and ElevenLabs on your own keys, about ${UGC.lowCost} a video in Low Cost mode. Paid Cloud plans start at $${STARTER.monthly.price}/month; self-hosted, OpenShorts is free under MIT and you pay only those providers and your own Gemini key.` },
+  { q: 'How much does an AI UGC video cost?', a: `About ${UGC.lowCost} a video in Low Cost mode and about ${UGC.premium} in Premium (the in-app estimate shows up to ${UGC.premiumUi} for Premium), paid to fal.ai and ElevenLabs on your own keys. On Sahu Shorts Cloud the script and orchestration come out of your plan's minutes (the free plan included); plans run from $0 to $${CLOUD.highPrice}/month. Self-hosted, Sahu Shorts itself is free under MIT and you also bring a Gemini key.` },
+  { q: 'Is there a free AI UGC video generator?', a: `Not in the sense of free videos. On Sahu Shorts Cloud the research and the scripts run on the free plan, from its minutes, so you can get UGC scripts for nothing; the video itself (actor, lip-sync, voice, b-roll) is always billed by fal.ai and ElevenLabs on your own keys, about ${UGC.lowCost} a video in Low Cost mode. Paid Cloud plans start at $${STARTER.monthly.price}/month; self-hosted, Sahu Shorts is free under MIT and you pay only those providers and your own Gemini key.` },
   { q: 'Do I need my own API keys?', a: 'Yes, for the video. Generation always uses your fal.ai key (actor image, talking-head video, lip-sync, b-roll) and your ElevenLabs key (voice), on Cloud and self-hosted alike, and those providers bill you directly. On Cloud the Gemini part (research and scripts) and posting run on the managed keys; self-hosted, you supply a Gemini key too.' },
   { q: 'What do I need to give it?', a: `Either the product's website URL or a written description of up to ${UGC.descriptionChars} characters, or both (the description then adds context). With a URL, the page and up to ${UGC.subpages} subpages are read and the product is researched on the web before the scripts are written.` },
   { q: 'How long are the videos?', a: 'About 20 to 25 seconds, by design. Every script follows a fixed five-part structure (hook, problem, solution, demo, call to action), which is the length and shape of a typical short-form product ad.' },
@@ -457,14 +457,14 @@ const ugcFaq = [
   { q: 'What is the difference between Low Cost and Premium?', a: `Low Cost animates the actor image with MiniMax Hailuo 2.3 Fast and then lip-syncs it with VEED Lipsync, for about ${UGC.lowCost} a video. Premium generates the talking head with Kling Avatar v2 from the image and the audio in one step, for about ${UGC.premium}, with more natural movement. Both use the same script, voice, b-roll and captions.` },
   { q: 'Is it an AI avatar video generator?', a: 'In the sense that it makes talking-head videos of an AI-generated person, yes. It is built for one job, short vertical product ads, rather than long presenter videos or training content, and it does not train a persistent avatar of you: each video is generated from a single image.' },
   { q: 'Can I post the videos straight to social media?', a: 'Yes, to TikTok, Instagram and YouTube, now or scheduled, from the result screen. TikTok receives it as a draft you finish in the TikTok app, where you can add a trending sound. Each script also comes with a suggested caption.' },
-  { q: 'Do I have to label it as AI?', a: 'Rules differ by platform and by country, and they change. TikTok, YouTube and Instagram all have their own labels for realistic AI-generated content, and advertising rules generally forbid presenting an actor as a real customer. Check the current rules of the platform you post on; OpenShorts does not add a label for you.' },
+  { q: 'Do I have to label it as AI?', a: 'Rules differ by platform and by country, and they change. TikTok, YouTube and Instagram all have their own labels for realistic AI-generated content, and advertising rules generally forbid presenting an actor as a real customer. Check the current rules of the platform you post on; Sahu Shorts does not add a label for you.' },
 ]
 
 const ugcGenerator = () => ({
   path: UGC_PATH,
   published: PUBLISHED,
   updated: PUBLISHED,
-  title: 'AI UGC Video Generator: AI Actors for Ads | OpenShorts',
+  title: 'AI UGC Video Generator: AI Actors for Ads | Sahu Shorts',
   description: `Turn a product URL or description into a 20-25 s vertical UGC ad with a lip-synced AI actor, b-roll and captions. About ${UGC.lowCost} a video on your own keys.`,
   h1: 'AI UGC video generator: product ads with lip-synced AI actors',
   breadcrumb: [{ name: 'AI UGC video generator' }],
@@ -478,8 +478,8 @@ const ugcGenerator = () => ({
     href: `${SITE.url}/#app?tab=saasshorts`,
   },
   tldr: [
-    `OpenShorts' AI Shorts turns a product URL or a short description into a vertical UGC-style ad: Gemini researches the product and writes 20 to 25 second scripts (hook, problem, solution, demo, call to action), an AI actor says it with lip-synced voice, two b-roll inserts cover the problem and the product, and the captions are burned in. Output is a 1080x1920 MP4 for TikTok, Reels and Shorts.`,
-    `The video generation runs on your own fal.ai and ElevenLabs keys: about ${UGC.lowCost} a video in Low Cost mode and about ${UGC.premium} in Premium, billed by those providers. On OpenShorts Cloud the scripts come out of your plan's minutes, the free plan included; self-hosted, OpenShorts is free under MIT and you add a Gemini key.`,
+    `Sahu Shorts' AI Shorts turns a product URL or a short description into a vertical UGC-style ad: Gemini researches the product and writes 20 to 25 second scripts (hook, problem, solution, demo, call to action), an AI actor says it with lip-synced voice, two b-roll inserts cover the problem and the product, and the captions are burned in. Output is a 1080x1920 MP4 for TikTok, Reels and Shorts.`,
+    `The video generation runs on your own fal.ai and ElevenLabs keys: about ${UGC.lowCost} a video in Low Cost mode and about ${UGC.premium} in Premium, billed by those providers. On Sahu Shorts Cloud the scripts come out of your plan's minutes, the free plan included; self-hosted, Sahu Shorts is free under MIT and you add a Gemini key.`,
   ],
   body: `
 <h2>What AI UGC is, and what this generator makes</h2>
@@ -564,16 +564,16 @@ does not pay for the image and the voice twice.</p>
 <p>There are two bills, and keeping them apart is the honest way to describe it.</p>
 <p><strong>The video generation</strong> (actor image, talking head, lip-sync,
 b-roll, voice) is billed by fal.ai and ElevenLabs, to the keys you connect in
-Settings. That is true on OpenShorts Cloud and self-hosted alike: no plan
+Settings. That is true on Sahu Shorts Cloud and self-hosted alike: no plan
 includes it yet. The keys are kept in your browser and sent with each request.</p>
-<p><strong>The research, the scripts and the posting</strong> are OpenShorts. On
+<p><strong>The research, the scripts and the posting</strong> are Sahu Shorts. On
 Cloud they run on the managed Gemini and posting keys and each analysis run
 uses 1 minute of your plan's balance, which the free plan (your first video up
 to ${FIRST_VIDEO_MINUTES} minutes, then ${FREE.monthly.minutes} minutes a month,
 watermarked clips, no card) covers too. Paid plans, from the
 <a href="${PRICING}">pricing table</a>:</p>
 ${planTable()}
-<p>Self-hosted, OpenShorts is free under MIT with no meter; you add your own
+<p>Self-hosted, Sahu Shorts is free under MIT with no meter; you add your own
 Gemini key for the research and scripts, plus
 the same fal.ai and ElevenLabs keys.</p>
 
@@ -620,7 +620,7 @@ each have their own label for realistic AI-generated content, with their own
 rules for when it is required, and advertising rules in many countries forbid
 presenting a paid or invented endorsement as a genuine customer review. Those
 rules change and differ by market, so check the current ones for where you post.
-OpenShorts does not add a label or a mark to the video; whether and how to
+Sahu Shorts does not add a label or a mark to the video; whether and how to
 disclose is your decision, and labelling it is rarely a disadvantage with an
 audience that can usually tell anyway.</p>
 
@@ -629,13 +629,13 @@ audience that can usually tell anyway.</p>
 <li><strong>Faces.</strong> Generated actors are not real people. An uploaded photo must be you or someone who consented to being animated in an ad.</li>
 <li><strong>Claims.</strong> The script is written from your page and from web research. Read it before generating: you are the advertiser, and the claims in the ad are yours.</li>
 <li><strong>Providers' terms.</strong> The image, video and voice come from fal.ai's models and ElevenLabs, under your accounts and their terms, including what they allow for commercial use.</li>
-<li><strong>The public gallery is opt-in.</strong> A checkbox lets you share a finished video in the OpenShorts gallery; when ticked, the video, the product name and the script are public. It is off unless you tick it.</li>
+<li><strong>The public gallery is opt-in.</strong> A checkbox lets you share a finished video in the Sahu Shorts gallery; when ticked, the video, the product name and the script are public. It is off unless you tick it.</li>
 </ul>
 
 <h2>Compared with avatar video subscriptions (Arcads, SendShort)</h2>
 <p>Most AI avatar video tools sell a monthly subscription with a quota of videos
 or minutes. SendShort, for example, includes AI avatar videos from its
-Professional plan, ${esc(SENDSHORT_PRO)} (checked ${esc(longDate(SENDSHORT.checked))}). OpenShorts works the other way
+Professional plan, ${esc(SENDSHORT_PRO)} (checked ${esc(longDate(SENDSHORT.checked))}). Sahu Shorts works the other way
 round: the code is open source, there is no avatar quota, and you pay the
 generation providers per video on your own keys, so a month with two ads costs
 two ads. The trade-off is setup: two provider accounts and keys instead of one
@@ -659,19 +659,19 @@ ${sources([
   `Pipeline, models and per-step estimates: <code>saasshorts.py</code> and <code>dashboard/src/components/SaaShortsTab.jsx</code>; limits in <code>cloud/config.py</code>. Source: <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
   `Provider prices are the estimates the app shows, ${esc(CHECKED)}; fal.ai and ElevenLabs set the final price on their own pricing pages.`,
   `SendShort plans: our comparison data, checked ${esc(longDate(SENDSHORT.checked))}. See <a href="/alternatives/sendshort">SendShort compared</a>.`,
-  `OpenShorts plan prices and minutes: the <a href="${PRICING}">pricing table</a>.`,
+  `Sahu Shorts plan prices and minutes: the <a href="${PRICING}">pricing table</a>.`,
 ])}
 `,
   faq: ugcFaq,
   extraNodes: [
     howToNode(UGC_PATH, 'How to make an AI UGC video with an AI actor',
-      'Turn a product URL or description into a vertical UGC-style ad with a lip-synced AI actor, b-roll and captions, using OpenShorts AI Shorts.', ugcSteps),
-    appNode(UGC_PATH, 'OpenShorts AI UGC video generator',
+      'Turn a product URL or description into a vertical UGC-style ad with a lip-synced AI actor, b-roll and captions, using Sahu Shorts AI Shorts.', ugcSteps),
+    appNode(UGC_PATH, 'Sahu Shorts AI UGC video generator',
       `Vertical UGC-style product ads with lip-synced AI actors, from a URL or a description. Video generation is billed by fal.ai and ElevenLabs on your own keys, about ${UGC.lowCost} to ${UGC.premium} a video.`,
       [
         {
           '@type': 'Offer',
-          name: 'OpenShorts Cloud free plan',
+          name: 'Sahu Shorts Cloud free plan',
           price: '0',
           priceCurrency: CLOUD.currency,
           description: `Scripts and orchestration from the free minutes (first video up to ${FIRST_VIDEO_MINUTES} minutes, then ${FREE.monthly.minutes} a month; clips watermarked). Video generation billed by fal.ai and ElevenLabs on your keys.`,
@@ -698,11 +698,11 @@ const ARCADS = {
 const ARCADS_PATH = '/alternatives/arcads'
 
 const arcadsFaq = [
-  { q: 'What is a cheaper alternative to Arcads?', a: `OpenShorts AI Shorts, if you would rather pay per video than per month: about ${UGC.lowCost} a video in Low Cost mode (about ${UGC.premium} in Premium), billed by fal.ai and ElevenLabs on your own keys, with no avatar quota. OpenShorts itself is free to self-host under MIT, or from $${STARTER.monthly.price}/month hosted.` },
+  { q: 'What is a cheaper alternative to Arcads?', a: `Sahu Shorts AI Shorts, if you would rather pay per video than per month: about ${UGC.lowCost} a video in Low Cost mode (about ${UGC.premium} in Premium), billed by fal.ai and ElevenLabs on your own keys, with no avatar quota. Sahu Shorts itself is free to self-host under MIT, or from $${STARTER.monthly.price}/month hosted.` },
   { q: 'How much does Arcads cost?', a: `Arcads does not publish its prices on its website (checked ${longDate(ARCADS.checked)}). Its help centre names the plans: ${ARCADS.plans}. The free trial is ${ARCADS.trial}.` },
-  { q: 'Is there a free Arcads alternative?', a: `Not for the video itself: lip-synced AI actors cost compute on every tool. With OpenShorts the scripts and product research run on the free plan, and the video is billed per piece by fal.ai and ElevenLabs on your keys, about ${UGC.lowCost} in Low Cost mode. Self-hosted, OpenShorts is free under MIT and you add a Gemini key.` },
-  { q: 'What does OpenShorts AI Shorts make?', a: 'A 20 to 25 second vertical UGC-style ad from a product URL or description: hook, problem, solution, demo and call to action, said by a lip-synced AI actor, with two b-roll inserts and burned-in captions, as a 1080x1920 MP4. English and Spanish.' },
-  { q: 'Where is Arcads better?', a: 'It is a dedicated UGC ad product with one subscription and no API keys to manage, a larger actor library, and more ad formats and workflows than a single 20-second structure. OpenShorts AI Shorts is narrower: one ad format, your own provider keys, open source code.' },
+  { q: 'Is there a free Arcads alternative?', a: `Not for the video itself: lip-synced AI actors cost compute on every tool. With Sahu Shorts the scripts and product research run on the free plan, and the video is billed per piece by fal.ai and ElevenLabs on your keys, about ${UGC.lowCost} in Low Cost mode. Self-hosted, Sahu Shorts is free under MIT and you add a Gemini key.` },
+  { q: 'What does Sahu Shorts AI Shorts make?', a: 'A 20 to 25 second vertical UGC-style ad from a product URL or description: hook, problem, solution, demo and call to action, said by a lip-synced AI actor, with two b-roll inserts and burned-in captions, as a 1080x1920 MP4. English and Spanish.' },
+  { q: 'Where is Arcads better?', a: 'It is a dedicated UGC ad product with one subscription and no API keys to manage, a larger actor library, and more ad formats and workflows than a single 20-second structure. Sahu Shorts AI Shorts is narrower: one ad format, your own provider keys, open source code.' },
 ]
 
 const arcadsAlternative = () => ({
@@ -712,7 +712,7 @@ const arcadsAlternative = () => ({
   title: 'Arcads Alternative: AI UGC Ads From ~$0.65 a Video',
   description: `An open source alternative to Arcads: product URL in, 20-25 s UGC ad with a lip-synced AI actor out, about ${UGC.lowCost} a video on your own keys.`,
   h1: 'A pay-per-video alternative to Arcads for AI UGC ads',
-  lede: `The cheaper-to-start alternative to Arcads is OpenShorts AI Shorts: it turns a product URL into a 20 to 25 second UGC-style ad with a lip-synced AI actor, b-roll and captions for about ${UGC.lowCost} a video in Low Cost mode (about ${UGC.premium} in Premium), billed by fal.ai and ElevenLabs on your own keys. OpenShorts itself is free to self-host under MIT, or from $${STARTER.monthly.price}/month hosted. <span class="checked">Checked ${esc(longDate(ARCADS.checked))}</span> Arcads terms read on arcads.ai and its help centre.`,
+  lede: `The cheaper-to-start alternative to Arcads is Sahu Shorts AI Shorts: it turns a product URL into a 20 to 25 second UGC-style ad with a lip-synced AI actor, b-roll and captions for about ${UGC.lowCost} a video in Low Cost mode (about ${UGC.premium} in Premium), billed by fal.ai and ElevenLabs on your own keys. Sahu Shorts itself is free to self-host under MIT, or from $${STARTER.monthly.price}/month hosted. <span class="checked">Checked ${esc(longDate(ARCADS.checked))}</span> Arcads terms read on arcads.ai and its help centre.`,
   breadcrumb: [{ name: 'Alternatives', path: '/alternatives' }, { name: 'Arcads' }],
   relatedTitle: 'Related tools',
   related: [UGC_PATH, '/alternatives/sendshort', '/platforms/tiktok', '/alternatives'],
@@ -724,21 +724,21 @@ const arcadsAlternative = () => ({
     href: `${SITE.url}/#app?tab=saasshorts`,
   },
   facts: [
-    { k: 'OpenShorts per video', v: `~${UGC.lowCost}`, s: `Low Cost mode; ~${UGC.premium} Premium, on your keys` },
+    { k: 'Sahu Shorts per video', v: `~${UGC.lowCost}`, s: `Low Cost mode; ~${UGC.premium} Premium, on your keys` },
     { k: 'Arcads pricing', v: 'In the app', s: 'Not published on arcads.ai' },
     { k: 'Arcads trial', v: '72 hours', s: '1,000 credits, card required' },
-    { k: 'Open source', v: 'OpenShorts', s: 'MIT; Arcads is closed' },
+    { k: 'Open source', v: 'Sahu Shorts', s: 'MIT; Arcads is closed' },
   ],
   tldr: [
     `Arcads is a closed-source subscription for AI UGC ads with AI actors. It does not publish its prices on its website; its help centre lists ${ARCADS.plans}, and a ${ARCADS.trial}.`,
-    `OpenShorts AI Shorts does one format of the same job (a 20 to 25 second product ad with a lip-synced AI actor) and bills it per video on your own fal.ai and ElevenLabs keys: about ${UGC.lowCost} in Low Cost mode, so two ads in a month cost two ads, not a plan.`,
+    `Sahu Shorts AI Shorts does one format of the same job (a 20 to 25 second product ad with a lip-synced AI actor) and bills it per video on your own fal.ai and ElevenLabs keys: about ${UGC.lowCost} in Low Cost mode, so two ads in a month cost two ads, not a plan.`,
   ],
   body: `
-<h2>Arcads vs OpenShorts AI Shorts</h2>
+<h2>Arcads vs Sahu Shorts AI Shorts</h2>
 <table>
-<thead><tr><th></th><th>OpenShorts AI Shorts</th><th>Arcads</th></tr></thead>
+<thead><tr><th></th><th>Sahu Shorts AI Shorts</th><th>Arcads</th></tr></thead>
 <tbody>
-<tr><td>Price</td><td class="os">About ${UGC.lowCost} a video (Low Cost) or ${UGC.premium} (Premium), paid to fal.ai and ElevenLabs; OpenShorts $0 self-hosted or from $${STARTER.monthly.price}/month hosted</td><td>Subscription in credits; prices shown in the app, not on arcads.ai</td></tr>
+<tr><td>Price</td><td class="os">About ${UGC.lowCost} a video (Low Cost) or ${UGC.premium} (Premium), paid to fal.ai and ElevenLabs; Sahu Shorts $0 self-hosted or from $${STARTER.monthly.price}/month hosted</td><td>Subscription in credits; prices shown in the app, not on arcads.ai</td></tr>
 <tr><td>Trial</td><td class="os">Free plan, no card: scripts and research run on its minutes</td><td>${esc(ARCADS.trial)}</td></tr>
 <tr><td>Input</td><td class="os">Product URL (page + up to ${UGC.subpages} subpages) or a description</td><td>Script, product and actor chosen in the app</td></tr>
 <tr><td>Output</td><td class="os">20-25 s vertical MP4, 1080x1920, lip-synced actor, 2 b-roll inserts, captions</td><td>UGC-style ads with AI actors in several formats</td></tr>
@@ -763,7 +763,7 @@ ${faqBlock(arcadsFaq)}
 
 ${sources([
   `Arcads plans and free trial: help.arcads.ai ("How to buy more credits", "How the free trial works"), checked ${esc(longDate(ARCADS.checked))}. arcads.ai showed no public price list on that date.`,
-  `OpenShorts AI Shorts estimates: <code>dashboard/src/components/SaaShortsTab.jsx</code>, ${esc(CHECKED)}. Source: <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Sahu Shorts AI Shorts estimates: <code>dashboard/src/components/SaaShortsTab.jsx</code>, ${esc(CHECKED)}. Source: <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
 ])}
 `,
   faq: arcadsFaq,

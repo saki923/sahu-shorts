@@ -26,12 +26,12 @@ const PUBLISHED = '2026-09-04'
 
 const TERMS_EN = `
 <h2>1. Who we are</h2>
-<p>OpenShorts Cloud (openshorts.app) is operated by TONVI TECH SL, a company
+<p>Sahu Shorts Cloud (openshorts.app) is operated by TONVI TECH SL, a company
 incorporated in Spain, CIF B-19780394, with registered address at Calle Puerta
-del Mar 18, 5th floor, 29005 Málaga, Spain ("OpenShorts", "we", "us"). You can
+del Mar 18, 5th floor, 29005 Málaga, Spain ("Sahu Shorts", "we", "us"). You can
 reach us at <a href="mailto:info@openshorts.app">info@openshorts.app</a>. These Terms of Service ("Terms") govern your
 use of the hosted service at openshorts.app.</p>
-<p>The open-source edition of OpenShorts that you can download and run on your
+<p>The open-source edition of Sahu Shorts that you can download and run on your
 own hardware is licensed separately under the MIT License and is not covered by
 these Terms: when you self-host, you are the operator of your instance and
 these Terms do not apply to it.</p>
@@ -40,7 +40,7 @@ consumers resident in Spain, the Spanish version prevails in case of
 discrepancy.</p>
 
 <h2>2. The service</h2>
-<p>OpenShorts turns long-form video into short vertical clips. On your
+<p>Sahu Shorts turns long-form video into short vertical clips. On your
 instruction, the service ingests a video you upload or a video located at a URL
 you provide, transcribes it, uses AI models to select moments, reframes it to
 vertical, and optionally adds subtitles, text overlays, AI dubbing, and
@@ -65,7 +65,7 @@ content we must keep to comply with the law.</p>
 <p><strong>The clips are yours.</strong> As between you and us, you own the
 output clips the service generates from your content, including for commercial
 use, to the extent of our rights in them. On the free plan, clips carry an
-OpenShorts watermark; you may use watermarked clips freely but you may not
+Sahu Shorts watermark; you may use watermarked clips freely but you may not
 remove or obscure the watermark by any means other than upgrading to a paid
 plan.</p>
 <p>We do not use your content to train AI models — ours or anyone else's. See
@@ -104,9 +104,9 @@ submit), we engage only the sub-processors listed in our
 apply appropriate security measures, and we delete the content under the
 retention rules in Section 13 or earlier on your instruction. If you need a
 countersigned Data Processing Agreement for your business, request it at
-<a href="mailto:info@openshorts.app">info@openshorts.app</a>. When you self-host OpenShorts with your own keys, your
+<a href="mailto:info@openshorts.app">info@openshorts.app</a>. When you self-host Sahu Shorts with your own keys, your
 content flows directly between your own instance and the AI provider under
-your own agreement with them. On OpenShorts Cloud that is not the case even
+your own agreement with them. On Sahu Shorts Cloud that is not the case even
 when you supply your own provider key: the request is made by our servers,
 which means the content passes through them and this Section 6 applies to it
 in full.</p>
@@ -310,12 +310,12 @@ are fixed in days.</p>
 
 const TERMS_ES = `
 <h2>1. Quiénes somos</h2>
-<p>OpenShorts Cloud (openshorts.app) es un servicio prestado por TONVI TECH SL,
+<p>Sahu Shorts Cloud (openshorts.app) es un servicio prestado por TONVI TECH SL,
 sociedad española con CIF B-19780394 y domicilio en Calle Puerta del Mar 18,
-5ª planta, 29005 Málaga, España ("OpenShorts", "nosotros"). Puedes escribirnos
+5ª planta, 29005 Málaga, España ("Sahu Shorts", "nosotros"). Puedes escribirnos
 a <a href="mailto:info@openshorts.app">info@openshorts.app</a>. Estos Términos de Servicio ("Términos") regulan el uso
 del servicio alojado en openshorts.app.</p>
-<p>La edición de código abierto de OpenShorts que puedes descargar y ejecutar
+<p>La edición de código abierto de Sahu Shorts que puedes descargar y ejecutar
 en tu propio hardware se licencia por separado bajo la Licencia MIT y no está
 cubierta por estos Términos: cuando te autoalojas, el operador de tu instancia
 eres tú.</p>
@@ -324,7 +324,7 @@ Para consumidores residentes en España prevalece la versión en castellano en
 caso de discrepancia.</p>
 
 <h2>2. El servicio</h2>
-<p>OpenShorts convierte vídeo largo en clips verticales cortos. Siguiendo tu
+<p>Sahu Shorts convierte vídeo largo en clips verticales cortos. Siguiendo tu
 instrucción, el servicio ingiere un vídeo que subes o un vídeo situado en la
 URL que indicas, lo transcribe, usa modelos de IA para seleccionar momentos, lo
 reencuadra en vertical y, opcionalmente, añade subtítulos, rótulos, doblaje con
@@ -349,7 +349,7 @@ seguridad de duración limitada y lo que la ley nos obligue a conservar.</p>
 <p><strong>Los clips son tuyos.</strong> Entre tú y nosotros, los clips que el
 servicio genera a partir de tu contenido te pertenecen, incluido su uso
 comercial, en la medida de nuestros derechos sobre ellos. En el plan gratuito
-los clips llevan una marca de agua de OpenShorts; puedes usarlos libremente,
+los clips llevan una marca de agua de Sahu Shorts; puedes usarlos libremente,
 pero no puedes eliminarla ni ocultarla por otro medio que no sea pasar a un
 plan de pago.</p>
 <p>No usamos tu contenido para entrenar modelos de IA — ni nuestros ni de
@@ -389,9 +389,9 @@ recurrimos únicamente a los subencargados listados en la
 almacenamiento y entrega), aplicamos medidas de seguridad apropiadas y
 eliminamos el contenido según las reglas de la cláusula 13 o antes si nos lo
 pides. Si tu empresa necesita un contrato de encargo de tratamiento firmado,
-solicítalo en <a href="mailto:info@openshorts.app">info@openshorts.app</a>. Cuando autoalojas OpenShorts con tus
+solicítalo en <a href="mailto:info@openshorts.app">info@openshorts.app</a>. Cuando autoalojas Sahu Shorts con tus
 propias claves, tu contenido fluye directamente entre tu instancia y el
-proveedor de IA bajo tu propio acuerdo con él. En OpenShorts Cloud eso no es
+proveedor de IA bajo tu propio acuerdo con él. En Sahu Shorts Cloud eso no es
 así ni siquiera si aportas tu propia clave de proveedor: la petición la hacen
 nuestros servidores, es decir que el contenido pasa por ellos y esta cláusula
 6 le aplica íntegramente.</p>
@@ -611,7 +611,7 @@ se resuelven en días.</p>
 const PRIVACY_EN = `
 <h2>1. Who is responsible</h2>
 <p>The data controller is TONVI TECH SL (CIF B-19780394), Calle Puerta del Mar
-18, 5th floor, 29005 Málaga, Spain — the company behind OpenShorts
+18, 5th floor, 29005 Málaga, Spain — the company behind Sahu Shorts
 (openshorts.app). For anything about your data, write to <a href="mailto:info@openshorts.app">info@openshorts.app</a>.
 This policy is also available in <a href="/privacidad">Spanish</a>; for
 residents of Spain, the Spanish version prevails in case of discrepancy.</p>
@@ -868,7 +868,7 @@ reflects the current version.</p>
 const PRIVACY_ES = `
 <h2>1. Responsable del tratamiento</h2>
 <p>El responsable es TONVI TECH SL (CIF B-19780394), Calle Puerta del Mar 18,
-5ª planta, 29005 Málaga, España — la empresa detrás de OpenShorts
+5ª planta, 29005 Málaga, España — la empresa detrás de Sahu Shorts
 (openshorts.app). Para cualquier cuestión sobre tus datos, escribe a
 <a href="mailto:info@openshorts.app">info@openshorts.app</a>. Esta política está también disponible en
 <a href="/privacy">inglés</a>; para residentes en España prevalece la versión
@@ -1153,7 +1153,7 @@ and <a href="mailto:info@openshorts.app">info@openshorts.app</a> (data protectio
 </ul>
 
 <h2>Purpose of the site</h2>
-<p>openshorts.app provides OpenShorts Cloud, an AI service that turns
+<p>openshorts.app provides Sahu Shorts Cloud, an AI service that turns
 long-form video into short vertical clips, under the <a href="/terms">Terms of
 Service</a>. Personal data is handled as described in the
 <a href="/privacy">Privacy Policy</a>. Prices shown on the pricing page
@@ -1161,7 +1161,7 @@ indicate whether taxes are included; where they are not, the applicable tax is
 displayed at checkout before you pay.</p>
 
 <h2>Intellectual property</h2>
-<p>The OpenShorts source code is available under the MIT License in its public
+<p>The Sahu Shorts source code is available under the MIT License in its public
 repository. The openshorts.app site, its branding and its content are property
 of TONVI TECH SL or its licensors. Videos and clips processed through the
 service belong to their respective owners.</p>
@@ -1194,7 +1194,7 @@ y <a href="mailto:info@openshorts.app">info@openshorts.app</a> (protección de d
 </ul>
 
 <h2>Objeto del sitio</h2>
-<p>openshorts.app presta OpenShorts Cloud, un servicio de IA que convierte
+<p>openshorts.app presta Sahu Shorts Cloud, un servicio de IA que convierte
 vídeo largo en clips verticales cortos, conforme a los
 <a href="/terminos">Términos de Servicio</a>. Los datos personales se tratan
 según la <a href="/privacidad">Política de Privacidad</a>. Los precios de la
@@ -1202,7 +1202,7 @@ página de precios indican si incluyen impuestos; cuando no los incluyen, el
 impuesto aplicable se muestra en el proceso de pago antes de pagar.</p>
 
 <h2>Propiedad intelectual</h2>
-<p>El código fuente de OpenShorts está disponible bajo Licencia MIT en su
+<p>El código fuente de Sahu Shorts está disponible bajo Licencia MIT en su
 repositorio público. El sitio openshorts.app, su marca y sus contenidos son
 propiedad de TONVI TECH SL o de sus licenciantes. Los vídeos y clips
 procesados a través del servicio pertenecen a sus respectivos titulares.</p>
@@ -1456,9 +1456,9 @@ export function legalPages() {
   return [
     {
       path: '/terms',
-      title: 'Terms of Service | OpenShorts',
+      title: 'Terms of Service | Sahu Shorts',
       description:
-        'The terms that govern OpenShorts Cloud: your content stays yours, no AI training on your videos, EU consumer rights, retention periods and acceptable use.',
+        'The terms that govern Sahu Shorts Cloud: your content stays yours, no AI training on your videos, EU consumer rights, retention periods and acceptable use.',
       h1: 'Terms of Service',
       breadcrumb: [{ name: 'Terms of Service' }],
       published: PUBLISHED,
@@ -1472,9 +1472,9 @@ export function legalPages() {
     },
     {
       path: '/privacy',
-      title: 'Privacy Policy | OpenShorts',
+      title: 'Privacy Policy | Sahu Shorts',
       description:
-        'What OpenShorts stores (email, billing reference, the videos you process), for how long, which providers touch it, and your GDPR rights.',
+        'What Sahu Shorts stores (email, billing reference, the videos you process), for how long, which providers touch it, and your GDPR rights.',
       h1: 'Privacy Policy',
       breadcrumb: [{ name: 'Privacy Policy' }],
       published: PUBLISHED,
@@ -1488,7 +1488,7 @@ export function legalPages() {
     },
     {
       path: '/legal-notice',
-      title: 'Legal Notice | OpenShorts',
+      title: 'Legal Notice | Sahu Shorts',
       description:
         'Legal identification of the operator of openshorts.app (TONVI TECH SL, Spain) as required by Spanish Law 34/2002 (LSSI-CE).',
       h1: 'Legal Notice',
@@ -1502,9 +1502,9 @@ export function legalPages() {
     },
     {
       path: '/terminos',
-      title: 'Términos de Servicio | OpenShorts',
+      title: 'Términos de Servicio | Sahu Shorts',
       description:
-        'Los términos de OpenShorts Cloud: tu contenido sigue siendo tuyo, sin entrenar IA con tus vídeos, derechos del consumidor UE y plazos de conservación.',
+        'Los términos de Sahu Shorts Cloud: tu contenido sigue siendo tuyo, sin entrenar IA con tus vídeos, derechos del consumidor UE y plazos de conservación.',
       h1: 'Términos de Servicio',
       breadcrumb: [{ name: 'Términos de Servicio' }],
       published: PUBLISHED,
@@ -1519,9 +1519,9 @@ export function legalPages() {
     },
     {
       path: '/privacidad',
-      title: 'Política de Privacidad | OpenShorts',
+      title: 'Política de Privacidad | Sahu Shorts',
       description:
-        'Qué guarda OpenShorts (email, referencia de facturación, los vídeos que procesas), cuánto tiempo, qué proveedores intervienen y tus derechos RGPD.',
+        'Qué guarda Sahu Shorts (email, referencia de facturación, los vídeos que procesas), cuánto tiempo, qué proveedores intervienen y tus derechos RGPD.',
       h1: 'Política de Privacidad',
       breadcrumb: [{ name: 'Política de Privacidad' }],
       published: PUBLISHED,
@@ -1536,7 +1536,7 @@ export function legalPages() {
     },
     {
       path: '/aviso-legal',
-      title: 'Aviso Legal | OpenShorts',
+      title: 'Aviso Legal | Sahu Shorts',
       description:
         'Identificación legal del titular de openshorts.app (TONVI TECH SL, España) conforme al artículo 10 de la Ley 34/2002 (LSSI-CE).',
       h1: 'Aviso Legal',
@@ -1551,7 +1551,7 @@ export function legalPages() {
     },
     {
       path: '/report-content',
-      title: 'Report Illegal Content | OpenShorts',
+      title: 'Report Illegal Content | Sahu Shorts',
       description:
         'How to report illegal or infringing content on openshorts.app: what a notice must contain, what we do with it, and how to challenge a removal. Article 16 DSA.',
       h1: 'Report Illegal Content',
@@ -1567,7 +1567,7 @@ export function legalPages() {
     },
     {
       path: '/reportar-contenido',
-      title: 'Reportar Contenido Ilícito | OpenShorts',
+      title: 'Reportar Contenido Ilícito | Sahu Shorts',
       description:
         'Cómo reportar contenido ilícito o infractor en openshorts.app: qué debe contener la notificación, qué hacemos con ella y cómo impugnar una retirada.',
       h1: 'Reportar Contenido Ilícito',
@@ -1584,9 +1584,9 @@ export function legalPages() {
     },
     {
       path: '/refunds',
-      title: 'Refund Policy | OpenShorts',
+      title: 'Refund Policy | Sahu Shorts',
       description:
-        'Charged in the last 14 days and have not used the service since? OpenShorts refunds it in full. What counts as used, and how to ask.',
+        'Charged in the last 14 days and have not used the service since? Sahu Shorts refunds it in full. What counts as used, and how to ask.',
       h1: 'Refund Policy',
       breadcrumb: [{ name: 'Refund Policy' }],
       published: PUBLISHED,
@@ -1600,9 +1600,9 @@ export function legalPages() {
     },
     {
       path: '/reembolsos',
-      title: 'Política de Reembolsos | OpenShorts',
+      title: 'Política de Reembolsos | Sahu Shorts',
       description:
-        '¿Te han cobrado en los últimos 14 días y no has usado el servicio? OpenShorts te lo devuelve entero. Qué cuenta como usarlo y cómo pedirlo.',
+        '¿Te han cobrado en los últimos 14 días y no has usado el servicio? Sahu Shorts te lo devuelve entero. Qué cuenta como usarlo y cómo pedirlo.',
       h1: 'Política de Reembolsos',
       breadcrumb: [{ name: 'Política de Reembolsos' }],
       published: PUBLISHED,

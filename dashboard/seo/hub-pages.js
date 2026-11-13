@@ -26,7 +26,7 @@ if (!CLOUD.summary.includes(`up to ${FIRST_VIDEO_MINUTES} minutes`)) {
     `${FIRST_VIDEO_MINUTES} minutes; update FIRST_VIDEO_MINUTES in seo/hub-pages.js`)
 }
 const PRICE_LINE =
-  `OpenShorts Cloud clips your first video free up to ${FIRST_VIDEO_MINUTES} minutes, then ${CLOUD.freeMinutes} minutes a month, ` +
+  `Sahu Shorts Cloud clips your first video free up to ${FIRST_VIDEO_MINUTES} minutes, then ${CLOUD.freeMinutes} minutes a month, ` +
   `with a watermark and no credit card; paid plans start at $${CLOUD.lowPrice}/month with no watermark ` +
   '(<a href="/pricing">all plans</a>). The self-hosted edition is free under MIT.'
 
@@ -94,7 +94,7 @@ const PLATFORM_SPECS = [
 
 const specsTable = () => `
 <table>
-<thead><tr><th>Platform</th><th>Role</th><th>Max length</th><th>Aspect</th><th>Captions safe zone</th><th>Posting from OpenShorts</th></tr></thead>
+<thead><tr><th>Platform</th><th>Role</th><th>Max length</th><th>Aspect</th><th>Captions safe zone</th><th>Posting from Sahu Shorts</th></tr></thead>
 <tbody>
 ${PLATFORM_SPECS.map(([name, ...cells]) => `<tr><td class="os">${esc(name)}</td>${cells.map((c) => `<td>${esc(c)}</td>`).join('')}</tr>`).join('\n')}
 </tbody>
@@ -104,13 +104,13 @@ const platformsHub = (built) => {
   const children = cardsFor(PLATFORM_CHILDREN, built)
   const extras = cardsFor(PLATFORM_EXTRAS, built)
   return hub('/platforms', {
-    title: 'AI Clips for YouTube, TikTok, Reels and More | OpenShorts',
+    title: 'AI Clips for YouTube, TikTok, Reels and More | Sahu Shorts',
     description: `One AI clip generator for YouTube, Shorts, TikTok, Instagram Reels, Twitch and Kick: what each platform accepts and how clips get there. First video free up to ${FIRST_VIDEO_MINUTES} min.`,
     h1: 'AI clips for every platform: YouTube, TikTok, Reels, Twitch and Kick',
     lede: 'The clip generator is the same everywhere: it reads the whole video, picks the moments that stand alone and cuts them to 9:16 with captions. What changes from one platform to the next is where the video comes from, how long a clip may run and how it gets posted.',
     breadcrumb: [{ name: 'Platforms' }],
     related: ['/use-cases', '/how-to', '/tools'],
-    extraNodes: [itemList('/platforms', 'OpenShorts clip makers by platform', [...children, ...extras])],
+    extraNodes: [itemList('/platforms', 'Sahu Shorts clip makers by platform', [...children, ...extras])],
     body: `
 <h2>Pick the platform</h2>
 <p>Each page below covers one source or destination: the links it accepts, the
@@ -158,13 +158,13 @@ export const USE_CASE_CHILDREN = [
 const caseHub = (built) => {
   const children = cardsFor(USE_CASE_CHILDREN, built)
   return hub('/use-cases', {
-    title: 'AI Clips by Use Case: Podcasts, Sermons, Gaming | OpenShorts',
-    description: `How OpenShorts clips podcasts, sermons, gaming streams and whole channels: the layouts, the reframing and the automation behind each. First video free up to ${FIRST_VIDEO_MINUTES} min.`,
+    title: 'AI Clips by Use Case: Podcasts, Sermons, Gaming | Sahu Shorts',
+    description: `How Sahu Shorts clips podcasts, sermons, gaming streams and whole channels: the layouts, the reframing and the automation behind each. First video free up to ${FIRST_VIDEO_MINUTES} min.`,
     h1: 'AI clips by use case: podcasts, sermons, gaming and channels on autopilot',
     lede: 'A two-person podcast, a church service and a GTA stream need different things from a clip: both faces kept, only the sermon, the facecam stacked under the game. These pages explain what the clip generator does for each, and how to run it without opening the app at all.',
     breadcrumb: [{ name: 'Use cases' }],
     related: ['/platforms', '/how-to', '/how-openshorts-works'],
-    extraNodes: [itemList('/use-cases', 'OpenShorts use cases', children)],
+    extraNodes: [itemList('/use-cases', 'Sahu Shorts use cases', children)],
     body: `
 <h2>Pick the use case</h2>
 ${cardGrid(children)}
@@ -177,7 +177,7 @@ ${cardGrid(children)}
 </ul>
 <p>The reframing behind all of them is described on <a href="/auto-reframe">the
 auto reframe page</a>, and the whole pipeline stage by stage on
-<a href="/how-openshorts-works">how OpenShorts works</a>.</p>
+<a href="/how-openshorts-works">how Sahu Shorts works</a>.</p>
 
 <h2>What it costs</h2>
 <p>${PRICE_LINE}</p>
@@ -194,7 +194,7 @@ export const GUIDE_CHILDREN = [
   { path: '/how-to/instagram-reel-dimensions', name: 'Instagram Reel dimensions', blurb: '1080 x 1920, the 3:4 grid crop of the cover, safe zones and export settings.' },
   { path: '/how-to/make-a-reel-on-facebook', name: 'How to make a Reel on Facebook', blurb: 'The app, Meta Business Suite, specs, and sharing Reels from Instagram.' },
   { path: '/how-to/best-time-to-post-youtube-shorts', name: 'Best time to post YouTube Shorts', blurb: 'No universal answer: find your viewers\' hours in Analytics and test them.' },
-  { path: '/how-openshorts-works', name: 'How OpenShorts works', blurb: 'The full pipeline, from the link to a captioned 9:16 clip.' },
+  { path: '/how-openshorts-works', name: 'How Sahu Shorts works', blurb: 'The full pipeline, from the link to a captioned 9:16 clip.' },
   { path: '/self-hosted-ai-clip-maker', name: 'Self-host the clip maker', blurb: 'Docker setup, hardware, your own keys, and the real cost against credits.' },
   { path: '/n8n-youtube-shorts-automation', name: 'Automate Shorts with n8n', blurb: 'The importable workflow: channel in, approved Shorts out.' },
   { path: '/automate-shorts-api', name: 'Automate Shorts with the API', blurb: 'One POST in, one signed webhook out, no polling.' },
@@ -204,13 +204,13 @@ export const GUIDE_CHILDREN = [
 const guidesHub = (built) => {
   const children = cardsFor(GUIDE_CHILDREN, built)
   return hub('/how-to', {
-    title: 'OpenShorts Guides: Clip, Self-Host and Automate',
-    description: 'Step-by-step guides: clip a YouTube video, see how the pipeline works, self-host OpenShorts with Docker, and automate Shorts with n8n, the API or an AI agent.',
-    h1: 'OpenShorts guides: clip, self-host and automate',
-    lede: 'Guides for the three things people do with OpenShorts after the first clip: understand what it did, run it on their own machine, and make it run without them.',
+    title: 'Sahu Shorts Guides: Clip, Self-Host and Automate',
+    description: 'Step-by-step guides: clip a YouTube video, see how the pipeline works, self-host Sahu Shorts with Docker, and automate Shorts with n8n, the API or an AI agent.',
+    h1: 'Sahu Shorts guides: clip, self-host and automate',
+    lede: 'Guides for the three things people do with Sahu Shorts after the first clip: understand what it did, run it on their own machine, and make it run without them.',
     breadcrumb: [{ name: 'Guides' }],
     related: ['/platforms', '/use-cases', '/tools'],
-    extraNodes: [itemList('/how-to', 'OpenShorts guides', children)],
+    extraNodes: [itemList('/how-to', 'Sahu Shorts guides', children)],
     body: `
 <h2>All guides</h2>
 ${cardGrid(children)}
@@ -219,7 +219,7 @@ ${cardGrid(children)}
 <ul>
 <li><strong>New to clipping?</strong> <a href="/how-to/clip-a-youtube-video">How to clip a YouTube video</a> compares the free ways to do it by hand with letting the AI cut the Shorts.</li>
 <li><strong>Need the platform specs or steps?</strong> <a href="/how-to/youtube-shorts-aspect-ratio">YouTube Shorts aspect ratio</a> and <a href="/how-to/instagram-reel-dimensions">Instagram Reel dimensions</a> give the sizes and safe zones; <a href="/how-to/make-youtube-shorts">how to make YouTube Shorts</a> and <a href="/how-to/make-a-reel-on-facebook">how to make a Reel on Facebook</a> give the steps; <a href="/how-to/best-time-to-post-youtube-shorts">the best time to post Shorts</a> shows how to find yours.</li>
-<li><strong>Want to know what happens to your video?</strong> <a href="/how-openshorts-works">How OpenShorts works</a> walks through transcription, moment picking, reframing and captions.</li>
+<li><strong>Want to know what happens to your video?</strong> <a href="/how-openshorts-works">How Sahu Shorts works</a> walks through transcription, moment picking, reframing and captions.</li>
 <li><strong>Want it on your own machine?</strong> <a href="/self-hosted-ai-clip-maker">The self-hosting guide</a> covers Docker, hardware and keys. The code is MIT licensed.</li>
 <li><strong>Want it to run on its own?</strong> Start with <a href="/n8n-youtube-shorts-automation">the n8n workflow</a> for a channel, or <a href="/automate-shorts-api">the API</a> and <a href="/mcp">the MCP server</a> for your own code or agent.</li>
 </ul>

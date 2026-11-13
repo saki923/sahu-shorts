@@ -41,11 +41,11 @@ const plansTable = `
 ${PLANS.map(([n, p, m]) => `<tr><td class="os">${n}</td><td>${p}</td><td>${m}</td><td class="yes">Yes</td></tr>`).join('\n')}
 </tbody>
 </table>
-<p class="sources">Prices from the OpenShorts billing API, checked 23 September 2026. Yearly plans cost ten times the monthly price.</p>`
+<p class="sources">Prices from the Sahu Shorts billing API, checked 23 September 2026. Yearly plans cost ten times the monthly price.</p>`
 
 const autoClip = () => ({
   path: '/auto-clip',
-  title: 'Auto Clip Your YouTube Videos Into Shorts | OpenShorts',
+  title: 'Auto Clip Your YouTube Videos Into Shorts | Sahu Shorts',
   description:
     'Autopilot auto clips every new video on your YouTube channel into vertical shorts with subtitles and can post the best ones daily. Rules, limits, price.',
   h1: 'Auto clip: every new YouTube video turned into shorts on its own',
@@ -62,7 +62,7 @@ const autoClip = () => ({
     href: `${SITE.url}/#app?tab=autopilot`,
   },
   tldr: [
-    'Automatic clipping means software watches a long video, picks the moments that stand on their own and cuts them into short vertical clips. OpenShorts does that for any video you paste, and Autopilot does it for every new upload on your YouTube channel without you opening anything.',
+    'Automatic clipping means software watches a long video, picks the moments that stand on their own and cuts them into short vertical clips. Sahu Shorts does that for any video you paste, and Autopilot does it for every new upload on your YouTube channel without you opening anything.',
     'Autopilot checks your channel about once an hour, clips each new video (only videos published after you switch it on, at most one a day, the first 10 to 90 minutes of each), emails you when the clips are ready and, if you turn on autopublish, schedules the best 1 to 5 of them one a day on TikTok, Instagram and YouTube Shorts.',
   ],
   body: `
@@ -75,15 +75,15 @@ const autoClip = () => ({
 <li><strong>Subtitle and title.</strong> Captions are burned in from the transcript and each clip gets a hook and a title.</li>
 </ol>
 <p>That pipeline is the same whether you paste a link by hand or Autopilot starts
-it. The details are on <a href="/how-openshorts-works">how OpenShorts works</a>.
-Across all accounts, OpenShorts Cloud ran ${USAGE.jobs} clipping jobs on
+it. The details are on <a href="/how-openshorts-works">how Sahu Shorts works</a>.
+Across all accounts, Sahu Shorts Cloud ran ${USAGE.jobs} clipping jobs on
 ${USAGE.minutes} minutes of source video between ${USAGE.window}; the median
 source video was ${USAGE.median} minutes long.</p>
 
 <h2>Autopilot: the channel clips itself</h2>
 <figure class="shot">
 <img src="/screens/autopilot-settings.webp" width="920" height="672" loading="eager"
-     alt="The Autopilot tab in OpenShorts: a connected YouTube channel, the Autopilot switch turned on with the first 10 minutes of each video selected, and the autopublish switch off.">
+     alt="The Autopilot tab in Sahu Shorts: a connected YouTube channel, the Autopilot switch turned on with the first 10 minutes of each video selected, and the autopublish switch off.">
 <figcaption>The Autopilot tab in production, 23 September 2026. The channel name is blurred because it belongs to a user.</figcaption>
 </figure>
 <p>You connect your YouTube channel once. From then on Autopilot reads your
@@ -134,10 +134,10 @@ same automation yourself with the
 ${faqBlock([
   {
     q: 'What is auto clipping?',
-    a: 'Software that watches a long video, finds the moments that work on their own and cuts them into short vertical clips with subtitles, instead of you scrubbing the timeline by hand. OpenShorts returns 3 to 15 clips of 15 to 60 seconds per video.',
+    a: 'Software that watches a long video, finds the moments that work on their own and cuts them into short vertical clips with subtitles, instead of you scrubbing the timeline by hand. Sahu Shorts returns 3 to 15 clips of 15 to 60 seconds per video.',
   },
   {
-    q: 'Can OpenShorts clip my new YouTube videos automatically?',
+    q: 'Can Sahu Shorts clip my new YouTube videos automatically?',
     a: 'Yes. Autopilot checks your connected channel about once an hour and clips each new video on its own: only videos published after you switch it on, at most one a day, up to the minute cap you set.',
   },
   {
@@ -146,7 +146,7 @@ ${faqBlock([
   },
   {
     q: 'Is automatic clipping free?',
-    a: 'Clipping a video you paste is free for 20 minutes a month on OpenShorts Cloud, or unlimited if you self-host. Autopilot, which runs on its own, is included in the paid plans from $12/month.',
+    a: 'Clipping a video you paste is free for 20 minutes a month on Sahu Shorts Cloud, or unlimited if you self-host. Autopilot, which runs on its own, is included in the paid plans from $12/month.',
   },
   {
     q: 'Will it clip my whole back catalogue and burn my minutes?',
@@ -159,13 +159,13 @@ ${faqBlock([
 ])}
 
 ${sources([
-  `Autopilot rules: <code>cloud/autopilot.py</code> in the <a href="${SITE.repo}" rel="noopener">OpenShorts source</a>, checked 23 September 2026.`,
-  'Usage figures: OpenShorts Cloud billing ledger, all accounts aggregated, 24 August to 23 September 2026.',
+  `Autopilot rules: <code>cloud/autopilot.py</code> in the <a href="${SITE.repo}" rel="noopener">Sahu Shorts source</a>, checked 23 September 2026.`,
+  'Usage figures: Sahu Shorts Cloud billing ledger, all accounts aggregated, 24 August to 23 September 2026.',
 ])}
 `,
   faq: [
-    { q: 'What is auto clipping?', a: 'Software that finds the moments of a long video that work on their own and cuts them into short vertical clips with subtitles. OpenShorts returns 3 to 15 clips of 15 to 60 seconds per video.' },
-    { q: 'Can OpenShorts clip my new YouTube videos automatically?', a: 'Yes. Autopilot checks your connected channel about once an hour and clips each new video: only videos published after you switch it on, at most one a day.' },
+    { q: 'What is auto clipping?', a: 'Software that finds the moments of a long video that work on their own and cuts them into short vertical clips with subtitles. Sahu Shorts returns 3 to 15 clips of 15 to 60 seconds per video.' },
+    { q: 'Can Sahu Shorts clip my new YouTube videos automatically?', a: 'Yes. Autopilot checks your connected channel about once an hour and clips each new video: only videos published after you switch it on, at most one a day.' },
     { q: 'Does Autopilot post the clips for me?', a: 'Only if you turn on autopublish. Then it schedules the best 1 to 5 clips of each video one a day on TikTok, Instagram and YouTube Shorts.' },
     { q: 'Is automatic clipping free?', a: 'Clipping a pasted video is free for 20 minutes a month, or unlimited self-hosted. Autopilot is included in the paid plans from $12/month.' },
     { q: 'Can Autopilot clip my Twitch streams?', a: 'Yes. Connect Twitch in the Autopilot tab (read-only) and each new past broadcast is clipped once the stream has ended, from the stretch your viewers clipped most instead of the first minutes.' },
@@ -174,7 +174,7 @@ ${sources([
 
 const youtubeAutomation = () => ({
   path: '/youtube-automation',
-  title: 'YouTube Automation for Shorts, Step by Step | OpenShorts',
+  title: 'YouTube Automation for Shorts, Step by Step | Sahu Shorts',
   description:
     'Automate the repetitive part of a real YouTube channel: clip every upload into Shorts, schedule them, or wire it to n8n, the API or Claude over MCP.',
   h1: 'YouTube automation: hand the repetitive work to software, keep the channel yours',
@@ -192,7 +192,7 @@ const youtubeAutomation = () => ({
   },
   tldr: [
     '"YouTube automation" means two different things. One is faceless channels that mass-produce videos from templates; YouTube demonetises that as inauthentic content. The other is taking the repetitive work off a real channel: cutting every long video into Shorts, writing the metadata, scheduling the posts. This page is about the second.',
-    'With OpenShorts there are three ways to automate it: Autopilot in the app (no code), the n8n template (you approve each clip from Telegram), or the REST API and MCP server for your own scripts and for agents like Claude and ChatGPT.',
+    'With Sahu Shorts there are three ways to automate it: Autopilot in the app (no code), the n8n template (you approve each clip from Telegram), or the REST API and MCP server for your own scripts and for agents like Claude and ChatGPT.',
   ],
   body: `
 <h2>What is worth automating on a YouTube channel</h2>
@@ -214,21 +214,21 @@ channel you actually make is not that. Generating the channel is.</p>
 <thead><tr><th>Route</th><th>Who it is for</th><th>You approve each post?</th><th>What you need</th></tr></thead>
 <tbody>
 <tr><td class="os">Autopilot</td><td>Creators who want it done, no setup</td><td>Your choice: autopublish on or off</td><td>A paid plan, your YouTube channel connected</td></tr>
-<tr><td class="os">n8n template</td><td>People who already run n8n</td><td>Yes, from Telegram</td><td>n8n, an OpenShorts API key, a Telegram bot</td></tr>
+<tr><td class="os">n8n template</td><td>People who already run n8n</td><td>Yes, from Telegram</td><td>n8n, an Sahu Shorts API key, a Telegram bot</td></tr>
 <tr><td class="os">API and MCP</td><td>Developers and AI agents</td><td>Whatever your code decides</td><td>An API key, or a claude.ai / ChatGPT connector</td></tr>
 </tbody>
 </table>
 
 <h2>Route 1: Autopilot, no code</h2>
 <ol>
-<li>Sign in to OpenShorts and open the <strong>Autopilot</strong> tab.</li>
+<li>Sign in to Sahu Shorts and open the <strong>Autopilot</strong> tab.</li>
 <li>Connect your YouTube channel.</li>
 <li>Switch Autopilot on, confirm you own the content, and choose how many minutes of each video to clip (10 to 90).</li>
 <li>Optionally switch on autopublish: pick TikTok, Instagram and/or YouTube Shorts, how many clips per video (1 to 5) and the hour to post.</li>
 </ol>
 <figure class="shot">
 <img src="/screens/autopilot-settings.webp" width="920" height="672" loading="eager"
-     alt="The Autopilot settings in OpenShorts: connected channel, Autopilot on with a 10 minute cap, autopublish off.">
+     alt="The Autopilot settings in Sahu Shorts: connected channel, Autopilot on with a 10 minute cap, autopublish off.">
 <figcaption>Autopilot in production, 23 September 2026. Channel name blurred.</figcaption>
 </figure>
 <p>From then on Autopilot looks at your channel about once an hour, starts a
@@ -239,26 +239,26 @@ video a day, only new videos, Shorts skipped) are on the
 <h2>Route 2: the n8n template, with a human in the loop</h2>
 <figure class="shot">
 <img src="/n8n-content-machine-workflow.png" width="950" height="750" loading="lazy"
-     alt="The OpenShorts content machine workflow open in n8n, from the channel trigger to Telegram approval and weekly analytics.">
+     alt="The Sahu Shorts content machine workflow open in n8n, from the channel trigger to Telegram approval and weekly analytics.">
 <figcaption>The importable n8n workflow: watch the channel, clip, approve from Telegram, drip-publish, report weekly.</figcaption>
 </figure>
 <p>If you run n8n, the free <a href="/n8n-youtube-shorts-automation">n8n YouTube
 Shorts template</a> does the same job with one difference that matters: every
 clip reaches your Telegram with Publish and Skip buttons, and nothing goes out
 until you tap Publish. It reads your channel's public RSS feed, so it needs no
-YouTube API key, and a self-hosted OpenShorts works too: change the base URL in
+YouTube API key, and a self-hosted Sahu Shorts works too: change the base URL in
 the workflow.</p>
 
 <h2>Route 3: the API and MCP, for your own code and for agents</h2>
 <p>Everything the app does is one HTTP call away. <code>POST /api/process</code>
-takes a video URL and a <code>webhook_url</code>, and OpenShorts calls you back
+takes a video URL and a <code>webhook_url</code>, and Sahu Shorts calls you back
 once with the finished clips; the details and a working example are on
 <a href="/automate-shorts-api">automate shorts with the API</a>. The same
 pipeline is exposed as an MCP server, so Claude, ChatGPT, Cursor or n8n's agent
 node can clip and publish when you ask them in plain language.</p>
 <figure class="shot">
 <img src="/screens/connect-an-agent.webp" width="684" height="366" loading="lazy"
-     alt="The connect an agent card in the OpenShorts account page, with setup steps for claude.ai and the MCP server URL https://mcp.openshorts.app/mcp.">
+     alt="The connect an agent card in the Sahu Shorts account page, with setup steps for claude.ai and the MCP server URL https://mcp.openshorts.app/mcp.">
 <figcaption>Connecting Claude takes one URL: <code>https://mcp.openshorts.app/mcp</code>. The card also has tabs for ChatGPT, Claude Code, Claude Desktop, Cursor, n8n and curl.</figcaption>
 </figure>
 <p>More on the tools the server exposes on the <a href="/mcp">MCP server page</a>.</p>
@@ -277,26 +277,26 @@ ${faqBlock([
   },
   {
     q: 'Can I automate YouTube Shorts from my long videos?',
-    a: 'Yes. OpenShorts Autopilot clips each new upload on your channel into vertical Shorts with subtitles and can schedule the best ones one a day. The n8n template and the API do the same for people who want to build their own flow.',
+    a: 'Yes. Sahu Shorts Autopilot clips each new upload on your channel into vertical Shorts with subtitles and can schedule the best ones one a day. The n8n template and the API do the same for people who want to build their own flow.',
   },
   {
     q: 'Do I need to code?',
     a: 'No. Autopilot is a switch in the app. The n8n template needs n8n; the API and the MCP server are for developers and AI agents.',
   },
   {
-    q: 'Can an AI agent run my channel with OpenShorts?',
-    a: 'An agent such as Claude or ChatGPT can call OpenShorts over MCP to clip a video, list the clips and publish them. Whether it publishes without asking you is up to how you set it up; the n8n template keeps a human approval step on purpose.',
+    q: 'Can an AI agent run my channel with Sahu Shorts?',
+    a: 'An agent such as Claude or ChatGPT can call Sahu Shorts over MCP to clip a video, list the clips and publish them. Whether it publishes without asking you is up to how you set it up; the n8n template keeps a human approval step on purpose.',
   },
 ])}
 
 ${sources([
   '<a href="https://support.google.com/youtube/answer/1311392" rel="noopener">YouTube channel monetization policies</a> (inauthentic content, renamed from repetitious content on 15 July 2025), checked 23 September 2026.',
-  `Autopilot rules: <code>cloud/autopilot.py</code> in the <a href="${SITE.repo}" rel="noopener">OpenShorts source</a>; plan prices from the OpenShorts billing API, both checked 23 September 2026.`,
+  `Autopilot rules: <code>cloud/autopilot.py</code> in the <a href="${SITE.repo}" rel="noopener">Sahu Shorts source</a>; plan prices from the Sahu Shorts billing API, both checked 23 September 2026.`,
 ])}
 `,
   faq: [
     { q: 'Is YouTube automation allowed?', a: 'Automating chores on a channel you create is fine. YouTube does not monetise inauthentic content: mass-produced, generic or repetitive videos, including AI-generated content from generic templates.' },
-    { q: 'Can I automate YouTube Shorts from my long videos?', a: 'Yes. OpenShorts Autopilot clips each new upload into vertical Shorts with subtitles and can schedule the best ones one a day.' },
+    { q: 'Can I automate YouTube Shorts from my long videos?', a: 'Yes. Sahu Shorts Autopilot clips each new upload into vertical Shorts with subtitles and can schedule the best ones one a day.' },
     { q: 'Do I need to code?', a: 'No. Autopilot is a switch in the app. The n8n template needs n8n; the API and MCP server are for developers and AI agents.' },
   ],
 })

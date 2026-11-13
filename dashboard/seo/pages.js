@@ -44,9 +44,9 @@ const monthYear = (iso) => {
   return `${MONTHS[Number(m) - 1]} ${y}`
 }
 
-/* " | OpenShorts" only when the whole title still fits in 60 characters: a
+/* " | Sahu Shorts" only when the whole title still fits in 60 characters: a
  * truncated brand suffix is worth less than the words it would push out. */
-const BRAND_SUFFIX = ' | OpenShorts'
+const BRAND_SUFFIX = ' | Sahu Shorts'
 const withBrand = (t) => (t.length + BRAND_SUFFIX.length <= 60 ? `${t}${BRAND_SUFFIX}` : t)
 
 /* Pricing is restated in plain body text on every page, not only in the schema.
@@ -67,7 +67,7 @@ const lowerFirst = (s) => s.charAt(0).toLowerCase() + s.slice(1)
 const sentence = (s) => (/[.!?]$/.test(s) ? s : `${s}.`)
 
 const PRICING_COPY = {
-  hub: () => `<p>OpenShorts comes in two editions and they are priced very differently, so it
+  hub: () => `<p>Sahu Shorts comes in two editions and they are priced very differently, so it
 is worth being precise. <strong>${esc(EDITIONS.selfHosted.name)}</strong> is free
 and open source under the MIT licence: ${esc(EDITIONS.selfHosted.summary)}
 <strong>${esc(CLOUD.name)}</strong> is the hosted service:
@@ -111,7 +111,7 @@ that runs every hour costs what your machine costs. Hosted on ${esc(CLOUD.name)}
 ${FREE_CLOUD}, then flat plans from $${STARTER.monthly.price}/month
 (${STARTER.monthly.minutes} minutes) to $${PRO.monthly.price}/month
 (${PRO.monthly.minutes} minutes), or $${PRO.yearly.price}/month billed yearly.</p>`,
-  n8n: () => `<p>The workflow itself is free, and so is the OpenShorts it calls if you
+  n8n: () => `<p>The workflow itself is free, and so is the Sahu Shorts it calls if you
 self-host it under MIT with your own keys (no watermark, no cap). Pointed at
 ${esc(CLOUD.name)} instead, it runs on ${FREE_CLOUD}, then on a plan from
 $${STARTER.monthly.price}/month; billed yearly the entry plan is
@@ -120,17 +120,17 @@ $${STARTER.yearly.price}/month.</p>`,
 source (MIT, your own keys, no watermark, no cap). On ${esc(CLOUD.name)} an agent
 spends the same minutes a person would: ${FREE_CLOUD}, then plans from
 $${STARTER.monthly.price}/month for ${STARTER.monthly.minutes} minutes.</p>`,
-  meter: () => `<p>OpenShorts meters the same unit, the source minute, but only on the
+  meter: () => `<p>Sahu Shorts meters the same unit, the source minute, but only on the
 hosted edition. ${esc(CLOUD.name)}: ${FREE_CLOUD}; then $${STARTER.monthly.price}
 for ${STARTER.monthly.minutes} minutes, $${CREATOR.monthly.price} for
 ${CREATOR.monthly.minutes} and $${PRO.monthly.price} for ${PRO.monthly.minutes} a
 month, with trims and hooks not counted. Self-hosted under MIT there is no meter
 at all, no watermark and no cap; you supply the machine and the API keys.</p>`,
-  brand: () => `<p>If you are weighing it against OpenShorts: the open source edition is
+  brand: () => `<p>If you are weighing it against Sahu Shorts: the open source edition is
 free when you run it yourself (MIT, Docker, your own keys, no watermark, no cap),
 and ${esc(CLOUD.name)} hosts it with ${FREE_CLOUD}, then from
 $${STARTER.monthly.price}/month for ${STARTER.monthly.minutes} minutes.</p>`,
-  gaming: () => `<p>Here is the same eight hours on OpenShorts. Self-hosted, a VOD of any
+  gaming: () => `<p>Here is the same eight hours on Sahu Shorts. Self-hosted, a VOD of any
 length costs $0: MIT, Docker, your own keys, no meter, no watermark. On
 ${esc(CLOUD.name)} it is metered by the source minute, like the others, after
 ${FREE_CLOUD}; the largest plan is $${PRO.monthly.price}/month for
@@ -151,7 +151,7 @@ $${PRO.monthly.price}/month one, so clipping only the pulls you care about is
 what keeps the bill down. Edits on the clips (trims, reframes, hooks, captions)
 are not counted. Self-hosted under MIT there is no meter, no watermark and no
 cap, with your own machine and API keys.</p>`,
-  es: () => `<p>OpenShorts tiene dos ediciones con precios muy distintos. <strong>Autoalojado</strong>
+  es: () => `<p>Sahu Shorts tiene dos ediciones con precios muy distintos. <strong>Autoalojado</strong>
 es gratuito y de código abierto con licencia MIT: se ejecuta con Docker en tu
 máquina, con tus propias claves de API, sin marca de agua y sin límite de uso.
 <strong>${esc(CLOUD.name)}</strong> es el servicio alojado: el primer vídeo se
@@ -164,14 +164,14 @@ $${PRO.monthly.price}/mes por ${PRO.monthly.minutes}.</p>`,
 /* The seven comparison pages rotate between four phrasings and each one names
  * the competitor's own meter, so no two of them carry the same paragraph. */
 const COMPETITOR_PRICING = [
-  (c, cap) => `<p>Two editions, two prices. Self-hosted, OpenShorts costs nothing: MIT
+  (c, cap) => `<p>Two editions, two prices. Self-hosted, Sahu Shorts costs nothing: MIT
 licence, Docker, your own API keys, no watermark and no cap. Hosted,
 ${esc(CLOUD.name)} gives you ${FREE_CLOUD}; paid plans run from
 $${STARTER.monthly.price}/month for ${STARTER.monthly.minutes} minutes to
 $${PRO.monthly.price} for ${PRO.monthly.minutes}. ${esc(c.name)}, by comparison,
 is ${esc(cap)} and starts at ${esc(c.entryPrice)}.</p>`,
   (c) => `<p>The number to set against ${esc(c.name)}'s ${esc(c.entryPrice)} depends on
-which OpenShorts you mean. Run the MIT-licensed code yourself and it is $0, with
+which Sahu Shorts you mean. Run the MIT-licensed code yourself and it is $0, with
 no watermark, no cap and your own API keys; the price is your hardware, about 5
 to 8 minutes of CPU per 8-minute video. Let ${esc(CLOUD.name)} run it and you get
 ${FREE_CLOUD}; unwatermarked plans start at $${STARTER.monthly.price}/month for
@@ -184,7 +184,7 @@ month for ${STARTER.monthly.minutes}, ${CREATOR.monthly.minutes} or
 ${PRO.monthly.minutes} minutes ($${STARTER.yearly.price}, $${CREATOR.yearly.price}
 and $${PRO.yearly.price} a month billed yearly). The self-hosted edition counts
 nothing: free under MIT with Docker and your own keys, no watermark, no cap.</p>`,
-  (c) => `<p>Leaving ${esc(c.name)} for OpenShorts, you choose between two bills. Zero,
+  (c) => `<p>Leaving ${esc(c.name)} for Sahu Shorts, you choose between two bills. Zero,
 when you self-host the MIT code with Docker: no watermark, no cap, no
 subscription, only your machine's time and your own API keys. Or a flat hosted
 plan on ${esc(CLOUD.name)}, from $${STARTER.monthly.price}/month for
@@ -211,7 +211,7 @@ const checkedLede = (c, where, extra = '') =>
  * dateModified follows the page's own substance, not the deploy. */
 const REVISED = '2026-10-30'
 
-/* OpenShorts with its price, in one clause: what an engine lifting the first
+/* Sahu Shorts with its price, in one clause: what an engine lifting the first
  * sentence of a comparison page should carry away. */
 const OS_PRICE_CLAUSE = `$0 self-hosted (MIT, no watermark, no cap), or $${EDITIONS.cloud.lowPrice}/month hosted for ${PRICE_MODELS.openshorts.plans.find((p) => p.name === 'Starter').monthly.minutes} minutes`
 
@@ -221,7 +221,7 @@ const brandLede = (c, where, lead, extra = '') =>
   `${lead} ${checkedLede(c, where, extra)}`
 
 /* "Best <tool> alternatives in <year>": a ranked list, because that is the
- * shape engines answer "best X alternative" in. OpenShorts first, then the
+ * shape engines answer "best X alternative" in. Sahu Shorts first, then the
  * next four tools in ALT_PICKS order, leaving out the page's own tool. */
 const bestAlternatives = (slug, name, checked) => {
   const picks = ALT_PICKS.filter(([s]) => s !== slug).slice(0, 5)
@@ -261,9 +261,9 @@ function competitorPage(slug) {
   const freeQ = {
     q: `Is there a free alternative to ${c.name}?`,
     a: pick([
-      `Yes. OpenShorts self-hosted is free and open source under MIT, with no watermark and no usage cap, on your own machine with Docker. OpenShorts Cloud has a free plan too: ${FREE_CLOUD}. ${c.name}'s own free side, checked ${month}: ${sentence(c.tiers[0][1])}`,
-      `${c.name}'s free side, as checked in ${month}: ${sentence(c.tiers[0][1])} OpenShorts gives you two free routes instead: the MIT edition on your own machine, with no watermark and no cap, or the hosted free plan, ${FREE_CLOUD}.`,
-      `Two, both from OpenShorts. Self-hosted under MIT it is free with no cap and no watermark; hosted, the free plan covers ${FREE_CLOUD}, and paid plans start at $${STARTER.monthly.price}/month. For comparison, ${c.name} (checked ${month}): ${sentence(c.tiers[0][1])}`,
+      `Yes. Sahu Shorts self-hosted is free and open source under MIT, with no watermark and no usage cap, on your own machine with Docker. Sahu Shorts Cloud has a free plan too: ${FREE_CLOUD}. ${c.name}'s own free side, checked ${month}: ${sentence(c.tiers[0][1])}`,
+      `${c.name}'s free side, as checked in ${month}: ${sentence(c.tiers[0][1])} Sahu Shorts gives you two free routes instead: the MIT edition on your own machine, with no watermark and no cap, or the hosted free plan, ${FREE_CLOUD}.`,
+      `Two, both from Sahu Shorts. Self-hosted under MIT it is free with no cap and no watermark; hosted, the free plan covers ${FREE_CLOUD}, and paid plans start at $${STARTER.monthly.price}/month. For comparison, ${c.name} (checked ${month}): ${sentence(c.tiers[0][1])}`,
     ]),
   }
   const faq = [
@@ -272,21 +272,21 @@ function competitorPage(slug) {
     {
       q: `Is there an open source alternative to ${c.name}?`,
       a: pick([
-        `${c.name} itself is closed source and cloud only. OpenShorts is MIT-licensed with the full source at github.com/mutonby/openshorts, which matters if you need to audit what happens to your video or change how the reframing behaves.`,
-        `Yes: OpenShorts, under the MIT licence, with every stage of the pipeline readable on GitHub (github.com/mutonby/openshorts). ${c.name} publishes no source and has no edition you can run yourself.`,
-        `OpenShorts is the open source one in this category: MIT, self-hostable with Docker Compose, source on github.com/mutonby/openshorts. ${c.name} is a closed cloud service, so the code that touches your video cannot be read or changed.`,
+        `${c.name} itself is closed source and cloud only. Sahu Shorts is MIT-licensed with the full source at github.com/mutonby/openshorts, which matters if you need to audit what happens to your video or change how the reframing behaves.`,
+        `Yes: Sahu Shorts, under the MIT licence, with every stage of the pipeline readable on GitHub (github.com/mutonby/openshorts). ${c.name} publishes no source and has no edition you can run yourself.`,
+        `Sahu Shorts is the open source one in this category: MIT, self-hostable with Docker Compose, source on github.com/mutonby/openshorts. ${c.name} is a closed cloud service, so the code that touches your video cannot be read or changed.`,
       ]),
     },
     {
-      q: `How do I switch from ${c.name} to OpenShorts?`,
+      q: `How do I switch from ${c.name} to Sahu Shorts?`,
       a: c.migrate.join(' '),
     },
     {
-      q: c.watermark ? `Does ${c.name} add a watermark, and does OpenShorts?` : 'Does OpenShorts put a watermark on clips?',
+      q: c.watermark ? `Does ${c.name} add a watermark, and does Sahu Shorts?` : 'Does Sahu Shorts put a watermark on clips?',
       a: `${c.watermark ? `${c.watermark} ` : ''}${pick([
-        `OpenShorts self-hosted never does. On OpenShorts Cloud the free plan is watermarked; every paid plan from $${STARTER.monthly.price}/month is not, and upgrading removes the mark from the clips you already made.`,
-        `On OpenShorts the mark exists only on the free Cloud plan: the self-hosted edition has no watermark code, and paying from $${STARTER.monthly.price}/month removes it, including from clips made before you upgraded.`,
-        `OpenShorts marks only what its free hosted plan makes. Run it yourself and nothing is marked; pay for Cloud, from $${STARTER.monthly.price}/month, and the mark also comes off the clips you made while you were free.`,
+        `Sahu Shorts self-hosted never does. On Sahu Shorts Cloud the free plan is watermarked; every paid plan from $${STARTER.monthly.price}/month is not, and upgrading removes the mark from the clips you already made.`,
+        `On Sahu Shorts the mark exists only on the free Cloud plan: the self-hosted edition has no watermark code, and paying from $${STARTER.monthly.price}/month removes it, including from clips made before you upgraded.`,
+        `Sahu Shorts marks only what its free hosted plan makes. Run it yourself and nothing is marked; pay for Cloud, from $${STARTER.monthly.price}/month, and the mark also comes off the clips you made while you were free.`,
       ])}`,
     },
     ...(c.extraFaq || []),
@@ -295,13 +295,13 @@ function competitorPage(slug) {
   const layoutsLine = c.rows?.['AI voice dubbing, 30+ languages']
     ? pick([
         'Where it goes further is the clipping itself: two speakers stacked when both are on camera, screen recordings kept readable over the presenter, and a webcam inset enlarged instead of cropped out.',
-        'The gap is in the framing: OpenShorts keeps two people on camera stacked in half-frames, keeps a shared screen legible above the presenter, and enlarges a webcam inset rather than cropping it away.',
+        'The gap is in the framing: Sahu Shorts keeps two people on camera stacked in half-frames, keeps a shared screen legible above the presenter, and enlarges a webcam inset rather than cropping it away.',
       ])
     : `It adds two things ${esc(c.name)} does not have: AI voice dubbing into more than 30 languages (with your own ElevenLabs key) and an AI UGC generator with lip-synced actors.`
   const caveat = pick([
-    `The caveat is the setup: the free edition runs on your own machine with Docker, and the no-setup version is OpenShorts Cloud, a paid service above ${CLOUD.freeMinutes} minutes a month.`,
+    `The caveat is the setup: the free edition runs on your own machine with Docker, and the no-setup version is Sahu Shorts Cloud, a paid service above ${CLOUD.freeMinutes} minutes a month.`,
     `What you give up is the zero-setup start: free means Docker on your own machine, and the hosted edition is paid beyond its free ${CLOUD.freeMinutes} minutes a month.`,
-    `The trade is effort, not money: self-hosting needs Docker and a machine, and if you want none of that, OpenShorts Cloud is hosted and paid above ${CLOUD.freeMinutes} minutes a month.`,
+    `The trade is effort, not money: self-hosting needs Docker and a machine, and if you want none of that, Sahu Shorts Cloud is hosted and paid above ${CLOUD.freeMinutes} minutes a month.`,
   ])
   const demo = demoBlock(idx % 2 ? 'talk' : 'split')
 
@@ -321,10 +321,10 @@ ${c.tierNote ? `<p>${esc(c.tierNote)}</p>` : ''}
 <h2>Is ${esc(c.name)} free?</h2>
 ${
   c.isFree
-    ? `<p>${esc(c.isFree)} For comparison, OpenShorts Cloud's free plan is ${FREE_CLOUD}, with paid plans from $${STARTER.monthly.price}/month, and the self-hosted edition has no limit at all.</p>`
+    ? `<p>${esc(c.isFree)} For comparison, Sahu Shorts Cloud's free plan is ${FREE_CLOUD}, with paid plans from $${STARTER.monthly.price}/month, and the self-hosted edition has no limit at all.</p>`
     : `<p>Not in the usual sense. ${esc(sentence(c.tiers[0][1]))} After that the cheapest plan is
 ${esc(c.entryPrice)}. If a free plan you can keep using is the requirement,
-OpenShorts has one: ${FREE_CLOUD}, with paid plans from $${STARTER.monthly.price}/month, or no limit at all self-hosted.</p>`
+Sahu Shorts has one: ${FREE_CLOUD}, with paid plans from $${STARTER.monthly.price}/month, or no limit at all self-hosted.</p>`
 }
 
 <h2>${esc(c.name)}'s limits</h2>
@@ -342,7 +342,7 @@ ${demo}
 
   const compareIntro = `
 ${c.brandBlurb && !comp.review ? `<h2>What is ${esc(c.name)}${c.brandAlias ? ` (${esc(c.brandAlias)})` : ''}?</h2><p>${esc(c.brandBlurb)}</p>\n` : ''}
-<h2>Is OpenShorts a real alternative to ${esc(c.name)}?</h2>
+<h2>Is Sahu Shorts a real alternative to ${esc(c.name)}?</h2>
 <p>Yes, with one honest caveat. ${esc(c.fit)} ${layoutsLine} ${caveat}</p>
 ${demo}
 ${extra.afterIntro || ''}
@@ -373,12 +373,12 @@ ${costCalculator(slug === 'opus-clip' ? [slug, 'vizard'] : [slug, 'opus-clip'])}
     : ''
 }
 
-<h2>What does OpenShorts cost?</h2>
+<h2>What does Sahu Shorts cost?</h2>
 ${pricingParagraph('competitor', c)}
 
-<h2>${esc(c.name)} vs OpenShorts, feature by feature</h2>
+<h2>${esc(c.name)} vs Sahu Shorts, feature by feature</h2>
 <table>
-<thead><tr><th>Feature</th><th>OpenShorts</th><th>${esc(c.name)}</th></tr></thead>
+<thead><tr><th>Feature</th><th>Sahu Shorts</th><th>${esc(c.name)}</th></tr></thead>
 <tbody>${rows}</tbody>
 </table>
 ${
@@ -399,10 +399,10 @@ ${li(c.stay.map(esc))}`
 <h2>Where the two differ</h2>
 ${li(c.whereWeDiffer.map(esc))}
 
-<h2>Migrating from ${esc(c.name)} to OpenShorts</h2>
+<h2>Migrating from ${esc(c.name)} to Sahu Shorts</h2>
 ${ol(c.migrate.map(esc))}
 
-<h2>${c.review ? `${esc(c.name)} or OpenShorts?` : 'Which one should you pick?'}</h2>
+<h2>${c.review ? `${esc(c.name)} or Sahu Shorts?` : 'Which one should you pick?'}</h2>
 ${c.pick ? verdictCards(c.name, c.pick.them, c.pick.us) : ''}
 <p>${esc(c.bestFor)}</p>
 
@@ -411,7 +411,7 @@ ${faqBlock(faq)}
 ${sources([
   `${esc(c.name)} pricing, checked ${esc(c.checked)} on the vendor's public pricing page.`,
   ...(c.sources || []).map(([label, url]) => `${esc(label)}, checked ${esc(c.checked)}: <a href="${esc(url)}" rel="nofollow noopener">${esc(url.replace(/^https:\/\//, ''))}</a>`),
-  `OpenShorts pipeline details from the project source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Sahu Shorts pipeline details from the project source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
 ])}
 `
 
@@ -425,12 +425,12 @@ ${sources([
     title: c.seo?.title ? withBrand(c.seo.title) : `Free & Open Source ${c.name} Alternative${BRAND_SUFFIX}`,
     description:
       c.seo?.description ||
-      `OpenShorts vs ${c.name}: features and pricing side by side. Self-hosted free under MIT, hosted from $12/month. ${c.name} starts at ${c.entryPrice}.`,
+      `Sahu Shorts vs ${c.name}: features and pricing side by side. Self-hosted free under MIT, hosted from $12/month. ${c.name} starts at ${c.entryPrice}.`,
     h1: c.seo?.h1 || `The free, open source ${c.name} alternative`,
     lede: brandLede(
       c,
       `${c.name}'s public pricing page`,
-      `OpenShorts is the open source ${esc(c.name)} alternative: ${esc(OS_PRICE_CLAUSE)}.`,
+      `Sahu Shorts is the open source ${esc(c.name)} alternative: ${esc(OS_PRICE_CLAUSE)}.`,
       comp.review ? `For what ${esc(c.name)} is and how it works, see <a href="${comp.review}">${esc(comp.reviewLabel)}</a>.` : ''
     ),
     breadcrumb: [{ name: 'Alternatives', path: '/alternatives' }, { name: c.seo?.breadcrumb || c.name }],
@@ -441,9 +441,9 @@ ${sources([
     facts: c.facts,
     relatedTitle: 'Related comparisons',
     tldr: c.tldr || [
-      `OpenShorts is an open source AI clip generator you can run yourself for free, or use hosted from $12/month. ${esc(c.name)} is a closed-source cloud product starting at ${esc(c.entryPrice)}.`,
-      `Both find viral moments in long video and reframe them to 9:16 with face tracking. ${c.rows?.['AI voice dubbing, 30+ languages'] ? 'OpenShorts adds two-speaker, screencast and webcam-inset layouts and AI UGC video with lip-synced actors.' : 'OpenShorts adds dubbing into 30+ languages (with your own ElevenLabs key) and AI UGC video with lip-synced actors.'}${c.edge ? ` ${esc(c.edge)}` : ''}`,
-      `Pick ${esc(c.name)} if you want zero setup and nothing else matters. Pick OpenShorts if you want to self-host for privacy, keep costs near zero, or change how the pipeline behaves.`,
+      `Sahu Shorts is an open source AI clip generator you can run yourself for free, or use hosted from $12/month. ${esc(c.name)} is a closed-source cloud product starting at ${esc(c.entryPrice)}.`,
+      `Both find viral moments in long video and reframe them to 9:16 with face tracking. ${c.rows?.['AI voice dubbing, 30+ languages'] ? 'Sahu Shorts adds two-speaker, screencast and webcam-inset layouts and AI UGC video with lip-synced actors.' : 'Sahu Shorts adds dubbing into 30+ languages (with your own ElevenLabs key) and AI UGC video with lip-synced actors.'}${c.edge ? ` ${esc(c.edge)}` : ''}`,
+      `Pick ${esc(c.name)} if you want zero setup and nothing else matters. Pick Sahu Shorts if you want to self-host for privacy, keep costs near zero, or change how the pipeline behaves.`,
     ],
     body,
     // The same list the body renders, so the FAQPage schema and the visible
@@ -477,21 +477,21 @@ const hubPage = () => {
   return {
   path: '/alternatives',
   facts: [
-    { k: 'Tools compared', v: '10', s: 'OpenShorts and 9 cloud tools' },
-    { k: 'Cheapest paid', v: '$9.90/mo', s: '2short.ai; OpenShorts Cloud $12 monthly' },
-    { k: 'Open source', v: '1 of 10', s: 'Only OpenShorts can be self-hosted' },
+    { k: 'Tools compared', v: '10', s: 'Sahu Shorts and 9 cloud tools' },
+    { k: 'Cheapest paid', v: '$9.90/mo', s: '2short.ai; Sahu Shorts Cloud $12 monthly' },
+    { k: 'Open source', v: '1 of 10', s: 'Only Sahu Shorts can be self-hosted' },
     { k: 'Prices checked', v: 'Oct 2026', s: 'On every vendor pricing page' },
   ],
-  title: 'Open Source Opus Clip & Klap Alternatives | OpenShorts',
+  title: 'Open Source Opus Clip & Klap Alternatives | Sahu Shorts',
   description:
-    'OpenShorts vs Opus Clip, Klap, Vizard, Submagic, Quso (Vidyo.ai), 2short and SendShort: pricing checked October 2026, free plans, and where each wins.',
+    'Sahu Shorts vs Opus Clip, Klap, Vizard, Submagic, Quso (Vidyo.ai), 2short and SendShort: pricing checked October 2026, free plans, and where each wins.',
   h1: 'Open source alternatives to the main AI clipping tools',
   breadcrumb: [{ name: 'Alternatives' }],
   updated: REVISED,
   pasteLink: true,
   tldr: [
-    `OpenShorts is the only open source, self-hostable tool in this category: ${esc(OS_PRICE_CLAUSE)}. Every other tool on this page is a closed-source cloud service.`,
-    'Cheapest paid entry points as of October 2026: 2short.ai $9.90/month, OpenShorts Cloud $12/month billed monthly, then Submagic $12, Klap $14 and Vizard $14.50 a month on yearly billing, and Opus Clip $15/month. OpenShorts self-hosted is $0 with no cap.',
+    `Sahu Shorts is the only open source, self-hostable tool in this category: ${esc(OS_PRICE_CLAUSE)}. Every other tool on this page is a closed-source cloud service.`,
+    'Cheapest paid entry points as of October 2026: 2short.ai $9.90/month, Sahu Shorts Cloud $12/month billed monthly, then Submagic $12, Klap $14 and Vizard $14.50 a month on yearly billing, and Opus Clip $15/month. Sahu Shorts self-hosted is $0 with no cap.',
     'The tools are not interchangeable. Submagic is a caption editor that added clipping, Quso and SendShort are suites where clipping is one feature, and Vizard expects you in a timeline. The individual comparisons below say where each one genuinely wins.',
   ],
   body: `
@@ -509,7 +509,7 @@ includes.</p>
 <table>
 <thead><tr><th>Tool</th><th>Cheapest paid plan</th><th>Free plan</th><th>Finds moments in long video</th></tr></thead>
 <tbody>
-<tr><td class="os">OpenShorts</td><td class="os">$0 self-hosted, $12/mo hosted for 100 min</td><td class="os">First video free up to 60 min, then 20 min/month; self-hosted unlimited</td><td class="yes">Yes</td></tr>
+<tr><td class="os">Sahu Shorts</td><td class="os">$0 self-hosted, $12/mo hosted for 100 min</td><td class="os">First video free up to 60 min, then 20 min/month; self-hosted unlimited</td><td class="yes">Yes</td></tr>
 ${rows}
 </tbody>
 </table>
@@ -520,7 +520,7 @@ Klap (per clip), Submagic (per video) and SendShort (per short) meter something
 else and are left out rather than forced onto the same axis.</p>
 ${costCalculator(['opus-clip', 'vizard', 'vidyo-ai', '2short'])}
 
-<h2>What does OpenShorts cost?</h2>
+<h2>What does Sahu Shorts cost?</h2>
 ${pricingParagraph('hub')}
 
 ${faqBlock(HUB_FAQ)}
@@ -532,21 +532,21 @@ ${faqBlock(HUB_FAQ)}
 const HUB_FAQ = [
   {
     q: 'What is the cheapest AI clip generator?',
-    a: 'OpenShorts self-hosted is free with no cap, but you supply the machine and your own Google Gemini API key. Among hosted products, the cheapest paid entry points as of October 2026 are 2short.ai at $9.90/month, OpenShorts Cloud at $12/month billed monthly, and Submagic ($12) and Klap ($14) on yearly billing.',
+    a: 'Sahu Shorts self-hosted is free with no cap, but you supply the machine and your own Google Gemini API key. Among hosted products, the cheapest paid entry points as of October 2026 are 2short.ai at $9.90/month, Sahu Shorts Cloud at $12/month billed monthly, and Submagic ($12) and Klap ($14) on yearly billing.',
   },
   {
     q: 'Which AI clipping tools are open source?',
-    a: 'OpenShorts is MIT-licensed with full source on GitHub. Opus Clip, Klap, Vizard, Submagic, Quso (formerly Vidyo.ai), 2short.ai and SendShort are all closed-source commercial products.',
+    a: 'Sahu Shorts is MIT-licensed with full source on GitHub. Opus Clip, Klap, Vizard, Submagic, Quso (formerly Vidyo.ai), 2short.ai and SendShort are all closed-source commercial products.',
   },
   {
     q: 'Which AI clipping tools have a free plan?',
-    a: 'Opus Clip (60 minutes a month, watermarked), Vizard (60 credits a month, 720p, watermarked), Quso (75 credits a month, 720p), 2short.ai (30 minutes a month, YouTube links only, no watermark), and OpenShorts (first video free up to 60 minutes, then 20 minutes a month, or unlimited self-hosted). Klap gives one free video, SendShort three, and Submagic offers a trial instead of a free plan.',
+    a: 'Opus Clip (60 minutes a month, watermarked), Vizard (60 credits a month, 720p, watermarked), Quso (75 credits a month, 720p), 2short.ai (30 minutes a month, YouTube links only, no watermark), and Sahu Shorts (first video free up to 60 minutes, then 20 minutes a month, or unlimited self-hosted). Klap gives one free video, SendShort three, and Submagic offers a trial instead of a free plan.',
   },
 ]
 
 const freeClipGenerator = () => ({
   path: '/free-ai-clip-generator',
-  title: 'Free AI Clip Generator & Clipper, No Watermark | OpenShorts',
+  title: 'Free AI Clip Generator & Clipper, No Watermark | Sahu Shorts',
   // Owns the "free ai clip generator / no watermark" queries since the old
   // /free-ai-clip-generator-no-watermark page was folded in (301 here). The
   // no-watermark claim is scoped every time: self-hosted or paid, never the
@@ -564,11 +564,11 @@ const freeClipGenerator = () => ({
     body: 'Paste a YouTube link, get 3 to 15 vertical clips with subtitles. Your first video is free up to 60 minutes, no credit card.',
     button: 'Get free clips',
   },
-  lede: `OpenShorts is a free, open source AI clip generator: free with no watermark and no cap when you self-host it (MIT), or in the browser with your first video clipped free up to 60 minutes (watermarked, no card) and no watermark from $${CLOUD.lowPrice}/month for ${STARTER.monthly.minutes} minutes.`,
+  lede: `Sahu Shorts is a free, open source AI clip generator: free with no watermark and no cap when you self-host it (MIT), or in the browser with your first video clipped free up to 60 minutes (watermarked, no card) and no watermark from $${CLOUD.lowPrice}/month for ${STARTER.monthly.minutes} minutes.`,
   tldr: [
-    'OpenShorts self-hosted is a free AI clip generator under the MIT licence. No watermark, no usage cap, no subscription. You run it with Docker and supply your own Google Gemini API key, whose free tier covers 1,500 requests a day.',
+    'Sahu Shorts self-hosted is a free AI clip generator under the MIT licence. No watermark, no usage cap, no subscription. You run it with Docker and supply your own Google Gemini API key, whose free tier covers 1,500 requests a day.',
     'It turns a long video into 3 to 15 vertical clips: faster-whisper transcribes at word level, PySceneDetect finds the cuts, Gemini 3.1 Flash-Lite scores the moments, and MediaPipe face tracking reframes each one to 9:16.',
-    'If you do not want to run anything, OpenShorts Cloud is a free AI clipping tool in the browser: your first video is clipped whole up to 60 minutes, then 20 free minutes a month, with a watermark. Paid plans from $12/month remove it, also from the clips you already made.',
+    'If you do not want to run anything, Sahu Shorts Cloud is a free AI clipping tool in the browser: your first video is clipped whole up to 60 minutes, then 20 free minutes a month, with a watermark. Paid plans from $12/month remove it, also from the clips you already made.',
     'So the short answer to "free, with no watermark": yes when you self-host, yes on any paid Cloud plan, and no on the free Cloud plan. A hosted tool that claims free, unlimited and unwatermarked at once is making one of the three claims temporarily.',
   ],
   body: `
@@ -583,7 +583,7 @@ switched off: it is the same pipeline the hosted service runs, released under
 MIT, and you can read all of it.</p>
 
 <h2>Is there a free AI clip generator with no watermark?</h2>
-<p>Yes, with one honest qualifier each way. On OpenShorts:</p>
+<p>Yes, with one honest qualifier each way. On Sahu Shorts:</p>
 <table>
 <thead><tr><th>Edition</th><th>Price</th><th>Watermark</th></tr></thead>
 <tbody>
@@ -607,8 +607,8 @@ run yourself, because nobody is paying for the compute but you.</p>
 <table>
 <thead><tr><th>Tool</th><th>Free tier</th><th>Cheapest way to remove the watermark</th></tr></thead>
 <tbody>
-<tr><td class="os">OpenShorts self-hosted</td><td class="os yes">Never watermarked, no cap</td><td class="os">Nothing to remove</td></tr>
-<tr><td class="os">OpenShorts Cloud</td><td class="os">Watermarked: first video up to 60 min, then ${CLOUD.freeMinutes} min/month</td><td class="os">$${STARTER.monthly.price}/month, and paying also removes it from clips already made</td></tr>
+<tr><td class="os">Sahu Shorts self-hosted</td><td class="os yes">Never watermarked, no cap</td><td class="os">Nothing to remove</td></tr>
+<tr><td class="os">Sahu Shorts Cloud</td><td class="os">Watermarked: first video up to 60 min, then ${CLOUD.freeMinutes} min/month</td><td class="os">$${STARTER.monthly.price}/month, and paying also removes it from clips already made</td></tr>
 <tr><td>Opus Clip</td><td>Watermarked, 60 credits/month, export within 3 days</td><td>Starter, $15/month</td></tr>
 <tr><td>Vizard</td><td>Watermarked, 60 credits/month, 720p, exports up to 10 min</td><td>$14.50/month yearly or $29 monthly</td></tr>
 <tr><td>Quso (Vidyo.ai)</td><td>75 credits/month at 720p, watermark not stated</td><td>$19/month yearly or $29 monthly</td></tr>
@@ -641,7 +641,7 @@ for you.</p>
 
 <h2>Free AI clipper, free clipping AI, free clipping website: which one is this?</h2>
 <p>All three searches mean the same job: something that watches a long video and
-cuts the good parts into vertical clips without you paying. OpenShorts is that in
+cuts the good parts into vertical clips without you paying. Sahu Shorts is that in
 two forms. As a <strong>free clipping website</strong>, openshorts.app clips your
 first video whole up to 60 minutes, then 20 minutes of video a month, in the
 browser with no install and no credit card; the clips carry a small watermark. As a <strong>free AI clipper you run
@@ -669,16 +669,16 @@ constraint for most people is not whether short video works, it is that cutting 
 
 ${faqBlock([
   {
-    q: 'Is OpenShorts free forever or a trial?',
-    a: 'The self-hosted edition is free forever under the MIT licence, with no watermark and no cap. It is not a trial and there is no metering in it. OpenShorts Cloud is a separate hosted service with a permanently free 20 minute per month tier and paid plans from $12/month.',
+    q: 'Is Sahu Shorts free forever or a trial?',
+    a: 'The self-hosted edition is free forever under the MIT licence, with no watermark and no cap. It is not a trial and there is no metering in it. Sahu Shorts Cloud is a separate hosted service with a permanently free 20 minute per month tier and paid plans from $12/month.',
   },
   {
     q: 'Does the free version add a watermark?',
-    a: 'The self-hosted edition never adds a watermark. The free tier of OpenShorts Cloud does; paid Cloud plans from $12/month do not.',
+    a: 'The self-hosted edition never adds a watermark. The free tier of Sahu Shorts Cloud does; paid Cloud plans from $12/month do not.',
   },
   {
     q: 'Do I need to pay for an API key?',
-    a: 'You need a Google Gemini API key for the self-hosted edition. Its free tier covers 1,500 requests a day, which is more than enough for individual use. ElevenLabs for dubbing and fal.ai for AI UGC video are optional and billed by those vendors. OpenShorts Cloud includes the keys.',
+    a: 'You need a Google Gemini API key for the self-hosted edition. Its free tier covers 1,500 requests a day, which is more than enough for individual use. ElevenLabs for dubbing and fal.ai for AI UGC video are optional and billed by those vendors. Sahu Shorts Cloud includes the keys.',
   },
   {
     q: 'How many clips does it generate per video?',
@@ -690,22 +690,22 @@ ${faqBlock([
   },
   {
     q: 'Is there a free AI clipper with no watermark?',
-    a: 'Yes, self-hosted: OpenShorts is MIT licensed, runs with Docker, and has no watermark and no usage cap; you bring your own Gemini API key. On OpenShorts Cloud the free plan is watermarked and every paid plan from $12/month is not.',
+    a: 'Yes, self-hosted: Sahu Shorts is MIT licensed, runs with Docker, and has no watermark and no usage cap; you bring your own Gemini API key. On Sahu Shorts Cloud the free plan is watermarked and every paid plan from $12/month is not.',
   },
   {
     q: 'How do I remove the watermark from a clip that already has one?',
-    a: 'You do not, practically. Watermarks are burned into the pixels, and cropping or blurring them degrades the clip. The reliable fix is generating the clip without one: a paid plan on your current tool, or a tool with no watermark to begin with. On OpenShorts Cloud, upgrading removes the mark from the clips you already made.',
+    a: 'You do not, practically. Watermarks are burned into the pixels, and cropping or blurring them degrades the clip. The reliable fix is generating the clip without one: a paid plan on your current tool, or a tool with no watermark to begin with. On Sahu Shorts Cloud, upgrading removes the mark from the clips you already made.',
   },
 ])}
 `,
   faq: [
     {
-      q: 'Is OpenShorts free forever or a trial?',
-      a: 'The self-hosted edition is free forever under MIT, with no watermark and no cap. OpenShorts Cloud is a separate hosted service with a free 20 minute per month tier and paid plans from $12/month.',
+      q: 'Is Sahu Shorts free forever or a trial?',
+      a: 'The self-hosted edition is free forever under MIT, with no watermark and no cap. Sahu Shorts Cloud is a separate hosted service with a free 20 minute per month tier and paid plans from $12/month.',
     },
     {
       q: 'Does the free version add a watermark?',
-      a: 'The self-hosted edition never adds a watermark. The free tier of OpenShorts Cloud does; paid Cloud plans do not.',
+      a: 'The self-hosted edition never adds a watermark. The free tier of Sahu Shorts Cloud does; paid Cloud plans do not.',
     },
     {
       q: 'How many clips does it generate per video?',
@@ -717,26 +717,26 @@ ${faqBlock([
     },
     {
       q: 'Is there a free AI clipper with no watermark?',
-      a: 'Yes, self-hosted: OpenShorts is MIT licensed, runs with Docker, and has no watermark and no usage cap. On OpenShorts Cloud the free plan is watermarked and every paid plan from $12/month is not.',
+      a: 'Yes, self-hosted: Sahu Shorts is MIT licensed, runs with Docker, and has no watermark and no usage cap. On Sahu Shorts Cloud the free plan is watermarked and every paid plan from $12/month is not.',
     },
     {
       q: 'How do I remove the watermark from a clip that already has one?',
-      a: 'Practically, you regenerate it without one: watermarks are burned into the pixels. On OpenShorts Cloud, upgrading removes the mark from the clips you already made.',
+      a: 'Practically, you regenerate it without one: watermarks are burned into the pixels. On Sahu Shorts Cloud, upgrading removes the mark from the clips you already made.',
     },
   ],
 })
 
 const openSourceClipper = () => ({
   path: '/open-source-video-clipper',
-  title: 'Open Source Video Clipper, Self-Hosted (Docker) | OpenShorts',
+  title: 'Open Source Video Clipper, Self-Hosted (Docker) | Sahu Shorts',
   description:
     'An MIT-licensed open source video clipper you self-host with Docker: AI moment detection, face-tracked 9:16 reframing and word-level subtitles.',
   h1: 'An open source video clipper you can self-host',
   breadcrumb: [{ name: 'Open source video clipper' }],
   updated: REVISED,
-  lede: `OpenShorts is the open source AI clip generator: it makes video clips with AI from long videos, MIT-licensed and free to self-host with Docker (no watermark, no cap), or hosted from $${CLOUD.lowPrice}/month for ${STARTER.monthly.minutes} minutes. It is the open source alternative to Opus Clip, Klap and Vizard.`,
+  lede: `Sahu Shorts is the open source AI clip generator: it makes video clips with AI from long videos, MIT-licensed and free to self-host with Docker (no watermark, no cap), or hosted from $${CLOUD.lowPrice}/month for ${STARTER.monthly.minutes} minutes. It is the open source alternative to Opus Clip, Klap and Vizard.`,
   tldr: [
-    'OpenShorts is an MIT-licensed video clipper that runs entirely on your own hardware via Docker Compose. Source video never leaves the machine.',
+    'Sahu Shorts is an MIT-licensed video clipper that runs entirely on your own hardware via Docker Compose. Source video never leaves the machine.',
     'The stack is Python 3.11, FastAPI, faster-whisper, PySceneDetect, MediaPipe, YOLOv8, FFmpeg and Google Gemini 3.1 Flash-Lite, with a React dashboard.',
     'It is the only open source tool in this category. Opus Clip, Klap, Vizard and Submagic are all closed-source cloud services.',
   ],
@@ -767,7 +767,7 @@ billing, managed keys and the hosted-service infrastructure, is carved out under
 a separate commercial licence and is not needed to self-host.</p>
 
 <h2>How does it compare to the closed-source tools?</h2>
-<p>OpenShorts is the only open source option in this category. As of October 2026,
+<p>Sahu Shorts is the only open source option in this category. As of October 2026,
 the cheapest paid plans are Submagic at $12/month and Klap at $14/month (both
 billed yearly), Vizard at $14.50/month yearly or $29 monthly, and Opus Clip at
 $15/month, and none of them can be self-hosted or audited. The
@@ -777,14 +777,14 @@ no setup, and you cannot read a line of what they do with your video.</p>
 ${faqBlock([
   {
     q: 'Is there an open source alternative to Opus Clip?',
-    a: 'Yes. OpenShorts is MIT-licensed and self-hostable with Docker, and covers the same core job: AI moment detection, face-tracked 9:16 reframing and word-level subtitles. Opus Clip is closed source and cloud only, starting at $15/month.',
+    a: 'Yes. Sahu Shorts is MIT-licensed and self-hostable with Docker, and covers the same core job: AI moment detection, face-tracked 9:16 reframing and word-level subtitles. Opus Clip is closed source and cloud only, starting at $15/month.',
   },
   {
     q: 'Can I run it without sending video to any third party?',
     a: 'Transcription, scene detection, reframing and encoding all run locally. Moment scoring calls the Google Gemini API, which receives the transcript rather than the video file. Dubbing and AI UGC generation are optional and call ElevenLabs and fal.ai respectively; leave them off and nothing but transcript text leaves the machine.',
   },
   {
-    q: 'What licence is OpenShorts released under?',
+    q: 'What licence is Sahu Shorts released under?',
     a: 'MIT for the core application. The cloud/ directory covering billing and hosted infrastructure is under a separate commercial licence and is not required for self-hosting.',
   },
 ])}
@@ -792,10 +792,10 @@ ${faqBlock([
   faq: [
     {
       q: 'Is there an open source alternative to Opus Clip?',
-      a: 'Yes. OpenShorts is MIT-licensed and self-hostable with Docker, covering AI moment detection, face-tracked 9:16 reframing and word-level subtitles. Opus Clip is closed source and cloud only.',
+      a: 'Yes. Sahu Shorts is MIT-licensed and self-hostable with Docker, covering AI moment detection, face-tracked 9:16 reframing and word-level subtitles. Opus Clip is closed source and cloud only.',
     },
     {
-      q: 'What licence is OpenShorts released under?',
+      q: 'What licence is Sahu Shorts released under?',
       a: 'MIT for the core application. The cloud/ directory covering billing and hosted infrastructure is under a separate commercial licence and is not required for self-hosting.',
     },
   ],
@@ -803,18 +803,18 @@ ${faqBlock([
 
 const howItWorks = () => ({
   path: '/how-openshorts-works',
-  title: 'OpenShorts: How It Works, From Long Video to 9:16 Clips',
+  title: 'Sahu Shorts: How It Works, From Long Video to 9:16 Clips',
   description:
-    'How OpenShorts cuts one long video into 3 to 15 vertical clips: transcript, scene cuts, Gemini scoring, face-tracked reframing, subtitles. Try it free.',
+    'How Sahu Shorts cuts one long video into 3 to 15 vertical clips: transcript, scene cuts, Gemini scoring, face-tracked reframing, subtitles. Try it free.',
   h1: 'How a long video becomes a vertical clip',
   breadcrumb: [{ name: 'How it works' }],
   tldr: [
     CANONICAL_ANSWERS.howItWorks,
     'The two stages that decide whether a clip is usable are moment scoring and reframing. Everything else is mechanical.',
-    'OpenShorts self-hosted is free and open source under MIT, so every stage below can be read and changed. OpenShorts Cloud runs the same pipeline on a GPU from $12/month.',
+    'Sahu Shorts self-hosted is free and open source under MIT, so every stage below can be read and changed. Sahu Shorts Cloud runs the same pipeline on a GPU from $12/month.',
   ],
   body: `
-<h2>What is OpenShorts?</h2>
+<h2>What is Sahu Shorts?</h2>
 <p>${esc(CANONICAL_ANSWERS.whatIsIt)}</p>
 
 <h2>The pipeline, stage by stage</h2>
@@ -846,7 +846,7 @@ ${pricingParagraph('how')}
 
 ${faqBlock([
   {
-    q: 'What AI model does OpenShorts use to find viral moments?',
+    q: 'What AI model does Sahu Shorts use to find viral moments?',
     a: 'Google Gemini 3.1 Flash-Lite. It receives the word-level transcript with timestamps together with PySceneDetect scene boundaries, and returns 3 to 15 segments of 15 to 60 seconds scored on hook strength, emotional payload and whether the segment stands alone without surrounding context.',
   },
   {
@@ -861,7 +861,7 @@ ${faqBlock([
 `,
   faq: [
     {
-      q: 'What AI model does OpenShorts use to find viral moments?',
+      q: 'What AI model does Sahu Shorts use to find viral moments?',
       a: 'Google Gemini 3.1 Flash-Lite, which receives the word-level transcript with timestamps together with PySceneDetect scene boundaries and returns 3 to 15 segments of 15 to 60 seconds.',
     },
     {
@@ -873,12 +873,12 @@ ${faqBlock([
 
 /* "AI video generator" is two products wearing one name. Most searchers mean
  * text-to-video; this page splits the intent explicitly and wins the half that
- * describes OpenShorts instead of bouncing all of it from the homepage. */
+ * describes Sahu Shorts instead of bouncing all of it from the homepage. */
 const openSourceVideoGenerator = () => ({
   path: '/open-source-ai-video-generator',
-  title: 'Open Source AI Video Generator for Shorts | OpenShorts',
+  title: 'Open Source AI Video Generator for Shorts | Sahu Shorts',
   description:
-    'AI video generation splits in two: models that invent footage, and clippers that cut your own recordings into shorts. OpenShorts is the second, MIT-licensed.',
+    'AI video generation splits in two: models that invent footage, and clippers that cut your own recordings into shorts. Sahu Shorts is the second, MIT-licensed.',
   h1: 'An open source AI video generator, in the sense that matters for creators',
   breadcrumb: [{ name: 'Open source AI video generator' }],
   published: '2026-08-04',
@@ -886,7 +886,7 @@ const openSourceVideoGenerator = () => ({
   tldr: [
     '"AI video generator" names two different products. Text-to-video models invent new footage from a written prompt. Clip generators produce short videos from long footage you already have. Confusing the two wastes an afternoon.',
     'For text-to-video there are real open source options, including Genmo’s Mochi 1, Open-Sora and HunyuanVideo, all of which need a serious GPU.',
-    'For turning your own recordings into vertical shorts, OpenShorts is MIT-licensed and self-hosted: transcription, AI moment scoring, face-tracked 9:16 reframing and burned-in subtitles, free on your own machine or hosted from $12/month.',
+    'For turning your own recordings into vertical shorts, Sahu Shorts is MIT-licensed and self-hosted: transcription, AI moment scoring, face-tracked 9:16 reframing and burned-in subtitles, free on your own machine or hosted from $12/month.',
   ],
   body: `
 <h2>Which "AI video generator" are you looking for?</h2>
@@ -894,14 +894,14 @@ const openSourceVideoGenerator = () => ({
 prompt, you want a text-to-video model. If you have a podcast, webinar, stream
 or interview recording and want short vertical videos out of it, you want a clip
 generator. The two share almost no technology and no workflow. This page covers
-both honestly and goes deep on the second, because that is what OpenShorts is.</p>
+both honestly and goes deep on the second, because that is what Sahu Shorts is.</p>
 
 <h2>Open source text-to-video, briefly</h2>
 <p>As of August 2026 the notable open-weight text-to-video models include
 Genmo's Mochi 1 (Apache 2.0), Open-Sora, Tencent's HunyuanVideo and Alibaba's
 Wan family. They genuinely generate novel footage, and they need data-center or
 high-end consumer GPUs to run at usable speed. If that is your goal, start with
-those projects; OpenShorts will not do it.</p>
+those projects; Sahu Shorts will not do it.</p>
 
 <h2>Generating videos from footage you already have</h2>
 <p>${esc(CANONICAL_ANSWERS.whatIsIt)}</p>
@@ -910,7 +910,7 @@ ${pricingParagraph('generator')}
 
 <h2>Other open source clip generators, compared honestly</h2>
 <p class="checked">Checked 2026-08-04 on GitHub. Star counts move; positioning rarely does.</p>
-<p>OpenShorts is not the only open source project in this space (it is also the
+<p>Sahu Shorts is not the only open source project in this space (it is also the
 <a href="/free-ai-clip-generator">free AI clip generator</a> most of these pages
 are about), and pretending otherwise would not survive one GitHub search. The notable neighbours:</p>
 <ul>
@@ -918,7 +918,7 @@ are about), and pretending otherwise would not survive one GitHub search. The no
 <li><strong>supoclip</strong> and <strong>clippyme</strong>: smaller projects covering transcription-driven clipping, the latter also using Gemini for moment selection.</li>
 <li><strong>MoneyPrinterTurbo</strong>: generates videos from text plus stock footage, which is a different job than clipping your own recordings.</li>
 </ul>
-<p>Where OpenShorts differs from all of them is surface area: a web dashboard, a
+<p>Where Sahu Shorts differs from all of them is surface area: a web dashboard, a
 REST API with keys, completion webhooks, an MCP server for agents, split-screen
 and screencast layouts for two-person and screen-share footage, dubbing into 30+
 languages with your own ElevenLabs key, and direct publishing to TikTok, Instagram Reels and YouTube Shorts.
@@ -928,31 +928,31 @@ better fit, and that is a real recommendation rather than false modesty.</p>
 ${faqBlock([
   {
     q: 'Is there a free open source AI video generator?',
-    a: 'Yes, in both senses. For text-to-video, Genmo’s Mochi 1, Open-Sora and HunyuanVideo publish open weights and need a powerful GPU. For making clips from your own footage, OpenShorts is MIT-licensed and runs with Docker on an ordinary machine: free self-hosted with no watermark, or hosted from $12/month.',
+    a: 'Yes, in both senses. For text-to-video, Genmo’s Mochi 1, Open-Sora and HunyuanVideo publish open weights and need a powerful GPU. For making clips from your own footage, Sahu Shorts is MIT-licensed and runs with Docker on an ordinary machine: free self-hosted with no watermark, or hosted from $12/month.',
   },
   {
     q: 'Can open source AI generate videos from text?',
-    a: 'Yes. Mochi 1 (Apache 2.0), Open-Sora and HunyuanVideo generate footage from prompts. Expect to need a high-end GPU, and expect quality below the closed frontier models. OpenShorts is not a text-to-video tool; it turns long real footage into short vertical clips.',
+    a: 'Yes. Mochi 1 (Apache 2.0), Open-Sora and HunyuanVideo generate footage from prompts. Expect to need a high-end GPU, and expect quality below the closed frontier models. Sahu Shorts is not a text-to-video tool; it turns long real footage into short vertical clips.',
   },
   {
     q: 'What is the best open source AI video generator for shorts?',
-    a: 'For turning long recordings into publishable vertical shorts with subtitles, OpenShorts covers the widest pipeline: AI moment scoring, face-tracked reframing, split-screen layouts, dubbing and direct social publishing, MIT-licensed. Simpler repos like AI-Youtube-Shorts-Generator cover a leaner version of the same job with less to configure.',
+    a: 'For turning long recordings into publishable vertical shorts with subtitles, Sahu Shorts covers the widest pipeline: AI moment scoring, face-tracked reframing, split-screen layouts, dubbing and direct social publishing, MIT-licensed. Simpler repos like AI-Youtube-Shorts-Generator cover a leaner version of the same job with less to configure.',
   },
 ])}
 
 ${sources([
   'Open-weight text-to-video model landscape checked 2026-08-04 on the respective GitHub repositories.',
-  `OpenShorts source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Sahu Shorts source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
 ])}
 `,
   faq: [
     {
       q: 'Is there a free open source AI video generator?',
-      a: 'Yes, in both senses of the phrase. For text-to-video: Mochi 1, Open-Sora and HunyuanVideo, all GPU-hungry. For clipping your own footage into shorts: OpenShorts, MIT-licensed, free self-hosted or hosted from $12/month.',
+      a: 'Yes, in both senses of the phrase. For text-to-video: Mochi 1, Open-Sora and HunyuanVideo, all GPU-hungry. For clipping your own footage into shorts: Sahu Shorts, MIT-licensed, free self-hosted or hosted from $12/month.',
     },
     {
       q: 'Can open source AI generate videos from text?',
-      a: 'Yes: Mochi 1, Open-Sora and HunyuanVideo publish open weights. OpenShorts is not one of them; it turns long real footage into short vertical clips.',
+      a: 'Yes: Mochi 1, Open-Sora and HunyuanVideo publish open weights. Sahu Shorts is not one of them; it turns long real footage into short vertical clips.',
     },
   ],
 })
@@ -982,7 +982,7 @@ const PODCAST_TOOLS = `<section>
 <table>
 <thead><tr><th>Tool</th><th>What it is</th><th>Clips from a full episode</th><th>Paid from</th><th>Free plan</th></tr></thead>
 <tbody>
-<tr><td class="os">OpenShorts</td><td class="os">Open source AI clipper (MIT)</td><td class="os">Yes: 3 to 15 clips, both speakers kept in frame</td><td class="os">$0 self-hosted · $${STARTER.monthly.price}/month hosted for ${STARTER.monthly.minutes} min</td><td class="os">First episode up to 60 min, then ${CLOUD.freeMinutes} min/month, watermarked</td></tr>
+<tr><td class="os">Sahu Shorts</td><td class="os">Open source AI clipper (MIT)</td><td class="os">Yes: 3 to 15 clips, both speakers kept in frame</td><td class="os">$0 self-hosted · $${STARTER.monthly.price}/month hosted for ${STARTER.monthly.minutes} min</td><td class="os">First episode up to 60 min, then ${CLOUD.freeMinutes} min/month, watermarked</td></tr>
 <tr><td>Opus Clip</td><td>Cloud AI clipper</td><td>Yes</td><td>${esc(COMPETITORS['opus-clip'].entryPrice)} for 150 min</td><td>60 min/month, watermarked</td></tr>
 <tr><td>Vizard</td><td>Cloud clipper with a timeline editor</td><td>Yes, then you edit each clip</td><td>${esc(COMPETITORS.vizard.entryPrice)}, 600 min</td><td>60 min/month, 720p, watermarked</td></tr>
 <tr><td>Descript</td><td>Text-based audio and video editor</td><td>"Create clips" on paid plans</td><td>$16/month billed yearly ($24 monthly), 10 media hours</td><td>1 media hour a month, 720p, watermarked</td></tr>
@@ -1008,7 +1008,7 @@ const podcastToShorts = () => ({
   breadcrumb: [{ name: 'Use cases', path: '/use-cases' }, { name: 'Podcast clips' }],
   published: '2026-08-04',
   updated: REVISED,
-  lede: `OpenShorts turns a video podcast into 3 to 15 vertical clips: it transcribes every word, picks the moments that stand alone, and keeps the active speaker in frame when two people talk. Free to self-host under MIT, or hosted from $${STARTER.monthly.price}/month for ${STARTER.monthly.minutes} minutes; your first episode is clipped free up to 60 minutes.`,
+  lede: `Sahu Shorts turns a video podcast into 3 to 15 vertical clips: it transcribes every word, picks the moments that stand alone, and keeps the active speaker in frame when two people talk. Free to self-host under MIT, or hosted from $${STARTER.monthly.price}/month for ${STARTER.monthly.minutes} minutes; your first episode is clipped free up to 60 minutes.`,
   top: PODCAST_TOOLS,
   cta: {
     label: 'Clip an episode',
@@ -1017,9 +1017,9 @@ const podcastToShorts = () => ({
     button: 'Get free clips',
   },
   tldr: [
-    'A two-person podcast is the hardest input an auto-clipper faces: a single centered crop shows the wrong person half the time, or an empty chair. OpenShorts detects a real two-shot and renders both speakers stacked in half-frames, so a reply never happens off screen.',
+    'A two-person podcast is the hardest input an auto-clipper faces: a single centered crop shows the wrong person half the time, or an empty chair. Sahu Shorts detects a real two-shot and renders both speakers stacked in half-frames, so a reply never happens off screen.',
     'The rest of the pipeline is the same as for any long video: word-level transcription, scene detection, Gemini scoring the 3 to 15 strongest moments, subtitles burned in, and direct publishing to TikTok, Instagram Reels and YouTube Shorts.',
-    'Cost is where podcasts punish credit-based tools: they bill the whole episode length before you see a clip. Self-hosted OpenShorts has no meter at all; hosted plans start at $12/month.',
+    'Cost is where podcasts punish credit-based tools: they bill the whole episode length before you see a clip. Self-hosted Sahu Shorts has no meter at all; hosted plans start at $12/month.',
   ],
   body: `
 <h2>What a podcast clip maker does</h2>
@@ -1040,7 +1040,7 @@ footage. It is not carelessness, it is that a single moving crop cannot show two
 people at once.</p>
 
 <h2>How the two-speaker layout works</h2>
-<p>OpenShorts detects when a scene is a genuine two-shot, meaning both faces are
+<p>Sahu Shorts detects when a scene is a genuine two-shot, meaning both faces are
 visible in the same frame for at least half of the sampled frames. That test
 matters: it is what separates a real side-by-side conversation from
 shot/countershot editing, where a naive split would show the same person twice.
@@ -1085,7 +1085,7 @@ ${demoBlock('talk')}
 <p>Credit-metered tools bill on the length of the video you import, not on the
 clips you keep. As of October 2026, a 60-minute episode costs 60 credits at Opus
 Clip, Vizard or Quso whether it yields 5 usable clips or 20, and a weekly show at that
-length runs past the entry plans of both. OpenShorts prices the other way
+length runs past the entry plans of both. Sahu Shorts prices the other way
 around:</p>
 ${pricingParagraph('podcast')}
 
@@ -1108,7 +1108,7 @@ version of the episode all start from it.</p>
 <p>"Podcast clips" means two different things depending on how the show is
 recorded. If you record <strong>video</strong>, even a static two-camera setup,
 you want vertical 9:16 clips of the speakers with captions, usually 30 to 90
-seconds, for TikTok, Reels and Shorts. That is what this page and OpenShorts are
+seconds, for TikTok, Reels and Shorts. That is what this page and Sahu Shorts are
 about. If the show is <strong>audio-only</strong>, there is nothing to reframe,
 and what you want is an audiogram: a waveform and captions over a still image.
 Audiogram tools such as Headliner serve that case better than any video clipper.</p>
@@ -1118,7 +1118,7 @@ Audiogram tools such as Headliner serve that case better than any video clipper.
 <table>
 <thead><tr><th>Tool</th><th>How it makes podcast clips</th><th>Free plan</th></tr></thead>
 <tbody>
-<tr><td class="os">OpenShorts</td><td class="os">Paste the episode link or upload it; AI picks 3 to 15 moments and keeps both speakers in frame</td><td class="os">First video free up to 60 min, then 20 min/month, watermarked; self-hosted unlimited and unwatermarked</td></tr>
+<tr><td class="os">Sahu Shorts</td><td class="os">Paste the episode link or upload it; AI picks 3 to 15 moments and keeps both speakers in frame</td><td class="os">First video free up to 60 min, then 20 min/month, watermarked; self-hosted unlimited and unwatermarked</td></tr>
 <tr><td>Riverside</td><td>Magic Clips, inside the recording studio</td><td>Yes, with a Riverside watermark; Pro ($29/month) removes it</td></tr>
 <tr><td>Opus Clip</td><td>General clipper with a podcast clip maker page</td><td>60 credits/month, watermarked</td></tr>
 <tr><td>Headliner</td><td>Audiograms for audio-only shows, video clipping in beta</td><td>One unwatermarked audiogram a month, the rest watermarked</td></tr>
@@ -1132,11 +1132,11 @@ re-uploading an hour of video.</p>
 ${faqBlock([
   {
     q: 'How do I turn a podcast into clips for free?',
-    a: 'Self-host OpenShorts: clone the MIT-licensed repo, run docker compose up, add a free-tier Google Gemini API key and paste your episode link. No watermark and no cap. If you would rather not run anything, OpenShorts Cloud clips your first episode free up to 60 minutes, then 20 minutes a month, with a watermark; paid plans start at $12/month.',
+    a: 'Self-host Sahu Shorts: clone the MIT-licensed repo, run docker compose up, add a free-tier Google Gemini API key and paste your episode link. No watermark and no cap. If you would rather not run anything, Sahu Shorts Cloud clips your first episode free up to 60 minutes, then 20 minutes a month, with a watermark; paid plans start at $12/month.',
   },
   {
     q: 'What is the best podcast clip maker?',
-    a: 'It depends on how you record. For a video podcast with two people on camera, pick a tool that keeps both in frame: OpenShorts stacks them in a split layout when both are visible. If you record in Riverside, its built-in Magic Clips are the most convenient. For an audio-only show, an audiogram tool such as Headliner fits better than any video clipper.',
+    a: 'It depends on how you record. For a video podcast with two people on camera, pick a tool that keeps both in frame: Sahu Shorts stacks them in a split layout when both are visible. If you record in Riverside, its built-in Magic Clips are the most convenient. For an audio-only show, an audiogram tool such as Headliner fits better than any video clipper.',
   },
   {
     q: 'How does it handle two people talking?',
@@ -1157,7 +1157,7 @@ ${sources([
   faq: [
     {
       q: 'How do I turn a podcast into clips for free?',
-      a: 'Self-host OpenShorts (MIT, Docker, bring a free-tier Gemini key): no watermark, no cap. Or use OpenShorts Cloud: 20 free minutes a month with a watermark, paid plans from $12/month.',
+      a: 'Self-host Sahu Shorts (MIT, Docker, bring a free-tier Gemini key): no watermark, no cap. Or use Sahu Shorts Cloud: 20 free minutes a month with a watermark, paid plans from $12/month.',
     },
     {
       q: 'How does it handle two people talking?',
@@ -1173,7 +1173,7 @@ ${sources([
  * every competitor (2short and SendShort gate imports or clipping by plan). */
 const youtubeConverter = () => ({
   path: '/youtube-to-shorts-converter',
-  title: 'YouTube to Shorts Converter: Paste the Link | OpenShorts',
+  title: 'YouTube to Shorts Converter: Paste the Link | Sahu Shorts',
   description:
     'Convert a YouTube video into Shorts by pasting the link: no download-and-reupload step. AI picks the moments, crops to 9:16 and burns in the subtitles.',
   h1: 'A YouTube to Shorts converter that starts from the link',
@@ -1181,7 +1181,7 @@ const youtubeConverter = () => ({
   relatedTitle: 'Related tools',
   published: '2026-08-04',
   updated: REVISED,
-  lede: `OpenShorts is an AI YouTube to Shorts converter: paste a YouTube link and it picks the 3 to 15 strongest moments of 15 to 60 seconds, reframes each one to 9:16 around the person speaking and burns in captions, ready for Shorts, TikTok and Reels. Your first video is free up to 60 minutes (watermarked, no card); no watermark from $${CLOUD.lowPrice}/month, or self-host it free under MIT.`,
+  lede: `Sahu Shorts is an AI YouTube to Shorts converter: paste a YouTube link and it picks the 3 to 15 strongest moments of 15 to 60 seconds, reframes each one to 9:16 around the person speaking and burns in captions, ready for Shorts, TikTok and Reels. Your first video is free up to 60 minutes (watermarked, no card); no watermark from $${CLOUD.lowPrice}/month, or self-host it free under MIT.`,
   pasteLink: { placeholder: 'https://www.youtube.com/watch?v=...', label: 'YouTube video link' },
   tldr: [
     'Paste a YouTube link in the box below and get back 3 to 15 vertical clips with subtitles, sized for Shorts, Reels and TikTok. No downloading the source and re-uploading it first.',
@@ -1191,7 +1191,7 @@ const youtubeConverter = () => ({
   body: `
 <h2>How to convert a YouTube video into Shorts</h2>
 <ol>
-<li>Paste a YouTube link in the box on this page. OpenShorts fetches the video itself; there is no download-then-upload round trip through your machine.</li>
+<li>Paste a YouTube link in the box on this page. Sahu Shorts fetches the video itself; there is no download-then-upload round trip through your machine.</li>
 <li>The video is transcribed with word-level timestamps and scanned for scene boundaries.</li>
 <li>Google Gemini scores the transcript against the scenes and picks the 3 to 15 segments most likely to stand alone, 15 to 60 seconds each.</li>
 <li>Each segment is cropped to 9:16 with face tracking, or a split or screencast layout when the content calls for it, and subtitles are burned in.</li>
@@ -1202,7 +1202,7 @@ const youtubeConverter = () => ({
 <p class="checked">Competitor terms checked 2026-10-05 on public pricing pages.</p>
 <p>Most long videos worth clipping already live on YouTube, so a converter that
 only accepts uploads adds a detour: fetch the file with a downloader, wait,
-re-upload gigabytes, wait again. OpenShorts accepts links and uploads on every
+re-upload gigabytes, wait again. Sahu Shorts accepts links and uploads on every
 tier, including both free ones. Not every tool does both: as of October 2026
 2short.ai takes YouTube links only on its free plan and adds Drive and URL
 imports from its paid plans, and SendShort only clips long videos from its
@@ -1220,7 +1220,7 @@ keep the screen legible instead of cropping it to ribbons.</p>
 <p>Yours, and those you have permission for. Your own uploads, your podcast
 guests' episodes with their blessing, client channels you manage, licensed or
 public-domain footage. Clipping someone else's video without permission is a
-copyright question OpenShorts does not answer for you, and platforms remove
+copyright question Sahu Shorts does not answer for you, and platforms remove
 reuploads that fail it. The tool fetches what you point it at; the rights are
 your call and your responsibility.</p>
 
@@ -1230,11 +1230,11 @@ ${pricingParagraph('youtube')}
 ${faqBlock([
   {
     q: 'Can I convert a YouTube video to Shorts for free?',
-    a: 'Yes, two ways. Self-host OpenShorts (MIT licence, Docker, your own free-tier Gemini API key): unlimited, no watermark. Or use the hosted free tier: 20 minutes of source video a month, watermarked, no credit card. Paid hosted plans without watermark start at $12/month.',
+    a: 'Yes, two ways. Self-host Sahu Shorts (MIT licence, Docker, your own free-tier Gemini API key): unlimited, no watermark. Or use the hosted free tier: 20 minutes of source video a month, watermarked, no credit card. Paid hosted plans without watermark start at $12/month.',
   },
   {
     q: 'Do I need to download the video first?',
-    a: 'No. Paste the URL and OpenShorts fetches the source itself on every tier, including free ones. Local file upload is also supported when the source is not online.',
+    a: 'No. Paste the URL and Sahu Shorts fetches the source itself on every tier, including free ones. Local file upload is also supported when the source is not online.',
   },
   {
     q: 'Can I clip a video from someone else’s channel?',
@@ -1245,11 +1245,11 @@ ${faqBlock([
   faq: [
     {
       q: 'Can I convert a YouTube video to Shorts for free?',
-      a: 'Yes: self-hosted OpenShorts is free with no cap (MIT, Docker, your own Gemini key), and the hosted free tier covers 20 watermarked minutes a month. Paid hosted plans start at $12/month.',
+      a: 'Yes: self-hosted Sahu Shorts is free with no cap (MIT, Docker, your own Gemini key), and the hosted free tier covers 20 watermarked minutes a month. Paid hosted plans start at $12/month.',
     },
     {
       q: 'Do I need to download the video first?',
-      a: 'No. OpenShorts fetches the video from the pasted URL on every tier, free tiers included.',
+      a: 'No. Sahu Shorts fetches the video from the pasted URL on every tier, free tiers included.',
     },
   ],
 })
@@ -1259,14 +1259,14 @@ ${faqBlock([
  * intent instead of one page diluting both. */
 const automateShorts = () => ({
   path: '/automate-shorts-api',
-  title: 'AI Clipping API: Automate Shorts From Any Video | OpenShorts',
+  title: 'AI Clipping API: Automate Shorts From Any Video | Sahu Shorts',
   description:
-    'One POST starts the job, one signed webhook ends it. Automate shorts with the OpenShorts REST API, n8n or cron, with no per-call meter and no polling loop.',
+    'One POST starts the job, one signed webhook ends it. Automate shorts with the Sahu Shorts REST API, n8n or cron, with no per-call meter and no polling loop.',
   h1: 'AI clipping API: automate shorts with one request in, one webhook out',
   breadcrumb: [{ name: 'Automate shorts' }],
   published: '2026-08-04',
   updated: REVISED,
-  lede: `OpenShorts has an AI clipping API: one POST with a video URL returns 3 to 15 vertical clips with captions, and a webhook tells you when they are ready. It uses the same minutes as the dashboard ($${STARTER.monthly.price}/month for ${STARTER.monthly.minutes} minutes, no per-call fee), and is unmetered when self-hosted.`,
+  lede: `Sahu Shorts has an AI clipping API: one POST with a video URL returns 3 to 15 vertical clips with captions, and a webhook tells you when they are ready. It uses the same minutes as the dashboard ($${STARTER.monthly.price}/month for ${STARTER.monthly.minutes} minutes, no per-call fee), and is unmetered when self-hosted.`,
   top: `<h2>What the clipping API costs per minute of video</h2>
 <table>
 <thead><tr><th>Plan</th><th>Price</th><th>Source minutes a month</th><th>Per source minute</th></tr></thead>
@@ -1277,7 +1277,7 @@ ${[STARTER, CREATOR, PRO].map((p) => `<tr><td class="os">${esc(p.name)}</td><td>
 </table>
 <p>API calls, dashboard jobs and MCP tool calls all draw from the same balance; there is no separate API plan and no per-request fee. Trims, hook edits and re-renders use no minutes.</p>`,
   tldr: [
-    'The whole automation loop is two HTTP messages. You POST a video URL with an API key and a webhook address; when processing ends, OpenShorts sends exactly one signed webhook carrying clip titles and durable download links. No polling loop, no timeout guessing.',
+    'The whole automation loop is two HTTP messages. You POST a video URL with an API key and a webhook address; when processing ends, Sahu Shorts sends exactly one signed webhook carrying clip titles and durable download links. No polling loop, no timeout guessing.',
     'API calls draw from the same minute balance as the dashboard, with no separate meter and no per-call pricing. On the self-hosted edition there is no meter at all, which is what makes an always-on pipeline affordable.',
     'For agent-driven automation (Claude, ChatGPT, custom agents) the same account also exposes an MCP server; that protocol surface is documented on its own page.',
   ],
@@ -1290,7 +1290,7 @@ ${[STARTER, CREATOR, PRO].map((p) => `<tr><td class="os">${esc(p.name)}</td><td>
        "webhook_url": "https://your-server.com/hooks/openshorts",
        "webhook_secret": "your-shared-secret"}'</code></pre>
 <p>The response returns a job id immediately. Minutes later, when the clips are
-cut, subtitled and archived, OpenShorts POSTs once to your webhook URL with the
+cut, subtitled and archived, Sahu Shorts POSTs once to your webhook URL with the
 job outcome, clip titles and download links durable enough to fetch later. A
 failed job also fires the webhook, so your pipeline never hangs on silence.</p>
 
@@ -1328,7 +1328,7 @@ write the curl, the CLI wraps it:</p>
 is no per-call price, no separate API tier and no automation surcharge. As of
 August 2026 that is not the market default: the mainstream tools meter their
 APIs per source minute or per operation, on top of subscription tiers, so an
-always-on pipeline runs with a taxi meter attached. Self-hosted OpenShorts has
+always-on pipeline runs with a taxi meter attached. Self-hosted Sahu Shorts has
 no meter of any kind, and the hosted plans are flat:</p>
 ${pricingParagraph('automate')}
 
@@ -1341,10 +1341,10 @@ client setup live on the <a href="/mcp">MCP server and API page</a>.</p>
 ${faqBlock([
   {
     q: 'Can I automate YouTube Shorts creation with an open source tool?',
-    a: 'Yes. OpenShorts is MIT-licensed and its self-hosted edition serves the same REST API and MCP server as the hosted service, with no metering. One POST submits a video, a signed webhook returns the finished clips, and the publishing endpoint posts them to YouTube Shorts, TikTok and Instagram Reels.',
+    a: 'Yes. Sahu Shorts is MIT-licensed and its self-hosted edition serves the same REST API and MCP server as the hosted service, with no metering. One POST submits a video, a signed webhook returns the finished clips, and the publishing endpoint posts them to YouTube Shorts, TikTok and Instagram Reels.',
   },
   {
-    q: 'Is there an n8n integration for OpenShorts?',
+    q: 'Is there an n8n integration for Sahu Shorts?',
     a: 'Yes: an importable workflow at /n8n-youtube-shorts-automation watches a YouTube channel, clips each video, sends the clips to Telegram for approval and schedules the approved ones to your socials. Nothing forces you to use it, though, since the integration is just an HTTP Request node posting to /api/process plus a Webhook trigger.',
   },
   {
@@ -1361,7 +1361,7 @@ ${sources([
   faq: [
     {
       q: 'Can I automate YouTube Shorts creation with an open source tool?',
-      a: 'Yes: OpenShorts self-hosted serves the same REST API, MCP server and signed webhooks as the hosted service, MIT-licensed and unmetered. One POST in, one signed webhook out.',
+      a: 'Yes: Sahu Shorts self-hosted serves the same REST API, MCP server and signed webhooks as the hosted service, MIT-licensed and unmetered. One POST in, one signed webhook out.',
     },
     {
       q: 'Do automated API calls cost more than using the dashboard?',
@@ -1377,7 +1377,7 @@ ${sources([
  * URL to point at that is ours rather than a raw file on GitHub. */
 const n8nTemplate = () => ({
   path: '/n8n-youtube-shorts-automation',
-  title: 'n8n YouTube Shorts Template (Auto-Posting) | OpenShorts',
+  title: 'n8n YouTube Shorts Template (Auto-Posting) | Sahu Shorts',
   description:
     'A free n8n workflow that watches your YouTube channel, clips each video into shorts, sends them to Telegram for approval and drip-publishes them automatically.',
   h1: 'The n8n content machine: your channel clips itself, you approve from your phone',
@@ -1387,7 +1387,7 @@ const n8nTemplate = () => ({
   body: `
 <figure class="shot">
 <img src="/n8n-content-machine-workflow.png" width="950" height="750" loading="eager"
-     alt="The OpenShorts content machine open in n8n: four labelled stages, from the daily channel RSS trigger through the clipping call, the Telegram approval buttons and the weekly analytics digest.">
+     alt="The Sahu Shorts content machine open in n8n: four labelled stages, from the daily channel RSS trigger through the clipping call, the Telegram approval buttons and the weekly analytics digest.">
 <figcaption>The whole machine is one canvas: watch the channel, clip, approve from Telegram, drip-publish and measure.</figcaption>
 </figure>
 <p>This workflow runs a YouTube channel on its own without handing over the
@@ -1418,14 +1418,14 @@ minute burn predictable, and a 402 (out of minutes) pauses the machine with a
 Telegram notice instead of failing silently.</li>
 <li><strong>Clip, then get called back.</strong> One HTTP request to
 <code>/api/process</code> carrying a <code>webhook_url</code>. When the job
-ends, OpenShorts POSTs once with the finished clips and durable download links.
+ends, Sahu Shorts POSTs once with the finished clips and durable download links.
 There is no Wait node anywhere in the workflow.</li>
 <li><strong>Approve from your phone.</strong> Each 9:16 clip arrives in Telegram
 as a video message with Publish and Skip buttons. A human approves every post,
 which is also what separates this from the fully automated pipelines that
 YouTube's inauthentic-content policy targets.</li>
 <li><strong>Drip-publish and measure.</strong> Approved clips take the next free
-daily slot and post to the accounts you connected in OpenShorts. Every Sunday
+daily slot and post to the accounts you connected in Sahu Shorts. Every Sunday
 the workflow reads back the analytics of what it published and sends you
 impressions, per-platform split and your best post.</li>
 </ol>
@@ -1436,7 +1436,7 @@ requires an audited app to post publicly, and the Instagram Graph API refuses
 anything that is not a public static URL, which is why Google Drive links fail
 there. This workflow sidesteps both by posting through
 <code>POST /api/social/post</code> against the networks you connected once in
-your OpenShorts account. The workflow itself holds no social credentials, and
+your Sahu Shorts account. The workflow itself holds no social credentials, and
 the clip file is already on durable storage, so the public-URL requirement is
 satisfied before Instagram ever sees it.</p>
 
@@ -1478,15 +1478,15 @@ loop on the <a href="/automate-shorts-api">automation page</a>.</p>
 ${faqBlock([
   {
     q: 'Is there a free n8n template to turn long videos into shorts?',
-    a: 'Yes. OpenShorts publishes an MIT-licensed n8n workflow that clips a YouTube channel automatically and posts the approved clips to TikTok, Instagram and YouTube. The JSON is in the project repository with no email gate, and the clipper behind it is open source, so it can run entirely on your own hardware.',
+    a: 'Yes. Sahu Shorts publishes an MIT-licensed n8n workflow that clips a YouTube channel automatically and posts the approved clips to TikTok, Instagram and YouTube. The JSON is in the project repository with no email gate, and the clipper behind it is open source, so it can run entirely on your own hardware.',
   },
   {
     q: 'How do I post a video to TikTok or Instagram from n8n?',
-    a: 'Neither platform has a native n8n node, and both have hard requirements: TikTok needs an audited app for public posts and Instagram needs a public static URL for the media. Posting through the OpenShorts API avoids both, because the accounts are connected once in your OpenShorts account and the clip already lives on durable public storage.',
+    a: 'Neither platform has a native n8n node, and both have hard requirements: TikTok needs an audited app for public posts and Instagram needs a public static URL for the media. Posting through the Sahu Shorts API avoids both, because the accounts are connected once in your Sahu Shorts account and the clip already lives on durable public storage.',
   },
   {
     q: 'Does the workflow poll for the clipping job to finish?',
-    a: 'No. Clipping a real video takes minutes, so the workflow passes a webhook_url with the job and OpenShorts calls it exactly once when the job reaches a terminal state. Failed jobs fire the same webhook with an error field, so the flow never hangs.',
+    a: 'No. Clipping a real video takes minutes, so the workflow passes a webhook_url with the job and Sahu Shorts calls it exactly once when the job reaches a terminal state. Failed jobs fire the same webhook with an error field, so the flow never hangs.',
   },
   {
     q: 'Can the clips publish without me approving them?',
@@ -1502,18 +1502,18 @@ ${sources([
   faq: [
     {
       q: 'Is there a free n8n template to turn long videos into shorts?',
-      a: 'Yes: OpenShorts ships an MIT-licensed n8n workflow that clips a YouTube channel automatically and posts approved clips to TikTok, Instagram and YouTube. The JSON is public in the repository with no email gate.',
+      a: 'Yes: Sahu Shorts ships an MIT-licensed n8n workflow that clips a YouTube channel automatically and posts approved clips to TikTok, Instagram and YouTube. The JSON is public in the repository with no email gate.',
     },
     {
       q: 'How do I post a video to TikTok or Instagram from n8n?',
-      a: 'Post through the OpenShorts API: the social accounts are connected once in your OpenShorts account, so the workflow needs no TikTok app audit and no public CDN URL for the file.',
+      a: 'Post through the Sahu Shorts API: the social accounts are connected once in your Sahu Shorts account, so the workflow needs no TikTok app audit and no public CDN URL for the file.',
     },
   ],
 })
 
 const mcpAgentsPage = () => ({
   path: '/mcp',
-  title: 'OpenShorts MCP Server: Clip Video From Claude or ChatGPT',
+  title: 'Sahu Shorts MCP Server: Clip Video From Claude or ChatGPT',
   description:
     'Connect Claude, ChatGPT, Cursor or n8n with one URL and clip, subtitle and publish videos from a chat. 8 MCP tools, a REST API and signed webhooks.',
   h1: 'Clip and publish video from an AI agent',
@@ -1525,12 +1525,12 @@ const mcpAgentsPage = () => ({
     button: 'Get an API key',
   },
   tldr: [
-    'OpenShorts has a native MCP server at mcp.openshorts.app/mcp. Connect any MCP client, Claude, ChatGPT, Cursor or a custom agent, and a prompt like "clip this podcast and schedule the best three to TikTok" becomes one instruction instead of an afternoon in an editor.',
+    'Sahu Shorts has a native MCP server at mcp.openshorts.app/mcp. Connect any MCP client, Claude, ChatGPT, Cursor or a custom agent, and a prompt like "clip this podcast and schedule the best three to TikTok" becomes one instruction instead of an afternoon in an editor.',
     'Eight tools cover the whole pipeline: process_video, create_upload, get_job_status, list_clips, get_quota, add_subtitles, recut_clip and publish_clip. There is also a plain REST API with per-user keys, and completion webhooks so pipelines never poll.',
-    'The difference that survives comparison shopping is the meter. Most clipping tools now have an API, and Opus Clip added an MCP server in July 2026, but they meter agent calls per source minute or per operation. OpenShorts API calls draw from the same flat minute balance as the dashboard, and the self-hosted edition, free and MIT-licensed, serves the same MCP endpoint with no meter at all.',
+    'The difference that survives comparison shopping is the meter. Most clipping tools now have an API, and Opus Clip added an MCP server in July 2026, but they meter agent calls per source minute or per operation. Sahu Shorts API calls draw from the same flat minute balance as the dashboard, and the self-hosted edition, free and MIT-licensed, serves the same MCP endpoint with no meter at all.',
   ],
   body: `
-<h2>What can an agent actually do with OpenShorts?</h2>
+<h2>What can an agent actually do with Sahu Shorts?</h2>
 <p>Everything the dashboard does. The MCP server is not a wrapper around a
 subset of features: each tool calls the same pipeline the web app uses, with the
 same account, the same minutes and the same job history. An agent can take a
@@ -1586,7 +1586,7 @@ server can run:</p>
 <table>
 <thead><tr><th>Tool</th><th>MCP server</th><th>REST API</th><th>How agent calls are billed</th></tr></thead>
 <tbody>
-<tr><td class="os">OpenShorts</td><td class="os yes">Yes, hosted and self-hosted</td><td class="os yes">Yes, with signed webhooks</td><td class="os">Same flat minute balance as the dashboard; self-hosted has no meter</td></tr>
+<tr><td class="os">Sahu Shorts</td><td class="os yes">Yes, hosted and self-hosted</td><td class="os yes">Yes, with signed webhooks</td><td class="os">Same flat minute balance as the dashboard; self-hosted has no meter</td></tr>
 <tr><td>Opus Clip</td><td class="yes">Yes, since July 2026</td><td>Yes</td><td>Credits per source minute, expiring in 60 days</td></tr>
 <tr><td>Reap</td><td class="yes">Yes, plus CLI</td><td>Yes</td><td>Subscription from $9.99/month, metered minutes</td></tr>
 <tr><td>Klap</td><td>No</td><td>Yes</td><td>Per operation, roughly $0.32 to $0.48 each</td></tr>
@@ -1626,7 +1626,7 @@ openshorts publish &lt;job_id&gt; 0 --platforms tiktok,youtube</code></pre>
 and the same binary drives a self-hosted instance with no key.</p>
 
 <h2>How do completion webhooks work?</h2>
-<p>Pass <code>webhook_url</code> when starting a job and OpenShorts sends
+<p>Pass <code>webhook_url</code> when starting a job and Sahu Shorts sends
 exactly one POST when the job finishes or fails, with clip titles and download
 links in the body. Add a <code>webhook_secret</code> and the body is signed with
 HMAC-SHA256 in the <code>X-OpenShorts-Signature</code> header so your receiver
@@ -1647,15 +1647,15 @@ balance as the dashboard, so automation does not change the price of anything.</
 
 ${faqBlock([
   {
-    q: 'Does OpenShorts have an MCP server?',
+    q: 'Does Sahu Shorts have an MCP server?',
     a: 'Yes, a native one at mcp.openshorts.app/mcp using the Streamable HTTP transport. It exposes eight tools covering the full pipeline: process_video, create_upload, get_job_status, list_clips, get_quota, add_subtitles, recut_clip and publish_clip. Authentication is an API key created in the dashboard, sent as a Bearer token.',
   },
   {
-    q: 'Can Claude or ChatGPT create video clips with OpenShorts?',
+    q: 'Can Claude or ChatGPT create video clips with Sahu Shorts?',
     a: 'Yes. Any MCP-capable client, including Claude and ChatGPT, can connect to mcp.openshorts.app/mcp with an API key and drive the whole flow: submit a video URL, wait for processing, list the generated clips and publish them to TikTok, Instagram or YouTube.',
   },
   {
-    q: 'Is there an API for OpenShorts?',
+    q: 'Is there an API for Sahu Shorts?',
     a: 'Yes, a REST API documented at api.openshorts.app/docs, authenticated with per-user osk_ keys created in the dashboard. It covers processing, status, subtitles, publishing and completion webhooks.',
   },
   {
@@ -1664,22 +1664,22 @@ ${faqBlock([
   },
   {
     q: 'How is this different from the Opus Clip MCP server?',
-    a: 'The tool surface is similar: both expose around six tools covering processing, captions and publishing. The differences are billing and deployment. Opus Clip meters MCP usage in credits per source minute, and those credits expire in 60 days; OpenShorts draws from a flat minute balance with no per-call pricing. And only OpenShorts can run the same MCP server on your own machine, unmetered, because the code is MIT-licensed.',
+    a: 'The tool surface is similar: both expose around six tools covering processing, captions and publishing. The differences are billing and deployment. Opus Clip meters MCP usage in credits per source minute, and those credits expire in 60 days; Sahu Shorts draws from a flat minute balance with no per-call pricing. And only Sahu Shorts can run the same MCP server on your own machine, unmetered, because the code is MIT-licensed.',
   },
 ])}
 
 ${sources([
   `MCP specification and transports at <a href="https://modelcontextprotocol.io" rel="noopener">modelcontextprotocol.io</a>.`,
-  `OpenShorts server implementation in the project source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Sahu Shorts server implementation in the project source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
 ])}
 `,
   faq: [
     {
-      q: 'Does OpenShorts have an MCP server?',
+      q: 'Does Sahu Shorts have an MCP server?',
       a: 'Yes, a native MCP server at mcp.openshorts.app/mcp with six tools covering the full pipeline, authenticated with an API key created in the dashboard.',
     },
     {
-      q: 'Can Claude or ChatGPT create video clips with OpenShorts?',
+      q: 'Can Claude or ChatGPT create video clips with Sahu Shorts?',
       a: 'Yes. Any MCP-capable client can connect with an API key and drive the whole flow from video URL to published clip.',
     },
     {
@@ -1688,7 +1688,7 @@ ${sources([
     },
     {
       q: 'How is this different from the Opus Clip MCP server?',
-      a: 'Similar tool surface, different billing and deployment: Opus Clip meters MCP usage in credits per source minute that expire in 60 days, while OpenShorts draws from a flat minute balance, and only OpenShorts can run the same MCP server self-hosted and unmetered.',
+      a: 'Similar tool surface, different billing and deployment: Opus Clip meters MCP usage in credits per source minute that expire in 60 days, while Sahu Shorts draws from a flat minute balance, and only Sahu Shorts can run the same MCP server self-hosted and unmetered.',
     },
   ],
 })
@@ -1708,7 +1708,7 @@ ${sources([
  * so the three hand-synced price lists cannot drift further apart.
  * ------------------------------------------------------------------------- */
 const OS_LANE = {
-  title: 'OpenShorts',
+  title: 'Sahu Shorts',
   steps: [
     'Paste a YouTube link or upload',
     'Word-level transcript and scene cuts',
@@ -1721,7 +1721,7 @@ const OS_LANE = {
 const OPUS = COMPETITORS['opus-clip']
 /* Our plan as the first row of every rival tier table: an engine that lifts
  * the table for "opus clip pricing" carries the cheaper open option with it. */
-const OS_TIER_ROW = `<tr><td class="os">OpenShorts (for comparison)</td><td class="os">${esc(OS_PRICE_CLAUSE)}; first video free up to 60 minutes on the hosted free plan</td></tr>`
+const OS_TIER_ROW = `<tr><td class="os">Sahu Shorts (for comparison)</td><td class="os">${esc(OS_PRICE_CLAUSE)}; first video free up to 60 minutes on the hosted free plan</td></tr>`
 const opusTierTable = (filter = () => true) =>
   `<table>
 <thead><tr><th>Plan</th><th>What it includes</th></tr></thead>
@@ -1746,7 +1746,7 @@ const opusClipPricing = () => ({
     'Opus Clip pricing, October 2026: free plan with 60 credits, Starter $15/month, Pro $29 or $14.50/month yearly, the 7-day trial, and what one credit buys.',
   h1: 'Opus Clip pricing in 2026: the free plan, Starter, Pro and what a credit is',
   lede: brandLede(OPUS, 'opus.pro/pricing and the OpusClip help centre',
-    `Opus Clip starts at $15/month for 150 minutes; the open source alternative, OpenShorts, is ${esc(OS_PRICE_CLAUSE)}.`),
+    `Opus Clip starts at $15/month for 150 minutes; the open source alternative, Sahu Shorts, is ${esc(OS_PRICE_CLAUSE)}.`),
   relatedTitle: 'Related comparisons',
   breadcrumb: [
     { name: 'Alternatives', path: '/alternatives' },
@@ -1765,7 +1765,7 @@ const opusClipPricing = () => ({
   tldr: [
     `Opus Clip has four plans (checked ${esc(OPUS.checked)}): <strong>Free</strong> with 60 credits a month and a watermark, <strong>Starter</strong> at $15/month for 150 credits, <strong>Pro</strong> at $29/month or $14.50/month billed yearly for 300 credits, and a custom-priced <strong>Business</strong> plan.`,
     'One credit is one <strong>minute of source video you import</strong>, not one clip you export. A 60-minute podcast costs 60 credits whether it yields 5 clips or 20. Unused credits roll over for two months.',
-    'There is a 7-day free trial of Pro with no credit card, but trial exports keep the watermark. OpenShorts prices the other way round: $0 self-hosted with no meter, or hosted from $12/month for 100 minutes with no watermark.',
+    'There is a 7-day free trial of Pro with no credit card, but trial exports keep the watermark. Sahu Shorts prices the other way round: $0 self-hosted with no meter, or hosted from $12/month for 100 minutes with no watermark.',
   ],
   body: `
 <h2>How much does Opus Clip cost?</h2>
@@ -1802,7 +1802,7 @@ rather than charging you. Upgrading later removes the watermark from projects yo
 made on the free plan or the trial.</p>
 <div class="note"><span class="label">The cheapest honest test</span><p>The
 watermark is the thing you are trying to evaluate past. If the question is
-whether the pipeline is good enough for your footage, a self-hosted OpenShorts
+whether the pipeline is good enough for your footage, a self-hosted Sahu Shorts
 run on one episode answers it at no cost and with no watermark, because the
 self-hosted edition contains no metering or watermark code.</p></div>
 
@@ -1822,7 +1822,7 @@ is about input volume, not clips published. A weekly 60-minute show is roughly
 number: at 150 minutes or fewer Starter covers it, above that Pro does, and
 yearly billing halves it.</p>
 ${costCalculator(['opus-clip'], { minutes: 240 })}
-<p>What you would give up for the same job on OpenShorts is the caption-style
+<p>What you would give up for the same job on Sahu Shorts is the caption-style
 library: Opus Clip's presets are more numerous and more polished than ours. What
 you gain: a self-hosted edition with no meter, so a 90-minute interview and a
 9-minute one both cost nothing, and a hosted one where API and MCP usage draws
@@ -1838,9 +1838,9 @@ ${factTiles([
 <p>For any other number, the calculator in <a href="#pro">the Pro section</a>
 prices your own monthly minutes plan by plan.</p>
 
-<h2>Opus Clip vs OpenShorts on price</h2>
+<h2>Opus Clip vs Sahu Shorts on price</h2>
 <table>
-<thead><tr><th></th><th>Opus Clip</th><th>OpenShorts</th></tr></thead>
+<thead><tr><th></th><th>Opus Clip</th><th>Sahu Shorts</th></tr></thead>
 <tbody>
 <tr><td>Free</td><td>60 credits/month, watermarked</td><td class="os">Self-hosted: unlimited, no watermark. Cloud: first video free up to 60 min, then 20 min/month, watermarked</td></tr>
 <tr><td>Entry paid plan</td><td>$15/month for 150 minutes</td><td class="os">$12/month for 100 minutes, no watermark</td></tr>
@@ -1849,14 +1849,14 @@ prices your own monthly minutes plan by plan.</p>
 </tbody>
 </table>
 
-<h2>What does OpenShorts cost?</h2>
+<h2>What does Sahu Shorts cost?</h2>
 ${pricingParagraph('meter')}
 
 ${faqBlock(OPUS_PRICING_FAQ)}
 
 ${sources([
   `${esc(OPUS.name)} plans, trial and credit rules checked ${esc(OPUS.checked)} on opus.pro/pricing and the OpusClip help centre (how credits are consumed, free trial, watermark).`,
-  `OpenShorts pricing from <a href="/alternatives/opus-clip">the full comparison</a> and the project source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Sahu Shorts pricing from <a href="/alternatives/opus-clip">the full comparison</a> and the project source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
 ])}
 `,
   faq: OPUS_PRICING_FAQ,
@@ -1889,7 +1889,7 @@ const OPUS_PRICING_FAQ = [
   },
   {
     q: 'What is a cheaper alternative to Opus Clip?',
-    a: 'OpenShorts: free and unlimited when self-hosted under MIT, or $12/month hosted for 100 minutes with no watermark. The hosted free plan clips your first video whole up to 60 minutes, then 20 minutes a month, with no credit card.',
+    a: 'Sahu Shorts: free and unlimited when self-hosted under MIT, or $12/month hosted for 100 minutes with no watermark. The hosted free plan clips your first video whole up to 60 minutes, then 20 minutes a month, with no credit card.',
   },
 ]
 
@@ -1909,13 +1909,13 @@ stays free when your usage grows.</p>
 <table>
 <thead><tr><th>Route</th><th>Cost</th><th>Watermark</th><th>Cap</th></tr></thead>
 <tbody>
-<tr><td class="os">OpenShorts self-hosted</td><td class="os">$0</td><td class="os yes">Never</td><td class="os">None, no metering code</td></tr>
-<tr><td class="os">OpenShorts Cloud free</td><td class="os">$0</td><td class="os">Yes</td><td class="os">First video up to 60 min, then ${CLOUD.freeMinutes} min/month</td></tr>
+<tr><td class="os">Sahu Shorts self-hosted</td><td class="os">$0</td><td class="os yes">Never</td><td class="os">None, no metering code</td></tr>
+<tr><td class="os">Sahu Shorts Cloud free</td><td class="os">$0</td><td class="os">Yes</td><td class="os">First video up to 60 min, then ${CLOUD.freeMinutes} min/month</td></tr>
 <tr><td>Opus Clip free</td><td>$0</td><td>Yes</td><td>60 min/month, export within 3 days</td></tr>
 <tr><td>Opus Clip Pro trial</td><td>$0 for 7 days</td><td>Yes</td><td>Pro allowance, no 4K or posting</td></tr>
 </tbody>
 </table>
-<p class="checked">Opus Clip terms checked ${esc(OPUS.checked)}; OpenShorts
+<p class="checked">Opus Clip terms checked ${esc(OPUS.checked)}; Sahu Shorts
 Cloud terms are ours and current.</p>
 
 <h3>The first free route: run it yourself</h3>
@@ -1947,7 +1947,7 @@ episode of the month.</p>
     faq: [
       {
         q: 'Is there a free alternative to Opus Clip with no watermark?',
-        a: 'Yes: OpenShorts self-hosted. It is MIT-licensed, runs on your own machine with Docker, and never adds a watermark because the self-hosted edition contains no watermark code. You supply a Google Gemini API key, whose free tier covers 1,500 requests a day. Hosted, OpenShorts Cloud clips your first video free up to 60 minutes and then 20 minutes a month with a watermark; paid plans from $12/month have none.',
+        a: 'Yes: Sahu Shorts self-hosted. It is MIT-licensed, runs on your own machine with Docker, and never adds a watermark because the self-hosted edition contains no watermark code. You supply a Google Gemini API key, whose free tier covers 1,500 requests a day. Hosted, Sahu Shorts Cloud clips your first video free up to 60 minutes and then 20 minutes a month with a watermark; paid plans from $12/month have none.',
       },
       {
         q: 'Is Opus Clip free to use every month?',
@@ -1955,7 +1955,7 @@ episode of the month.</p>
       },
       {
         q: 'What are the best OpusClip alternatives?',
-        a: `Opus Clip (also searched as Opus Clips or Opus Clip AI) has a few, each better at one thing, all checked ${monthYear(OPUS.checked)}. OpenShorts, if you want it open source and free to self-host, or hosted from $${CLOUD.lowPrice}/month. Vizard, if you edit every clip by hand in a timeline (from ${COMPETITORS.vizard.entryPrice}). Klap, for the fastest link-to-clips path, billed per clip (from ${COMPETITORS.klap.entryPrice}). Submagic, if caption design is the product (from ${COMPETITORS.submagic.entryPrice}). Choppity, if you want to trim clips by editing their transcript.`,
+        a: `Opus Clip (also searched as Opus Clips or Opus Clip AI) has a few, each better at one thing, all checked ${monthYear(OPUS.checked)}. Sahu Shorts, if you want it open source and free to self-host, or hosted from $${CLOUD.lowPrice}/month. Vizard, if you edit every clip by hand in a timeline (from ${COMPETITORS.vizard.entryPrice}). Klap, for the fastest link-to-clips path, billed per clip (from ${COMPETITORS.klap.entryPrice}). Submagic, if caption design is the product (from ${COMPETITORS.submagic.entryPrice}). Choppity, if you want to trim clips by editing their transcript.`,
       },
       {
         q: 'What is the catch with the free self-hosted route?',
@@ -1978,7 +1978,7 @@ const opusAi = () => ({
     'Opus AI is OpusClip, the AI video clipper at opus.pro. Yes, it has a free plan: 60 minutes a month, watermarked. Paid from $15/month. What it does, explained.',
   h1: 'Opus AI (OpusClip): what it is, what it costs, and whether it is free',
   lede: brandLede(OPUS, 'opus.pro and its pricing page',
-    `Opus AI is OpusClip, from $15/month. Cheaper tools that do the same job: OpenShorts (open source; $0 self-hosted, $${CLOUD.lowPrice}/month hosted for ${STARTER.monthly.minutes} minutes), Vizard ($14.50/month billed yearly for 600 minutes) and Klap (from $14/month billed yearly for 100 clips).`),
+    `Opus AI is OpusClip, from $15/month. Cheaper tools that do the same job: Sahu Shorts (open source; $0 self-hosted, $${CLOUD.lowPrice}/month hosted for ${STARTER.monthly.minutes} minutes), Vizard ($14.50/month billed yearly for 600 minutes) and Klap (from $14/month billed yearly for 100 clips).`),
   relatedTitle: 'Related comparisons',
   breadcrumb: [
     { name: 'Alternatives', path: '/alternatives' },
@@ -1991,7 +1991,7 @@ const opusAi = () => ({
   tldr: [
     'Opus AI is OpusClip: the AI video clipping tool at opus.pro, made by OpusClip Inc., that turns long videos into short vertical clips. It is free to start, with a free plan of 60 credits (minutes of source video) a month and watermarked exports, plus a 7-day Pro trial.',
     `Paid plans start at $15/month (Starter), billed in credits per minute of source video rather than per clip. The same company also makes Agent Opus, a separate AI video agent, and paid credits work in both.`,
-    'OpenShorts does the same core job (moment detection, 9:16 reframing, word-level subtitles) and differs on two axes that matter: it is MIT-licensed and self-hostable, and it prices in flat minutes rather than per-minute credits.',
+    'Sahu Shorts does the same core job (moment detection, 9:16 reframing, word-level subtitles) and differs on two axes that matter: it is MIT-licensed and self-hostable, and it prices in flat minutes rather than per-minute credits.',
   ],
   body: `
 <h2>Is Opus AI the same thing as Opus Clip?</h2>
@@ -2046,25 +2046,25 @@ minute of source video imported. Every plan, the trial, how a credit is rounded
 and what the Pro plan adds are on the
 <a href="/opus-clip-pricing">Opus Clip pricing page</a>.</p>
 
-<h2>Where OpenShorts differs</h2>
+<h2>Where Sahu Shorts differs</h2>
 ${li([
-  'OpenShorts is MIT-licensed and can be self-hosted with Docker, so the source video never leaves your machine. Opus is cloud only.',
-  'OpenShorts self-hosted has no meter of any kind. Opus bills credits per minute of source imported, and monthly credits expire after 60 days.',
-  'OpenShorts Cloud starts at $12/month for 100 minutes with no watermark; the hosted free plan clips your first video free up to 60 minutes, then 20 minutes a month.',
+  'Sahu Shorts is MIT-licensed and can be self-hosted with Docker, so the source video never leaves your machine. Opus is cloud only.',
+  'Sahu Shorts self-hosted has no meter of any kind. Opus bills credits per minute of source imported, and monthly credits expire after 60 days.',
+  'Sahu Shorts Cloud starts at $12/month for 100 minutes with no watermark; the hosted free plan clips your first video free up to 60 minutes, then 20 minutes a month.',
   'Opus has the larger caption-style library and a longer track record. If your clips live or die on animated caption design, that advantage is real.',
 ])}
 
 <h2>What the open source alternative produces</h2>
 ${demoBlock()}
 
-<h2>What does OpenShorts cost?</h2>
+<h2>What does Sahu Shorts cost?</h2>
 ${pricingParagraph('brand')}
 
 ${faqBlock(OPUS_AI_FAQ)}
 
 ${sources([
   `OpusClip plans, features and limits checked ${esc(OPUS.checked)} on opus.pro, opus.pro/pricing and help.opus.pro; Agent Opus credits on the Agent Opus credits FAQ.`,
-  `OpenShorts pipeline in the project source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Sahu Shorts pipeline in the project source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
 ])}
 `,
   faq: OPUS_AI_FAQ,
@@ -2077,7 +2077,7 @@ const OPUS_AI_FAQ = [
   },
   {
     q: 'Is Opus AI free?',
-    a: 'There is a free plan: 60 minutes of source video a month with watermarked exports, no editing, and a 3-day window to export. There is also a 7-day Pro trial with no credit card. Paid plans start at $15/month. OpenShorts self-hosted is free with no watermark and no cap; OpenShorts Cloud is hosted from $12/month.',
+    a: 'There is a free plan: 60 minutes of source video a month with watermarked exports, no editing, and a 3-day window to export. There is also a 7-day Pro trial with no credit card. Paid plans start at $15/month. Sahu Shorts self-hosted is free with no watermark and no cap; Sahu Shorts Cloud is hosted from $12/month.',
   },
   {
     q: 'What is Agent Opus?',
@@ -2085,7 +2085,7 @@ const OPUS_AI_FAQ = [
   },
   {
     q: 'Does Opus AI have an open source alternative?',
-    a: 'Yes. OpenShorts is MIT-licensed, self-hostable with Docker, and covers the same core job: AI moment detection, face-tracked 9:16 reframing and word-level burned-in subtitles, plus dubbing into 30+ languages with your own ElevenLabs key.',
+    a: 'Yes. Sahu Shorts is MIT-licensed, self-hostable with Docker, and covers the same core job: AI moment detection, face-tracked 9:16 reframing and word-level burned-in subtitles, plus dubbing into 30+ languages with your own ElevenLabs key.',
   },
 ]
 
@@ -2118,7 +2118,7 @@ const vizardAi = () => {
       'Vizard AI review, October 2026: what the clipper does, the free plan (60 credits, 720p, watermark), Creator from $14.50/month, pros, cons and the verdict.',
     h1: 'Vizard AI review: what it does, what it costs, and its limits',
     lede: brandLede(c, r.lede,
-      `The main open source alternative to Vizard is OpenShorts: MIT-licensed and free to self-host with no watermark or cap, or hosted from $${CLOUD.lowPrice}/month for ${STARTER.monthly.minutes} minutes. Vizard is cheaper per minute at volume (600 minutes for $29/month, $14.50 billed yearly); OpenShorts is cheaper to start and the only one you can run on your own machine.`),
+      `The main open source alternative to Vizard is Sahu Shorts: MIT-licensed and free to self-host with no watermark or cap, or hosted from $${CLOUD.lowPrice}/month for ${STARTER.monthly.minutes} minutes. Vizard is cheaper per minute at volume (600 minutes for $29/month, $14.50 billed yearly); Sahu Shorts is cheaper to start and the only one you can run on your own machine.`),
     breadcrumb: [
       { name: 'Alternatives', path: '/alternatives' },
       { name: 'Vizard', path: '/alternatives/vizard' },
@@ -2191,7 +2191,7 @@ ${li(r.notFor.map(esc))}
 <p>${esc(r.verdict)}</p>
 <p>If that describes you, the <a href="/alternatives/vizard">open source Vizard
 AI alternative</a> page covers the switch: a feature-by-feature table, a cost
-calculator, when to stay and how to move. In short, OpenShorts runs the clipping
+calculator, when to stay and how to move. In short, Sahu Shorts runs the clipping
 unattended and can be self-hosted under MIT.</p>
 ${pricingParagraph('brand')}
 
@@ -2208,7 +2208,7 @@ ${sources([
 
 /* "vizard ai video to text" is its own intent: the searcher wants a transcript,
  * not clips, and lands on clipper pages that never answer it. The honest answer
- * is that both tools produce the transcript: OpenShorts with word-level timing
+ * is that both tools produce the transcript: Sahu Shorts with word-level timing
  * from faster-whisper, which is what the burned-in captions are cut from. */
 const videoToText = () => {
   const c = COMPETITORS.vizard
@@ -2217,10 +2217,10 @@ const videoToText = () => {
     facts: [
       { k: 'Vizard free', v: 'TXT only', s: 'SRT subtitles need a paid plan' },
       { k: 'Languages', v: '180+', s: "Vizard's claim for transcripts" },
-      { k: 'OpenShorts', v: 'Word-level', s: 'A timestamp per word, free self-hosted' },
+      { k: 'Sahu Shorts', v: 'Word-level', s: 'A timestamp per word, free self-hosted' },
       { k: 'No sign-up', v: 'Free tool', s: 'Our YouTube transcript generator, TXT or SRT' },
     ],
-    title: 'Vizard AI Video to Text: Transcripts, Compared | OpenShorts',
+    title: 'Vizard AI Video to Text: Transcripts, Compared | Sahu Shorts',
     description:
       'Vizard AI turns a video into text: a transcript, subtitles and clips. What that costs per minute, and how to get a word-level transcript free by self-hosting.',
     h1: 'Vizard AI video to text: what you get, and what it costs',
@@ -2234,7 +2234,7 @@ const videoToText = () => {
     tldr: [
       `Vizard's "video to text" is a transcript with timestamps from the same pass that finds the clips. Paste a YouTube link or upload a file; Vizard says it covers 180+ languages. The free plan downloads the transcript as TXT only; SRT needs a paid plan, from ${esc(c.entryPrice)}.`,
       'A transcript is a by-product of the transcription stage every clipper already runs, which is why no tool charges for it separately and why it is not worth choosing a tool over.',
-      'OpenShorts transcribes with faster-whisper at word level and returns the transcript alongside the clips, subtitles included, free when self-hosted and from $12/month hosted.',
+      'Sahu Shorts transcribes with faster-whisper at word level and returns the transcript alongside the clips, subtitles included, free when self-hosted and from $12/month hosted.',
     ],
     cta: {
       label: 'Transcript included',
@@ -2269,8 +2269,8 @@ ${esc(c.entryPrice)}, add SRT.</p>
 the free <a href="/youtube-transcript-generator">YouTube transcript generator</a> gives you the transcript
 as TXT or SRT in seconds, with no account and no upload.</p></div>
 
-<h2>Doing the same thing with OpenShorts</h2>
-<p>OpenShorts transcribes with faster-whisper and keeps a timestamp for every
+<h2>Doing the same thing with Sahu Shorts</h2>
+<p>Sahu Shorts transcribes with faster-whisper and keeps a timestamp for every
 word, not every sentence. Word-level timing is what makes the subtitle file
 land on the right frame and what lets the clip boundaries fall inside a sentence
 instead of at the nearest one. The transcript is returned with the finished job
@@ -2285,7 +2285,7 @@ next to the clips, and the burned-in captions are cut from it.</p>
 <p>If you want to hand-correct captions on a timeline before exporting, Vizard's
 editor is the better fit and it is not close. If you want the text as a
 by-product of clipping at volume, or you need the transcript to stay on your own
-machine, self-hosted OpenShorts is free and the transcript comes with the job.</p>
+machine, self-hosted Sahu Shorts is free and the transcript comes with the job.</p>
 
 ${faqBlock([
   {
@@ -2294,7 +2294,7 @@ ${faqBlock([
   },
   {
     q: 'How do I get a free transcript from a video?',
-    a: 'Self-host OpenShorts: transcription runs locally with faster-whisper at word level and the transcript comes back with the finished job, at no cost and with no watermark. The self-hosted edition needs Docker and a Google Gemini API key for the moment scoring, whose free tier covers 1,500 requests a day.',
+    a: 'Self-host Sahu Shorts: transcription runs locally with faster-whisper at word level and the transcript comes back with the finished job, at no cost and with no watermark. The self-hosted edition needs Docker and a Google Gemini API key for the moment scoring, whose free tier covers 1,500 requests a day.',
   },
   {
     q: 'Is word-level timing important in a transcript?',
@@ -2304,7 +2304,7 @@ ${faqBlock([
 
 ${sources([
   `Vizard plan limits checked ${esc(c.checked)} on the vendor's public pricing page.`,
-  `OpenShorts transcription and subtitle stages in the project source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Sahu Shorts transcription and subtitle stages in the project source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
 ])}
 `,
     faq: [
@@ -2314,7 +2314,7 @@ ${sources([
       },
       {
         q: 'Is there a free way to turn a video into text?',
-        a: 'Yes: self-hosted OpenShorts transcribes locally with faster-whisper at word level and returns the transcript with the job, free, with no watermark and no cap.',
+        a: 'Yes: self-hosted Sahu Shorts transcribes locally with faster-whisper at word level and returns the transcript with the job, free, with no watermark and no cap.',
       },
     ],
   }
@@ -2338,11 +2338,11 @@ const submagicReview = () => {
     },
     {
       q: 'Does Submagic have a free plan?',
-      a: 'No. It offers a trial with no credit card, then plans from $12/month billed yearly ($19 month to month). OpenShorts has a free plan (first video up to 60 minutes, then 20 minutes a month) and is free with no cap when self-hosted.',
+      a: 'No. It offers a trial with no credit card, then plans from $12/month billed yearly ($19 month to month). Sahu Shorts has a free plan (first video up to 60 minutes, then 20 minutes a month) and is free with no cap when self-hosted.',
     },
     {
       q: 'What is a free alternative to Submagic?',
-      a: 'OpenShorts, self-hosted: MIT-licensed, free, no watermark and no cap, with moment detection, 9:16 reframing and word-level burned-in captions in the same pipeline. Its caption presets are plainer than Submagic\'s; that is the honest trade.',
+      a: 'Sahu Shorts, self-hosted: MIT-licensed, free, no watermark and no cap, with moment detection, 9:16 reframing and word-level burned-in captions in the same pipeline. Its caption presets are plainer than Submagic\'s; that is the honest trade.',
     },
   ]
   return {
@@ -2364,7 +2364,7 @@ const submagicReview = () => {
     tldr: [
       'The recurring theme across public reviews is the same one the product page leads with: the caption styling is the best in this category, and the presets are why people stay.',
       'Submagic now also clips long videos with Magic Clips. The catch is the meter: every plan counts videos and caps each one\'s length (2, 5 or 30 minutes), and there is no free plan, only a trial.',
-      'OpenShorts is built the other way round, clipping-first: moment detection, 9:16 reframing with two-speaker and screencast layouts, and word-level captions, free when self-hosted and from $12/month hosted. Its caption designs are plainer than Submagic\'s, and that is the real trade.',
+      'Sahu Shorts is built the other way round, clipping-first: moment detection, 9:16 reframing with two-speaker and screencast layouts, and word-level captions, free when self-hosted and from $12/month hosted. Its caption designs are plainer than Submagic\'s, and that is the real trade.',
     ],
     body: `
 <h2>What Submagic is for</h2>
@@ -2418,14 +2418,14 @@ plan is Starter at $12/month billed yearly, or $19 month to month, for 15 videos
 of up to 2 minutes each, without a watermark.</p>
 
 <h2>What a clipping-first tool produces</h2>
-<p>For comparison, a real OpenShorts clip next to its source:</p>
+<p>For comparison, a real Sahu Shorts clip next to its source:</p>
 ${demoBlock()}
 
 <h2>The verdict</h2>
 <p>Submagic is the right buy if captions are your product and your videos are
 short. If you are starting from long recordings, compare what Magic Clips does
 with your footage against a clipping-first tool before committing to a yearly
-plan. OpenShorts does the clipping in depth and loses on exactly the axis
+plan. Sahu Shorts does the clipping in depth and loses on exactly the axis
 Submagic wins on: caption design. The side-by-side table, when to stay and how
 to move are on the <a href="/alternatives/submagic">Submagic alternative
 page</a>.</p>
@@ -2439,7 +2439,7 @@ ${faqBlock(faq)}
 
 ${sources([
   `Submagic plans and limits checked ${esc(c.checked)} on submagic.co/pricing; Magic Clips on submagic.co/features/magic-clips.`,
-  `OpenShorts pipeline stages in the project source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Sahu Shorts pipeline stages in the project source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
 ])}
 `,
     faq,
@@ -2536,21 +2536,21 @@ const alternativasIndex = () => {
     path: '/alternativas',
     lang: 'es',
     facts: [
-      { k: 'Herramientas', v: '10', s: 'OpenShorts y 9 herramientas en la nube' },
-      { k: 'Plan de pago más barato', v: '$9,90/mes', s: '2short.ai; OpenShorts Cloud $12 al mes' },
-      { k: 'Código abierto', v: '1 de 10', s: 'Solo OpenShorts se puede autoalojar' },
+      { k: 'Herramientas', v: '10', s: 'Sahu Shorts y 9 herramientas en la nube' },
+      { k: 'Plan de pago más barato', v: '$9,90/mes', s: '2short.ai; Sahu Shorts Cloud $12 al mes' },
+      { k: 'Código abierto', v: '1 de 10', s: 'Solo Sahu Shorts se puede autoalojar' },
       { k: 'Precios comprobados', v: 'Oct 2026', s: 'En la web de precios de cada uno' },
     ],
-    title: 'Alternativas a Opus Clip, Vizard y Submagic | OpenShorts',
+    title: 'Alternativas a Opus Clip, Vizard y Submagic | Sahu Shorts',
     description:
-      'OpenShorts frente a Opus Clip, Vizard, Klap, Submagic, Quso (Vidyo.ai), 2short y SendShort: precios de octubre de 2026, planes gratuitos y en qué gana cada una.',
+      'Sahu Shorts frente a Opus Clip, Vizard, Klap, Submagic, Quso (Vidyo.ai), 2short y SendShort: precios de octubre de 2026, planes gratuitos y en qué gana cada una.',
     h1: 'Alternativas de código abierto a las herramientas de clipping',
     breadcrumb: [{ name: 'Alternativas' }],
     published: '2026-09-17',
     updated: '2026-10-05',
     tldr: [
-      'OpenShorts es la única herramienta de esta categoría con código abierto y autoalojable: MIT, se ejecuta con Docker en tu propia máquina y no lleva marca de agua ni límite de uso.',
-      `Los planes de pago más baratos, comprobados el ${esc(OPUS.checked)}: 2short.ai $9,90/mes, OpenShorts Cloud $12/mes con pago mensual, Submagic $12, Klap $14 y Vizard $14,50 al mes con pago anual, y Opus Clip $15/mes. OpenShorts autoalojado cuesta $0.`,
+      'Sahu Shorts es la única herramienta de esta categoría con código abierto y autoalojable: MIT, se ejecuta con Docker en tu propia máquina y no lleva marca de agua ni límite de uso.',
+      `Los planes de pago más baratos, comprobados el ${esc(OPUS.checked)}: 2short.ai $9,90/mes, Sahu Shorts Cloud $12/mes con pago mensual, Submagic $12, Klap $14 y Vizard $14,50 al mes con pago anual, y Opus Clip $15/mes. Sahu Shorts autoalojado cuesta $0.`,
       'Las herramientas no son equivalentes: Submagic es un editor de subtítulos que añadió recortes, Quso y SendShort son suites donde recortar es una función más y Vizard espera que edites en su línea de tiempo. Cada comparativa de abajo dice dónde gana de verdad.',
     ],
     cta: {
@@ -2572,12 +2572,12 @@ página, no por popularidad de la herramienta.</p>
 <table>
 <thead><tr><th>Herramienta</th><th>Precio de entrada</th><th>Código abierto</th><th>Autoalojable</th></tr></thead>
 <tbody>
-<tr><td class="os">OpenShorts</td><td class="os">$0 autoalojado · $12/mes alojado</td><td class="yes">Sí, MIT</td><td class="yes">Sí, Docker</td></tr>
+<tr><td class="os">Sahu Shorts</td><td class="os">$0 autoalojado · $12/mes alojado</td><td class="yes">Sí, MIT</td><td class="yes">Sí, Docker</td></tr>
 ${ALTERNATIVES.map((slug) => `<tr><td>${esc(COMPETITORS[slug].seo?.breadcrumb || COMPETITORS[slug].name)}</td><td>${esc(COMPETITORS[slug].entryPrice)}</td><td>No</td><td>No</td></tr>`).join('')}
 </tbody>
 </table>
 
-<h2>Qué cuesta OpenShorts</h2>
+<h2>Qué cuesta Sahu Shorts</h2>
 ${pricingParagraph('es')}
 <p>La diferencia práctica no es solo el precio: en la edición autoalojada no hay
 medidor de ningún tipo, así que un vídeo de 90 minutos cuesta lo mismo que uno de
@@ -2586,11 +2586,11 @@ medidor de ningún tipo, así que un vídeo de 90 minutos cuesta lo mismo que un
 ${faqBlock([
   {
     q: '¿Cuál es la alternativa gratuita a Opus Clip?',
-    a: 'OpenShorts autoalojado: licencia MIT, se ejecuta con Docker en tu máquina, sin marca de agua y sin límite de uso. Solo necesitas una clave de Google Gemini, cuyo plan gratuito cubre 1.500 peticiones al día. Si prefieres no instalar nada, OpenShorts Cloud da 20 minutos al mes con marca de agua y planes de pago desde $12/mes.',
+    a: 'Sahu Shorts autoalojado: licencia MIT, se ejecuta con Docker en tu máquina, sin marca de agua y sin límite de uso. Solo necesitas una clave de Google Gemini, cuyo plan gratuito cubre 1.500 peticiones al día. Si prefieres no instalar nada, Sahu Shorts Cloud da 20 minutos al mes con marca de agua y planes de pago desde $12/mes.',
   },
   {
     q: '¿Qué herramienta de clipping tiene código abierto?',
-    a: 'OpenShorts, con licencia MIT y el código completo en GitHub. Opus Clip, Klap, Vizard, Submagic, Quso (antes Vidyo.ai), 2short y SendShort son productos comerciales de código cerrado que solo funcionan en la nube.',
+    a: 'Sahu Shorts, con licencia MIT y el código completo en GitHub. Opus Clip, Klap, Vizard, Submagic, Quso (antes Vidyo.ai), 2short y SendShort son productos comerciales de código cerrado que solo funcionan en la nube.',
   },
   {
     q: '¿Merece la pena cambiar de herramienta?',
@@ -2601,11 +2601,11 @@ ${faqBlock([
     faq: [
       {
         q: '¿Cuál es la alternativa gratuita a Opus Clip?',
-        a: 'OpenShorts autoalojado: MIT, Docker, sin marca de agua y sin límite. Hosted: 20 minutos gratis al mes y planes desde $12/mes.',
+        a: 'Sahu Shorts autoalojado: MIT, Docker, sin marca de agua y sin límite. Hosted: 20 minutos gratis al mes y planes desde $12/mes.',
       },
       {
         q: '¿Qué herramienta de clipping es de código abierto?',
-        a: 'OpenShorts (MIT). Opus Clip, Klap, Vizard, Submagic, Quso, 2short y SendShort son de código cerrado y solo en la nube.',
+        a: 'Sahu Shorts (MIT). Opus Clip, Klap, Vizard, Submagic, Quso, 2short y SendShort son de código cerrado y solo en la nube.',
       },
     ],
   }
@@ -2622,7 +2622,7 @@ ${faqBlock([
  */
 const gtaClips = () => ({
   path: '/gta-5-clips',
-  title: 'GTA 5 Clips: Turn Stream VODs Into Shorts | OpenShorts',
+  title: 'GTA 5 Clips: Turn Stream VODs Into Shorts | Sahu Shorts',
   description:
     'Turn GTA 5 and GTA RP stream VODs into shorts: gameplay keeps its full width and the facecam is enlarged, not cropped out. Free self-hosted, no meter.',
   h1: 'Turn GTA 5 and GTA RP streams into vertical clips',
@@ -2630,9 +2630,9 @@ const gtaClips = () => ({
   published: '2026-09-15',
   updated: '2026-09-15',
   tldr: [
-    'A GTA 5 stream is four to eight hours of 16:9 gameplay with a webcam box in one corner. OpenShorts reads the whole VOD, picks the moments worth posting out of what was said, and reframes each one so the gameplay keeps its full width and the facecam is enlarged underneath it instead of cropped away.',
-    'Length is what makes this expensive everywhere else. Tools in this category bill one credit per minute of source you import, so a single eight-hour stream is 480 minutes: more than the 300 minutes a $29/month Opus Clip Pro plan includes (checked 2026-07-27). Self-hosted OpenShorts has no meter at all; the hosted edition starts at $12/month.',
-    'Gameplay with no commentary is handled too, and it is where most clippers stop: when a stream has no usable speech OpenShorts switches by itself to a vision pass where Gemini watches the footage and picks the moments, instead of failing on an empty transcript. The switch is automatic, and long silent captures are watched in stretches rather than rejected.',
+    'A GTA 5 stream is four to eight hours of 16:9 gameplay with a webcam box in one corner. Sahu Shorts reads the whole VOD, picks the moments worth posting out of what was said, and reframes each one so the gameplay keeps its full width and the facecam is enlarged underneath it instead of cropped away.',
+    'Length is what makes this expensive everywhere else. Tools in this category bill one credit per minute of source you import, so a single eight-hour stream is 480 minutes: more than the 300 minutes a $29/month Opus Clip Pro plan includes (checked 2026-07-27). Self-hosted Sahu Shorts has no meter at all; the hosted edition starts at $12/month.',
+    'Gameplay with no commentary is handled too, and it is where most clippers stop: when a stream has no usable speech Sahu Shorts switches by itself to a vision pass where Gemini watches the footage and picks the moments, instead of failing on an empty transcript. The switch is automatic, and long silent captures are watched in stretches rather than rejected.',
   ],
   body: `
 <h2>Why GTA clips break a normal auto-clipper</h2>
@@ -2649,7 +2649,7 @@ own answer below. (GTA 6, which launches on consoles only, has its own page:
 <h2>How the webcam inset layout works</h2>
 <p>The OBS layout almost every GTA streamer uses, gameplay full screen with the
 camera composited into a corner, is a single video file with two things in it.
-OpenShorts detects that geometrically rather than asking a model: it looks for a
+Sahu Shorts detects that geometrically rather than asking a model: it looks for a
 subject that is <strong>small</strong>, <strong>off centre horizontally</strong>
 and <strong>still between samples</strong>. All three filters are needed. A
 talking head sitting high in frame is still centred, so size alone is not
@@ -2670,7 +2670,7 @@ inside it.</p></div>
 <h2>When the gameplay itself is the point</h2>
 <p>Not every moment has a face worth showing. A chase, a heist finale or a
 five-car pileup means what it means across the whole width of the frame, and
-cropping to a vertical column deletes the half that explains it. OpenShorts
+cropping to a vertical column deletes the half that explains it. Sahu Shorts
 measures how wide the meaningful content is and routes on that: content spanning
 more than 85% of the frame renders as WIDE. A full-width strip in a vertical
 frame is under a third of its height and unreadable on a phone, so WIDE zooms
@@ -2710,7 +2710,7 @@ ${pricingParagraph('gaming')}
 transcript: roleplay dialogue, heist banter and party voice chat are exactly
 what it is good at, and reading words rather than frames is why an eight-hour
 source costs about the same to analyse as an eight-minute one. A silent grind
-has no transcript to read, so OpenShorts does not use one.</p>
+has no transcript to read, so Sahu Shorts does not use one.</p>
 <p>It switches paths on its own, and it does not need to be told to. Footage
 with no audio track at all, and footage whose transcript comes back under 8
 words or under 5 words per minute (music-only streams, a mic that was muted the
@@ -2749,7 +2749,7 @@ fine, and the platforms strike it.</p>
 ${faqBlock([
   {
     q: 'How do I make GTA 5 clips for TikTok?',
-    a: 'Paste the stream VOD link into OpenShorts with the vertical layout set to auto. It transcribes the whole recording, has Gemini pick the 3 to 15 strongest 15 to 60 second moments out of what was said, reframes each one to 9:16 keeping the gameplay full width with your facecam enlarged below it, and burns in word-level subtitles. Clips download or post straight to TikTok, Reels and Shorts.',
+    a: 'Paste the stream VOD link into Sahu Shorts with the vertical layout set to auto. It transcribes the whole recording, has Gemini pick the 3 to 15 strongest 15 to 60 second moments out of what was said, reframes each one to 9:16 keeping the gameplay full width with your facecam enlarged below it, and burns in word-level subtitles. Clips download or post straight to TikTok, Reels and Shorts.',
   },
   {
     q: 'Can it handle a whole eight-hour GTA RP stream?',
@@ -2765,7 +2765,7 @@ ${faqBlock([
   },
   {
     q: 'Is it free for streamers?',
-    a: 'Self-hosted OpenShorts is free and open source under MIT with no per-minute meter, which is the edition that makes sense when your sources are measured in hours: run it with Docker and bring your own Gemini API key. OpenShorts Cloud covers 20 minutes a month free with a watermark, and paid hosted plans start at $12/month.',
+    a: 'Self-hosted Sahu Shorts is free and open source under MIT with no per-minute meter, which is the edition that makes sense when your sources are measured in hours: run it with Docker and bring your own Gemini API key. Sahu Shorts Cloud covers 20 minutes a month free with a watermark, and paid hosted plans start at $12/month.',
   },
 ])}
 
@@ -2781,7 +2781,7 @@ ${trademarkNote('Grand Theft Auto, GTA, Rockstar Games and Twitch', 'Rockstar Ga
   faq: [
     {
       q: 'How do I make GTA 5 clips for TikTok?',
-      a: 'Paste the stream VOD into OpenShorts with the vertical layout on auto: it transcribes the recording, picks the 3 to 15 strongest 15 to 60 second moments, reframes each to 9:16 keeping the gameplay full width with the facecam enlarged below, and burns in subtitles.',
+      a: 'Paste the stream VOD into Sahu Shorts with the vertical layout on auto: it transcribes the recording, picks the 3 to 15 strongest 15 to 60 second moments, reframes each to 9:16 keeping the gameplay full width with the facecam enlarged below, and burns in subtitles.',
     },
     {
       q: 'Can it handle a whole eight-hour GTA RP stream?',
@@ -2793,7 +2793,7 @@ ${trademarkNote('Grand Theft Auto, GTA, Rockstar Games and Twitch', 'Rockstar Ga
     },
     {
       q: 'Does it work on gameplay with no commentary?',
-      a: 'Yes. When a video has no audio track, or under 8 words of speech, OpenShorts switches automatically to a vision pass where Gemini watches the footage and picks the same 3 to 15 moments. Those clips have no captions, because there is no speech to caption.',
+      a: 'Yes. When a video has no audio track, or under 8 words of speech, Sahu Shorts switches automatically to a vision pass where Gemini watches the footage and picks the same 3 to 15 moments. Those clips have no captions, because there is no speech to caption.',
     },
   ],
   /* HowTo is emitted alongside the Article because the primary query here is a
@@ -2808,7 +2808,7 @@ ${trademarkNote('Grand Theft Auto, GTA, Rockstar Games and Twitch', 'Rockstar Ga
         'Turn a multi-hour GTA 5 or GTA RP stream VOD into vertical 9:16 clips for TikTok, YouTube Shorts and Instagram Reels, keeping the gameplay full width and the facecam visible.',
       totalTime: 'PT15M',
       supply: [{ '@type': 'HowToSupply', name: 'A GTA 5 stream VOD (link or local file) you have the rights to' }],
-      tool: [{ '@type': 'HowToTool', name: 'OpenShorts (self-hosted with Docker, or OpenShorts Cloud)' }],
+      tool: [{ '@type': 'HowToTool', name: 'Sahu Shorts (self-hosted with Docker, or Sahu Shorts Cloud)' }],
       step: [
         {
           '@type': 'HowToStep',
@@ -2873,7 +2873,7 @@ const REELS_URL = 'https://www.socialmediatoday.com/news/instagram-officially-ex
  * twitch_stretch) and twitch_signals.py (promote_hot_windows: up to a third of
  * the shortlist); if they change, change these. */
 const TWITCH_AUTOPILOT_UPDATED = '2026-11-07'
-const TWITCH_VIEWER_CLIPS = `When the link is a Twitch VOD, OpenShorts also
+const TWITCH_VIEWER_CLIPS = `When the link is a Twitch VOD, Sahu Shorts also
 reads the clips your viewers made from that broadcast, when they were made and
 how many views each got, and makes sure the stretches clipped most reach the
 final pick (up to a third of the shortlist). The rest is still chosen from the
@@ -2962,10 +2962,10 @@ const gta6Steps = [
 const gta6Qa = [
   {
     q: 'How do I record GTA 6 on PS5?',
-    a: 'Press the Create button while you play. Save Recent Gameplay keeps anywhere from the last 15 seconds to the last hour, and Start New Recording records up to an hour. The capture options can include your microphone and voice chat, and 4K recording with a compatible display. Then upload the file to OpenShorts.',
+    a: 'Press the Create button while you play. Save Recent Gameplay keeps anywhere from the last 15 seconds to the last hour, and Start New Recording records up to an hour. The capture options can include your microphone and voice chat, and 4K recording with a compatible display. Then upload the file to Sahu Shorts.',
     detail: `<p>That is Sony's own description of the PS5 capture menu (checked
 ${GAMING_CHECKED}). Two settings matter for clipping. <strong>Microphone
-audio</strong>: if you talk while you play, include it, because OpenShorts picks
+audio</strong>: if you talk while you play, include it, because Sahu Shorts picks
 moments from what is said; without speech it watches the footage instead, and
 those clips have no captions. Sony asks you to check with the people in voice
 chat before you record them. <strong>Resolution</strong>: a 4K capture is a
@@ -2974,7 +2974,7 @@ below, so for clipping, 1080p is the easier format to move off the console.</p>`
   },
   {
     q: 'How do I record GTA 6 on Xbox Series X|S?',
-    a: 'Hold the Share button on the controller to save the gameplay that just happened; a single press takes a screenshot. Those are the default actions and you can remap them. Clip length, resolution and where captures are saved are set under Settings, Preferences, Capture and share. Then copy the file off the console and upload it to OpenShorts.',
+    a: 'Hold the Share button on the controller to save the gameplay that just happened; a single press takes a screenshot. Those are the default actions and you can remap them. Clip length, resolution and where captures are saved are set under Settings, Preferences, Capture and share. Then copy the file off the console and upload it to Sahu Shorts.',
     detail: `<p>How long one Xbox clip can be depends on the capture resolution and on
 whether the console captures to its internal storage or to an external drive,
 and Microsoft has changed those limits over the years, so check the current
@@ -2993,11 +2993,11 @@ whole mission or chase will not fit, so for anything longer, copy it to a USB
 drive (Media Gallery, then Copy to USB Drive) and upload it from your PC. On
 Xbox, the Captures app can bulk upload to OneDrive and keep future captures
 backed up there (Xbox Wire, September 2023). Once the file is on your phone or
-PC, upload it to OpenShorts from the browser.</p>`,
+PC, upload it to Sahu Shorts from the browser.</p>`,
   },
   {
     q: 'How do I turn GTA 6 gameplay into TikToks?',
-    a: 'Upload the capture or paste the stream VOD link into OpenShorts with the vertical layout on auto. It picks the moments worth posting, cuts each into a 15 to 60 second 9:16 clip, keeps your facecam if the footage has one, and burns in captions when there is speech. Post to TikTok, Shorts and Reels from the dashboard, or download.',
+    a: 'Upload the capture or paste the stream VOD link into Sahu Shorts with the vertical layout on auto. It picks the moments worth posting, cuts each into a 15 to 60 second 9:16 clip, keeps your facecam if the footage has one, and burns in captions when there is speech. Post to TikTok, Shorts and Reels from the dashboard, or download.',
     detail: `${ol(gta6Steps.map(([n, t]) => `<strong>${esc(n)}.</strong> ${esc(t)}`))}`,
   },
   {
@@ -3005,7 +3005,7 @@ PC, upload it to OpenShorts from the browser.</p>`,
     a: 'It depends on what is in the frame. With your webcam in a corner, the clip renders as INSET: the gameplay across the full width on top, your face enlarged below. With no face and action across the frame, it renders as WIDE: zoomed about 1.3 times, keeping roughly three quarters of the width, slid toward the motion.',
     detail: `<p>A centre crop of a 16:9 frame keeps a narrow slice of the map and throws
 the rest away, including your face when it sits in a corner. With the vertical
-layout on <strong>auto</strong>, OpenShorts looks for a webcam box by its
+layout on <strong>auto</strong>, Sahu Shorts looks for a webcam box by its
 geometry: a subject that is small, off centre and still between samples. The
 <a href="/gta-5-clips">GTA 5 clips</a> page explains how that detector was
 measured. A console capture has no face at all, and the moment worth posting is
@@ -3017,7 +3017,7 @@ ${gameLayoutDiagram('The two gameplay layouts, drawn to scale on a 1080 x 1920 f
   },
   {
     q: 'What is the best length for a GTA 6 TikTok or Short?',
-    a: 'There is no single best length. OpenShorts cuts 15 to 60 seconds by default, because most moments that stand on their own fit in that, and you can raise the maximum to 180 seconds. YouTube Shorts and Instagram Reels accept up to 3 minutes, and TikTok accepts longer uploads. Keep the chase, cut the drive to it.',
+    a: 'There is no single best length. Sahu Shorts cuts 15 to 60 seconds by default, because most moments that stand on their own fit in that, and you can raise the maximum to 180 seconds. YouTube Shorts and Instagram Reels accept up to 3 minutes, and TikTok accepts longer uploads. Keep the chase, cut the drive to it.',
     detail: `<p>Set the range in the advanced options before the job runs: the minimum
 anywhere from 5 to 175 seconds and the maximum from 10 to 180. After the job,
 the clip editor trims or extends a clip on word boundaries without using
@@ -3026,7 +3026,7 @@ October 2026); Instagram raised Reels to 3 minutes in January 2025.</p>`,
   },
   {
     q: 'How do I clip a GTA 6 stream?',
-    a: 'Paste the VOD link: the twitch.tv/videos/ address of the past broadcast, a Twitch clip of 45 seconds or more, or the YouTube link of the stream. OpenShorts reads what you said across the whole stream, picks the passages that stand alone and cuts them into vertical clips. A channel page is the live channel, not a recording.',
+    a: 'Paste the VOD link: the twitch.tv/videos/ address of the past broadcast, a Twitch clip of 45 seconds or more, or the YouTube link of the stream. Sahu Shorts reads what you said across the whole stream, picks the passages that stand alone and cuts them into vertical clips. A channel page is the live channel, not a recording.',
     detail: `<p>With commentary on, moment picking reads the transcript, so a four-hour
 stream is analysed the same way as a forty-minute one. On a long stream, clip it
 in parts (one job per hour, or just the stretch you know was good) and you get
@@ -3035,7 +3035,7 @@ more candidates for fewer minutes. ${TWITCH_VIEWER_CLIPS} The
 overlays and long streams in more detail.</p>`,
   },
   {
-    q: 'Can OpenShorts clip my GTA 6 streams automatically?',
+    q: 'Can Sahu Shorts clip my GTA 6 streams automatically?',
     a: TWITCH_AUTOPILOT_ANSWER,
     detail: TWITCH_AUTOPILOT_DETAIL,
   },
@@ -3051,12 +3051,12 @@ the spoiler rule below.</p>`,
   },
   {
     q: 'Does it work with no commentary?',
-    a: 'Yes. When the footage has no audio track, or its transcript comes back under 8 words in total or under 5 words a minute, OpenShorts switches by itself to a vision pass where Gemini watches the footage and picks the moments. Those clips have no captions, because there is no speech to caption. Layouts work the same.',
+    a: 'Yes. When the footage has no audio track, or its transcript comes back under 8 words in total or under 5 words a minute, Sahu Shorts switches by itself to a vision pass where Gemini watches the footage and picks the moments. Those clips have no captions, because there is no speech to caption. Layouts work the same.',
     detail: `<p>Long silent footage is watched in stretches of up to 40 minutes, and the
 picks from every stretch are ranked together into one list. A job watches up to
 eight stretches, a little over five hours; past that only the first five hours
 are clipped. It is still worth handing it the session you care about rather than
-everything you recorded: on OpenShorts Cloud minutes are billed on source
+everything you recorded: on Sahu Shorts Cloud minutes are billed on source
 length, so three hours of free roam costs three hours whether or not anything
 happened in it. Use <strong>clip only part of it</strong> to set a start and an
 end, or trim the capture in the PS5 Media Gallery before you copy it off.</p>`,
@@ -3091,7 +3091,7 @@ review every clip for story spoilers before it goes out under their name.</p>`,
   },
   {
     q: 'How much does it cost to clip GTA 6 footage?',
-    a: `Self-hosted OpenShorts is free and open source under MIT, with no meter and no watermark. OpenShorts Cloud clips your first video free up to 60 minutes, then ${CLOUD.freeMinutes} minutes a month with a watermark; paid plans start at $${CLOUD.lowPrice}/month for ${STARTER.monthly.minutes} minutes of source video, and edits on the clips are not counted.`,
+    a: `Self-hosted Sahu Shorts is free and open source under MIT, with no meter and no watermark. Sahu Shorts Cloud clips your first video free up to 60 minutes, then ${CLOUD.freeMinutes} minutes a month with a watermark; paid plans start at $${CLOUD.lowPrice}/month for ${STARTER.monthly.minutes} minutes of source video, and edits on the clips are not counted.`,
     detail: pricingParagraph('console'),
   },
 ]
@@ -3102,7 +3102,7 @@ const gta6Clips = () => ({
   description:
     `Turn GTA 6 streams and PS5 or Xbox captures into TikToks, Shorts and Reels: facecam kept, silent gameplay handled. From $${CLOUD.lowPrice}/month, or self-host free.`,
   h1: 'Make GTA 6 clips: turn your streams and console captures into TikToks',
-  lede: `OpenShorts turns GTA 6 footage into vertical clips: paste your Twitch or YouTube VOD, or upload a console capture, and it picks the moments worth posting and cuts them into 15 to 60 second 9:16 clips for TikTok, YouTube Shorts and Instagram Reels. Your first video is free up to 60 minutes (watermarked, no card); no watermark from $${CLOUD.lowPrice}/month, or self-host it free under MIT.`,
+  lede: `Sahu Shorts turns GTA 6 footage into vertical clips: paste your Twitch or YouTube VOD, or upload a console capture, and it picks the moments worth posting and cuts them into 15 to 60 second 9:16 clips for TikTok, YouTube Shorts and Instagram Reels. Your first video is free up to 60 minutes (watermarked, no card); no watermark from $${CLOUD.lowPrice}/month, or self-host it free under MIT.`,
   breadcrumb: [{ name: 'Use cases', path: '/use-cases' }, { name: 'GTA 6 clips' }],
   published: '2026-11-04',
   updated: TWITCH_AUTOPILOT_UPDATED,
@@ -3110,7 +3110,7 @@ const gta6Clips = () => ({
   related: ['/gta-5-clips', '/wow-forever-clips', '/platforms/twitch', '/platforms/kick', '/auto-reframe'],
   tldr: [
     `Rockstar has set Grand Theft Auto VI to launch on ${GTA6_LAUNCH}, on PlayStation 5 and Xbox Series X|S. No PC version has been announced, so when it launches every GTA 6 clip starts on a console: a capture saved with the PS5 Create button or the Xbox Share button, a recording through a capture card, or a stream VOD.`,
-    'Those sources look different and OpenShorts handles each one differently. A stream with a facecam in a corner becomes gameplay on top and your enlarged face below. Full-frame action is zoomed around the motion. A capture with nobody talking, which describes many console captures, is watched by the model instead of read from a transcript.',
+    'Those sources look different and Sahu Shorts handles each one differently. A stream with a facecam in a corner becomes gameplay on top and your enlarged face below. Full-frame action is zoomed around the motion. A capture with nobody talking, which describes many console captures, is watched by the model instead of read from a transcript.',
   ],
   body: `
 <h2>What is different about GTA 6 footage</h2>
@@ -3147,7 +3147,7 @@ ${sources([
   `Xbox capture: Xbox Support, <a href="${XBOX_SHARE_URL}" rel="noopener">What's this Share button on my controller?</a>, and Xbox Wire, <a href="${XBOX_ONEDRIVE_URL}" rel="noopener">captures to OneDrive</a> (27 September 2023), checked ${GAMING_CHECKED}.`,
   `Platform lengths: <a href="${YT_SHORTS_URL}" rel="noopener">YouTube Help: Upload YouTube Shorts</a> (up to 3 minutes), checked 28 October 2026; Instagram Reels up to 3 minutes, announced January 2025, reported by <a href="${REELS_URL}" rel="noopener">Social Media Today</a>.`,
   'Silent-footage thresholds (8 words, 5 words per minute) and the stretches of the vision pass: <code>main.py</code> and <code>clip_selection.py</code>; inset detection: <code>camera_inset.py</code>; WIDE layout: <code>screencast_layout.py</code>.',
-  `OpenShorts plan minutes: <a href="/pricing">pricing</a>. Source: <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Sahu Shorts plan minutes: <a href="/pricing">pricing</a>. Source: <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
 ])}
 ${trademarkNote('Grand Theft Auto, GTA, Rockstar Games, PlayStation, Xbox and Twitch', 'Rockstar Games, Take-Two Interactive, Sony, Microsoft or Twitch')}
 `,
@@ -3161,7 +3161,7 @@ ${trademarkNote('Grand Theft Auto, GTA, Rockstar Games, PlayStation, Xbox and Tw
         'Turn a GTA 6 stream VOD or a PS5, Xbox or capture card recording into vertical 9:16 clips, keeping the facecam when there is one and handling footage with no commentary.',
       totalTime: 'PT15M',
       supply: [{ '@type': 'HowToSupply', name: 'A GTA 6 stream VOD link or console capture you have the rights to' }],
-      tool: [{ '@type': 'HowToTool', name: 'OpenShorts (self-hosted with Docker, or OpenShorts Cloud)' }],
+      tool: [{ '@type': 'HowToTool', name: 'Sahu Shorts (self-hosted with Docker, or Sahu Shorts Cloud)' }],
       step: gta6Steps.map(([name, text]) => ({ '@type': 'HowToStep', name, text })),
     },
   ],
@@ -3171,7 +3171,7 @@ ${trademarkNote('Grand Theft Auto, GTA, Rockstar Games, PlayStation, Xbox and Tw
  * (5 November in Europe and Asia-Pacific). The searches around it are about
  * recording ("how to clip wow gameplay") and the SERP is forum threads, so the
  * page answers the recording question first, with the tools named and their
- * own pages cited, and only then what OpenShorts does with the file. Nothing
+ * own pages cited, and only then what Sahu Shorts does with the file. Nothing
  * about Forever itself is stated without a Blizzard (or, for Hardcore timing,
  * a press) source next to it.
  */
@@ -3208,12 +3208,12 @@ const wowQa = [
 <li><strong>Mac.</strong> Forever runs on macOS as well as Windows. OBS runs there, and Shift-Command-5 opens the built-in screen recorder; whether it can include the game's sound depends on your macOS version, per Apple's page.</li>
 </ul>
 <p>Whatever records it, keep the file: an MP4 or MOV goes straight into
-OpenShorts. If you want your face in the clip, put the webcam in a corner of the
-OBS scene; that is the layout OpenShorts turns into INSET.</p>`,
+Sahu Shorts. If you want your face in the clip, put the webcam in a corner of the
+OBS scene; that is the layout Sahu Shorts turns into INSET.</p>`,
   },
   {
     q: 'How do I turn a WoW Twitch stream into TikToks or Shorts?',
-    a: 'Paste the twitch.tv/videos/ link of the past broadcast into OpenShorts, or a Twitch clip of 45 seconds or more. It reads what you and your raid said across the whole stream, picks the passages that stand alone, and cuts them into 15 to 60 second vertical clips with captions, and a corner facecam kept below the game.',
+    a: 'Paste the twitch.tv/videos/ link of the past broadcast into Sahu Shorts, or a Twitch clip of 45 seconds or more. It reads what you and your raid said across the whole stream, picks the passages that stand alone, and cuts them into 15 to 60 second vertical clips with captions, and a corner facecam kept below the game.',
     detail: `${ol(wowSteps.map(([n, t]) => `<strong>${esc(n)}.</strong> ${esc(t)}`))}
 <p>A channel page is the live channel, not a recording; the VOD is under Videos
 on the channel. A raid night of three or four hours is analysed the same way as
@@ -3223,7 +3223,7 @@ The <a href="/platforms/twitch">Twitch clip maker</a> page covers long VODs and
 chat overlays.</p>`,
   },
   {
-    q: 'Can OpenShorts clip my WoW streams automatically?',
+    q: 'Can Sahu Shorts clip my WoW streams automatically?',
     a: TWITCH_AUTOPILOT_ANSWER,
     detail: TWITCH_AUTOPILOT_DETAIL,
   },
@@ -3265,7 +3265,7 @@ then.</p>`,
   },
   {
     q: 'How long should a WoW clip be for TikTok, Shorts or Reels?',
-    a: 'OpenShorts cuts 15 to 60 seconds by default, which fits most moments that stand alone, and you can raise the maximum to 180 seconds for a full boss kill that needs context. YouTube Shorts and Instagram Reels accept up to 3 minutes, and TikTok accepts longer uploads. Start on the action, not the pull countdown.',
+    a: 'Sahu Shorts cuts 15 to 60 seconds by default, which fits most moments that stand alone, and you can raise the maximum to 180 seconds for a full boss kill that needs context. YouTube Shorts and Instagram Reels accept up to 3 minutes, and TikTok accepts longer uploads. Start on the action, not the pull countdown.',
     detail: `<p>Set the range in the advanced options before the job: the minimum
 anywhere from 5 to 175 seconds and the maximum from 10 to 180. Trimming or
 extending a clip afterwards in the editor does not use minutes. YouTube's
@@ -3274,11 +3274,11 @@ Instagram raised Reels to 3 minutes in January 2025.</p>`,
   },
   {
     q: 'Does it work without commentary?',
-    a: 'Yes. When the recording has no audio track, or its transcript comes back under 8 words in total or under 5 words a minute, OpenShorts switches by itself to a vision pass where Gemini watches the footage and picks the moments. Those clips have no captions, because there is no speech to caption. Layouts work the same.',
+    a: 'Yes. When the recording has no audio track, or its transcript comes back under 8 words in total or under 5 words a minute, Sahu Shorts switches by itself to a vision pass where Gemini watches the footage and picks the moments. Those clips have no captions, because there is no speech to caption. Layouts work the same.',
     detail: `<p>Long silent footage is watched in stretches of up to 40 minutes, and the
 picks from every stretch are ranked together. A job watches up to eight
 stretches, a little over five hours; past that only the first five hours are
-clipped. On OpenShorts Cloud minutes are billed on source length, so the pull
+clipped. On Sahu Shorts Cloud minutes are billed on source length, so the pull
 you care about is a cheaper input than the whole evening.</p>`,
   },
   {
@@ -3299,7 +3299,7 @@ current version before you rely on it.</p>`,
   },
   {
     q: 'How much does it cost to clip WoW Forever footage?',
-    a: `Self-hosted OpenShorts is free and open source under MIT, with no meter and no watermark. OpenShorts Cloud clips your first video free up to 60 minutes, then ${CLOUD.freeMinutes} minutes a month with a watermark; paid plans start at $${CLOUD.lowPrice}/month for ${STARTER.monthly.minutes} minutes of source video, and edits on the clips are not counted.`,
+    a: `Self-hosted Sahu Shorts is free and open source under MIT, with no meter and no watermark. Sahu Shorts Cloud clips your first video free up to 60 minutes, then ${CLOUD.freeMinutes} minutes a month with a watermark; paid plans start at $${CLOUD.lowPrice}/month for ${STARTER.monthly.minutes} minutes of source video, and edits on the clips are not counted.`,
     detail: pricingParagraph('raid'),
   },
 ]
@@ -3310,7 +3310,7 @@ const wowForeverClips = () => ({
   description:
     `Record WoW Forever raids with OBS or Warcraft Recorder, then turn kills, wipes and Twitch VODs into TikToks. From $${CLOUD.lowPrice}/month, or self-host free.`,
   h1: 'WoW Forever clips: turn raids and streams into TikToks, Shorts and Reels',
-  lede: `How to record World of Warcraft: Forever, and how to turn the recording or your Twitch VOD into 15 to 60 second vertical clips for TikTok, YouTube Shorts and Instagram Reels with OpenShorts, facecam kept. Your first video is free up to 60 minutes (watermarked, no card); no watermark from $${CLOUD.lowPrice}/month, or self-host it free under MIT.`,
+  lede: `How to record World of Warcraft: Forever, and how to turn the recording or your Twitch VOD into 15 to 60 second vertical clips for TikTok, YouTube Shorts and Instagram Reels with Sahu Shorts, facecam kept. Your first video is free up to 60 minutes (watermarked, no card); no watermark from $${CLOUD.lowPrice}/month, or self-host it free under MIT.`,
   breadcrumb: [{ name: 'Use cases', path: '/use-cases' }, { name: 'WoW Forever clips' }],
   published: '2026-11-04',
   updated: TWITCH_AUTOPILOT_UPDATED,
@@ -3318,7 +3318,7 @@ const wowForeverClips = () => ({
   related: ['/platforms/twitch', '/gta-6-clips', '/auto-reframe', '/platforms/kick'],
   tldr: [
     `World of Warcraft: Forever is Blizzard's new version of the original game, announced at BlizzCon 2026 and live from 4 November 2026 (5 November in Europe, Taiwan, Korea and Australia/New Zealand). It is included with a World of Warcraft subscription or game time and runs on Windows and macOS. Its three raids open on 9 December.`,
-    'A WoW recording is a busy 16:9 screen: the fight in the middle, raid frames and action bars at the edges, often a webcam in a corner. Below: how to record it, and how OpenShorts makes it vertical without losing the fight.',
+    'A WoW recording is a busy 16:9 screen: the fight in the middle, raid frames and action bars at the edges, often a webcam in a corner. Below: how to record it, and how Sahu Shorts makes it vertical without losing the fight.',
   ],
   body: `
 ${ytEmbed('n2Wg46fwmb0', 'Launch Overview | World of Warcraft: Forever', 'Launch Overview of World of Warcraft: Forever, from the official <a href="https://www.youtube.com/@Warcraft" rel="noopener">World of Warcraft</a> YouTube channel. A WoW screen this busy is what a vertical clip has to fit.')}
@@ -3342,7 +3342,7 @@ ${sources([
   `Recorders: <a href="${WOW_RECORDER_URL}" rel="noopener">Warcraft Recorder README</a> (supported flavours and OS, GPL-2.0); <a href="${OBS_REPLAY_URL}" rel="noopener">OBS forum guide to the replay buffer</a>; <a href="${AMD_REPLAY_URL}" rel="noopener">AMD support article DH3-023</a> (Instant Replay); <a href="${GAME_BAR_URL}" rel="noopener">Microsoft: Xbox Game Bar shortcuts</a>; <a href="${MAC_RECORD_URL}" rel="noopener">Apple: How to record the screen on Mac</a>. All checked ${WOW_CHECKED}.`,
   `Platform lengths: <a href="${YT_SHORTS_URL}" rel="noopener">YouTube Help: Upload YouTube Shorts</a>, checked 28 October 2026; Instagram Reels up to 3 minutes, reported by <a href="${REELS_URL}" rel="noopener">Social Media Today</a>.`,
   'Silent-footage thresholds and stretches: <code>main.py</code> and <code>clip_selection.py</code>; inset detection: <code>camera_inset.py</code>; WIDE layout: <code>screencast_layout.py</code>.',
-  `OpenShorts plan minutes: <a href="/pricing">pricing</a>. Source: <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Sahu Shorts plan minutes: <a href="/pricing">pricing</a>. Source: <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
 ])}
 ${trademarkNote('World of Warcraft, Warcraft, Blizzard and Twitch', 'Blizzard Entertainment, Microsoft or Twitch')}
 `,
@@ -3356,7 +3356,7 @@ ${trademarkNote('World of Warcraft, Warcraft, Blizzard and Twitch', 'Blizzard En
         'Turn a World of Warcraft: Forever recording or Twitch VOD into 9:16 clips for TikTok, YouTube Shorts and Instagram Reels, keeping the facecam and the fight.',
       totalTime: 'PT15M',
       supply: [{ '@type': 'HowToSupply', name: 'A WoW Forever recording or Twitch VOD you have the rights to' }],
-      tool: [{ '@type': 'HowToTool', name: 'OpenShorts (self-hosted with Docker, or OpenShorts Cloud)' }],
+      tool: [{ '@type': 'HowToTool', name: 'Sahu Shorts (self-hosted with Docker, or Sahu Shorts Cloud)' }],
       step: wowSteps.map(([name, text]) => ({ '@type': 'HowToStep', name, text })),
     },
   ],
@@ -3367,7 +3367,7 @@ ${trademarkNote('World of Warcraft, Warcraft, Blizzard and Twitch', 'Blizzard En
  * comparison, a use case to its sibling use cases. relatedFor shows the first
  * three that exist, so a list can name a page another module adds (the clip
  * maker and pricing pages) and fall back to the next one until it ships. */
-/* /opusclip-vs-vizard: the two category leaders side by side, with OpenShorts
+/* /opusclip-vs-vizard: the two category leaders side by side, with Sahu Shorts
  * as the third column. Third-party "OpusClip vs Vizard" pages are among the
  * sources engines cite most for both brands; this one answers the same
  * question from the numbers in data.js, dated. */
@@ -3395,16 +3395,16 @@ const opusVsVizard = () => {
     },
     {
       q: 'Is there an open source alternative to both?',
-      a: `OpenShorts: MIT-licensed, free to self-host with no watermark and no cap, or hosted from $${CLOUD.lowPrice}/month for ${STARTER.monthly.minutes} minutes. It bills the same unit (the source minute) on its hosted plans and none at all when you run it yourself.`,
+      a: `Sahu Shorts: MIT-licensed, free to self-host with no watermark and no cap, or hosted from $${CLOUD.lowPrice}/month for ${STARTER.monthly.minutes} minutes. It bills the same unit (the source minute) on its hosted plans and none at all when you run it yourself.`,
     },
   ]
   return {
     path: '/opusclip-vs-vizard',
     title: 'OpusClip vs Vizard (2026): Pricing, Free Plans, Editing',
-    description: `OpusClip vs Vizard, checked ${monthYear(checked)}: 300 vs 600 minutes for $29/month, free plans, editing and API. Plus OpenShorts, the open source option from $12/month.`,
+    description: `OpusClip vs Vizard, checked ${monthYear(checked)}: 300 vs 600 minutes for $29/month, free plans, editing and API. Plus Sahu Shorts, the open source option from $12/month.`,
     h1: 'OpusClip vs Vizard: pricing, free plans and which to pick',
     lede: brandLede(o, 'opus.pro/pricing and vizard.ai/pricing',
-      `OpusClip and Vizard both bill per source minute: OpusClip Pro is 300 minutes for $29/month, Vizard Creator is 600 minutes for $29/month. Pick Vizard for volume, OpusClip for its editor and templates, or OpenShorts if you want an open source option: free to self-host, $${CLOUD.lowPrice}/month hosted.`),
+      `OpusClip and Vizard both bill per source minute: OpusClip Pro is 300 minutes for $29/month, Vizard Creator is 600 minutes for $29/month. Pick Vizard for volume, OpusClip for its editor and templates, or Sahu Shorts if you want an open source option: free to self-host, $${CLOUD.lowPrice}/month hosted.`),
     breadcrumb: [{ name: 'Alternatives', path: '/alternatives' }, { name: 'OpusClip vs Vizard' }],
     published: REVISED,
     updated: REVISED,
@@ -3415,17 +3415,17 @@ const opusVsVizard = () => {
       { k: 'OpusClip Pro', v: '$29/mo', s: '300 minutes; $14.50/mo billed yearly' },
       { k: 'Vizard Creator', v: '$29/mo', s: '600 minutes; $14.50/mo billed yearly' },
       { k: 'Free plans', v: '60 min/mo', s: 'Both watermarked' },
-      { k: 'Open source', v: 'Neither', s: 'OpenShorts: MIT, self-hostable' },
+      { k: 'Open source', v: 'Neither', s: 'Sahu Shorts: MIT, self-hostable' },
     ],
     tldr: [
       `Same unit, different allowance: both charge one credit per minute of source video, and at $29/month Vizard gives 600 minutes where OpusClip Pro gives 300. Billed yearly both are $14.50/month. OpusClip also sells Starter, $15/month for 150 minutes, monthly only.`,
       `${esc(o.edge)} ${esc(v.edge)} Both free plans give 60 watermarked minutes a month.`,
-      `Neither can be self-hosted. OpenShorts is the open source third option: $0 self-hosted with no watermark or cap, or $${CLOUD.lowPrice}/month hosted for ${STARTER.monthly.minutes} minutes; per minute it costs more than Vizard at volume and less to start.`,
+      `Neither can be self-hosted. Sahu Shorts is the open source third option: $0 self-hosted with no watermark or cap, or $${CLOUD.lowPrice}/month hosted for ${STARTER.monthly.minutes} minutes; per minute it costs more than Vizard at volume and less to start.`,
     ],
     body: `
-<h2>OpusClip vs Vizard vs OpenShorts, feature by feature</h2>
+<h2>OpusClip vs Vizard vs Sahu Shorts, feature by feature</h2>
 <table>
-<thead><tr><th>Feature</th><th>OpusClip</th><th>Vizard</th><th>OpenShorts</th></tr></thead>
+<thead><tr><th>Feature</th><th>OpusClip</th><th>Vizard</th><th>Sahu Shorts</th></tr></thead>
 <tbody>${rows}</tbody>
 </table>
 
@@ -3447,14 +3447,14 @@ ${tiers(v)}
 <ul>
 <li><strong>OpusClip</strong> if caption styling, AI B-roll and a virality score matter more than minutes, and your sources are short.</li>
 <li><strong>Vizard</strong> if you clip a lot of video, pay yearly and want to fix each clip in a timeline.</li>
-<li><strong>OpenShorts</strong> if you want it open source: free on your own machine with no meter, or hosted from $${CLOUD.lowPrice}/month, with an API and an MCP server for agents.</li>
+<li><strong>Sahu Shorts</strong> if you want it open source: free on your own machine with no meter, or hosted from $${CLOUD.lowPrice}/month, with an API and an MCP server for agents.</li>
 </ul>
 
 ${faqBlock(faq)}
 
 ${sources([
   `OpusClip plans checked ${esc(o.checked)} on opus.pro/pricing; Vizard plans checked ${esc(v.checked)} on vizard.ai/pricing.`,
-  `OpenShorts plans: <a href="/pricing">pricing</a>; source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
+  `Sahu Shorts plans: <a href="/pricing">pricing</a>; source at <a href="${SITE.repo}" rel="noopener">github.com/mutonby/openshorts</a>.`,
 ])}
 `,
     faq,
@@ -3589,7 +3589,7 @@ export function relatedFor(page, all) {
     '/free-ai-clipping-tools-compared': 'Every free tier side by side: minutes, resolution, who watermarks.',
     '/platforms': 'YouTube, Shorts, TikTok, Reels, Twitch and Kick, with their specs side by side.',
     '/use-cases': 'Podcasts, sermons, gaming streams and channels clipped on autopilot.',
-    '/how-to': 'Guides to clip a video, self-host OpenShorts and automate Shorts.',
+    '/how-to': 'Guides to clip a video, self-host Sahu Shorts and automate Shorts.',
     '/alternatives/choppity': 'Choppity reviewed: a free hour a month, hourly plans, the alternative.',
     '/alternatives/getmunch': 'GetMunch is now Munch Studio: what changed, prices, the alternative.',
     '/how-to/instagram-reel-dimensions': '1080 x 1920 at 9:16, the grid crop of the cover, safe zones, export.',

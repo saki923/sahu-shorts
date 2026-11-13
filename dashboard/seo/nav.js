@@ -96,8 +96,8 @@ export const NAV_LINKS = [
 ]
 
 export const NAV_STRINGS = {
-  en: { cta: 'Get free clips', ctaHint: 'First video free up to 60 min, no card. No watermark from $12/month, or self-host free (MIT).', openApp: 'Open app', login: 'Log in', menu: 'Menu', main: 'Main', github: 'OpenShorts on GitHub' },
-  es: { cta: 'Clips gratis', ctaHint: 'Primer vídeo gratis hasta 60 min, sin tarjeta. Sin marca de agua desde 12 $/mes, o autoalojado gratis (MIT).', openApp: 'Abrir la app', login: 'Iniciar sesión', menu: 'Menú', main: 'Principal', github: 'OpenShorts en GitHub' },
+  en: { cta: 'Get free clips', ctaHint: 'First video free up to 60 min, no card. No watermark from $12/month, or self-host free (MIT).', openApp: 'Open app', login: 'Log in', menu: 'Menu', main: 'Main', github: 'Sahu Shorts on GitHub' },
+  es: { cta: 'Clips gratis', ctaHint: 'Primer vídeo gratis hasta 60 min, sin tarjeta. Sin marca de agua desde 12 $/mes, o autoalojado gratis (MIT).', openApp: 'Abrir la app', login: 'Iniciar sesión', menu: 'Menú', main: 'Principal', github: 'Sahu Shorts en GitHub' },
 }
 
 const pick = (v, lang) => (v && typeof v === 'object' ? v[lang] || v.en : v)
@@ -130,7 +130,7 @@ export function renderNav({ lang = 'en', signedIn = false, showLogin = true } = 
   const login = signedIn || !showLogin ? '' : `<a class="osn-login" href="${LOGIN_HREF}">${esc(t.login)}</a>`
   return `<header class="osn" data-osn>
 <div class="osn-bar">
-  <a class="osn-brand" href="/"><img src="/logo-openshorts.png" alt="OpenShorts logo" width="28" height="28"><span>openshorts</span></a>
+  <a class="osn-brand" href="/"><img src="/logo-openshorts.png" alt="Sahu Shorts logo" width="28" height="28"><span>openshorts</span></a>
   <input type="checkbox" id="osn-toggle" class="osn-toggle" aria-label="${esc(t.menu)}">
   <label for="osn-toggle" class="osn-burger" title="${esc(t.menu)}">${BURGER}</label>
   <nav class="osn-menu" aria-label="${esc(t.main)}">

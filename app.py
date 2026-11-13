@@ -282,7 +282,7 @@ def gemini_missing_error():
     """
     if BILLING_ENABLED:
         return payment_required(
-            "no_plan", "This action needs an active OpenShorts plan (or the user's own API key).")
+            "no_plan", "This action needs an active Sahu Shorts plan (or the user's own API key).")
     return HTTPException(status_code=400, detail="Missing X-Gemini-Key header")
 
 
@@ -641,7 +641,7 @@ async def _reserve_after_job_limit(request, user, url, input_path, job_id, max_m
     if balance["remaining"] < 1:
         _maybe_send_quota_email(user)
         raise payment_required(
-            "quota_exceeded", "The user is out of OpenShorts processing minutes for this period.",
+            "quota_exceeded", "The user is out of Sahu Shorts processing minutes for this period.",
             minutes_required=1, minutes_remaining=balance["remaining"], partial_minutes=0)
 
     # Free queue lane, then the brake: before the probe, the reservation and
@@ -8416,7 +8416,7 @@ async def _social_analytics_auth(request: Request, byok_profile: Optional[str]):
         if BILLING_ENABLED:
             # Signed-in free user (or no auth at all): social posting is
             # paid-only in cloud, so there are no posts to measure either.
-            raise payment_required("no_plan", "Social analytics needs an active OpenShorts plan.")
+            raise payment_required("no_plan", "Social analytics needs an active Sahu Shorts plan.")
         raise HTTPException(status_code=400, detail="Missing X-Upload-Post-Key header")
     if forced_profile:
         user = await _user_from_request(request)
@@ -8487,7 +8487,7 @@ async def social_total_impressions(
     breakdown: Optional[bool] = None,
     user: Optional[str] = None,
 ):
-    """Views of the posts published through OpenShorts in a window.
+    """Views of the posts published through Sahu Shorts in a window.
 
     Computed by aggregating the profile-scoped post cache instead of proxying
     Upload-Post's /total-impressions: that endpoint echoes the requested
@@ -8679,7 +8679,7 @@ async def _probe_thumbnail_url(request, url, user):
     if balance["remaining"] < 1:
         _maybe_send_quota_email(user)
         raise payment_required(
-            "quota_exceeded", "The user is out of OpenShorts processing minutes for this period.",
+            "quota_exceeded", "The user is out of Sahu Shorts processing minutes for this period.",
             minutes_required=1, minutes_remaining=balance["remaining"])
     _check_probe_rate(user.id)
     paid_allowed = not await _paid_proxy_budget_exceeded()
@@ -9030,7 +9030,7 @@ async def _thumbnail_text_gate(request, session):
             _maybe_send_quota_email(user)
             raise payment_required(
                 "quota_exceeded",
-                "The user is out of OpenShorts minutes; analyze a video to get title suggestions.",
+                "The user is out of Sahu Shorts minutes; analyze a video to get title suggestions.",
                 minutes_required=1, minutes_remaining=balance["remaining"])
     times.append(now)
 
@@ -9844,11 +9844,11 @@ async def gallery_html_page():
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AI UGC Video Gallery | OpenShorts</title>
+<title>AI UGC Video Gallery | Sahu Shorts</title>
 <meta name="description" content="Browse {len(videos)} AI-generated UGC marketing videos. Create viral TikTok and Instagram Reels for your SaaS product.">
 <meta name="robots" content="{UGC_ROBOTS}">
 <link rel="canonical" href="{GALLERY_HOST}/gallery">
-<meta property="og:title" content="AI UGC Video Gallery | OpenShorts">
+<meta property="og:title" content="AI UGC Video Gallery | Sahu Shorts">
 <meta property="og:type" content="website">
 <meta property="og:description" content="Browse AI-generated UGC marketing videos for SaaS products.">
 <script type="application/ld+json">{ld_json}</script>
@@ -9863,7 +9863,7 @@ h1{{font-size:28px;font-weight:700;padding:40px 20px 0;text-align:center}}
 </style>
 </head>
 <body>
-<nav><strong style="font-size:18px">OpenShorts</strong><a href="{APP_HOST}/" class="cta">Create Your Video</a></nav>
+<nav><strong style="font-size:18px">Sahu Shorts</strong><a href="{APP_HOST}/" class="cta">Create Your Video</a></nav>
 <h1>AI-Generated UGC Videos</h1>
 <p class="subtitle">{len(videos)} videos generated · Low Cost & Premium modes</p>
 <div class="grid">{cards_html}</div>
@@ -9934,7 +9934,7 @@ async def video_html_page(video_id: str):
 <html lang="{language}">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{title} - AI UGC Video | OpenShorts</title>
+<title>{title} - AI UGC Video | Sahu Shorts</title>
 <meta name="description" content="{caption} {hashtags}">
 <meta name="robots" content="{UGC_ROBOTS}">
 <link rel="canonical" href="{GALLERY_HOST}/video/{video_id}">
@@ -9968,7 +9968,7 @@ h1{{font-size:22px;font-weight:700;margin-bottom:8px}}
 </style>
 </head>
 <body>
-<nav><strong>OpenShorts</strong><a href="{GALLERY_HOST}/gallery">Gallery</a><span style="color:#3f3f46">›</span><span style="color:#e4e4e7;font-size:14px">{title}</span></nav>
+<nav><strong>Sahu Shorts</strong><a href="{GALLERY_HOST}/gallery">Gallery</a><span style="color:#3f3f46">›</span><span style="color:#e4e4e7;font-size:14px">{title}</span></nav>
 <div class="container">
 <div><video src="{video_url}" poster="{actor_url}" controls autoplay playsinline style="aspect-ratio:9/16;object-fit:cover"></video></div>
 <div>

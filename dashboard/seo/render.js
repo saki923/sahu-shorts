@@ -207,18 +207,18 @@ const I18N = {
   en: {
     home: 'Home',
     related: 'Related pages',
-    by: 'By the OpenShorts team',
+    by: 'By the Sahu Shorts team',
     published: 'Published',
     updated: 'Updated',
     footer: {
-      product: 'OpenShorts',
+      product: 'Sahu Shorts',
       platforms: 'Platforms',
       useCases: 'Use cases',
       compare: 'Compare',
       tools: 'Free tools',
       guides: 'Guides',
       more: 'More comparisons',
-      note: `OpenShorts self-hosted is free and open source under MIT. OpenShorts Cloud
+      note: `Sahu Shorts self-hosted is free and open source under MIT. Sahu Shorts Cloud
   is the hosted service: your first video free up to 60 minutes, then 20 free
   minutes a month, paid plans from $12/month.`,
       lastUpdated: 'Last updated',
@@ -227,19 +227,19 @@ const I18N = {
   es: {
     home: 'Inicio',
     related: 'Páginas relacionadas',
-    by: 'Por el equipo de OpenShorts',
+    by: 'Por el equipo de Sahu Shorts',
     published: 'Publicado',
     updated: 'Actualizado',
     footer: {
-      product: 'OpenShorts',
+      product: 'Sahu Shorts',
       platforms: 'Plataformas',
       useCases: 'Casos de uso',
       compare: 'Comparativas',
       tools: 'Herramientas gratis',
       guides: 'Guías',
       more: 'Más comparativas',
-      note: `OpenShorts autoalojado es gratis y de código abierto con licencia MIT.
-  OpenShorts Cloud es el servicio alojado: tu primer vídeo gratis hasta 60
+      note: `Sahu Shorts autoalojado es gratis y de código abierto con licencia MIT.
+  Sahu Shorts Cloud es el servicio alojado: tu primer vídeo gratis hasta 60
   minutos, después 20 minutos gratis al mes, planes de pago desde 12 $/mes.`,
       lastUpdated: 'Última actualización',
     },
@@ -423,7 +423,7 @@ const FOOTER_COLUMNS = [
 ]
 
 const FOOTER_PRODUCT = [
-  [`${SITE.url}/`, 'OpenShorts'],
+  [`${SITE.url}/`, 'Sahu Shorts'],
   ['/pricing', 'Pricing'],
   ['/open-source-ai-video-generator', 'Open source AI video generator'],
   [SITE.repo, 'Source on GitHub'],

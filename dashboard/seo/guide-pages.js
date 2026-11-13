@@ -77,14 +77,14 @@ if (STARTER.monthly !== EDITIONS.cloud.lowPrice || PRO.monthly !== EDITIONS.clou
 const SELF_FAQ = [
   {
     q: 'Is there an open source version of Opus Clip?',
-    a: 'Opus Clip itself is closed source and cloud only. OpenShorts is the open source alternative: MIT-licensed, self-hosted with Docker, and covering the same job of finding the best moments in a long video, reframing them to 9:16 with face tracking and burning in word-level subtitles.',
+    a: 'Opus Clip itself is closed source and cloud only. Sahu Shorts is the open source alternative: MIT-licensed, self-hosted with Docker, and covering the same job of finding the best moments in a long video, reframing them to 9:16 with face tracking and burning in word-level subtitles.',
   },
   {
-    q: 'What hardware do I need to self-host OpenShorts?',
+    q: 'What hardware do I need to self-host Sahu Shorts?',
     a: 'Docker and Docker Compose, 8 GB of RAM or more and a modern multi-core CPU. On CPU an 8-minute video takes 5 to 8 minutes. An NVIDIA GPU with NVENC is optional and brings that to about a minute; 8 GB of VRAM is enough for the large-v3-turbo transcription model in fp16 plus the detection models.',
   },
   {
-    q: 'Does self-hosted OpenShorts have a watermark or a usage limit?',
+    q: 'Does self-hosted Sahu Shorts have a watermark or a usage limit?',
     a: 'No. The self-hosted edition has no watermark code and no metering code. The only limits are your hardware and the quotas of the API keys you bring.',
   },
   {
@@ -97,10 +97,10 @@ const SELF_FAQ = [
   },
   {
     q: 'Is there an open source AI clipping API?',
-    a: 'Yes. A self-hosted OpenShorts serves the same REST API and MCP endpoint as the hosted service, with no metering: POST a video, get a signed webhook with the clips. It runs only while your machine is on; the hosted endpoint is always on and draws from your plan minutes.',
+    a: 'Yes. A self-hosted Sahu Shorts serves the same REST API and MCP endpoint as the hosted service, with no metering: POST a video, get a signed webhook with the clips. It runs only while your machine is on; the hosted endpoint is always on and draws from your plan minutes.',
   },
   {
-    q: 'Can I use self-hosted OpenShorts commercially?',
+    q: 'Can I use self-hosted Sahu Shorts commercially?',
     a: 'Yes. The core application is MIT-licensed, which allows commercial use, modification and redistribution. The cloud/ directory (billing and hosted-service code) is under a separate licence and is not needed to self-host.',
   },
   {
@@ -119,9 +119,9 @@ const selfHosted = () => {
   const quso = priceFor('vidyo-ai', heavy, 'yearly')
   return {
     path: '/self-hosted-ai-clip-maker',
-    title: 'Self-Hosted AI Clip Maker (Docker, MIT) | OpenShorts',
+    title: 'Self-Hosted AI Clip Maker (Docker, MIT) | Sahu Shorts',
     description:
-      'Self-host OpenShorts, the open source Opus Clip alternative: requirements, Docker quick start, your own keys, privacy, and the real cost vs per-minute credits.',
+      'Self-host Sahu Shorts, the open source Opus Clip alternative: requirements, Docker quick start, your own keys, privacy, and the real cost vs per-minute credits.',
     h1: 'A self-hosted AI clip maker: requirements, setup and what it really costs',
     breadcrumb: [
       { name: 'Open source video clipper', path: '/open-source-video-clipper' },
@@ -129,7 +129,7 @@ const selfHosted = () => {
     ],
     published: PUBLISHED,
     updated: '2026-10-30',
-    lede: `OpenShorts is the open source AI clip maker you can self-host: MIT-licensed, free with no watermark and no cap on your own machine with Docker, or hosted from ${money(STARTER.monthly)}/month for ${STARTER.minutes} minutes if you would rather not run it.`,
+    lede: `Sahu Shorts is the open source AI clip maker you can self-host: MIT-licensed, free with no watermark and no cap on your own machine with Docker, or hosted from ${money(STARTER.monthly)}/month for ${STARTER.minutes} minutes if you would rather not run it.`,
     cta: {
       label: 'Self-host or try it hosted',
       title: 'Clone it, or test the output first',
@@ -138,9 +138,9 @@ const selfHosted = () => {
       href: SITE.repo,
     },
     tldr: [
-      'OpenShorts is an open source AI clip maker you can self-host: MIT-licensed, started with one <code>docker compose up</code>, and running the same pipeline as the hosted service. It finds the strongest moments in a long video, reframes them to 9:16 with face tracking and burns in word-level subtitles.',
+      'Sahu Shorts is an open source AI clip maker you can self-host: MIT-licensed, started with one <code>docker compose up</code>, and running the same pipeline as the hosted service. It finds the strongest moments in a long video, reframes them to 9:16 with face tracking and burns in word-level subtitles.',
       'You need Docker, 8 GB+ of RAM and a Google Gemini key (free tier, or a local LLM instead). An optional NVIDIA GPU cuts an 8-minute video from 5 to 8 minutes of processing to about one.',
-      `Self-hosted has no watermark, no cap and no per-minute meter. The hosted edition, OpenShorts Cloud, exists for people who would rather not run it: free plan with a watermark, paid from ${money(STARTER.monthly)}/month.`,
+      `Self-hosted has no watermark, no cap and no per-minute meter. The hosted edition, Sahu Shorts Cloud, exists for people who would rather not run it: free plan with a watermark, paid from ${money(STARTER.monthly)}/month.`,
     ],
     facts: [
       { k: 'Licence', v: 'MIT', s: 'Commercial use allowed' },
@@ -165,7 +165,7 @@ recordings work in 9:16 (two speakers stacked, a screen above the presenter, a
 webcam inset enlarged), the hook overlay, the clip editor, the YouTube Studio for
 titles, thumbnails and descriptions, AI Shorts with your fal.ai key, dubbing with
 your ElevenLabs key, and the REST API and MCP server for agents. The stage-by-stage
-detail is in <a href="/how-openshorts-works">how OpenShorts works</a>.</p>
+detail is in <a href="/how-openshorts-works">how Sahu Shorts works</a>.</p>
 
 <h2>What are the requirements?</h2>
 <ul>
@@ -254,7 +254,7 @@ bills roughly one credit per minute. That meter is what makes long-form clipping
 expensive. A weekly 60-minute podcast is about ${podcast} minutes a month. On
 monthly billing that is ${opus ? `${money(opus.price)}/month on Opus Clip (${esc(opus.plan)})` : 'past every published Opus Clip plan'},
 ${vizard ? `${money(vizard.price)}/month on Vizard (${esc(vizard.plan)})` : 'past every published Vizard plan'}
-and ${money(cloud.price)}/month on OpenShorts Cloud (${esc(cloud.plan)}). Self-hosted,
+and ${money(cloud.price)}/month on Sahu Shorts Cloud (${esc(cloud.plan)}). Self-hosted,
 it is $0 in software. At ${heavy} minutes a month (a daily 40-minute stream),
 ${opusHeavy ? `Opus Clip costs ${money(opusHeavy.price)}/month` : 'Opus Clip has no published plan and moves you to custom Business pricing'}${quso ? `, and Quso costs ${money(quso.price)}/month on its yearly plan` : ''}.</p>
 ${costCalculator(['opus-clip', 'vizard', 'vidyo-ai'], { minutes: 600 })}
@@ -310,7 +310,7 @@ ${sources([
       {
         '@type': 'SoftwareSourceCode',
         '@id': `${SITE.url}/self-hosted-ai-clip-maker#code`,
-        name: 'OpenShorts',
+        name: 'Sahu Shorts',
         description:
           'Open source AI clip maker: turns long videos into vertical 9:16 clips with AI moment detection, face-tracked reframing and word-level subtitles. Self-hosted with Docker.',
         codeRepository: SITE.repo,
@@ -425,7 +425,7 @@ assertIn(COMPETITORS.sendshort.gotcha, '$29', 'sendshort clipping price')
 const freeCompared = () => {
   const vendorRows = FREE_ROWS.map((r) => ({ ...r, name: COMPETITORS[r.slug].name, paid: COMPETITORS[r.slug].entryPrice, checked: COMPETITORS[r.slug].checked, link: `/alternatives/${r.slug}` }))
   const osCloud = {
-    name: 'OpenShorts Cloud',
+    name: 'Sahu Shorts Cloud',
     ongoing: true,
     allowance: `First video whole up to ${FIRST_VIDEO_MINUTES} min, then ${FREE.monthly.minutes} min a month`,
     resolution: 'Same as paid plans',
@@ -438,7 +438,7 @@ const freeCompared = () => {
     us: true,
   }
   const osSelf = {
-    name: 'OpenShorts self-hosted',
+    name: 'Sahu Shorts self-hosted',
     ongoing: true,
     allowance: 'No cap (your hardware)',
     resolution: 'Same as your source',
@@ -486,19 +486,19 @@ const freeCompared = () => {
     },
     {
       q: 'What is the best free AI clip generator?',
-      a: `It depends on what you need from free. For the most free minutes on a hosted plan, ${biggest.name} gives ${biggest.min} a month at ${biggest.resolution}. For clips you can post without a watermark, 2short.ai's free plan (30 minutes, YouTube links only) or self-hosted OpenShorts (no cap, your own machine). To try a tool on one long video, the OpenShorts Cloud free plan clips the first video whole up to ${FIRST_VIDEO_MINUTES} minutes, watermarked.`,
+      a: `It depends on what you need from free. For the most free minutes on a hosted plan, ${biggest.name} gives ${biggest.min} a month at ${biggest.resolution}. For clips you can post without a watermark, 2short.ai's free plan (30 minutes, YouTube links only) or self-hosted Sahu Shorts (no cap, your own machine). To try a tool on one long video, the Sahu Shorts Cloud free plan clips the first video whole up to ${FIRST_VIDEO_MINUTES} minutes, watermarked.`,
     },
     {
-      q: 'Is the OpenShorts free plan watermarked?',
-      a: `Yes. The OpenShorts Cloud free plan watermarks its clips and keeps them 7 days; paid plans from ${money(STARTER.monthly)}/month do not, and upgrading removes the mark from clips already made. The self-hosted edition, free under MIT, has no watermark at all.`,
+      q: 'Is the Sahu Shorts free plan watermarked?',
+      a: `Yes. The Sahu Shorts Cloud free plan watermarks its clips and keeps them 7 days; paid plans from ${money(STARTER.monthly)}/month do not, and upgrading removes the mark from clips already made. The self-hosted edition, free under MIT, has no watermark at all.`,
     },
     {
       q: 'Do free AI clipping tools need a credit card?',
-      a: 'Among the plans we checked, OpenShorts Cloud (Google sign-in), Klap\'s one free video and the Opus Clip and Submagic trials state that no card is needed. Most other vendors do not say on their pricing pages either way; self-hosted OpenShorts has no account at all.',
+      a: 'Among the plans we checked, Sahu Shorts Cloud (Google sign-in), Klap\'s one free video and the Opus Clip and Submagic trials state that no card is needed. Most other vendors do not say on their pricing pages either way; self-hosted Sahu Shorts has no account at all.',
     },
     {
       q: 'Why do free AI clipping tools add a watermark?',
-      a: 'Because the GPU time and AI calls behind every clip cost the vendor money, and the watermark is what turns a free user into a paying one. Software you run yourself has no such cost to recover, which is why self-hosted OpenShorts can be free without one.',
+      a: 'Because the GPU time and AI calls behind every clip cost the vendor money, and the watermark is what turns a free user into a paying one. Software you run yourself has no such cost to recover, which is why self-hosted Sahu Shorts can be free without one.',
     },
   ]
 
@@ -506,7 +506,7 @@ const freeCompared = () => {
     path: '/free-ai-clipping-tools-compared',
     // The verdict first: "best free AI clipping tool" is answered in one
     // paragraph before the table, from the same numbers the table shows.
-    lede: `The best free AI clipping tool depends on what "free" means. Most free minutes on a hosted plan: ${esc(biggest.name)} (${biggest.min} a month at ${esc(biggest.resolution)}), then ${minutesFree.slice(1, 3).map((x) => `${esc(x.name)} (${x.min})`).join(' and ')}. No watermark and no cap: OpenShorts self-hosted (MIT), if you can run Docker. Hosted with no card: OpenShorts clips your first video free up to ${FIRST_VIDEO_MINUTES} minutes (watermarked), and removes the watermark from ${money(STARTER.monthly)}/month.`,
+    lede: `The best free AI clipping tool depends on what "free" means. Most free minutes on a hosted plan: ${esc(biggest.name)} (${biggest.min} a month at ${esc(biggest.resolution)}), then ${minutesFree.slice(1, 3).map((x) => `${esc(x.name)} (${x.min})`).join(' and ')}. No watermark and no cap: Sahu Shorts self-hosted (MIT), if you can run Docker. Hosted with no card: Sahu Shorts clips your first video free up to ${FIRST_VIDEO_MINUTES} minutes (watermarked), and removes the watermark from ${money(STARTER.monthly)}/month.`,
     title: 'Free AI Clipping Tools Compared: Who Has No Watermark?',
     description: `The free plans of ${vendorRows.length + 1} AI clipping tools side by side, checked ${asOf}: free minutes, resolution, watermark, card required, limits and paid price.`,
     h1: 'Free AI clipping tools compared: minutes, watermark and limits',
@@ -536,7 +536,7 @@ billing, the price shown is the one it advertises, and the
 pricing and help pages, read on the date shown in the "Checked" column. We list
 only what the vendor states. When a pricing page is silent on a point (whether
 the free plan needs a card, whether Quso's free exports are watermarked), the
-cell says "Not stated" instead of guessing. The figures for OpenShorts come from
+cell says "Not stated" instead of guessing. The figures for Sahu Shorts come from
 our own plans. Vendors change free tiers without notice, so check the vendor's
 page before you rely on a number, and tell us if one has moved.</p>
 <p>"Free allowance" is what you can process each month for $0. Tools meter in
@@ -546,9 +546,9 @@ or videos. A one-off trial is not counted as a free plan.</p>
 
 <h2>Which free plan fits which use?</h2>
 <ul>
-<li><strong>You need clips you can post today, without a watermark:</strong> 2short.ai's free plan if your sources are already on YouTube and 30 minutes a month is enough; self-hosted OpenShorts if you can run Docker and want no cap.</li>
+<li><strong>You need clips you can post today, without a watermark:</strong> 2short.ai's free plan if your sources are already on YouTube and 30 minutes a month is enough; self-hosted Sahu Shorts if you can run Docker and want no cap.</li>
 <li><strong>You want the most free minutes on a hosted tool:</strong> ${esc(biggest.name)} (${biggest.min} minutes at ${esc(biggest.resolution)}), then ${minutesFree.slice(1).map((x) => `${esc(x.name)} (${x.min})`).join(', ')}.</li>
-<li><strong>You want to judge quality on a full-length episode:</strong> the OpenShorts Cloud free plan clips your first video whole up to ${FIRST_VIDEO_MINUTES} minutes, so a complete podcast or webinar fits.</li>
+<li><strong>You want to judge quality on a full-length episode:</strong> the Sahu Shorts Cloud free plan clips your first video whole up to ${FIRST_VIDEO_MINUTES} minutes, so a complete podcast or webinar fits.</li>
 <li><strong>You want 1080p on free:</strong> Opus Clip (watermarked) or 2short.ai (no watermark). Vizard and Quso cap free exports at 720p.</li>
 <li><strong>Your footage is private:</strong> only self-hosting keeps the video on your own machine. Every hosted free plan, ours included, means uploading it.</li>
 <li><strong>You only want to try a tool once:</strong> Klap's one free video and the Submagic and SendShort trials work for a single test, not for ongoing use.</li>
@@ -562,14 +562,14 @@ something else instead: links only, minutes analysed, a short storage window. Th
 structural exception is software you run yourself, where there is no vendor
 cost to recover. The reasoning is laid out on
 <a href="/free-ai-clip-generator">the free AI clip generator page</a>.</p>
-<p>The OpenShorts Cloud free plan follows the hosted rule and says so: its clips
+<p>The Sahu Shorts Cloud free plan follows the hosted rule and says so: its clips
 are watermarked, and paid plans from ${money(STARTER.monthly)}/month are not. The
 <a href="/pricing">pricing table on the homepage</a> has every plan.</p>
 
 <h2>What happens when the free plan runs out?</h2>
 <ul>
 ${vendorRows.filter((r) => r.ongoing).map((r) => `<li><strong>${esc(r.name)}:</strong> paid plans from ${esc(r.paid)}.</li>`).join('\n')}
-<li><strong>OpenShorts Cloud:</strong> ${STARTER.name} at ${money(STARTER.monthly)}/month for ${STARTER.minutes} minutes, or self-host for $0.</li>
+<li><strong>Sahu Shorts Cloud:</strong> ${STARTER.name} at ${money(STARTER.monthly)}/month for ${STARTER.minutes} minutes, or self-host for $0.</li>
 </ul>
 <p>To price your own monthly volume across the tools that meter minutes, use the
 calculator on <a href="/alternatives">the alternatives hub</a> or the
@@ -579,7 +579,7 @@ ${faqBlock(faq)}
 
 ${sources([
   ...vendorRows.map((r) => `${esc(r.name)}: free tier and entry price checked ${esc(r.checked)}; details on <a href="${esc(r.link)}">our ${esc(r.name)} comparison</a>.`),
-  `OpenShorts: <a href="/pricing">plans</a> and <a href="${SITE.repo}" rel="noopener">source on GitHub</a>.`,
+  `Sahu Shorts: <a href="/pricing">plans</a> and <a href="${SITE.repo}" rel="noopener">source on GitHub</a>.`,
 ])}
 `,
     faq,
@@ -592,7 +592,7 @@ ${sources([
 const HOWTO_FAQ = [
   {
     q: 'How do you clip a YouTube video?',
-    a: 'Note the start and end time of the part you want, then use one of four routes: YouTube Studio\'s editor or Video Clips tool for your own uploads, a free trimmer or ffmpeg on a copy of a video you have the rights to, or an AI clipper such as OpenShorts that finds the best moments and cuts them into vertical Shorts. YouTube\'s viewer Clip button, where it still appears, only makes a shareable link.',
+    a: 'Note the start and end time of the part you want, then use one of four routes: YouTube Studio\'s editor or Video Clips tool for your own uploads, a free trimmer or ffmpeg on a copy of a video you have the rights to, or an AI clipper such as Sahu Shorts that finds the best moments and cuts them into vertical Shorts. YouTube\'s viewer Clip button, where it still appears, only makes a shareable link.',
   },
   {
     q: 'How do I cut a clip from a YouTube video?',
@@ -604,7 +604,7 @@ const HOWTO_FAQ = [
   },
   {
     q: 'How do I take a clip from a YouTube video for TikTok or Shorts?',
-    a: 'Cut the segment, then reframe it from 16:9 to 9:16 and add captions. You can do it by hand with an editor or ffmpeg, or paste the link into an AI clipper like OpenShorts, which picks 3 to 15 moments of 15 to 60 seconds, reframes them with face tracking and burns in word-level subtitles.',
+    a: 'Cut the segment, then reframe it from 16:9 to 9:16 and add captions. You can do it by hand with an editor or ffmpeg, or paste the link into an AI clipper like Sahu Shorts, which picks 3 to 15 moments of 15 to 60 seconds, reframes them with face tracking and burns in word-level subtitles.',
   },
   {
     q: 'How do I save a clip of a YouTube video?',
@@ -636,12 +636,12 @@ const howToClip = () => ({
   cta: {
     label: 'The fast way',
     title: 'Paste a YouTube link, get vertical clips',
-    body: `OpenShorts finds the best moments and cuts them into 9:16 Shorts with captions. First video free up to ${FIRST_VIDEO_MINUTES} minutes, no credit card; self-hosted it is free under MIT.`,
+    body: `Sahu Shorts finds the best moments and cuts them into 9:16 Shorts with captions. First video free up to ${FIRST_VIDEO_MINUTES} minutes, no credit card; self-hosted it is free under MIT.`,
     button: 'Clip a video',
   },
   tldr: [
     'There are four ways to clip a YouTube video, and which one you want depends on whether you need a <strong>link</strong>, a <strong>file</strong> or a <strong>vertical Short</strong>.',
-    '<strong>1.</strong> Share a moment: the Clip button where you still see it, or Share at timestamp. <strong>2.</strong> YouTube Studio, for videos on your own channel. <strong>3.</strong> Cut the segment yourself with a free trimmer or one ffmpeg command. <strong>4.</strong> Let AI find the best moments and cut them into 9:16 Shorts with captions, with OpenShorts.',
+    '<strong>1.</strong> Share a moment: the Clip button where you still see it, or Share at timestamp. <strong>2.</strong> YouTube Studio, for videos on your own channel. <strong>3.</strong> Cut the segment yourself with a free trimmer or one ffmpeg command. <strong>4.</strong> Let AI find the best moments and cut them into 9:16 Shorts with captions, with Sahu Shorts.',
     'Only clip content you own or have the rights to use. A link to someone else\'s video is fine; a downloaded and re-uploaded cut of it usually is not.',
   ],
   body: `
@@ -652,7 +652,7 @@ const howToClip = () => ({
 <tr><td class="os">To send a friend one moment</td><td>1. Clip button or Share at timestamp</td><td>A link</td><td>Any public video</td></tr>
 <tr><td class="os">To shorten or reuse your own upload</td><td>2. YouTube Studio</td><td>An edited video or a republished clip on YouTube</td><td>Your own channel</td></tr>
 <tr><td class="os">An exact segment as a file</td><td>3. Free trimmer or ffmpeg</td><td>An MP4 on your device</td><td>Videos you own or are licensed to use</td></tr>
-<tr><td class="os">Several Shorts from a long video</td><td>4. AI clipping (OpenShorts)</td><td>Vertical 9:16 clips with captions</td><td>Videos you own or are licensed to use</td></tr>
+<tr><td class="os">Several Shorts from a long video</td><td>4. AI clipping (Sahu Shorts)</td><td>Vertical 9:16 clips with captions</td><td>Videos you own or are licensed to use</td></tr>
 </tbody>
 </table>
 <p>Before any of them, find the exact moment. Scrub the timeline, or open the
@@ -746,7 +746,7 @@ other people's videos.</p>
 45-minute podcast or a two-hour stream, finding them is the real work. An AI
 clipper does that part: it reads the whole video and returns the strongest
 moments already cut, reframed and captioned.</p>
-<p>With OpenShorts:</p>
+<p>With Sahu Shorts:</p>
 <ol>
 <li>Paste the YouTube link (or upload the file) at openshorts.app, or in your own self-hosted copy.</li>
 <li>The video is transcribed with a timestamp for every word and scanned for scene cuts.</li>
@@ -760,8 +760,8 @@ are on <a href="/platforms/youtube">the YouTube clip maker</a> page, and for
 turning a channel's long videos into Shorts, see
 <a href="/platforms/youtube-shorts">the YouTube Shorts maker</a> and
 <a href="/youtube-to-shorts-converter">the YouTube to Shorts converter</a>.</p>
-<p>What it costs: OpenShorts self-hosted is free and open source under MIT, with
-no watermark and no cap. OpenShorts Cloud clips your first video free up to
+<p>What it costs: Sahu Shorts self-hosted is free and open source under MIT, with
+no watermark and no cap. Sahu Shorts Cloud clips your first video free up to
 ${FIRST_VIDEO_MINUTES} minutes, then ${FREE.monthly.minutes} minutes a month with a
 watermark, and paid plans start at ${money(STARTER.monthly)}/month without one
 (<a href="/pricing">all plans</a>).</p>
@@ -802,7 +802,7 @@ ${faqBlock(HOWTO_FAQ)}
 ${sources([
   'YouTube discontinuing viewer Clips in favour of Share at timestamp, and the Studio Video Clips tool: <a href="https://9to5google.com/2026/04/17/youtube-clips-share-at-time-changes/" rel="noopener">9to5Google, 17 April 2026</a>; <a href="https://www.tubefilter.com/2026/04/17/youtube-clipping-tool-viewer-clips-shorts/" rel="noopener">Tubefilter, 17 April 2026</a>.',
   'ffmpeg options <code>-ss</code>, <code>-to</code> and <code>-c copy</code>: <a href="https://ffmpeg.org/ffmpeg.html" rel="noopener">ffmpeg documentation</a>.',
-  `OpenShorts pipeline: <a href="/how-openshorts-works">how OpenShorts works</a> and the <a href="${SITE.repo}" rel="noopener">source on GitHub</a>.`,
+  `Sahu Shorts pipeline: <a href="/how-openshorts-works">how Sahu Shorts works</a> and the <a href="${SITE.repo}" rel="noopener">source on GitHub</a>.`,
 ])}
 `,
   faq: HOWTO_FAQ,
@@ -818,7 +818,7 @@ ${sources([
       tool: [
         { '@type': 'HowToTool', name: 'YouTube Studio' },
         { '@type': 'HowToTool', name: 'ffmpeg or a free video trimmer' },
-        { '@type': 'HowToTool', name: 'OpenShorts (optional, for AI clipping)' },
+        { '@type': 'HowToTool', name: 'Sahu Shorts (optional, for AI clipping)' },
       ],
       step: [
         {
@@ -839,7 +839,7 @@ ${sources([
         {
           '@type': 'HowToStep',
           name: 'Make it vertical and add captions',
-          text: 'For Shorts, TikTok or Reels, reframe the clip from 16:9 to 9:16 and burn in subtitles, by hand or with an AI clipper such as OpenShorts that also picks the moments.',
+          text: 'For Shorts, TikTok or Reels, reframe the clip from 16:9 to 9:16 and burn in subtitles, by hand or with an AI clipper such as Sahu Shorts that also picks the moments.',
         },
         {
           '@type': 'HowToStep',
@@ -858,7 +858,7 @@ ${sources([
  * (specs, steps, timing) first and then point at the product. Platform facts
  * are dated: they are the ones the platforms' own help pages and announcements
  * gave as of the date below, and a number nobody publishes is described as a
- * rule of thumb, never as an official figure. Wording about OpenShorts
+ * rule of thumb, never as an official figure. Wording about Sahu Shorts
  * (posting targets, caption margin, scheduling) matches clip-tools.js and
  * autopilot-pages.js. */
 const GUIDES_PUBLISHED = '2026-10-29'
@@ -867,7 +867,7 @@ const APP_URL = `${SITE.url}/#app`
 
 const PLAN_SHORT = `Cloud free plan with a watermark, paid plans from ${money(STARTER.monthly)}/month, self-hosted $0 under MIT.`
 const PLAN_LINE =
-  `OpenShorts Cloud has a free plan: your first video is clipped whole up to ${FIRST_VIDEO_MINUTES} minutes, then ` +
+  `Sahu Shorts Cloud has a free plan: your first video is clipped whole up to ${FIRST_VIDEO_MINUTES} minutes, then ` +
   `${FREE.monthly.minutes} minutes a month, with a watermark and no credit card. Paid plans start at ` +
   `${money(STARTER.monthly)}/month with no watermark, and the self-hosted edition is $0 under the MIT licence ` +
   '(<a href="/pricing">all plans</a>).'
@@ -946,7 +946,7 @@ const REEL_DIM_FAQ = [
   },
   {
     q: 'Can I post a horizontal video as a Reel?',
-    a: 'You can, but it will not fill the screen and most viewers scroll past a small box. Convert it to 9:16 first. The free OpenShorts converter does it in your browser; the clip generator reframes it by tracking the speaker.',
+    a: 'You can, but it will not fill the screen and most viewers scroll past a small box. Convert it to 9:16 first. The free Sahu Shorts converter does it in your browser; the clip generator reframes it by tracking the speaker.',
   },
   {
     q: 'What is the best file format for a Reel?',
@@ -1052,7 +1052,7 @@ and a little below the top edge. Faces sit comfortably in the centre third.</p>
 keep roughly 14% of the top, 35% of the bottom and 6% of each side free of text
 and logos, which on a 1080 x 1920 frame is about 270, 670 and 65 pixels. If a
 Reel may be boosted or reused as an ad, design for those margins from the start.</p>
-<p>For reference, OpenShorts burns its captions about 15% of the frame height
+<p>For reference, Sahu Shorts burns its captions about 15% of the frame height
 above the bottom edge, which keeps them clear of the username and description
 Instagram draws on an organic Reel.</p>
 
@@ -1112,7 +1112,7 @@ ${nextStep(path, {
   html: `<p>If your Reels come from longer recordings (a podcast, a webinar, a class,
 a YouTube video), the slow part is not the size: it is watching the whole thing
 to find the moments that stand alone, then cutting, reframing and captioning
-each one. OpenShorts does that part. Paste a link or upload the file, and it
+each one. Sahu Shorts does that part. Paste a link or upload the file, and it
 returns 1080 x 1920 Reels with word-level captions placed clear of Instagram's
 interface and a hook over the opening seconds. It can publish them to Instagram
 as Reels or schedule a week of them; for Facebook Reels you download the MP4.
@@ -1271,7 +1271,7 @@ thumb. A practical working area on a 1080 x 1920 frame: keep captions and key
 text above the lowest 15% or so of the frame, clear of the right-hand 10 to 15%,
 and a little below the top edge. Faces and the main action belong in the centre
 of the frame. Check a draft on your own phone before you publish a batch.</p>
-<p>OpenShorts places burned-in captions about 15% of the frame height above the
+<p>Sahu Shorts places burned-in captions about 15% of the frame height above the
 bottom edge, so the title, channel name and buttons of the Shorts player do not
 sit on top of them.</p>
 
@@ -1306,7 +1306,7 @@ ${nextStep(path, {
   html: `<p>Getting the aspect ratio right is the easy part. The work behind a
 steady flow of Shorts is finding the moments in your long videos that stand
 alone and cutting each one: reframed to 9:16, captioned, with a hook in the
-first seconds. OpenShorts reads the whole video, picks those moments and
+first seconds. Sahu Shorts reads the whole video, picks those moments and
 returns them as 1080 x 1920 Shorts, 15 to 60 seconds by default and up to 3
 minutes if you raise the maximum. It can publish them to your channel or
 schedule a week of them. See <a href="/platforms/youtube-shorts">the YouTube
@@ -1372,7 +1372,7 @@ const FB_REEL_FAQ = [
   },
   {
     q: 'Can I make Facebook Reels from a long video?',
-    a: 'Yes. Cut the strongest moments out of the long video, reframe them to 9:16 and caption them, by hand in an editor or with an AI clipper such as OpenShorts, then upload each one as a Reel. OpenShorts makes the files; you post them to Facebook yourself.',
+    a: 'Yes. Cut the strongest moments out of the long video, reframe them to 9:16 and caption them, by hand in an editor or with an AI clipper such as Sahu Shorts, then upload each one as a Reel. Sahu Shorts makes the files; you post them to Facebook yourself.',
   },
 ]
 
@@ -1490,7 +1490,7 @@ speaker in frame when they move. That is the part an AI clipper automates.</p>
 
 ${nextStep(path, {
   heading: 'Next step: let AI cut the Reels for you',
-  html: `<p>OpenShorts reads the whole recording, picks the passages that make sense
+  html: `<p>Sahu Shorts reads the whole recording, picks the passages that make sense
 on their own and returns each one as a 9:16 Reel with word-level captions, a
 hook over the opening seconds and a description. You can paste the link of a
 public Facebook video or Live replay, a YouTube video, or upload the file. It
@@ -1535,7 +1535,7 @@ const MAKE_SHORTS_FAQ = [
   },
   {
     q: 'How do I make a YouTube Short from a long video?',
-    a: 'For your own videos, the YouTube app can turn part of an upload into a Short (Remix, then Edit into a Short, where available). Or cut the segment yourself, reframe it to 9:16 and caption it, or let an AI clipper such as OpenShorts pick the moments and cut several Shorts at once.',
+    a: 'For your own videos, the YouTube app can turn part of an upload into a Short (Remix, then Edit into a Short, where available). Or cut the segment yourself, reframe it to 9:16 and caption it, or let an AI clipper such as Sahu Shorts pick the moments and cut several Shorts at once.',
   },
   {
     q: 'How long can a YouTube Short be?',
@@ -1562,7 +1562,7 @@ const MAKE_SHORTS_FAQ = [
     a: 'Yes. In YouTube Studio or the app you can set a related video on a Short, which shows a link to that video from your channel under the Short. It is the simplest way to send Shorts viewers to the full episode.',
   },
   {
-    q: 'Is OpenShorts free for making Shorts?',
+    q: 'Is Sahu Shorts free for making Shorts?',
     a: `On two terms. The hosted free plan clips your first video whole up to ${FIRST_VIDEO_MINUTES} minutes, then ${FREE.monthly.minutes} minutes a month, with a watermark and no credit card; paid plans start at ${money(STARTER.monthly)}/month with no watermark. The self-hosted edition is free under MIT with no watermark.`,
   },
 ]
@@ -1657,7 +1657,7 @@ steps, including the ffmpeg commands, are in <a href="/how-to/clip-a-youtube-vid
 to clip a YouTube video</a>.</p>
 <h3>With an AI clipper</h3>
 <p>An AI clipper does the slow part: it reads the whole video and returns the
-strongest moments already cut, reframed and captioned. With OpenShorts:</p>
+strongest moments already cut, reframed and captioned. With Sahu Shorts:</p>
 <ol>
 <li>Paste the YouTube link, or upload the file.</li>
 <li>The video is transcribed word by word, and Gemini scores every stretch of it for how well it would stand alone.</li>
@@ -1681,7 +1681,7 @@ licensed to clip; each job asks you to confirm that.</p>
 ${nextStep(path, {
   heading: 'Next step: make a week of Shorts from one video',
   html: `<p>If you already publish long videos, your next Shorts are in them.
-Paste a link and OpenShorts returns several 9:16 Shorts with captions, a hook and
+Paste a link and Sahu Shorts returns several 9:16 Shorts with captions, a hook and
 a title written for the Shorts feed, and can post them to your channel one a day.
 The details are on <a href="/platforms/youtube-shorts">the YouTube Shorts
 maker</a>; for any YouTube source, see <a href="/platforms/youtube">the YouTube
@@ -1697,7 +1697,7 @@ ${sources([
   SRC_YT_UPLOAD,
   SRC_YT_3MIN,
   'YouTube app and YouTube Studio steps described as of October 2026; YouTube rolls out interface changes gradually, so labels can differ by account and region.',
-  `OpenShorts pipeline: <a href="/how-openshorts-works">how OpenShorts works</a> and the <a href="${SITE.repo}" rel="noopener">source on GitHub</a>.`,
+  `Sahu Shorts pipeline: <a href="/how-openshorts-works">how Sahu Shorts works</a> and the <a href="${SITE.repo}" rel="noopener">source on GitHub</a>.`,
 ])}
 `,
     faq: MAKE_SHORTS_FAQ,
@@ -1748,7 +1748,7 @@ const BEST_TIME_FAQ = [
   },
   {
     q: 'Can I schedule YouTube Shorts?',
-    a: 'Yes. In YouTube Studio, set the visibility to Schedule and pick a date and time when you upload; the mobile app offers scheduling too. OpenShorts can schedule a batch of Shorts one a day at the time and time zone you choose.',
+    a: 'Yes. In YouTube Studio, set the visibility to Schedule and pick a date and time when you upload; the mobile app offers scheduling too. Sahu Shorts can schedule a batch of Shorts one a day at the time and time zone you choose.',
   },
 ]
 
@@ -1844,7 +1844,7 @@ to sustain and hard to learn from.</p>
 moment:</p>
 <ul>
 <li><strong>YouTube Studio</strong> lets you schedule a Short: when you upload, choose <strong>Schedule</strong> on the Visibility step and pick the date and time. The mobile app offers scheduling too.</li>
-<li><strong>OpenShorts</strong> can schedule a whole batch: after it cuts the Shorts from a long video, <strong>Schedule a week</strong> posts one a day, starting the next day, at the time you choose in your own time zone, to YouTube Shorts and, if you want, TikTok and Instagram.</li>
+<li><strong>Sahu Shorts</strong> can schedule a whole batch: after it cuts the Shorts from a long video, <strong>Schedule a week</strong> posts one a day, starting the next day, at the time you choose in your own time zone, to YouTube Shorts and, if you want, TikTok and Instagram.</li>
 <li><strong>Autopilot</strong> (on paid plans) goes one step further: it clips each new upload on your connected channel on its own and, with autopublish on, schedules the best clips of each video one a day at the hour you pick, in your time zone. It only picks up videos published after you switch it on.</li>
 </ul>
 
@@ -1860,7 +1860,7 @@ moment:</p>
 ${nextStep(path, {
   heading: 'Next step: a week of Shorts, posted at your time',
   html: `<p>The hardest part of posting at a consistent time is having a Short ready
-every day. If you publish long videos, OpenShorts cuts several Shorts from each
+every day. If you publish long videos, Sahu Shorts cuts several Shorts from each
 one and can schedule them one a day at the hour your viewers are online. See
 <a href="/platforms/youtube-shorts">the YouTube Shorts maker</a> for the clips and
 posting, <a href="/auto-clip">auto clip</a> for clipping every new upload on its

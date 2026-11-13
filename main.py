@@ -1235,6 +1235,27 @@ def _download_youtube_video(url, output_dir=".", on_audio=None, allow_paid=True,
             last_err = RuntimeError("The YouTube account is rate-limited by YouTube.")
 
     if sanitized_title is None:
+        # LAST-RESORT FALLBACK (additive): every yt-dlp route above failed
+        # (e.g. this host's IP is bot-walled by YouTube). Try Loader.to's
+        # public web flow before giving up. Runs ONLY after yt-dlp failed,
+        # and ONLY for YouTube URLs.
+        if is_youtube_url(url):
+            try:
+                from loader_fallback import download_via_loader
+                _loader_dest = os.path.join(output_dir, "loader_source.mp4")
+                _loader_res = download_via_loader(
+                    url, _loader_dest, budget_seconds=1200)
+            except Exception as _loader_exc:  # noqa: BLE001 - import guard
+                _loader_res = {"ok": False, "error": str(_loader_exc)}
+            if _loader_res.get("ok"):
+                print(f"✅ Loader.to fallback downloaded the video "
+                      f"(format {_loader_res.get('height_hint')}p).")
+                sanitized_title = "loader_source"
+                attempt_log.append({"label": "loader.to fallback",
+                                    "ok": True, "bytes": 0, "paid": False})
+            else:
+                print(f"⚠️ Loader.to fallback also failed: "
+                      f"{_loader_res.get('error')}")
         import sys
         error_msg = f"""
 ❌ ================================================================= ❌

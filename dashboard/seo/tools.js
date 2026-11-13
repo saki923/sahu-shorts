@@ -81,11 +81,11 @@ const CLIP_MAKERS = [
 
 const toolsHub = () => ({
   path: '/tools',
-  title: 'Free Tools for YouTube and Short-Form Video | OpenShorts',
+  title: 'Free Tools for YouTube and Short-Form Video | Sahu Shorts',
   description:
     'Free YouTube tools with no sign-up: transcript generator, tag, title and description generator, and a video to 9:16 converter that runs in your browser.',
   h1: 'Free tools for YouTube and short-form video',
-  lede: 'Small tools that do one job each, free and without an account. They come from the same team as the OpenShorts clip generator.',
+  lede: 'Small tools that do one job each, free and without an account. They come from the same team as the Sahu Shorts clip generator.',
   breadcrumb: [{ name: 'Free tools' }],
   published: PUBLISHED,
   updated: PUBLISHED,
@@ -123,7 +123,7 @@ ${CLIP_MAKERS.map((t) => `<a href="${t.path}"><strong>${esc(t.name)}</strong><sp
 <p>If what you want is not one transcript or one converted file but a long video
 cut into several vertical clips with subtitles and the speaker kept in frame,
 that is <a href="/free-ai-clip-generator">the free AI clip generator</a>: 20 free
-minutes a month on OpenShorts Cloud, or unlimited if you self-host the MIT
+minutes a month on Sahu Shorts Cloud, or unlimited if you self-host the MIT
 licensed code. To have every new upload on your channel clipped without opening
 anything, see <a href="/auto-clip">auto clip with Autopilot</a>.</p>
 `,
@@ -166,8 +166,8 @@ const transcriptForm = ({ platform, label, placeholder, hint }) => `
     <div id="yt-text" class="transcript" tabindex="0" aria-label="Transcript"></div>
     <div class="cta-inline">
       <p>${platform === 'tiktok'
-    ? 'Have the long video this TikTok came from? OpenShorts cuts it into 3 to 15 vertical clips with subtitles. 20 free minutes a month.'
-    : 'Want the best moments of this video as vertical clips with subtitles? OpenShorts cuts it into 3 to 15 shorts. 20 free minutes a month.'}</p>
+    ? 'Have the long video this TikTok came from? Sahu Shorts cuts it into 3 to 15 vertical clips with subtitles. 20 free minutes a month.'
+    : 'Want the best moments of this video as vertical clips with subtitles? Sahu Shorts cuts it into 3 to 15 shorts. 20 free minutes a month.'}</p>
       <button type="button" id="yt-clip" class="btn-primary">${platform === 'tiktok' ? 'Clip a long video' : 'Turn this video into clips'}</button>
     </div>
   </div>
@@ -280,7 +280,7 @@ const YT_FAQ = [
 
 const transcriptPage = () => ({
   path: '/youtube-transcript-generator',
-  title: 'YouTube Transcript Generator: Free, TXT & SRT | OpenShorts',
+  title: 'YouTube Transcript Generator: Free, TXT & SRT | Sahu Shorts',
   description:
     'Get the transcript of any YouTube video free: paste the link, copy the text with or without timestamps, or download TXT or SRT. No sign-up, any language.',
   h1: 'YouTube transcript generator: free, with timestamps, TXT or SRT',
@@ -379,10 +379,10 @@ text.</p>
 again in a minute. That is about the connection, not the video: a retry usually
 works, and Show transcript under the description is the fallback.</p>
 <p>If you need the words of a video without captions, the
-<a href="/free-ai-clip-generator">OpenShorts clip generator</a> runs its own
+<a href="/free-ai-clip-generator">Sahu Shorts clip generator</a> runs its own
 speech recognition with word-level timing and uses it to cut the video into
 subtitled vertical clips. That is the paid product, with a free allowance of 20
-minutes a month on OpenShorts Cloud and paid plans from $12 a month on
+minutes a month on Sahu Shorts Cloud and paid plans from $12 a month on
 <a href="/pricing">the pricing table</a>, or free with no cap when you self-host
 the open source code.</p>
 
@@ -404,7 +404,7 @@ the timestamps so the answer can point to the moment it comes from. Our
 from a short brief, and a few lines of the transcript make a good one.</li>
 <li><strong>Finding the moment to clip.</strong> Skim the text for the line
 worth a Short, then cut it. If you would rather have the whole video cut into
-vertical clips for you, see how OpenShorts handles
+vertical clips for you, see how Sahu Shorts handles
 <a href="/platforms/youtube">long YouTube videos</a> and
 <a href="/platforms/youtube-shorts">YouTube Shorts</a>, or paste the link into the
 <a href="/youtube-to-shorts-converter">YouTube to Shorts converter</a>.</li>
@@ -509,7 +509,7 @@ const TT_FAQ = [
 
 const tiktokTranscriptPage = () => ({
   path: '/tools/tiktok-transcript-generator',
-  title: 'TikTok Transcript Generator: Free, TXT & SRT | OpenShorts',
+  title: 'TikTok Transcript Generator: Free, TXT & SRT | Sahu Shorts',
   description:
     'Get the transcript of a TikTok video free: paste the link or a vm.tiktok.com share link, then copy the text or download TXT or SRT. No sign-up needed.',
   h1: 'TikTok transcript generator: copy or download what was said',
@@ -593,12 +593,12 @@ Claude or Gemini and ask what the openings have in common, or for a summary.</li
 <p>If TikTok has no captions for a video, the tool says so instead of guessing:
 that happens with music, with videos without speech, and when a creator turned
 captions off. If TikTok does not answer, try again in a minute.</p>
-<p>When you have the video file, the <a href="/free-ai-clip-generator">OpenShorts
+<p>When you have the video file, the <a href="/free-ai-clip-generator">Sahu Shorts
 clip generator</a> runs its own speech recognition with word-level timing and
 burns the subtitles in. It is built for the other direction too: a long video
 cut into vertical clips, which is what the
 <a href="/platforms/tiktok">TikTok clip maker</a> page covers. The free plan is
-20 minutes a month on OpenShorts Cloud; paid plans start at $12 a month on
+20 minutes a month on Sahu Shorts Cloud; paid plans start at $12 a month on
 <a href="/pricing">the pricing table</a>, and the open source version is free
 when you self-host it.</p>
 
@@ -651,7 +651,7 @@ const metadataTool = `
   <div id="md-status" class="tool-status" role="status" aria-live="polite" hidden></div>
   <div id="md-out" class="out" hidden></div>
   <div id="md-cta" class="cta-inline" hidden>
-    <p>Got the long video done? OpenShorts cuts it into vertical Shorts with subtitles, and its YouTube Studio writes titles from the video itself.</p>
+    <p>Got the long video done? Sahu Shorts cuts it into vertical Shorts with subtitles, and its YouTube Studio writes titles from the video itself.</p>
     <a id="md-cta-btn" class="btn-primary" href="${SITE.url}/">Clip the video</a>
   </div>
 </section>`
@@ -671,7 +671,7 @@ const SAMPLE_TITLES = [
 
 const metadataPage = () => ({
   path: '/youtube-tag-generator',
-  title: 'YouTube Tag, Title and Description Generator | OpenShorts',
+  title: 'YouTube Tag, Title and Description Generator | Sahu Shorts',
   description:
     'Free YouTube tag generator that also writes titles and descriptions from a short brief. Stays inside YouTube\'s limits: 100-character titles, 500 for tags.',
   h1: 'YouTube tag, title and description generator',
@@ -728,7 +728,7 @@ ${faqBlock([
   },
   {
     q: 'Which AI writes the titles and descriptions?',
-    a: 'Google Gemini, the same model family OpenShorts uses to pick clips and write titles in its YouTube Studio.',
+    a: 'Google Gemini, the same model family Sahu Shorts uses to pick clips and write titles in its YouTube Studio.',
   },
   {
     q: 'Does it work in other languages?',
@@ -795,7 +795,7 @@ const verticalTool = `
       <p id="vc-info" class="tool-hint"></p>
       <p><button type="button" id="vc-download" class="btn-primary">Download</button></p>
       <div class="cta-inline">
-        <p>Is someone talking in it? OpenShorts reframes with face tracking so the speaker stays in the frame, and cuts the long video into clips with subtitles.</p>
+        <p>Is someone talking in it? Sahu Shorts reframes with face tracking so the speaker stays in the frame, and cuts the long video into clips with subtitles.</p>
         <a id="vc-cta-btn" class="btn-primary" href="${SITE.url}/">Try the clip generator</a>
       </div>
     </div>
@@ -804,7 +804,7 @@ const verticalTool = `
 
 const verticalPage = () => ({
   path: '/video-aspect-ratio-converter',
-  title: 'Video Aspect Ratio Converter (16:9 to 9:16) | OpenShorts',
+  title: 'Video Aspect Ratio Converter (16:9 to 9:16) | Sahu Shorts',
   description:
     'Convert a video to 9:16 for TikTok, Reels and Shorts in your browser: blurred background, crop or black bars. Free, no upload, no watermark.',
   h1: 'Video aspect ratio converter: 16:9 to 9:16 in your browser',
@@ -844,7 +844,7 @@ keep a browser tab stable: the first 5 minutes of the video and files up to
 <h2>When a fixed crop is not enough</h2>
 <p>A fixed crop cannot follow a person who moves, and it cannot show two people
 talking at the same time. That is what the
-<a href="/youtube-to-shorts-converter">OpenShorts YouTube to Shorts converter</a>
+<a href="/youtube-to-shorts-converter">Sahu Shorts YouTube to Shorts converter</a>
 does: it tracks faces with MediaPipe so the speaker stays in the frame, can stack
 two people talking in a split screen, and cuts the long video into 3 to 15 clips
 with subtitles.</p>

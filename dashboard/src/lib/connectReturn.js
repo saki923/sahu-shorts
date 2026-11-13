@@ -1,7 +1,7 @@
 // Coming back from the Upload-Post connect page. A connect started there
 // returns to our redirectUrl with the outcome in the query string, before the
 // hash: ?connect_status=success|cancelled|error&platform=<p>&error_code=<CODE>.
-// Pressing the page's own "Back to OpenShorts" button carries no outcome.
+// Pressing the page's own "Back to Sahu Shorts" button carries no outcome.
 
 const CONNECT_PARAMS = ['connect_status', 'platform', 'error_code', 'error_description'];
 const STATUSES = ['success', 'cancelled', 'error'];

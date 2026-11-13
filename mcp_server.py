@@ -35,13 +35,13 @@ from subtitles import CAPTION_PRESETS, line_budget
 router = APIRouter()
 
 PROTOCOL_VERSIONS = ("2025-06-18", "2025-03-26", "2024-11-05")
-SERVER_INFO = {"name": "openshorts", "title": "OpenShorts", "version": "1.0.0"}
+SERVER_INFO = {"name": "openshorts", "title": "Sahu Shorts", "version": "1.0.0"}
 # Kept descriptive: app-directory review flags instructions that read as
 # commands to the model (capitals, "do not use other tools", upsell steps).
 INSTRUCTIONS = (
-    "OpenShorts turns long videos (YouTube URLs or direct video files) into "
+    "Sahu Shorts turns long videos (YouTube URLs or direct video files) into "
     "short vertical clips. process_video takes the video URL as the user gave "
-    "it; OpenShorts downloads, transcribes and analyses the video on its own "
+    "it; Sahu Shorts downloads, transcribes and analyses the video on its own "
     "servers, so the video does not need to be opened or transcribed first. "
     "Typical flow: process_video, then get_job_status until the job is "
     "'completed' (a job takes a few minutes; checking every 30-60 seconds is "
@@ -66,7 +66,7 @@ TOOLS = [
         "name": "process_video",
         "title": "Process a video into short clips",
         "description": (
-            "Start clipping a video from its URL. OpenShorts downloads the "
+            "Start clipping a video from its URL. Sahu Shorts downloads the "
             "source itself, transcribes it, finds the most viral moments with AI "
             "and renders vertical (9:16) clips. Captions and the AI hook line are "
             "burned by default; pass captions=false or auto_hook=false to skip either. "
@@ -735,7 +735,7 @@ async def mcp_endpoint(request: Request):
         u = request.base_url
         return JSONResponse(
             {"error": "Authentication required. Connect with OAuth (claude.ai, ChatGPT) "
-                      "or pass an OpenShorts API key: Authorization: Bearer osk_... "
+                      "or pass a Sahu Shorts API key: Authorization: Bearer osk_... "
                       "(create one in the dashboard)."},
             status_code=401,
             headers={"WWW-Authenticate": mcp_oauth.www_authenticate(f"{u.scheme}://{u.netloc}")},
