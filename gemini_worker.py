@@ -273,6 +273,7 @@ Rules:
   live viewers clipped that stretch themselves. That is strong evidence the
   moment lands even when the transcript looks thin (a chase, a crash, a scream),
   so weigh it up; the window still has to make sense to a cold viewer.
+- SHARE TEST: after the 2-second test, ask whether a cold viewer would send this window to a friend or rewatch it. A strong opening that fizzles — no payoff, reveal, or punchline inside the window — scores below 70, however interesting the topic is.
 
 TRANSCRIPT_LANGUAGE: {language}
 VIDEO_DURATION_SECONDS: {video_duration}
@@ -304,6 +305,8 @@ CLIP RULES:
 - THE 2-SECOND RULE: the clip MUST open on its strongest moment. If the first
   2 seconds would not stop a cold viewer from scrolling, move the start or skip the clip.
 - Start slightly before the hook and end slightly after the payoff when possible.
+- PAYOFF INSIDE THE CLIP: the reveal, punchline, or payoff must land before the clip ends. Never end a clip on setup alone.
+- ONE MOMENT PER CLIP: never return two clips covering the same moment or payoff. If two windows overlap on the same payoff, keep only the stronger cut.
 - When a window has `viewer_moments` ([start, end] stretches the stream's
   viewers clipped), the best clip of that window should cover the strongest
   of them, opening a few seconds before it so the moment has its setup.
@@ -333,6 +336,8 @@ HOOK PLAYBOOK — pick the strongest fitting pattern for `viral_hook_text` (max 
 - Number / fact shock: "97% of people miss this."
 - Story loop: "This one email almost ruined me."
 - POV / pattern interrupt: "POV: you finally understand it."
+- Mistake to avoid: "The #1 mistake people make with X."
+- Curiosity gap: "Nobody tells you this about X."
 (These are English PATTERNS — always write the actual hook in TRANSCRIPT_LANGUAGE.)
 - ABOUT THIS MOMENT, NOT THE VIDEO: the hook and the title name the concrete
   thing that happens inside this clip — the tool being set up, the action,
