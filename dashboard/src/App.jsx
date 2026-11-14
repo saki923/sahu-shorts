@@ -29,7 +29,7 @@ import AutopilotTab from './components/AutopilotTab';
 import ProfileMenu from './components/ProfileMenu';
 import Modal from './components/ui/Modal';
 import { useAuth } from './contexts/AuthContext';
-import { apiFetch, apiJson, QuotaError, QUOTA_WALL_EVENT } from './lib/api';
+import { apiFetch, apiJson, QuotaError, QUOTA_WALL_EVENT, BACKEND_WAKING_EVENT } from './lib/api';
 import { track } from './lib/analytics';
 import { readConnectReturn, stripConnectReturn } from './lib/connectReturn';
 import { rememberTabAfterLogin } from './lib/tabAfterLogin';
@@ -307,6 +307,10 @@ function App() {
   }, [queueSlow, queueInfo]);
   // Why the last job could not start or failed, in plain words (or '').
   const [jobError, setJobError] = useState('');
+  // True while the backend is being woken (Codespace stopped on idle):
+  // the job-start fetch failed to reach it, api.js is starting it via
+  // /api/wake and polling /health, then the request retries itself.
+  const [backendWaking, setBackendWaking] = useState(false);
   // Durable R2 URLs (per clip index) for the current job — used as a fallback when
   // the ephemeral local /videos/ files have been cleaned up (e.g. after a reload).
   const [durableClips, setDurableClips] = useState({});
@@ -435,6 +439,18 @@ function App() {
   // Read by in-flight async chases to notice that the user moved on to another job.
   const jobIdRef = useRef(jobId);
   useEffect(() => { jobIdRef.current = jobId; }, [jobId]);
+
+  // Backend auto-wake: when api.js starts the stopped Codespace, say so in
+  // the log (the last line is what a phone shows while processing).
+  useEffect(() => {
+    const onWaking = (e) => {
+      const on = !!e?.detail?.waking;
+      setBackendWaking(on);
+      if (on) setLogs((l) => [...l, 'Backend on ho raha hai, 1-2 minute wait karo…']);
+    };
+    window.addEventListener(BACKEND_WAKING_EVENT, onWaking);
+    return () => window.removeEventListener(BACKEND_WAKING_EVENT, onWaking);
+  }, []);
 
   const flushClipState = () => {
     const s = clipStateSync.current;
@@ -2494,6 +2510,11 @@ function App() {
                         <p className="text-xs text-muted/80 max-w-[26ch] leading-snug">
                           They appear here one by one as each finishes rendering.
                         </p>
+                        {backendWaking && (
+                          <p className="text-xs text-brass max-w-[30ch] leading-snug">
+                            Backend on ho raha hai, 1-2 minute wait karo…
+                          </p>
+                        )}
                       </div>
                     ) : status === 'error' ? (
                       <div className="h-full min-h-[120px] flex flex-col items-center justify-center text-danger space-y-2">

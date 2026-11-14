@@ -35,13 +35,81 @@ export function openQuotaWall(err, source) {
   } catch (_) { /* ignore */ }
 }
 
+// --- Backend auto-wake -----------------------------------------------------
+// The backend lives on a GitHub Codespace that stops after ~30 min idle.
+// When a request fails because the backend is unreachable, this wakes it
+// (via the /api/wake serverless function on the same origin) and polls
+// /health until it answers, then the original request is retried once.
+// Nothing here changes the normal path: a reachable backend never sees a
+// wake call. Concurrent callers share one wake attempt.
+export const BACKEND_WAKING_EVENT = 'os:backend-waking';
+const WAKE_POLL_MS = 15000;
+const WAKE_TIMEOUT_MS = 4 * 60 * 1000;
+
+function setWaking(on) {
+  try {
+    window.dispatchEvent(new CustomEvent(BACKEND_WAKING_EVENT, {
+      detail: { waking: !!on },
+    }));
+  } catch (_) { /* ignore */ }
+}
+
+async function backendHealthy() {
+  try {
+    const res = await fetch(getApiUrl('/health'), { signal: AbortSignal.timeout(5000) });
+    if (!res.ok) return false;
+    const body = await res.json().catch(() => ({}));
+    return body?.status === 'ok';
+  } catch (_) {
+    return false;
+  }
+}
+
+async function wakeAndWait() {
+  setWaking(true);
+  try {
+    // Ask the wake endpoint to start the Codespace (a no-op when it is
+    // already up or starting). Any failure here is non-fatal: the poll
+    // below still waits, because the backend may be starting on its own
+    // (e.g. someone started the Codespace by hand).
+    try {
+      await fetch('/api/wake', { method: 'POST', signal: AbortSignal.timeout(10000) });
+    } catch (_) { /* wake unavailable — keep polling */ }
+    const started = Date.now();
+    while (Date.now() - started < WAKE_TIMEOUT_MS) {
+      if (await backendHealthy()) return true;
+      await new Promise((r) => setTimeout(r, WAKE_POLL_MS));
+    }
+    return await backendHealthy();
+  } finally {
+    setWaking(false);
+  }
+}
+
+let wakePromise = null;
+function wakeOnce() {
+  if (!wakePromise) wakePromise = wakeAndWait().finally(() => { wakePromise = null; });
+  return wakePromise;
+}
+
 // Drop-in fetch wrapper. Always attaches the bearer token when present.
 export async function apiFetch(path, options = {}) {
   const headers = new Headers(options.headers || {});
   const token = getToken();
   if (token) headers.set('Authorization', `Bearer ${token}`);
 
-  const res = await fetch(getApiUrl(path), { ...options, headers });
+  let res;
+  try {
+    res = await fetch(getApiUrl(path), { ...options, headers });
+  } catch (e) {
+    // Network failure (the backend is unreachable, usually because the
+    // Codespace stopped): wake it once, then retry the request once.
+    if (e instanceof TypeError) {
+      const up = await wakeOnce();
+      if (up) return fetch(getApiUrl(path), { ...options, headers });
+    }
+    throw e;
+  }
 
   if (res.status === 402) {
     let detail = {};
@@ -81,3 +149,4 @@ export async function apiJson(path, options = {}) {
   }
   return res.json();
 }
+
