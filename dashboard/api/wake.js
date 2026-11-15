@@ -18,7 +18,10 @@
 //
 // Optional env vars (defaults shown):
 //   SAHU_BACKEND_URL    — backend base URL (falls back to VITE_API_URL).
-//   SAHU_CODESPACE_NAME — default 'studious succotash'.
+//   SAHU_CODESPACE_NAME — default 'studious-succotash-x9vqqv9g4w62995x'
+//                         (the Codespace's machine name / CODESPACE_NAME —
+//                         NOT its display name 'studious succotash', which
+//                         the GitHub API does not accept as an identifier).
 
 const GH_API = 'https://api.github.com';
 
@@ -27,7 +30,8 @@ const GH_API = 'https://api.github.com';
 function config() {
   return {
     backendUrl: (process.env.SAHU_BACKEND_URL || process.env.VITE_API_URL || '').replace(/\/$/, ''),
-    codespaceName: process.env.SAHU_CODESPACE_NAME || 'studious succotash',
+    codespaceName: process.env.SAHU_CODESPACE_NAME || 'studious-succotash-x9vqqv9g4w62995x',
+    codespaceDisplayName: 'studious succotash',
     ghToken: process.env.GH_CODESPACES_TOKEN || '',
   };
 }
@@ -67,12 +71,33 @@ async function gh(ghToken, path, method = 'GET') {
   return { status: res.status, body };
 }
 
+// Resolve the Codespace's state AND its machine name. The list endpoint
+// matches by display name too, so a misconfigured SAHU_CODESPACE_NAME
+// (e.g. the display name 'studious succotash') can no longer produce a
+// phantom 'unknown' state: the old code did a direct GET on the display
+// name, GitHub 404'd, and every check returned 'starting'/'unknown' even
+// while the Codespace was Available and the backend healthy.
+async function codespaceState(ghToken, codespaceName, codespaceDisplayName) {
+  try {
+    const list = await gh(ghToken, '/user/codespaces');
+    const all = Array.isArray(list.body?.codespaces) ? list.body.codespaces : [];
+    const hit = all.find(
+      (c) => c.name === codespaceName || c.display_name === codespaceName || c.display_name === codespaceDisplayName,
+    );
+    if (hit) return { state: hit.state || 'unknown', name: hit.name || codespaceName };
+  } catch (_) {
+    // Fall through to the direct lookup.
+  }
+  const current = await gh(ghToken, `/user/codespaces/${encodeURIComponent(codespaceName)}`);
+  return { state: current.body?.state || 'unknown', name: codespaceName };
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'GET' && req.method !== 'POST') {
     return res.status(405).json({ status: 'error', error: 'method_not_allowed' });
   }
 
-  const { backendUrl, codespaceName, ghToken } = config();
+  const { backendUrl, codespaceName, codespaceDisplayName, ghToken } = config();
 
   if (await backendUp(backendUrl)) {
     return res.status(200).json({ status: 'ready' });
@@ -85,19 +110,19 @@ export default async function handler(req, res) {
   }
 
   try {
-    const current = await gh(ghToken, `/user/codespaces/${encodeURIComponent(codespaceName)}`);
-    const state = current.body?.state || 'unknown';
+    const { state, name } = await codespaceState(ghToken, codespaceName, codespaceDisplayName);
+    const lower = String(state).toLowerCase();
 
-    if (state === 'Available') {
+    if (lower === 'available') {
       // Codespace is up but the backend isn't answering yet (services still
       // starting): nothing to start, the browser keeps polling /health.
       return res.status(200).json({ status: 'starting', state });
     }
-    if (state === 'Starting') {
+    if (lower === 'starting') {
       return res.status(200).json({ status: 'starting', state });
     }
-    if (state === 'Shutdown' || state === 'Stopped') {
-      const started = await gh(ghToken, `/user/codespaces/${encodeURIComponent(codespaceName)}/start`, 'POST');
+    if (lower === 'shutdown' || lower === 'stopped') {
+      const started = await gh(ghToken, `/user/codespaces/${encodeURIComponent(name)}/start`, 'POST');
       if (started.status === 200 || started.status === 202) {
         return res.status(200).json({ status: 'starting', state: 'Starting' });
       }
