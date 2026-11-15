@@ -39,9 +39,12 @@ function config() {
 async function backendUp(backendUrl) {
   if (!backendUrl) return false;
   try {
+    // 8s, not 5s: a first server-side fetch to a public Codespace URL can
+    // take 5s+ (GitHub's port proxy + cold connection), and a Vercel Hobby
+    // function caps at 10s total — 8s is the most this check can wait.
     const res = await fetch(`${backendUrl}/health`, {
       method: 'GET',
-      signal: AbortSignal.timeout(5000),
+      signal: AbortSignal.timeout(8000),
     });
     if (!res.ok) return false;
     const body = await res.json().catch(() => ({}));
